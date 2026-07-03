@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UNIONS position sample &mdash; catalogue progress</title>
+<style>
+  html,body{ margin:0; padding:0; background:#ffffff; color:#000000; }
+  body{ font-family:Georgia,'Times New Roman',serif; font-size:17px;
+    line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .page{ max-width:900px; margin:0 auto; padding:56px 28px 80px; }
+  a{ color:#000; text-decoration:underline; }
+  h1{ font-size:30px; font-weight:normal; margin:0 0 4px; line-height:1.2; }
+  h2{ font-size:21px; font-weight:normal; margin:44px 0 12px;
+    border-bottom:1px solid #000; padding-bottom:4px; }
+  .sub{ color:#444; font-size:15px; margin:0 0 8px; }
+  .stamp{ font-size:13px; color:#555; margin-bottom:28px; }
+  .note{ font-size:14px; color:#333; background:#f6f6f6;
+    border-left:3px solid #000; padding:10px 14px; margin:18px 0; }
+  p{ max-width:70ch; }
+  table{ border-collapse:collapse; width:100%; margin:16px 0; font-size:16px; }
+  th,td{ text-align:left; padding:8px 12px; border-bottom:1px solid #ddd;
+    vertical-align:top; }
+  thead th{ border-bottom:2px solid #000; font-weight:bold; }
+  tfoot td{ border-top:2px solid #000; border-bottom:none; font-weight:bold; }
+  td.num, th.num{ white-space:nowrap; }
+  td.lab{ font-weight:bold; white-space:nowrap; }
+  .dim{ color:#777; }
+  figure{ margin:22px 0; }
+  figure img{ width:100%; height:auto; border:1px solid #e5e5e5; }
+  figcaption{ font-size:14px; color:#444; margin-top:8px; }
+  ul{ max-width:70ch; }
+  code{ font-family:'Courier New',monospace; font-size:.9em; }
+  footer{ margin-top:56px; border-top:1px solid #000; padding-top:14px;
+    font-size:13px; color:#555; }
+  .back{ font-size:14px; }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <p class="back"><a href="../index.html">&larr; UNIONS-WL status board</a></p>
+
+  <h1>UNIONS position sample</h1>
+  <p class="sub">Progress of the DR6 full-footprint catalogue campaign &mdash;
+  forced photometry and redshifts.</p>
+  <p class="stamp">Snapshot generated 2026-07-03 07:04 UTC &middot; live disk state, preliminary.</p>
+
+  <h2>Sky coverage</h2>
+  <figure>
+    <img src="footprint.png" alt="Mollweide sky map of the DR6 campaign footprint">
+    <figcaption>Planned footprint (light grey), cells with completed photometry
+    (blue-grey), and sub-regions with finalised redshifts (black). Equatorial
+    coordinates, Mollweide projection.</figcaption>
+  </figure>
+
+  <h2>Completed photometry</h2>
+  <p>Tractor forced-photometry / co-adds &mdash; cells with a <code>.ok</code>.</p>
+  <table>
+    <thead>
+      <tr><th>Wave</th><th class="num">Photometry finished</th>
+      <th class="num">of planned</th><th>Fully-complete sub-regions</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="lab">Wave&nbsp;1 <span class='dim'>(ranks 0&ndash;9)</span></td>
+        <td class="num">659 deg&sup2;</td>
+        <td class="num">10 <span class="dim">(59%)</span></td>
+        <td>5 = 564 deg&sup2; <span class="dim">(r001, r002, r004, r005, r007)</span></td>
+      </tr>
+      <tr>
+        <td class="lab">Wave&nbsp;2 <span class='dim'>(ranks 10&ndash;29)</span></td>
+        <td class="num">356 deg&sup2;</td>
+        <td class="num">20 <span class="dim">(16%)</span></td>
+        <td>1 = 114 deg&sup2; <span class="dim">(r010)</span></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr><td class="lab">Combined</td>
+        <td class="num">~1,015 deg&sup2;</td>
+        <td class="num">64</td>
+        <td>6 = 678 deg&sup2;</td></tr>
+    </tfoot>
+  </table>
+  <p class="note">The area in each row is <b>cell-weighted</b> &mdash; the actual
+  sky area whose photometry is done (summing each sub-region's area &times;
+  fraction of its cells extracted), so it counts partially-done sub-regions too.
+  The <i>fully-complete</i> column is the stricter set where all cells are done
+  (those are the ones eligible to finalise into <code>combine_full.parquet</code>).</p>
+  <ul>
+    <li>Cells: wave&nbsp;1 at <b>94/160</b>,
+    wave&nbsp;2 at <b>50/112</b>.</li>
+    <li>Finalised redshifts: <b>6 sub-regions</b>,
+    678&nbsp;deg&sup2;, 1,206,144 galaxies delivered into
+    <code>combine_full.parquet</code>.</li>
+  </ul>
+
+  <h2>Per-sub-region detail</h2>
+  <table>
+    <thead>
+      <tr><th>Sub-region</th><th class="num">Area</th><th class="num">Cells</th>
+      <th class="num">Photometry</th><th class="num">Redshifts</th><th class="num">spec-z</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="lab">r000</td><td class="num">108 deg&sup2;</td><td class="num">14/16</td><td class="num">88%</td><td class="num">&mdash;</td><td class="num">&#10003;</td></tr>
+      <tr><td class="lab">r001</td><td class="num">108 deg&sup2;</td><td class="num">16/16</td><td class="num">complete</td><td class="num">finalised</td><td class="num">&#10003;</td></tr>
+      <tr><td class="lab">r002</td><td class="num">114 deg&sup2;</td><td class="num">16/16</td><td class="num">complete</td><td class="num">finalised</td><td class="num">&#10003;</td></tr>
+      <tr><td class="lab">r004</td><td class="num">114 deg&sup2;</td><td class="num">16/16</td><td class="num">complete</td><td class="num">finalised</td><td class="num">&#10003;</td></tr>
+      <tr><td class="lab">r005</td><td class="num">114 deg&sup2;</td><td class="num">16/16</td><td class="num">complete</td><td class="num">finalised</td><td class="num">&#10003;</td></tr>
+      <tr><td class="lab">r007</td><td class="num">114 deg&sup2;</td><td class="num">16/16</td><td class="num">complete</td><td class="num">finalised</td><td class="num">&#10003;</td></tr>
+      <tr><td class="lab">r010</td><td class="num">114 deg&sup2;</td><td class="num">16/16</td><td class="num">complete</td><td class="num">finalised</td><td class="num">&#10003;</td></tr>
+      <tr><td class="lab">r011</td><td class="num">114 deg&sup2;</td><td class="num">15/16</td><td class="num">94%</td><td class="num">&mdash;</td><td class="num">&#10003;</td></tr>
+      <tr><td class="lab">r012</td><td class="num">114 deg&sup2;</td><td class="num">11/16</td><td class="num">69%</td><td class="num">&mdash;</td><td class="num">&#10003;</td></tr>
+      <tr><td class="lab">r013</td><td class="num">114 deg&sup2;</td><td class="num">7/16</td><td class="num">44%</td><td class="num">&mdash;</td><td class="num">&#10003;</td></tr>
+      <tr><td class="lab">r014</td><td class="num">114 deg&sup2;</td><td class="num">1/16</td><td class="num">6%</td><td class="num">&mdash;</td><td class="num">&#10003;</td></tr>
+    </tbody>
+  </table>
+
+  <footer>
+    UNIONS-WL &middot; UNIONS position sample catalogue campaign
+    (<a href="https://github.com/UNIONS-WL/spherex/issues/10">issue&nbsp;#10</a>).
+    Regenerated from disk artifacts by
+    <code>scripts/catalogue_status_page.py</code>. Everything here is preliminary.
+  </footer>
+
+</main>
+</body>
+</html>
