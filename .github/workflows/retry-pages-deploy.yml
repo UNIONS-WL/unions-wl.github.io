@@ -23,8 +23,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          failed_job_name="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${{ github.event.workflow_run.id }}/jobs" --jq '.jobs[] | select(.conclusion == "failure") | .name' | head -n 1)"
-          if [ "${failed_job_name}" = "deploy" ]; then
+          deploy_failed_count="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${{ github.event.workflow_run.id }}/jobs" --jq '[.jobs[] | select(.name == "deploy" and .conclusion == "failure")] | length')"
+          if [ "${deploy_failed_count}" -gt 0 ]; then
             echo "should_retry=true" >> "$GITHUB_OUTPUT"
           else
             echo "should_retry=false" >> "$GITHUB_OUTPUT"
