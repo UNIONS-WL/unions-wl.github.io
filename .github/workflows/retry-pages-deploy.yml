@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Check failing job
         id: failing-job
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           failed_job_name="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${{ github.event.workflow_run.id }}/jobs" --jq '.jobs[] | select(.conclusion == "failure") | .name' | head -n 1)"
           if [ "${failed_job_name}" = "deploy" ]; then
@@ -30,4 +32,6 @@ jobs:
 
       - name: Re-run failed jobs
         if: steps.failing-job.outputs.should_retry == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh api --method POST "repos/${GITHUB_REPOSITORY}/actions/runs/${{ github.event.workflow_run.id }}/rerun-failed-jobs"
