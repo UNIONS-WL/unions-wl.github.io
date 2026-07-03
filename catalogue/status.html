@@ -44,17 +44,7 @@
   <h1>UNIONS position sample</h1>
   <p class="sub">Progress of the DR6 full-footprint catalogue campaign &mdash;
   forced photometry and redshifts.</p>
-  <p class="stamp">Snapshot generated 2026-07-03 06:59 UTC &middot; live disk state, preliminary.</p>
-
-  <p>The pipeline takes UNIONS <i>r</i>-band-selected positions
-  (16&nbsp;&lt;&nbsp;<i>r</i>&nbsp;&lt;&nbsp;20.5, 9,047,783 galaxies,
-  ~5,323&nbsp;deg&sup2;) and produces an enriched catalogue:
-  Tractor forced-photometry co-adds per position, then redshifts. The footprint
-  is partitioned into
-  64 contiguous ~110&nbsp;deg&sup2; sub-regions, run in waves. Photometry
-  finishes cell-by-cell (each sub-region is a 4&times;4 grid of cells; a finished
-  cell drops a <code>.ok</code>); a sub-region is finalised into a delivered
-  <code>combine_full.parquet</code> only once <i>all</i> its cells are done.</p>
+  <p class="stamp">Snapshot generated 2026-07-03 07:04 UTC &middot; live disk state, preliminary.</p>
 
   <h2>Sky coverage</h2>
   <figure>
@@ -80,14 +70,14 @@
       </tr>
       <tr>
         <td class="lab">Wave&nbsp;2 <span class='dim'>(ranks 10&ndash;29)</span></td>
-        <td class="num">349 deg&sup2;</td>
+        <td class="num">356 deg&sup2;</td>
         <td class="num">20 <span class="dim">(16%)</span></td>
         <td>1 = 114 deg&sup2; <span class="dim">(r010)</span></td>
       </tr>
     </tbody>
     <tfoot>
       <tr><td class="lab">Combined</td>
-        <td class="num">~1,008 deg&sup2;</td>
+        <td class="num">~1,015 deg&sup2;</td>
         <td class="num">64</td>
         <td>6 = 678 deg&sup2;</td></tr>
     </tfoot>
@@ -99,7 +89,7 @@
   (those are the ones eligible to finalise into <code>combine_full.parquet</code>).</p>
   <ul>
     <li>Cells: wave&nbsp;1 at <b>94/160</b>,
-    wave&nbsp;2 at <b>49/112</b>.</li>
+    wave&nbsp;2 at <b>50/112</b>.</li>
     <li>Finalised redshifts: <b>6 sub-regions</b>,
     678&nbsp;deg&sup2;, 1,206,144 galaxies delivered into
     <code>combine_full.parquet</code>.</li>
@@ -121,7 +111,7 @@
       <tr><td class="lab">r010</td><td class="num">114 deg&sup2;</td><td class="num">16/16</td><td class="num">complete</td><td class="num">finalised</td><td class="num">&#10003;</td></tr>
       <tr><td class="lab">r011</td><td class="num">114 deg&sup2;</td><td class="num">15/16</td><td class="num">94%</td><td class="num">&mdash;</td><td class="num">&#10003;</td></tr>
       <tr><td class="lab">r012</td><td class="num">114 deg&sup2;</td><td class="num">11/16</td><td class="num">69%</td><td class="num">&mdash;</td><td class="num">&#10003;</td></tr>
-      <tr><td class="lab">r013</td><td class="num">114 deg&sup2;</td><td class="num">6/16</td><td class="num">38%</td><td class="num">&mdash;</td><td class="num">&#10003;</td></tr>
+      <tr><td class="lab">r013</td><td class="num">114 deg&sup2;</td><td class="num">7/16</td><td class="num">44%</td><td class="num">&mdash;</td><td class="num">&#10003;</td></tr>
       <tr><td class="lab">r014</td><td class="num">114 deg&sup2;</td><td class="num">1/16</td><td class="num">6%</td><td class="num">&mdash;</td><td class="num">&#10003;</td></tr>
     </tbody>
   </table>

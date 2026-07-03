@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-07-03 06:59 UTC",
+  "stamp": "2026-07-03 07:04 UTC",
   "wave1": {
     "planned_n": 10,
     "planned_area": 1111.13,
@@ -20,14 +20,14 @@
   "wave2": {
     "planned_n": 20,
     "planned_area": 2227.12,
-    "cw_area": 349.18625000000003,
-    "cw_frac": 0.15678825119436762,
+    "cw_area": 356.3225,
+    "cw_frac": 0.1599925015266353,
     "full_n": 1,
     "full_area": 113.69,
     "full_tags": [
       "dr6_r010"
     ],
-    "cells_done": 49,
+    "cells_done": 50,
     "cells_tot": 112
   },
   "regions": [
@@ -272,8 +272,8 @@
       "n_gal": 204848,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 6,
-      "frac": 0.375,
+      "n_ok": 7,
+      "frac": 0.4375,
       "fully": false,
       "finalized": false,
       "box": [
