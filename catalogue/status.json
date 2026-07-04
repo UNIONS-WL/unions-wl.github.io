@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-07-04 14:32 CEST (Paris) &middot; 08:32 EDT (Waterloo)",
+  "stamp": "2026-07-04 16:42 CEST (Paris) &middot; 10:42 EDT (Waterloo)",
   "wave1": {
     "planned_n": 10,
     "planned_area": 1111.13,
@@ -40,9 +40,9 @@
     "planned_n": 20,
     "planned_area": 2227.12,
     "planned_gal": 3872204,
-    "cw_area": 820.9300000000001,
-    "cw_gal": 1401868.4375,
-    "cw_frac": 0.36860609217285106,
+    "cw_area": 841.2475000000001,
+    "cw_gal": 1437278.1875,
+    "cw_frac": 0.37772886059125693,
     "full_n": 5,
     "full_area": 570.4100000000001,
     "full_gal": 969610,
@@ -63,7 +63,7 @@
       "dr6_r013",
       "dr6_r014"
     ],
-    "cells_done": 117,
+    "cells_done": 120,
     "cells_tot": 176
   },
   "regions": [
@@ -380,8 +380,8 @@
       "n_gal": 187966,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 8,
-      "frac": 0.5,
+      "n_ok": 9,
+      "frac": 0.5625,
       "fully": false,
       "finalized": false,
       "box": [
@@ -398,8 +398,8 @@
       "n_gal": 189295,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 9,
-      "frac": 0.5625,
+      "n_ok": 11,
+      "frac": 0.6875,
       "fully": false,
       "finalized": false,
       "box": [
