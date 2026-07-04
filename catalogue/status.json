@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-07-04 17:31 CEST (Paris) &middot; 11:31 EDT (Waterloo)",
+  "stamp": "2026-07-04 18:37 CEST (Paris) &middot; 12:37 EDT (Waterloo)",
   "wave1": {
     "planned_n": 10,
     "planned_area": 1111.13,
@@ -40,9 +40,9 @@
     "planned_n": 20,
     "planned_area": 2227.12,
     "planned_gal": 3872204,
-    "cw_area": 854.7925,
-    "cw_gal": 1460857.0,
-    "cw_frac": 0.3838107062035275,
+    "cw_area": 875.11,
+    "cw_gal": 1496266.75,
+    "cw_frac": 0.3929334746219333,
     "full_n": 5,
     "full_area": 570.4100000000001,
     "full_gal": 969610,
@@ -63,8 +63,8 @@
       "dr6_r013",
       "dr6_r014"
     ],
-    "cells_done": 122,
-    "cells_tot": 176
+    "cells_done": 125,
+    "cells_tot": 208
   },
   "regions": [
     {
@@ -380,8 +380,8 @@
       "n_gal": 187966,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 10,
-      "frac": 0.625,
+      "n_ok": 11,
+      "frac": 0.6875,
       "fully": false,
       "finalized": false,
       "box": [
@@ -398,8 +398,8 @@
       "n_gal": 189295,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 12,
-      "frac": 0.75,
+      "n_ok": 14,
+      "frac": 0.875,
       "fully": false,
       "finalized": false,
       "box": [
@@ -451,7 +451,7 @@
       "area": 113.69,
       "n_gal": 183833,
       "has_specz": true,
-      "n_cells": null,
+      "n_cells": 16,
       "n_ok": 0,
       "frac": 0.0,
       "fully": false,
@@ -505,7 +505,7 @@
       "area": 114.18,
       "n_gal": 199890,
       "has_specz": true,
-      "n_cells": null,
+      "n_cells": 16,
       "n_ok": 0,
       "frac": 0.0,
       "fully": false,
