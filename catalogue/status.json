@@ -1,15 +1,15 @@
 {
-  "stamp": "2026-07-04 20:07 CEST (Paris) &middot; 14:07 EDT (Waterloo)",
+  "stamp": "2026-07-04 21:37 CEST (Paris) &middot; 15:37 EDT (Waterloo)",
   "wave1": {
     "planned_n": 10,
     "planned_area": 1111.13,
     "planned_gal": 2033468,
-    "cw_area": 1084.0525,
-    "cw_gal": 1985215.875,
-    "cw_frac": 0.9756306642787071,
-    "full_n": 8,
-    "full_area": 894.51,
-    "full_gal": 1647451,
+    "cw_area": 1097.59125,
+    "cw_gal": 2009602.375,
+    "cw_frac": 0.9878153321393535,
+    "full_n": 9,
+    "full_area": 1002.82,
+    "full_gal": 1842543,
     "full_tags": [
       "dr6_r000",
       "dr6_r001",
@@ -18,7 +18,8 @@
       "dr6_r004",
       "dr6_r005",
       "dr6_r006",
-      "dr6_r007"
+      "dr6_r007",
+      "dr6_r009"
     ],
     "fin_n": 8,
     "fin_area": 894.51,
@@ -33,16 +34,16 @@
       "dr6_r006",
       "dr6_r007"
     ],
-    "cells_done": 156,
+    "cells_done": 158,
     "cells_tot": 160
   },
   "wave2": {
     "planned_n": 20,
     "planned_area": 2227.12,
     "planned_gal": 3872204,
-    "cw_area": 958.3675000000001,
-    "cw_gal": 1644639.0,
-    "cw_frac": 0.4303169564280327,
+    "cw_area": 1064.283125,
+    "cw_gal": 1833575.0625,
+    "cw_frac": 0.47787417157584683,
     "full_n": 5,
     "full_area": 570.4100000000001,
     "full_gal": 969610,
@@ -63,8 +64,8 @@
       "dr6_r013",
       "dr6_r014"
     ],
-    "cells_done": 137,
-    "cells_tot": 224
+    "cells_done": 152,
+    "cells_tot": 240
   },
   "regions": [
     {
@@ -236,9 +237,9 @@
       "n_gal": 195092,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 14,
-      "frac": 0.875,
-      "fully": false,
+      "n_ok": 16,
+      "frac": 1.0,
+      "fully": true,
       "finalized": false,
       "box": [
         224.841957,
@@ -362,8 +363,8 @@
       "n_gal": 190766,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 10,
-      "frac": 0.625,
+      "n_ok": 12,
+      "frac": 0.75,
       "fully": false,
       "finalized": false,
       "box": [
@@ -416,8 +417,8 @@
       "n_gal": 212687,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 4,
-      "frac": 0.25,
+      "n_ok": 11,
+      "frac": 0.6875,
       "fully": false,
       "finalized": false,
       "box": [
@@ -434,8 +435,8 @@
       "n_gal": 192106,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 2,
-      "frac": 0.125,
+      "n_ok": 8,
+      "frac": 0.5,
       "fully": false,
       "finalized": false,
       "box": [
@@ -469,7 +470,7 @@
       "area": 113.69,
       "n_gal": 196786,
       "has_specz": true,
-      "n_cells": null,
+      "n_cells": 16,
       "n_ok": 0,
       "frac": 0.0,
       "fully": false,
