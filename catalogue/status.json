@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-07-05 00:27 CEST (Paris) &middot; 18:27 EDT (Waterloo)",
+  "stamp": "2026-07-05 01:49 CEST (Paris) &middot; 19:49 EDT (Waterloo)",
   "wave1": {
     "planned_n": 10,
     "planned_area": 1111.13,
@@ -44,12 +44,12 @@
     "planned_n": 20,
     "planned_area": 2227.12,
     "planned_gal": 3872204,
-    "cw_area": 1295.42375,
-    "cw_gal": 2228648.6875,
-    "cw_frac": 0.5816587116994145,
-    "full_n": 10,
-    "full_area": 1122.78,
-    "full_gal": 1936289,
+    "cw_area": 1366.3,
+    "cw_gal": 2347833.125,
+    "cw_frac": 0.6134828837242717,
+    "full_n": 11,
+    "full_area": 1231.14,
+    "full_gal": 2125584,
     "full_tags": [
       "dr6_r010",
       "dr6_r011",
@@ -59,20 +59,25 @@
       "dr6_r015",
       "dr6_r016",
       "dr6_r017",
+      "dr6_r018",
       "dr6_r019",
       "dr6_r020"
     ],
-    "fin_n": 5,
-    "fin_area": 570.4100000000001,
-    "fin_gal": 969610,
+    "fin_n": 9,
+    "fin_area": 1014.4200000000001,
+    "fin_gal": 1748323,
     "fin_tags": [
       "dr6_r010",
       "dr6_r011",
       "dr6_r012",
       "dr6_r013",
-      "dr6_r014"
+      "dr6_r014",
+      "dr6_r015",
+      "dr6_r016",
+      "dr6_r019",
+      "dr6_r020"
     ],
-    "cells_done": 185,
+    "cells_done": 195,
     "cells_tot": 272
   },
   "regions": [
@@ -356,7 +361,7 @@
       "n_ok": 16,
       "frac": 1.0,
       "fully": true,
-      "finalized": false,
+      "finalized": true,
       "box": [
         193.39565,
         224.841899,
@@ -374,7 +379,7 @@
       "n_ok": 16,
       "frac": 1.0,
       "fully": true,
-      "finalized": false,
+      "finalized": true,
       "box": [
         161.949404,
         193.395152,
@@ -407,9 +412,9 @@
       "n_gal": 189295,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 15,
-      "frac": 0.9375,
-      "fully": false,
+      "n_ok": 16,
+      "frac": 1.0,
+      "fully": true,
       "finalized": false,
       "box": [
         113.993786,
@@ -428,7 +433,7 @@
       "n_ok": 16,
       "frac": 1.0,
       "fully": true,
-      "finalized": false,
+      "finalized": true,
       "box": [
         124.031581,
         141.249221,
@@ -446,7 +451,7 @@
       "n_ok": 16,
       "frac": 1.0,
       "fully": true,
-      "finalized": false,
+      "finalized": true,
       "box": [
         106.813685,
         124.031489,
@@ -461,8 +466,8 @@
       "n_gal": 183833,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 10,
-      "frac": 0.625,
+      "n_ok": 14,
+      "frac": 0.875,
       "fully": false,
       "finalized": false,
       "box": [
@@ -497,8 +502,8 @@
       "n_gal": 182764,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 0,
-      "frac": 0.0,
+      "n_ok": 1,
+      "frac": 0.0625,
       "fully": false,
       "finalized": false,
       "box": [
@@ -515,8 +520,8 @@
       "n_gal": 199890,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 0,
-      "frac": 0.0,
+      "n_ok": 4,
+      "frac": 0.25,
       "fully": false,
       "finalized": false,
       "box": [
