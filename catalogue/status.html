@@ -44,7 +44,7 @@
   <h1>UNIONS position sample</h1>
   <p class="sub">Progress of the DR6 full-footprint catalogue campaign &mdash;
   forced photometry and redshifts.</p>
-  <p class="stamp">Snapshot generated 2026-07-04 12:01 CEST (Paris) &middot; 06:01 EDT (Waterloo) &middot; live disk state, preliminary.</p>
+  <p class="stamp">Snapshot generated 2026-07-04 12:06 CEST (Paris) &middot; 06:06 EDT (Waterloo) &middot; live disk state, preliminary.</p>
 
   <h2>Sky coverage</h2>
   <figure>
@@ -65,31 +65,37 @@
     <tbody>
       <tr>
         <td class="lab">Wave&nbsp;1 <span class='dim'>(ranks 0&ndash;9)</span></td>
-        <td class="num">1,077 deg&sup2;</td>
+        <td class="num">1,077 deg&sup2;<br>
+          <span class="dim">1,973,023 objects</span></td>
         <td class="num">10 <span class="dim">(97%)</span></td>
         <td>8 = 895 deg&sup2; <span class="dim">(r000, r001, r002, r003, r004, r005, r006, r007)</span></td>
-        <td>8 = 895 deg&sup2; <span class="dim">(r000, r001, r002, r003, r004, r005, r006, r007)</span></td>
+        <td>8 = 895 deg&sup2;, 1,647,451 objects <span class="dim">(r000, r001, r002, r003, r004, r005, r006, r007)</span></td>
       </tr>
       <tr>
         <td class="lab">Wave&nbsp;2 <span class='dim'>(ranks 10&ndash;29)</span></td>
-        <td class="num">780 deg&sup2;</td>
+        <td class="num">780 deg&sup2;<br>
+          <span class="dim">1,331,132 objects</span></td>
         <td class="num">20 <span class="dim">(35%)</span></td>
         <td>5 = 570 deg&sup2; <span class="dim">(r010, r011, r012, r013, r014)</span></td>
-        <td>5 = 570 deg&sup2; <span class="dim">(r010, r011, r012, r013, r014)</span></td>
+        <td>5 = 570 deg&sup2;, 969,610 objects <span class="dim">(r010, r011, r012, r013, r014)</span></td>
       </tr>
     </tbody>
     <tfoot>
       <tr><td class="lab">Combined</td>
-        <td class="num">~1,858 deg&sup2;</td>
+        <td class="num">~1,858 deg&sup2;<br>
+          <span class="dim">~3,304,155 objects</span></td>
         <td class="num">64</td>
         <td>13 = 1,465 deg&sup2;</td>
-        <td>13 = 1,465 deg&sup2;</td></tr>
+        <td>13 = 1,465 deg&sup2;, 2,617,061 objects</td></tr>
     </tfoot>
   </table>
-  <p class="note">The area in each row is <b>cell-weighted</b> &mdash; the actual
-  sky area whose photometry is done (summing each sub-region's area &times;
-  fraction of its cells extracted), so it counts partially-done sub-regions too.
-  The <i>fully-complete</i> column is the stricter set where all cells are done
+  <p class="note">The area and object count in each row are <b>cell-weighted</b>
+  &mdash; the actual sky area (and estimated number of objects) whose photometry
+  is done (summing each sub-region's area / object count &times; fraction of its
+  cells extracted), so they count partially-done sub-regions too. The
+  <i>redshifts finalised</i> object count is exact (objects delivered into
+  <code>combine_full.parquet</code>). The <i>fully-complete</i> column is the
+  stricter set where all cells are done
   (those are the ones eligible to finalise into <code>combine_full.parquet</code>);
   <i>redshifts finalised</i> is the subset already delivered as z_est.</p>
   <ul>
