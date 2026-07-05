@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-07-05 01:49 CEST (Paris) &middot; 19:49 EDT (Waterloo)",
+  "stamp": "2026-07-05 03:27 CEST (Paris) &middot; 21:27 EDT (Waterloo)",
   "wave1": {
     "planned_n": 10,
     "planned_area": 1111.13,
@@ -44,13 +44,30 @@
     "planned_n": 20,
     "planned_area": 2227.12,
     "planned_gal": 3872204,
-    "cw_area": 1366.3,
-    "cw_gal": 2347833.125,
-    "cw_frac": 0.6134828837242717,
-    "full_n": 11,
-    "full_area": 1231.14,
-    "full_gal": 2125584,
+    "cw_area": 1473.251875,
+    "cw_gal": 2527677.0,
+    "cw_frac": 0.6615053858795216,
+    "full_n": 12,
+    "full_area": 1344.83,
+    "full_gal": 2309417,
     "full_tags": [
+      "dr6_r010",
+      "dr6_r011",
+      "dr6_r012",
+      "dr6_r013",
+      "dr6_r014",
+      "dr6_r015",
+      "dr6_r016",
+      "dr6_r017",
+      "dr6_r018",
+      "dr6_r019",
+      "dr6_r020",
+      "dr6_r021"
+    ],
+    "fin_n": 11,
+    "fin_area": 1231.14,
+    "fin_gal": 2125584,
+    "fin_tags": [
       "dr6_r010",
       "dr6_r011",
       "dr6_r012",
@@ -63,22 +80,8 @@
       "dr6_r019",
       "dr6_r020"
     ],
-    "fin_n": 9,
-    "fin_area": 1014.4200000000001,
-    "fin_gal": 1748323,
-    "fin_tags": [
-      "dr6_r010",
-      "dr6_r011",
-      "dr6_r012",
-      "dr6_r013",
-      "dr6_r014",
-      "dr6_r015",
-      "dr6_r016",
-      "dr6_r019",
-      "dr6_r020"
-    ],
-    "cells_done": 195,
-    "cells_tot": 272
+    "cells_done": 210,
+    "cells_tot": 288
   },
   "regions": [
     {
@@ -397,7 +400,7 @@
       "n_ok": 16,
       "frac": 1.0,
       "fully": true,
-      "finalized": false,
+      "finalized": true,
       "box": [
         135.219262,
         156.44424,
@@ -415,7 +418,7 @@
       "n_ok": 16,
       "frac": 1.0,
       "fully": true,
-      "finalized": false,
+      "finalized": true,
       "box": [
         113.993786,
         135.218953,
@@ -466,9 +469,9 @@
       "n_gal": 183833,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 14,
-      "frac": 0.875,
-      "fully": false,
+      "n_ok": 16,
+      "frac": 1.0,
+      "fully": true,
       "finalized": false,
       "box": [
         141.249449,
@@ -484,8 +487,8 @@
       "n_gal": 196786,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 0,
-      "frac": 0.0,
+      "n_ok": 1,
+      "frac": 0.0625,
       "fully": false,
       "finalized": false,
       "box": [
@@ -502,8 +505,8 @@
       "n_gal": 182764,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 1,
-      "frac": 0.0625,
+      "n_ok": 6,
+      "frac": 0.375,
       "fully": false,
       "finalized": false,
       "box": [
@@ -520,8 +523,8 @@
       "n_gal": 199890,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 4,
-      "frac": 0.25,
+      "n_ok": 11,
+      "frac": 0.6875,
       "fully": false,
       "finalized": false,
       "box": [
@@ -573,7 +576,7 @@
       "area": 108.31,
       "n_gal": 219824,
       "has_specz": true,
-      "n_cells": null,
+      "n_cells": 16,
       "n_ok": 0,
       "frac": 0.0,
       "fully": false,
