@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-07-05 06:27 CEST (Paris) &middot; 00:27 EDT (Waterloo)",
+  "stamp": "2026-07-05 07:49 CEST (Paris) &middot; 01:49 EDT (Waterloo)",
   "wave1": {
     "planned_n": 10,
     "planned_area": 1111.13,
@@ -44,9 +44,9 @@
     "planned_n": 20,
     "planned_area": 2227.12,
     "planned_gal": 3872204,
-    "cw_area": 1665.685625,
-    "cw_gal": 2850585.875,
-    "cw_frac": 0.7479101373073747,
+    "cw_area": 1756.16375,
+    "cw_gal": 3006039.6875,
+    "cw_frac": 0.7885357546966486,
     "full_n": 14,
     "full_area": 1573.19,
     "full_gal": 2692071,
@@ -84,7 +84,7 @@
       "dr6_r021",
       "dr6_r024"
     ],
-    "cells_done": 237,
+    "cells_done": 250,
     "cells_tot": 304
   },
   "regions": [
@@ -491,8 +491,8 @@
       "n_gal": 196786,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 9,
-      "frac": 0.5625,
+      "n_ok": 12,
+      "frac": 0.75,
       "fully": false,
       "finalized": false,
       "box": [
@@ -545,8 +545,8 @@
       "n_gal": 191291,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 4,
-      "frac": 0.25,
+      "n_ok": 8,
+      "frac": 0.5,
       "fully": false,
       "finalized": false,
       "box": [
@@ -563,8 +563,8 @@
       "n_gal": 182383,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 0,
-      "frac": 0.0,
+      "n_ok": 5,
+      "frac": 0.3125,
       "fully": false,
       "finalized": false,
       "box": [
@@ -581,8 +581,8 @@
       "n_gal": 219824,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 0,
-      "frac": 0.0,
+      "n_ok": 1,
+      "frac": 0.0625,
       "fully": false,
       "finalized": false,
       "box": [
