@@ -1,0 +1,63 @@
+{
+ "stamp": "2026-07-06 08:15 \u00b7 ngmix_v2.0 \u00b7 candide",
+ "note": "Scalars mirror the status board; verdicts computed from value vs recorded tolerance.",
+ "level1a_mbias": {
+  "m": -0.0020125219289028884,
+  "R11": 0.9234153973705145,
+  "tol": 0.005,
+  "verdict": "PASS",
+  "centroid_source": "hsm"
+ },
+ "level1b_psf_fit_prior": {
+  "c1": -5.0625958764005275e-06,
+  "m": 6.0395281414118984e-05,
+  "c_tol": 0.001,
+  "m_tol": 0.005,
+  "verdict": "PASS"
+ },
+ "level2_grid": {
+  "wcs": {
+   "R1_mean": 0.04046469221286564,
+   "R2_mean": 0.03510258692741961,
+   "tol": 0.03,
+   "n_obj": 81875,
+   "n_tiles_ok": 9,
+   "frac_catastrophic": 0.26099541984732827,
+   "verdict": "MARGINAL"
+  },
+  "hsm": {
+   "R1_mean": 0.04374366233296246,
+   "R2_mean": 0.019119659898264748,
+   "tol": 0.03,
+   "n_obj": 103668,
+   "n_tiles_ok": 9,
+   "frac_catastrophic": 0.2561060307906008,
+   "verdict": "MARGINAL"
+  },
+  "gauss_wcs": {
+   "R1_mean": 0.01894783017405767,
+   "R2_mean": 0.018553772565433585,
+   "tol": 0.03,
+   "n_obj": 96666,
+   "n_tiles_ok": 9,
+   "frac_catastrophic": 0.179215029069166,
+   "verdict": "PASS"
+  },
+  "gauss_hsm": {
+   "R1_mean": 0.013631825738993871,
+   "R2_mean": 0.009100463122440526,
+   "tol": 0.03,
+   "n_obj": 92854,
+   "n_tiles_ok": 9,
+   "frac_catastrophic": 0.18128459732483254,
+   "verdict": "PASS"
+  }
+ },
+ "level2_magprofile": {
+  "n_obj": 45835,
+  "n_tiles": 8,
+  "tol": 0.03,
+  "science_window_R1_mean": 0.07593830593343118,
+  "science_window_R2_mean": 0.028933435335165517
+ }
+}
