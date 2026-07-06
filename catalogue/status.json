@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-07-05 12:27 CEST (Paris) &middot; 06:27 EDT (Waterloo)",
+  "stamp": "2026-07-06 10:05 CEST (Paris) &middot; 04:05 EDT (Waterloo)",
   "wave1": {
     "planned_n": 10,
     "planned_area": 1111.13,
@@ -44,12 +44,12 @@
     "planned_n": 20,
     "planned_area": 2227.12,
     "planned_gal": 3872204,
-    "cw_area": 2105.5533333333333,
-    "cw_gal": 3642678.3333333335,
-    "cw_frac": 0.9454153046685106,
-    "full_n": 18,
-    "full_area": 2017.68,
-    "full_gal": 3482355,
+    "cw_area": 2227.12,
+    "cw_gal": 3872204.0,
+    "cw_frac": 1.0,
+    "full_n": 20,
+    "full_area": 2227.12,
+    "full_gal": 3872204,
     "full_tags": [
       "dr6_r010",
       "dr6_r011",
@@ -68,11 +68,13 @@
       "dr6_r024",
       "dr6_r025",
       "dr6_r026",
-      "dr6_r027"
+      "dr6_r027",
+      "dr6_r028",
+      "dr6_r029"
     ],
-    "fin_n": 17,
-    "fin_area": 1909.3700000000001,
-    "fin_gal": 3262531,
+    "fin_n": 20,
+    "fin_area": 2227.12,
+    "fin_gal": 3872204,
     "fin_tags": [
       "dr6_r010",
       "dr6_r011",
@@ -90,9 +92,12 @@
       "dr6_r023",
       "dr6_r024",
       "dr6_r025",
-      "dr6_r026"
+      "dr6_r026",
+      "dr6_r027",
+      "dr6_r028",
+      "dr6_r029"
     ],
-    "cells_done": 300,
+    "cells_done": 316,
     "cells_tot": 316
   },
   "regions": [
@@ -592,7 +597,7 @@
       "n_ok": 16,
       "frac": 1.0,
       "fully": true,
-      "finalized": false,
+      "finalized": true,
       "box": [
         99.056024,
         130.502397,
@@ -607,10 +612,10 @@
       "n_gal": 207607,
       "has_specz": true,
       "n_cells": 12,
-      "n_ok": 4,
-      "frac": 0.3333333333333333,
-      "fully": false,
-      "finalized": false,
+      "n_ok": 12,
+      "frac": 1.0,
+      "fully": true,
+      "finalized": true,
       "box": [
         160.024236,
         220.42013,
@@ -625,10 +630,10 @@
       "n_gal": 182242,
       "has_specz": true,
       "n_cells": 16,
-      "n_ok": 8,
-      "frac": 0.5,
-      "fully": false,
-      "finalized": false,
+      "n_ok": 16,
+      "frac": 1.0,
+      "fully": true,
+      "finalized": true,
       "box": [
         177.6695,
         198.894211,
