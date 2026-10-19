@@ -72,9 +72,9 @@
   <a href="https://unions.skysurvey.cc" target="_blank" rel="noopener">collaboration wiki</a>.</footer>
 </main>
 <script>
-const C = {published:'#3F8278', processed:'#3D5BA0', running:'#C49333', queued:'#BC4538', remaining:'#C5B89E',
+const C = {published:'#3F8278', processed:'#3D5BA0', running:'#C49333', queued:'#BC4538', held:'#8E7FA6', remaining:'#C5B89E',
            'def-waerbeke':'#3D5BA0', 'def-mjhudson':'#C49333', ink:'#1B1611', muted:'#7A6F5C'};
-const LABEL = {published:'published (latest/)', processed:'processed, not yet published', running:'running', queued:'queued', remaining:'not started'};
+const LABEL = {published:'published (latest/)', processed:'processed, not yet published', running:'running', queued:'queued', held:'held back (shapepipe#900: dateline duplicates, Dec ≥ 82.5°)', remaining:'not started'};
 const base = {paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
   font:{family:'IBM Plex Mono, monospace', size:11, color:C.muted}, margin:{l:56,r:16,t:16,b:44},
   legend:{orientation:'h', y:-0.18, font:{size:11}}, hoverlabel:{font:{family:'IBM Plex Mono'}}};
@@ -97,10 +97,10 @@ fetch('status.json?t=' + Date.now()).then(r => r.json()).then(d => {
     <div class="kpi"><div class="v">${run['def-waerbeke']+run['def-mjhudson']}</div><div class="s">waerbeke ${run['def-waerbeke']} · mjhudson ${run['def-mjhudson']}</div><div class="l">batches running · ${q['def-waerbeke']+q['def-mjhudson']} queued</div></div>`;
 
   // Sky map
-  const order = ['remaining','queued','running','processed','published'];
+  const order = ['remaining','held','queued','running','processed','published'];
   Plotly.newPlot('map', order.map(k => {
-    const xy = d.tiles[k].map(radec);
-    return {type:'scattergeo', mode:'markers', name:`${LABEL[k]} (${fmt(c[k])})`,
+    const xy = (d.tiles[k]||[]).map(radec);
+    return {type:'scattergeo', mode:'markers', name:`${LABEL[k]} (${fmt(c[k]||0)})`,
       lon: xy.map(p => p[0] > 180 ? 360 - p[0] : -p[0]), lat: xy.map(p => p[1]), text: d.tiles[k],
       hovertemplate:'%{text}<extra>'+LABEL[k]+'</extra>',
       marker:{size: k==='remaining' ? 2.5 : 3.2, color:C[k], opacity: k==='remaining' ? .55 : .9}};
