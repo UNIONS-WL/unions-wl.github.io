@@ -104,7 +104,7 @@ fetch('status.json?t=' + Date.now()).then(r => r.json()).then(d => {
       lon: xy.map(p => p[0] > 180 ? 360 - p[0] : -p[0]), lat: xy.map(p => p[1]), text: d.tiles[k],
       hovertemplate:'%{text}<extra>'+LABEL[k]+'</extra>',
       marker:{size: k==='remaining' ? 2.5 : 3.2, color:C[k], opacity: k==='remaining' ? .55 : .9}};
-  }), {...base, margin:{l:0,r:0,t:0,b:0}, legend:{...base.legend, y:0.02, x:0.5, xanchor:'center'},
+  }), {...base, margin:{l:0,r:0,t:0,b:0}, legend:{...base.legend, y:0.02, x:0.5, xanchor:'center', itemsizing:'constant', font:{size:12}},
     dragmode:false,
     geo:{projection:{type:'azimuthal equal area', rotation:{lat:90, lon:0}}, fitbounds:'locations',
          showland:false, showcoastlines:false, showframe:false, bgcolor:'rgba(0,0,0,0)',
