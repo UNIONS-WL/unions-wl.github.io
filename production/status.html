@@ -32,7 +32,7 @@
   .card{background:var(--rag);border:1px solid var(--rule);border-radius:10px;padding:10px}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media (max-width:760px){.two{grid-template-columns:1fr} h1{font-size:32px}}
-  .plot{width:100%;height:380px} #map{height:520px}
+  .plot{width:100%;height:380px} #map{height:640px}
   footer{margin-top:50px;border-top:1px solid var(--rule);padding-top:16px;color:var(--ink-muted);font-family:var(--mono);font-size:11px;line-height:1.7}
   .err{color:var(--cinnabar);font-family:var(--mono);font-size:13px}
 </style>
@@ -50,7 +50,7 @@
   <div class="kpis" id="kpis"></div>
 
   <section>
-    <div class="mark"><span>&sect; Sky coverage</span><span class="note">tile centres; hover for tile ID, click legend entries to toggle</span></div>
+    <div class="mark"><span>&sect; Sky coverage</span><span class="note">tile centres; north-polar equal-area view of the DR6 footprint (Dec −6° to 86°); hover for tile ID</span></div>
     <div class="card"><div id="map" class="plot"></div></div>
   </section>
 
@@ -105,9 +105,11 @@ fetch('status.json?t=' + Date.now()).then(r => r.json()).then(d => {
       hovertemplate:'%{text}<extra>'+LABEL[k]+'</extra>',
       marker:{size: k==='remaining' ? 2.5 : 3.2, color:C[k], opacity: k==='remaining' ? .55 : .9}};
   }), {...base, margin:{l:0,r:0,t:0,b:0}, legend:{...base.legend, y:0.02, x:0.5, xanchor:'center'},
-    geo:{projection:{type:'mollweide'}, showland:false, showcoastlines:false, showframe:true, framecolor:C.muted,
-         bgcolor:'rgba(0,0,0,0)', lataxis:{showgrid:true, gridcolor:'#d8ccb3', dtick:30},
-         lonaxis:{showgrid:true, gridcolor:'#d8ccb3', dtick:60}, center:{lon:-180}}}, cfg);
+    dragmode:false,
+    geo:{projection:{type:'azimuthal equal area', rotation:{lat:90, lon:0}}, fitbounds:'locations',
+         showland:false, showcoastlines:false, showframe:false, bgcolor:'rgba(0,0,0,0)',
+         lataxis:{showgrid:true, gridcolor:'#d8ccb3', dtick:15}, lonaxis:{showgrid:true, gridcolor:'#d8ccb3', dtick:30}}},
+    {...cfg, scrollZoom:false, displayModeBar:false});
 
   // Progress
   const t = d.timeline.map(r => r[0]), n = d.timeline.map(r => r[1]);
@@ -132,7 +134,7 @@ fetch('status.json?t=' + Date.now()).then(r => r.json()).then(d => {
     return {type:'scatter', mode:'lines+markers', name:a, x:rows.map(r => r[0]), y:rows.map(r => r[1]),
       line:{color:C[a], width:1.5}, marker:{size:4}, customdata:rows.map(r => [r[3], r[4]]),
       hovertemplate:'%{x}<br>LevelFS %{y:.2f}<br>%{customdata[0]} running · %{customdata[1]} queued<extra>'+a+'</extra>'};
-  }), {...base, yaxis:{title:'LevelFS', type:'log', gridcolor:'#e2d7c0'},
+  }), {...base, yaxis:{title:'LevelFS', type:'log', gridcolor:'#e2d7c0', tickvals:[0.05,0.1,0.2,0.5,1,2,5,10], ticktext:['0.05','0.1','0.2','0.5','1','2','5','10']},
     shapes:[{type:'line', xref:'paper', x0:0, x1:1, y0:1, y1:1, line:{color:C.muted, width:1, dash:'dot'}}]}, cfg);
 }).catch(e => { document.getElementById('kpis').innerHTML = '<p class="err">could not load status.json: ' + e + '</p>'; });
 </script>
