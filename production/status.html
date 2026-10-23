@@ -73,7 +73,7 @@
 </main>
 <script>
 const C = {published:'#3F8278', processed:'#3D5BA0', running:'#C49333', queued:'#BC4538', held:'#8E7FA6', remaining:'#C5B89E',
-           'def-waerbeke':'#3D5BA0', 'def-mjhudson':'#C49333', ink:'#1B1611', muted:'#7A6F5C'};
+           'def-waerbeke':'#3D5BA0', 'def-mjhudson':'#C49333', 'def-sfabbro':'#3F8278', ink:'#1B1611', muted:'#7A6F5C'};
 const LABEL = {published:'published (latest/)', processed:'processed, not yet published', running:'running', queued:'queued', held:'held back (shapepipe#900: dateline duplicates, Dec ≥ 82.5°)', remaining:'not started'};
 const base = {paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
   font:{family:'IBM Plex Mono, monospace', size:11, color:C.muted}, margin:{l:56,r:16,t:16,b:44},
@@ -88,13 +88,14 @@ fetch('status.json?t=' + Date.now()).then(r => r.json()).then(d => {
   document.getElementById('gen').textContent = 'updated ' + d.generated.replace('T',' ').slice(0,16) + ' (Nibi time)';
   const seg = k => `<span style="width:${100*c[k]/N}%;background:${C[k]}"></span>`;
   const run = d.running, q = d.queued;
+  const accts = d.accounts || Object.keys(run), sum = o => accts.reduce((t, a) => t + (o[a] || 0), 0);
   document.getElementById('kpis').innerHTML = `
     <div class="kpi"><div class="v">${pct(d.processed_tiles)}</div><div class="s">${fmt(d.processed_tiles)} of ${fmt(N)} tiles</div>
       <div class="bar">${seg('published')}${seg('processed')}${seg('running')}${seg('queued')}</div><div class="l">processed</div></div>
     <div class="kpi"><div class="v">${fmt(d.latest.tiles)}</div><div class="s">${fmt(d.latest.objects)} objects</div><div class="l">in latest/ · built ${(d.latest.built_at||'').slice(0,10)}</div></div>
     <div class="kpi"><div class="v">${fmt(Math.round(d.rate_per_day_7d))}</div><div class="s">tiles / day</div><div class="l">last 7 days</div></div>
     <div class="kpi"><div class="v">${d.eta ? new Date(d.eta).toLocaleDateString('en-GB',{day:'numeric',month:'short'}) : '–'}</div><div class="s">at the current rate</div><div class="l">projected finish</div></div>
-    <div class="kpi"><div class="v">${run['def-waerbeke']+run['def-mjhudson']}</div><div class="s">waerbeke ${run['def-waerbeke']} · mjhudson ${run['def-mjhudson']}</div><div class="l">batches running · ${q['def-waerbeke']+q['def-mjhudson']} queued</div></div>`;
+    <div class="kpi"><div class="v">${sum(run)}</div><div class="s">${accts.map(a => a.replace('def-','') + ' ' + (run[a]||0)).join(' · ')}</div><div class="l">batches running · ${sum(q)} queued</div></div>`;
 
   // Sky map
   const order = ['remaining','held','queued','running','processed','published'];
@@ -123,7 +124,7 @@ fetch('status.json?t=' + Date.now()).then(r => r.json()).then(d => {
     annotations:[{xref:'paper', x:0, y:N, text:`DR6 r: ${fmt(N)} tiles`, showarrow:false, yanchor:'bottom', xanchor:'left', font:{size:10}}]}, cfg);
 
   // Core-hours per day
-  const days = Object.keys(d.corehours), accts = ['def-waerbeke','def-mjhudson'];
+  const days = Object.keys(d.corehours);
   Plotly.newPlot('corehours', accts.map(a => ({type:'bar', name:a, x:days, y:days.map(x => d.corehours[x][a] || 0),
     marker:{color:C[a]}, hovertemplate:'%{x}: %{y:,} core-h<extra>'+a+'</extra>'})),
     {...base, barmode:'stack', yaxis:{title:'core-hours / day', gridcolor:'#e2d7c0'}}, cfg);
