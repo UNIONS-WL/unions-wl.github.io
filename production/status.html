@@ -42,7 +42,7 @@
   <div class="stamp"><a href="../index.html">UNIONS-WL</a><span>·</span><span>production</span><span>·</span><span id="gen">loading…</span></div>
   <h1>ShapePipe v2 &mdash; DR6 production on Nibi</h1>
   <p class="lede">Shape measurement of the full <b>UNIONS DR6 <i>r</i>-band</b> footprint, run in
-  batches of ~25 tiles on the Alliance cluster Nibi under two allocations. A batch counts as
+  batches of ~25 tiles on the Alliance clusters Nibi and Fir. A batch counts as
   <b>processed</b> once it produces its final catalogue; it is <b>published</b> once it passes the
   product checks and is merged into the <code>latest/</code> catalogue. This page refreshes every
   two hours from the scheduler and the product tree.</p>
@@ -99,13 +99,19 @@ fetch('status.json?t=' + Date.now()).then(r => r.json()).then(d => {
 
   // Sky map
   const order = ['remaining','held','queued','running','processed','published'];
-  Plotly.newPlot('map', order.map(k => {
-    const xy = (d.tiles[k]||[]).map(radec);
-    return {type:'scattergeo', mode:'markers', name:`${LABEL[k]} (${fmt(c[k]||0)})`,
-      lon: xy.map(p => p[0] > 180 ? 360 - p[0] : -p[0]), lat: xy.map(p => p[1]), text: d.tiles[k],
-      hovertemplate:'%{text}<extra>'+LABEL[k]+'</extra>',
-      marker:{size: k==='remaining' ? 2.5 : 3.2, color:C[k], opacity: k==='remaining' ? .55 : .9}};
-  }), {...base, margin:{l:0,r:0,t:0,b:0}, legend:{...base.legend, y:0.02, x:0.5, xanchor:'center', itemsizing:'constant', font:{size:12}},
+  const traces = order.flatMap(k => {
+    const split = ['processed','published'].includes(k) && d.tile_clusters;
+    return (split ? ['nibi','fir'] : [null]).map(cluster => {
+      const ids = (d.tiles[k]||[]).filter(t => !cluster || d.tile_clusters[t] === cluster);
+      const xy = ids.map(radec), label = LABEL[k] + (cluster ? ' · ' + d.clusters[cluster].label : '');
+      return {type:'scattergeo', mode:'markers', name:`${label} (${fmt(ids.length)})`,
+        lon:xy.map(p => p[0] > 180 ? 360-p[0] : -p[0]), lat:xy.map(p => p[1]), text:ids,
+        hovertemplate:'%{text}<extra>'+label+'</extra>',
+        marker:{size:k==='remaining' ? 2.5 : 3.2, color:cluster ? d.clusters[cluster].color : C[k],
+          symbol:k==='processed' ? 'circle-open' : 'circle', opacity:k==='remaining' ? .55 : .9}};
+    });
+  });
+  Plotly.newPlot('map', traces, {...base, margin:{l:0,r:0,t:0,b:0}, legend:{...base.legend, y:0.02, x:0.5, xanchor:'center', itemsizing:'constant', font:{size:12}},
     dragmode:false,
     geo:{projection:{type:'azimuthal equal area', rotation:{lat:90, lon:0}}, fitbounds:'locations',
          showland:false, showcoastlines:false, showframe:false, bgcolor:'rgba(0,0,0,0)',
