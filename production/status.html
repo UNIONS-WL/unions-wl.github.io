@@ -32,7 +32,7 @@
   .card{background:var(--rag);border:1px solid var(--rule);border-radius:10px;padding:10px}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media (max-width:760px){.two{grid-template-columns:1fr} h1{font-size:32px}}
-  .plot{width:100%;height:380px} #map{height:auto;aspect-ratio:2.9;min-height:260px}
+  .plot{width:100%;height:380px} #map{height:540px}
   footer{margin-top:50px;border-top:1px solid var(--rule);padding-top:16px;color:var(--ink-muted);font-family:var(--mono);font-size:11px;line-height:1.7}
   .err{color:var(--cinnabar);font-family:var(--mono);font-size:13px}
 </style>
@@ -78,8 +78,24 @@ const base = {paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
 const cfg = {displaylogo:false, responsive:true, modeBarButtonsToRemove:['lasso2d','select2d']};
 const fmt = n => n == null ? '–' : Number(n).toLocaleString('en-US');
 
-// sinusoidal equal-area projection: x = (RA0 - RA) cos(Dec), RA increasing to the left, centred on RA = 180°
-function xy(id){ const [a,b] = id.split('.').map(Number), dec = b/2 - 90; return [180*Math.cos(dec*Math.PI/180) - a/2, dec]; }
+// Lambert azimuthal equal-area projection centred on the footprint (RA0, Dec0); RA increases to the left
+const RA0 = 190, DEC0 = 65, R = Math.PI/180;
+function proj(ra, dec){
+  const l = (ra - RA0)*R, f = dec*R, f0 = DEC0*R, c = Math.cos(f), k = Math.sqrt(2/(1 + Math.sin(f0)*Math.sin(f) + Math.cos(f0)*c*Math.cos(l)));
+  return [-k*c*Math.sin(l), k*(Math.cos(f0)*Math.sin(f) - Math.sin(f0)*c*Math.cos(l))];
+}
+function xy(id){ const [a,b] = id.split('.').map(Number), dec = b/2 - 90; return proj(a/2/Math.cos(dec*R), dec); }
+// RA/Dec graticule: meridians every 30° of RA, parallels every 15° of Dec, labelled at one end
+function graticule(){
+  const T = [], line = (pts, label, pos) => ({type:'scatter', mode:'lines+text', x:pts.map(q => q[0]), y:pts.map(q => q[1]),
+    text:pts.map((_, i) => i === 0 ? label : ''), textposition:pos, textfont:{size:10, color:C.muted},
+    line:{color:'#d8ccb3', width:1}, hoverinfo:'skip', showlegend:false});
+  for (let ra = 0; ra < 360; ra += 30)
+    T.push(line(Array.from({length:48}, (_, i) => proj(ra, -8 + i*2.1)), ra + '°', 'bottom center'));
+  for (let dec = 15; dec <= 75; dec += 15)
+    T.push(line(Array.from({length:181}, (_, i) => proj(RA0 + 115 + i, dec)), dec + '°', 'middle left'));
+  return T;
+}
 
 fetch('status.json?t=' + Date.now()).then(r => r.json()).then(d => {
   const N = d.dr6_tiles, c = d.counts;
@@ -104,8 +120,11 @@ fetch('status.json?t=' + Date.now()).then(r => r.json()).then(d => {
       hovertemplate:'%{text}<extra>'+LABEL[k]+'</extra>',
       marker:{size:k==='remaining' ? 2.5 : 3.2, color:C[k], symbol:k==='processed' ? 'circle-open' : 'circle', opacity:k==='remaining' ? .55 : .9}};
   });
-  Plotly.newPlot('map', traces, {...base, margin:{l:0,r:0,t:0,b:0}, legend:{...base.legend, y:-0.02, x:0.5, xanchor:'center', yanchor:'top', itemsizing:'constant', font:{size:12}},
-    dragmode:false, xaxis:{visible:false, scaleanchor:'y', constrain:'domain'}, yaxis:{visible:false}},
+  const pts = order.flatMap(k => (d.tiles[k]||[]).map(xy)), pad = 0.05;
+  const lo = i => Math.min(...pts.map(q => q[i])), hi = i => Math.max(...pts.map(q => q[i]));
+  const XR = [lo(0)-pad, hi(0)+pad], YR = [lo(1)-0.22, hi(1)+0.1];
+  Plotly.newPlot('map', [...graticule(), ...traces], {...base, margin:{l:0,r:0,t:0,b:0}, legend:{...base.legend, y:-0.02, x:0.5, xanchor:'center', yanchor:'top', itemsizing:'constant', font:{size:12}},
+    dragmode:false, xaxis:{visible:false, scaleanchor:'y', range:XR}, yaxis:{visible:false, range:YR}},
     {...cfg, scrollZoom:false, displayModeBar:false});
 
   // Progress
