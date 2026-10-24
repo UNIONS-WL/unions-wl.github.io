@@ -78,22 +78,37 @@ const base = {paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
 const cfg = {displaylogo:false, responsive:true, modeBarButtonsToRemove:['lasso2d','select2d']};
 const fmt = n => n == null ? '–' : Number(n).toLocaleString('en-US');
 
-// Lambert azimuthal equal-area projection centred on the footprint (RA0, Dec0); RA increases to the left
-const RA0 = 190, DEC0 = 65, R = Math.PI/180;
+// Lambert azimuthal equal-area projection centred on the footprint centroid (RA0, Dec0); RA increases to the left
+const R = Math.PI/180;
+let RA0 = 190, DEC0 = 60;
 function proj(ra, dec){
   const l = (ra - RA0)*R, f = dec*R, f0 = DEC0*R, c = Math.cos(f), k = Math.sqrt(2/(1 + Math.sin(f0)*Math.sin(f) + Math.cos(f0)*c*Math.cos(l)));
   return [-k*c*Math.sin(l), k*(Math.cos(f0)*Math.sin(f) - Math.sin(f0)*c*Math.cos(l))];
 }
-function xy(id){ const [a,b] = id.split('.').map(Number), dec = b/2 - 90; return proj(a/2/Math.cos(dec*R), dec); }
-// RA/Dec graticule: meridians every 30° of RA, parallels every 15° of Dec, labelled at one end
-function graticule(){
-  const T = [], line = (pts, label, pos) => ({type:'scatter', mode:'lines+text', x:pts.map(q => q[0]), y:pts.map(q => q[1]),
-    text:pts.map((_, i) => i === 0 ? label : ''), textposition:pos, textfont:{size:10, color:C.muted},
-    line:{color:'#d8ccb3', width:1}, hoverinfo:'skip', showlegend:false});
-  for (let ra = 0; ra < 360; ra += 30)
-    T.push(line(Array.from({length:48}, (_, i) => proj(ra, -8 + i*2.1)), ra + '°', 'bottom center'));
-  for (let dec = 15; dec <= 75; dec += 15)
-    T.push(line(Array.from({length:181}, (_, i) => proj(RA0 + 115 + i, dec)), dec + '°', 'middle left'));
+const radec = id => { const [a,b] = id.split('.').map(Number), dec = b/2 - 90; return [a/2/Math.cos(dec*R), dec]; };
+const xy = id => proj(...radec(id));
+// footprint centre: circular-mean RA (unit vectors, robust to the RA wrap) and median Dec, so the outlying patches
+// and the polar ring do not drag the centre toward the pole
+function centroid(ids){
+  let x = 0, y = 0; const decs = [];
+  for (const id of ids){ const [ra, dec] = radec(id); x += Math.cos(ra*R); y += Math.sin(ra*R); decs.push(dec); }
+  decs.sort((u, v) => u - v);
+  return [((Math.atan2(y, x)/R) + 360) % 360, decs[decs.length >> 1]];
+}
+// RA/Dec graticule: meridians and parallels labelled at the first sample inside the plot, inset from its edges
+function graticule(XR, YR, thin){
+  const inset = (r, v) => v > r[0] + 0.06*(r[1]-r[0]) && v < r[1] - 0.06*(r[1]-r[0]);
+  const line = (pts, label, pos) => {
+    const k = pts.findIndex(q => inset(XR, q[0]) && inset(YR, q[1]));
+    return {type:'scatter', mode:'lines+text', x:pts.map(q => q[0]), y:pts.map(q => q[1]),
+      text:pts.map((_, i) => i === k ? label : ''), textposition:pos, textfont:{size:10, color:C.muted},
+      line:{color:'#d8ccb3', width:1}, hoverinfo:'skip', showlegend:false};
+  };
+  const T = [], dra = thin ? 60 : 30, ddec = thin ? 30 : 15;
+  for (let ra = 0; ra < 360; ra += dra)
+    T.push(line(Array.from({length:48}, (_, i) => proj(ra, -8 + i*2.1)), ra + '°', 'top center'));
+  for (let dec = ddec; dec < 90; dec += ddec)
+    T.push(line(Array.from({length:181}, (_, i) => proj(RA0 + 115 + i*0.99, dec)), dec + '°', 'top center'));
   return T;
 }
 
@@ -114,16 +129,19 @@ fetch('status.json?t=' + Date.now()).then(r => r.json()).then(d => {
 
   // Sky map
   const order = ['remaining','held','queued','running','processed','published'];
+  const allIds = order.flatMap(k => d.tiles[k] || []);
+  [RA0, DEC0] = centroid(allIds);
   const traces = order.map(k => {
     const ids = d.tiles[k] || [], p = ids.map(xy);
     return {type:'scatter', mode:'markers', name:LABEL[k], x:p.map(q => q[0]), y:p.map(q => q[1]), text:ids,
       hovertemplate:'%{text}<extra>'+LABEL[k]+'</extra>',
       marker:{size:k==='remaining' ? 2.5 : 3.2, color:C[k], symbol:k==='processed' ? 'circle-open' : 'circle', opacity:k==='remaining' ? .55 : .9}};
   });
-  const pts = order.flatMap(k => (d.tiles[k]||[]).map(xy)), pad = 0.05;
-  const lo = i => Math.min(...pts.map(q => q[i])), hi = i => Math.max(...pts.map(q => q[i]));
-  const XR = [lo(0)-pad, hi(0)+pad], YR = [lo(1)-0.22, hi(1)+0.1];
-  Plotly.newPlot('map', [...graticule(), ...traces], {...base, margin:{l:0,r:0,t:0,b:0}, legend:{...base.legend, y:-0.02, x:0.5, xanchor:'center', yanchor:'top', itemsizing:'constant', font:{size:12}},
+  const pts = allIds.map(xy), lo = i => Math.min(...pts.map(q => q[i])), hi = i => Math.max(...pts.map(q => q[i]));
+  const padX = 0.07, padY = 0.07, XR = [lo(0)-padX, hi(0)+padX], YR = [lo(1)-padY, hi(1)+padY];
+  const mapEl = document.getElementById('map'), W = mapEl.clientWidth;
+  mapEl.style.height = Math.round(Math.min(640, Math.max(300, (W - 20) * (YR[1]-YR[0]) / (XR[1]-XR[0]))) + 60) + 'px';   // +60: legend
+  Plotly.newPlot('map', [...graticule(XR, YR, W < 600), ...traces], {...base, margin:{l:0,r:0,t:0,b:0}, legend:{...base.legend, y:-0.02, x:0.5, xanchor:'center', yanchor:'top', itemsizing:'constant', font:{size:12}},
     dragmode:false, xaxis:{visible:false, scaleanchor:'y', range:XR}, yaxis:{visible:false, range:YR}},
     {...cfg, scrollZoom:false, displayModeBar:false});
 
