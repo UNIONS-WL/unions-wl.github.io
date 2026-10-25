@@ -1,0 +1,324 @@
+{
+  "schema_version": 2,
+  "metadata": {
+    "time_utc": "2026-10-25T13:29:13.160204+00:00",
+    "tile_count": 10094,
+    "area_deg2": 2075.2977913798804,
+    "blind_name": "unions",
+    "git_sha": "630619bd780418a17f9bc368132a1b239f5cedfc",
+    "nz_status": "v1.4.6.3_A diagnostic proxy; not v2 calibrated",
+    "n_eff": 5.457071402395004,
+    "sigma_e": 0.33800832710952583,
+    "sigma_e_convention": "per_component",
+    "nz_sha256": "0d712922bf6edc27600b4035cc236cccd3aa73fbd4f2bc426c3914b9a924cbe8"
+  },
+  "banner": "Blinded (blind: unions) \u2014 data vectors are shifted; do not interpret cosmology",
+  "ptes": {
+    "SP_v2.0": {
+      "xip_B": 0.3473246137224719,
+      "xim_B": 0.0715188129811297,
+      "combined": 0.1565572483315593,
+      "COSEBIS": 0.43797588016109723,
+      "C_l_BB": 0.4330503895621489
+    }
+  },
+  "pte_labels": {
+    "xip_B": "Pure B (+)",
+    "xim_B": "Pure B (\u2212)",
+    "combined": "Pure B (combined)",
+    "COSEBIS": "COSEBIs B",
+    "C_l_BB": "Pseudo-C\u2113 BB"
+  },
+  "families": [
+    "2PCF",
+    "COSEBIs",
+    "Pure E/B",
+    "Pseudo-C\u2113",
+    "\u03c1/\u03c4 PSF leakage",
+    "Footprint",
+    "Weights",
+    "n(z)",
+    "Covariance",
+    "Posteriors",
+    "Other"
+  ],
+  "ptes_status": "available",
+  "figures": [
+    {
+      "path": "cosmo_inference/data/covariance/covariance_SP_v2.0_g_minsep=0.08_maxsep=300.0_nbins=1000_masked/covariance_SP_v2.0_g_minsep=0.08_maxsep=300.0_nbins=1000_masked_corr_plot.pdf",
+      "family": "Covariance",
+      "caption": "Theoretical shear two-point correlation matrix.",
+      "status": "available",
+      "source_sha256": "2f6cc96a6278723f47c6e70e0608e43ccbdaae94cdab9b34e8278e75a5e28f74",
+      "url": "cosmoval/00-30e5cf999932.png",
+      "png_sha256": "100bdf281b2932107e5dd26ad40c1de28b50de41f02a6fc96df34da0ba04e3fb",
+      "width": 1600,
+      "height": 1419,
+      "bytes": 95140
+    },
+    {
+      "path": "cosmo_inference/data/covariance/covariance_SP_v2.0_ng_minsep=1.0_maxsep=250.0_nbins=20_masked/covariance_SP_v2.0_ng_minsep=1.0_maxsep=250.0_nbins=20_masked_corr_plot.pdf",
+      "family": "Covariance",
+      "caption": "Theoretical shear two-point correlation matrix.",
+      "status": "available",
+      "source_sha256": "7cec1a0e7d4244c895a2e877f9f79f35c6094a201d3810ed2feaf82987d2bacc",
+      "url": "cosmoval/01-3895624cc641.png",
+      "png_sha256": "9ce9c33b902823a7c57d49b83bff4fcfa23cc6ee992290cc48b92ef9db8f12e1",
+      "width": 1600,
+      "height": 1469,
+      "bytes": 54680
+    },
+    {
+      "path": "cosmo_val/SP_v2.0_cosebis_minsep=0.08_maxsep=300.0_nbins=1000_varmethod=analytic_nmodes=20_scalecut=12-83_cosebis.png",
+      "family": "COSEBIs",
+      "caption": "E- and B-mode COSEBIs as a function of mode number.",
+      "status": "available",
+      "source_sha256": "db8bdf7d1b6e242ef9e71669b1c0b0929fa98210353808bf19ed3f183ebb7868",
+      "url": "cosmoval/02-e87e262274f3.png",
+      "png_sha256": "4c0a2554bb3ce4ab49d326c3ba5e414fe6cf93a18ca8eed4fd84c955d0bd1f5b",
+      "width": 1580,
+      "height": 1600,
+      "bytes": 263387
+    },
+    {
+      "path": "cosmo_val/SP_v2.0_cosebis_minsep=0.08_maxsep=300.0_nbins=1000_varmethod=analytic_nmodes=20_scalecut=12-83_covariance.png",
+      "family": "Covariance",
+      "caption": "COSEBIs E/B correlation matrix.",
+      "status": "available",
+      "source_sha256": "606a75fad4469e8060c450a768f39549fd30f2f87d02b874e1823cc3887d6db4",
+      "url": "cosmoval/03-96d7a8945a4d.png",
+      "png_sha256": "b185035cc47165c1dedc3f723c2fd634b8b4b24b9fd48eb6b824667363166392",
+      "width": 1600,
+      "height": 1429,
+      "bytes": 81935
+    },
+    {
+      "path": "cosmo_val/SP_v2.0_cosebis_minsep=0.08_maxsep=300.0_nbins=1000_varmethod=analytic_nmodes=20_scalecut=12-83_scalecut_ptes.png",
+      "family": "COSEBIs",
+      "caption": "B-mode PTEs for the cached angular scale cuts.",
+      "status": "available",
+      "source_sha256": "d06ded1e672521aedfc571595a9477d680d34f5744e5050cf93513127764c0d3",
+      "url": "cosmoval/04-a21e7f91c93b.png",
+      "png_sha256": "0281f5f72a471622b702ea8438314cda91c7f096b919c1ab8a25c5dc3cb68b70",
+      "width": 1600,
+      "height": 545,
+      "bytes": 101085
+    },
+    {
+      "path": "cosmo_val/SP_v2.0_eb_minsep=1.0_maxsep=250.0_nbins=20_minsepint=0.08_maxsepint=300.0_nbinsint=1000_npatch=100_varmethod=analytic_covariance.png",
+      "family": "Covariance",
+      "caption": "Pure E/B and ambiguous-mode correlation matrix.",
+      "status": "available",
+      "source_sha256": "93f9401e896db4fd2f4c6ca2c2f6d7eb25b9ce6329be7037399d9cb40669d951",
+      "url": "cosmoval/05-ee3ef4119a75.png",
+      "png_sha256": "6bd7f8ffa092f215e4f34101290a03241640ef5b1a6afcd9f23254fb633f80e1",
+      "width": 1600,
+      "height": 1443,
+      "bytes": 128437
+    },
+    {
+      "path": "cosmo_val/SP_v2.0_eb_minsep=1.0_maxsep=250.0_nbins=20_minsepint=0.08_maxsepint=300.0_nbinsint=1000_npatch=100_varmethod=analytic_integration_vs_reporting.png",
+      "family": "2PCF",
+      "caption": "Two-point correlations on the integration and reporting grids.",
+      "status": "available",
+      "source_sha256": "074f4bf57b62f45a1483b0e939171c9a665fda4acb9739dfa0361c3651d11445",
+      "url": "cosmoval/06-217585d7811e.png",
+      "png_sha256": "837d12400c2671cd6487cd90824e707a78136217b86eead331a962c7a7785e31",
+      "width": 1600,
+      "height": 662,
+      "bytes": 266412
+    },
+    {
+      "path": "cosmo_val/SP_v2.0_eb_minsep=1.0_maxsep=250.0_nbins=20_minsepint=0.08_maxsepint=300.0_nbinsint=1000_npatch=100_varmethod=analytic_ptes.png",
+      "family": "Pure E/B",
+      "caption": "Pure-B PTEs across the cached angular scale cuts.",
+      "status": "available",
+      "source_sha256": "1e94bbf3ca4a236dfebc481216ebb36a3a789a71458eeefa18546454b14a0004",
+      "url": "cosmoval/07-2f5735a1d62b.png",
+      "png_sha256": "052f01261f90fdcc07b022c4bdb4e291f6042ebf66156f409f78e15e9f50e312",
+      "width": 1600,
+      "height": 765,
+      "bytes": 159784
+    },
+    {
+      "path": "cosmo_val/SP_v2.0_eb_minsep=1.0_maxsep=250.0_nbins=20_minsepint=0.08_maxsepint=300.0_nbinsint=1000_npatch=100_varmethod=analytic_xis.png",
+      "family": "Pure E/B",
+      "caption": "Pure E, pure B and ambiguous two-point correlation components.",
+      "status": "available",
+      "source_sha256": "1ce1e26630b0bcdfc7e63c937bd2695496940ef15d7fe8558783a59b666929d3",
+      "url": "cosmoval/08-159bddee3fcc.png",
+      "png_sha256": "c43250a91371b1e5017093b295aa9dbaca01d1bcb57c1d502458e4e795f98ca4",
+      "width": 1600,
+      "height": 661,
+      "bytes": 154232
+    },
+    {
+      "path": "cosmo_val/cell_bb.png",
+      "family": "Pseudo-C\u2113",
+      "caption": "Pseudo-C\u2113 BB band powers and uncertainties.",
+      "status": "available",
+      "source_sha256": "241b142784b295377dd1d0b46b7123c3a655089f3b25164f1bc0dc7e8a5b4677",
+      "url": "cosmoval/09-348bcaf316b9.png",
+      "png_sha256": "8f9048600e3a554d621c437d698b198c51ae05d6da51bd926f0c0f03a2f29f37",
+      "width": 800,
+      "height": 800,
+      "bytes": 39628
+    },
+    {
+      "path": "cosmo_val/cell_eb.png",
+      "family": "Pseudo-C\u2113",
+      "caption": "Pseudo-C\u2113 EB cross-band powers and uncertainties.",
+      "status": "available",
+      "source_sha256": "00700d21f5e62b23bece191f66892794fa66c4a979470540fd9d0825b8aafd0a",
+      "url": "cosmoval/10-4efe73777e82.png",
+      "png_sha256": "ed16bd2b1ed37d2853aefd7043cdca2820bfe1f0348cea23b696809576d5ae3d",
+      "width": 800,
+      "height": 800,
+      "bytes": 38495
+    },
+    {
+      "path": "cosmo_val/cell_ee.png",
+      "family": "Pseudo-C\u2113",
+      "caption": "Blinded pseudo-C\u2113 EE band powers and uncertainties.",
+      "status": "available",
+      "source_sha256": "efafa5a70cd4b9b41d860aec76cccc78316e1686d078fa60947dd7cea38c4291",
+      "url": "cosmoval/11-c6ab38189a01.png",
+      "png_sha256": "c554e43eb16f64e40a35c46ace3a7b2f3cabf84449ef9efe4ffa4a444c93fd4e",
+      "width": 800,
+      "height": 800,
+      "bytes": 37484
+    },
+    {
+      "path": "cosmo_val/footprint_SP_v2.0_NGC.png",
+      "family": "Footprint",
+      "caption": "Galaxy counts per sky pixel for the NGC footprint.",
+      "status": "available",
+      "source_sha256": "01b7389eb4e5f8cbe2540fd18b9ad9c1a98f4c42eafe1824571cdd88b0127ac1",
+      "url": "cosmoval/12-68d5a7b05081.png",
+      "png_sha256": "12a5d84e3817982a3a98d532a13353bf9613da436817a59d277209573b81bda8",
+      "width": 1000,
+      "height": 1000,
+      "bytes": 234080
+    },
+    {
+      "path": "cosmo_val/footprint_SP_v2.0_SGC.png",
+      "family": "Footprint",
+      "caption": "Galaxy counts per sky pixel for the SGC footprint.",
+      "status": "available",
+      "source_sha256": "41a0b0c23407ddf3189e375e70d73d5d3146d060e2f7cebfe003657e719d7049",
+      "url": "cosmoval/13-af1f125098bd.png",
+      "png_sha256": "43340d78064b544778a1b6cef441a8fa13054973a5327815e6fc89b4862fb458",
+      "width": 1000,
+      "height": 1000,
+      "bytes": 61758
+    },
+    {
+      "path": "cosmo_val/footprint_SP_v2.0_fullsky.png",
+      "family": "Footprint",
+      "caption": "Galaxy counts per sky pixel for the fullsky footprint.",
+      "status": "available",
+      "source_sha256": "07fae2ed8790c0d96e9a5dfbf6d5ba6a8b62b397f54ec1fba683cf535397f6ca",
+      "url": "cosmoval/14-7b69da8d9e40.png",
+      "png_sha256": "41e60fc3d4fd9effa181334c9bc0f9f1301a688d44e2b8d131d19960da9ed157",
+      "width": 1000,
+      "height": 1000,
+      "bytes": 141393
+    },
+    {
+      "path": "cosmo_val/leakage_coefficients.png",
+      "family": "\u03c1/\u03c4 PSF leakage",
+      "caption": "Objectwise and correlation-based PSF leakage coefficient estimates.",
+      "status": "pending",
+      "source_sha256": null,
+      "url": null
+    },
+    {
+      "path": "cosmo_val/ratio_xi_sys_xi.png",
+      "family": "\u03c1/\u03c4 PSF leakage",
+      "caption": "Estimated PSF contamination divided by the blinded shear correlations.",
+      "status": "pending",
+      "source_sha256": null,
+      "url": null
+    },
+    {
+      "path": "cosmo_val/rho_tau_stats/contours_tau_stat.png",
+      "family": "Posteriors",
+      "caption": "Joint distributions of the fitted PSF leakage parameters.",
+      "status": "pending",
+      "source_sha256": null,
+      "url": null
+    },
+    {
+      "path": "cosmo_val/rho_tau_stats/rho_stats.png",
+      "family": "\u03c1/\u03c4 PSF leakage",
+      "caption": "PSF and PSF-residual \u03c1 correlation statistics.",
+      "status": "pending",
+      "source_sha256": null,
+      "url": null
+    },
+    {
+      "path": "cosmo_val/rho_tau_stats/tau_stats.png",
+      "family": "\u03c1/\u03c4 PSF leakage",
+      "caption": "Galaxy\u2013PSF/residual \u03c4 cross-correlation statistics.",
+      "status": "pending",
+      "source_sha256": null,
+      "url": null
+    },
+    {
+      "path": "cosmo_val/rho_tau_stats/xi_psf_sys_tomography_False_mean_and_std.png",
+      "family": "\u03c1/\u03c4 PSF leakage",
+      "caption": "Estimated PSF-contamination correlations with uncertainty bands.",
+      "status": "pending",
+      "source_sha256": null,
+      "url": null
+    },
+    {
+      "path": "cosmo_val/rho_tau_stats/xi_psf_sys_tomography_False_sample.png",
+      "family": "\u03c1/\u03c4 PSF leakage",
+      "caption": "Sampled PSF-contamination correlation curves.",
+      "status": "pending",
+      "source_sha256": null,
+      "url": null
+    },
+    {
+      "path": "cosmo_val/weight_hist.png",
+      "family": "Weights",
+      "caption": "Weight-weighted histogram of galaxy shape weights.",
+      "status": "available",
+      "source_sha256": "d02f64b2ad4de9b6ec45f0543ae07b6c0756172cf1569335e68c1046f09f864e",
+      "url": "cosmoval/22-b48d281d50d4.png",
+      "png_sha256": "91b773cad879e894800438a0a90c3e9ef68e8deb6dc0927bfc83293e9d0fd444",
+      "width": 876,
+      "height": 623,
+      "bytes": 18120
+    },
+    {
+      "path": "cosmo_val/xi_pm_theta_tomography_False.png",
+      "family": "2PCF",
+      "caption": "Blinded \u03be\u00b1 correlations multiplied by angular separation.",
+      "status": "available",
+      "source_sha256": "3b91929cf40b298e145240ccf173b018b64df485642f4efc5818f79f0a0ffd57",
+      "url": "cosmoval/23-ed61010f437e.png",
+      "png_sha256": "89437aec271d500bbfff385e30193a5680c7415bb739e4c60cf0da0faf28efb5",
+      "width": 1411,
+      "height": 611,
+      "bytes": 41979
+    },
+    {
+      "path": "cosmo_val/xi_pm_tomography_False.png",
+      "family": "2PCF",
+      "caption": "Blinded \u03be\u00b1 two-point correlations and uncertainties.",
+      "status": "available",
+      "source_sha256": "4a332c6d74806377b68889c544736c378cc1c977b45fcd1608115b64efc0da94",
+      "url": "cosmoval/24-666943239fb0.png",
+      "png_sha256": "02be88faa4a4629c0b8afac3ba3ef73c0d179d22340008c26cdaa9d59c367ea3",
+      "width": 1411,
+      "height": 611,
+      "bytes": 37473
+    }
+  ],
+  "generator_sha256": "b11e1a1a5a6e43dc5b0577677b89145bc5b1bb69406652eee6c9c5097e703ba0",
+  "pillow_version": "10.0.0",
+  "content_hash": "ad31d9ee87b9ca08e7dca37256d9c95d4e7408ed59e3f2c7b7a29919f0f96785",
+  "png_bytes": 1955502
+}
