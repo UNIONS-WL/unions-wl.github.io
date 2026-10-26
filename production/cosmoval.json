@@ -228,57 +228,85 @@
       "path": "cosmo_val/leakage_coefficients.png",
       "family": "\u03c1/\u03c4 PSF leakage",
       "caption": "Objectwise and correlation-based PSF leakage coefficient estimates.",
-      "status": "pending",
-      "source_sha256": null,
-      "url": null
+      "status": "available",
+      "source_sha256": "98cdee5d23e92615836ad8e321c432f222afbf2596ec0f566637d6707b69fd18",
+      "url": "cosmoval/15-ddde03c162dd.png",
+      "png_sha256": "d99927b7696143351f7e453491ea8b495ff645a6202165c6720ba67f0f87c565",
+      "width": 1305,
+      "height": 1239,
+      "bytes": 57350
     },
     {
       "path": "cosmo_val/ratio_xi_sys_xi.png",
       "family": "\u03c1/\u03c4 PSF leakage",
       "caption": "Estimated PSF contamination divided by the blinded shear correlations.",
-      "status": "pending",
-      "source_sha256": null,
-      "url": null
+      "status": "available",
+      "source_sha256": "1449e286fba2aaf3f77d536a3db82e1467ffc0bd3f5d60382fc074da40780ead",
+      "url": "cosmoval/16-c02a33e374c8.png",
+      "png_sha256": "a4f183ca2a7d4e2626e814d42dd86367b3901720f3b048d5d8963117c25834de",
+      "width": 1209,
+      "height": 551,
+      "bytes": 35185
     },
     {
       "path": "cosmo_val/rho_tau_stats/contours_tau_stat.png",
       "family": "Posteriors",
       "caption": "Joint distributions of the fitted PSF leakage parameters.",
-      "status": "pending",
-      "source_sha256": null,
-      "url": null
+      "status": "available",
+      "source_sha256": "20f414f11e1e7dbe1d02700dcb9a9c4cd86fdc9d6242a831c33f58092685d34c",
+      "url": "cosmoval/17-8eacff18b0ea.png",
+      "png_sha256": "a634235466a7ce7c8fbedc1cbb4636dd27092cec6f876c01f6c3c1a3c6c70937",
+      "width": 600,
+      "height": 600,
+      "bytes": 33407
     },
     {
       "path": "cosmo_val/rho_tau_stats/rho_stats.png",
       "family": "\u03c1/\u03c4 PSF leakage",
       "caption": "PSF and PSF-residual \u03c1 correlation statistics.",
-      "status": "pending",
-      "source_sha256": null,
-      "url": null
+      "status": "available",
+      "source_sha256": "2a6ca98751c3ebba9fcff3aa195007652c4cac34149f994533362dbde18c8748",
+      "url": "cosmoval/18-2909b64b8365.png",
+      "png_sha256": "f2b694a3e10e2218cea960cd69d8de65968afa24da281b5ba7f712b20e584e83",
+      "width": 1511,
+      "height": 1011,
+      "bytes": 126390
     },
     {
       "path": "cosmo_val/rho_tau_stats/tau_stats.png",
       "family": "\u03c1/\u03c4 PSF leakage",
       "caption": "Galaxy\u2013PSF/residual \u03c4 cross-correlation statistics.",
-      "status": "pending",
-      "source_sha256": null,
-      "url": null
+      "status": "available",
+      "source_sha256": "d14d2f8e94e6ff3abe71e37ee8542a01e5043540c1a9d8b43e1704e041280e6f",
+      "url": "cosmoval/19-bcc2651f8ef9.png",
+      "png_sha256": "4f78cc52a75422fea2a8e5dfdf778ef2c505cc4d6e14d4cd50539d003af846df",
+      "width": 1511,
+      "height": 611,
+      "bytes": 66794
     },
     {
       "path": "cosmo_val/rho_tau_stats/xi_psf_sys_tomography_False_mean_and_std.png",
       "family": "\u03c1/\u03c4 PSF leakage",
       "caption": "Estimated PSF-contamination correlations with uncertainty bands.",
-      "status": "pending",
-      "source_sha256": null,
-      "url": null
+      "status": "available",
+      "source_sha256": "b77f9d25db1be1b6eb0df77ef7299a8e3262cdc8f351013d55f1911948329d4c",
+      "url": "cosmoval/20-79f389bea092.png",
+      "png_sha256": "8c12e150d6d13b875178501a84d3d0204e1fa1edd73cd8201dba15dcc2de9aac",
+      "width": 1411,
+      "height": 611,
+      "bytes": 70763
     },
     {
       "path": "cosmo_val/rho_tau_stats/xi_psf_sys_tomography_False_sample.png",
       "family": "\u03c1/\u03c4 PSF leakage",
       "caption": "Sampled PSF-contamination correlation curves.",
-      "status": "pending",
-      "source_sha256": null,
-      "url": null
+      "status": "available",
+      "source_sha256": "2ca18768578a53572afd341a8321c9fb9b60f59f14ab4fbd17c36d8ec3415700",
+      "url": "cosmoval/21-ca91e88d0ff4.png",
+      "png_sha256": "da53a24780f447c302e1babd15a78ca0dfaef786e667bd32850dbd198e366b6b",
+      "width": 1411,
+      "height": 611,
+      "bytes": 125892
     },
     {
       "path": "cosmo_val/weight_hist.png",
@@ -319,6 +347,6 @@
   ],
   "generator_sha256": "b11e1a1a5a6e43dc5b0577677b89145bc5b1bb69406652eee6c9c5097e703ba0",
   "pillow_version": "10.0.0",
-  "content_hash": "ad31d9ee87b9ca08e7dca37256d9c95d4e7408ed59e3f2c7b7a29919f0f96785",
-  "png_bytes": 1955502
+  "content_hash": "6d7e1c2064db0b3bf0b22d9f9f4c56aed563c47765a153782aa579f6c3ac52b3",
+  "png_bytes": 2471283
 }
