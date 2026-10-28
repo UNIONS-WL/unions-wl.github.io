@@ -41,22 +41,41 @@
   #legend i{display:inline-block;width:9px;height:9px;margin-right:6px;vertical-align:-1px}
   footer{margin-top:50px;border-top:1px solid var(--rule);padding-top:16px;color:var(--ink-muted);font-family:var(--mono);font-size:11px;line-height:1.7}
   .err{color:var(--cinnabar);font-family:var(--mono);font-size:13px}
-  #cosmo-val .cv-banner{border-left:4px solid var(--cinnabar);padding:12px 16px;background:var(--rag)}
-  #cosmo-val .cv-meta{overflow-wrap:anywhere}
-  #cosmo-val .cv-table-wrap{overflow-x:auto;margin:12px 0 24px}
-  #cosmo-val table{border-collapse:collapse;font-size:15px;width:100%}
-  #cosmo-val th,#cosmo-val td{padding:5px 10px;border-bottom:1px solid var(--rule);text-align:left}
-  #cosmo-val details{margin:12px 0}
-  #cosmo-val summary{cursor:pointer;font-weight:500;padding:6px;overflow-wrap:anywhere}
+  #cosmo-val h2{font-style:italic;font-weight:500;font-size:30px;margin:0 0 10px}
+  #cosmo-val h3{font-style:italic;font-weight:500;font-size:23px;margin:46px 0 4px}
+  #cosmo-val .cv-banner{border-left:4px solid var(--cinnabar);padding:10px 16px;background:var(--rag);margin:12px 0}
+  #cosmo-val .cv-meta{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-muted);margin:10px 0 0;display:flex;flex-wrap:wrap;gap:4px 16px;overflow-wrap:anywhere}
+  #cosmo-val .cv-meta b{color:var(--ink);font-weight:500}
+  #cosmo-val .cv-lede{color:var(--ink-muted);margin:2px 0 14px;max-width:70ch;font-size:17px}
+  #cosmo-val figure{margin:0;min-width:0}
+  #cosmo-val .cv-fig{background:var(--rag);border:1px solid var(--rule);border-radius:10px;padding:10px;margin-top:14px}
+  #cosmo-val .cv-fig img{display:block;width:100%;height:auto}
+  #cosmo-val .cv-fig a{display:block}
+  #cosmo-val figcaption{font-size:15px;line-height:1.4;color:var(--ink-muted);margin:8px 2px 0}
+  #cosmo-val .cv-pair{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+  #cosmo-val .cv-pair .cv-fig{margin-top:0}
+  #cosmo-val .cv-table-wrap{overflow-x:auto;margin:10px 0 4px;background:var(--rag);border:1px solid var(--rule);border-radius:10px;padding:6px 10px}
+  #cosmo-val table{border-collapse:collapse;width:100%;font-size:16px;font-variant-numeric:tabular-nums}
+  #cosmo-val th,#cosmo-val td{padding:5px 8px;text-align:right;white-space:nowrap}
+  #cosmo-val th:first-child,#cosmo-val td:first-child{text-align:left}
+  #cosmo-val thead tr:first-child th{text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);font-weight:400;}
+  #cosmo-val thead tr:first-child th[colspan]{border-bottom:1px solid var(--rule)}
+  #cosmo-val thead tr:last-child th{font-weight:400;border-bottom:1.5px solid var(--ink)}
+  #cosmo-val th .ss{display:inline-flex;flex-direction:column;vertical-align:middle;font-size:.68em;line-height:1.05;margin-left:1px;text-align:left}
+  #cosmo-val th .q{display:block;font-family:var(--mono);font-size:10px;color:var(--ink-muted)}
+  #cosmo-val tbody tr + tr.v td{border-top:1px solid var(--rule)}
+  #cosmo-val td .r{display:block;font-family:var(--mono);font-size:10px;color:var(--ink-muted)}
+  #cosmo-val td.fail{font-weight:600;color:var(--cinnabar)}
+  #cosmo-val .cv-note{font-size:14px;color:var(--ink-muted);margin:6px 2px 0;max-width:80ch}
+  #cosmo-val details{margin-top:18px;border-top:1px solid var(--rule)}
+  #cosmo-val summary{cursor:pointer;padding:12px 2px 2px;font-style:italic;font-size:21px;list-style:none;display:flex;align-items:baseline;gap:10px}
+  #cosmo-val summary::-webkit-details-marker{display:none}
+  #cosmo-val summary::before{content:'+';font-family:var(--mono);font-style:normal;font-size:15px;color:var(--cinnabar);width:12px}
+  #cosmo-val details[open] summary::before{content:'−'}
+  #cosmo-val summary .n{font-family:var(--mono);font-style:normal;font-size:10.5px;letter-spacing:.06em;color:var(--ink-muted)}
   #cosmo-val summary:focus-visible,#cosmo-val a:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
-  #cosmo-val .cv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
-  #cosmo-val figure{margin:12px 0;min-width:0}
-  #cosmo-val img{display:block;width:100%;height:auto;max-height:280px;object-fit:contain;background:white}
-  #cosmo-val figcaption{font-size:16px;margin-top:8px;overflow-wrap:anywhere}
-  #cosmo-val .cv-pending{min-height:100px;display:grid;place-items:center;color:var(--ink-muted);border:1px dashed var(--rule)}
-  #cosmo-val .cv-source{font:10px var(--mono);color:var(--ink-muted);overflow-wrap:anywhere}
-  #cosmo-val .kpis{grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin:16px 0}
-  @media(max-width:480px){#cosmo-val .cv-grid{grid-template-columns:1fr} #cosmo-val th,#cosmo-val td{padding:5px}}
+
+  @media (max-width:640px){#cosmo-val .cv-pair{grid-template-columns:1fr} #cosmo-val table{font-size:14px} #cosmo-val th,#cosmo-val td{padding:4px 6px} #cosmo-val .cv-fig{padding:6px}}
 </style>
 </head>
 <body>
@@ -92,6 +111,7 @@
     <div class="mark">§ Cosmology validation <span class="note">blinded · non-tomographic</span></div>
     <h2 id="cosmo-val-title">cosmo_val diagnostics</h2>
     <p class="cv-banner">Blinded (blind: unions) — data vectors are shifted; do not interpret cosmology</p>
+    <p class="cv-lede">The two-point data vectors of the latest catalogue, the B-mode null tests that guard them, PSF leakage, and the survey behind them. Figures open full size.</p>
     <div id="cosmo-val-content" aria-live="polite"><p>Loading cosmo_val diagnostics…</p></div>
     <noscript>Enable JavaScript to view the figures, or open <a href="cosmoval.json">cosmoval.json</a>.</noscript>
   </section>
@@ -107,64 +127,112 @@ function cvNode(tag, text, cls){
   if (cls) node.className = cls;
   return node;
 }
+function cvFigure(f){
+  const figure = cvNode('figure', null, 'cv-fig');
+  const ok = u => typeof u === 'string' && /^cosmoval\/[A-Za-z0-9._-]+\.png$/.test(u);
+  if (!ok(f.url)) return figure;
+  const link = cvNode('a');
+  link.href = f.url; link.target = '_blank'; link.rel = 'noopener'; link.title = 'Open full-size figure';
+  const picture = cvNode('picture');
+  if (ok(f.narrow_url)){
+    const source = cvNode('source');
+    source.media = '(max-width: 640px)'; source.srcset = f.narrow_url;
+    source.width = f.narrow_width; source.height = f.narrow_height;
+    picture.append(source);
+  }
+  const img = cvNode('img');
+  img.src = f.url; img.alt = f.alt || f.caption; img.loading = 'lazy'; img.decoding = 'async';
+  img.width = f.width; img.height = f.height;
+  picture.append(img); link.append(picture); figure.append(link);
+  figure.append(cvNode('figcaption', f.caption));
+  return figure;
+}
+function cvPteTable(t, multi){
+  const wrap = cvNode('div', null, 'cv-table-wrap'), table = cvNode('table');
+  const head = cvNode('thead'), groups = cvNode('tr'), labels = cvNode('tr');
+  const lead = multi ? ['Version', 'Scale cuts'] : ['Scale cuts'];
+  groups.append(...lead.map(() => cvNode('th')));
+  let last = null;
+  for (const c of t.columns){
+    if (c.group === last){ groups.lastChild.colSpan += 1; continue; }
+    const th = cvNode('th', c.group); th.colSpan = 1; th.scope = 'colgroup'; groups.append(th); last = c.group;
+  }
+  for (const l of lead){ const th = cvNode('th', l); th.scope = 'col'; labels.append(th); }
+  for (const c of t.columns){
+    const [sym, sub, sup, q] = c.label, th = cvNode('th'); th.scope = 'col';
+    th.append(cvNode('i', sym));
+    const scripts = cvNode('span', null, 'ss');
+    scripts.append(cvNode('span', sup || '\u00a0'), cvNode('span', sub || '\u00a0'));
+    th.append(scripts);
+    if (q) th.append(cvNode('span', q, 'q'));
+    labels.append(th);
+  }
+  head.append(groups, labels); table.append(head);
+  const body = cvNode('tbody'), fmt = v => typeof v !== 'number' ? '–' : v < 0.001 ? v.toExponential(1) : v.toPrecision(2);
+  let prev = null;
+  for (const r of t.rows){
+    const tr = cvNode('tr', null, r.version !== prev ? 'v' : '');
+    if (multi) tr.append(cvNode('td', r.version !== prev ? r.version : ''));
+    prev = r.version;
+    const sel = cvNode('td', r.selection);
+    sel.append(cvNode('span', r.theta + ' · ' + r.ell, 'r'));
+    tr.append(sel);
+    for (const c of t.columns){
+      const v = r.values[c.key], td = cvNode('td', fmt(v));
+      if (typeof v === 'number' && v < t.threshold) td.className = 'fail';
+      tr.append(td);
+    }
+    body.append(tr);
+  }
+  table.append(body); wrap.append(table);
+  return wrap;
+}
 function renderCosmoVal(d){
   const root = document.getElementById('cosmo-val-content');
-  if (root.dataset.hash === d.content_hash && root.querySelector('details')) return;
+  if (root.dataset.hash === d.content_hash && root.childElementCount) return;
   const body = document.createDocumentFragment(), m = d.metadata;
-  const number = v => typeof v === 'number' ? v.toLocaleString('en-US', {maximumSignificantDigits:6}) : (v ?? 'pending');
+  const num = (v, digits) => typeof v === 'number' ? v.toLocaleString('en-US', {maximumFractionDigits:digits}) : (v ?? 'pending');
   const date = new Date(m.time_utc);
   const runDate = Number.isNaN(date.getTime()) ? 'pending' :
     date.toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric', timeZone:'UTC'}) + ', ' +
     date.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit', hourCycle:'h23', timeZone:'UTC'}) + ' UTC';
-  body.append(cvNode('p', 'Run date: ' + runDate, 'cv-meta'));
-  const kpis = cvNode('div', null, 'kpis');
-  for (const [label, value] of [['Tiles',m.tile_count],['Area (deg²)',m.area_deg2],['n_eff (arcmin⁻²)',m.n_eff],['σ_e (per component)',m.sigma_e]]){
-    const card = cvNode('div', null, 'kpi');
-    card.append(cvNode('div', number(value), 'v'), cvNode('div', label, 'l'));
-    kpis.append(card);
+  const meta = cvNode('p', null, 'cv-meta');
+  for (const [label, value] of [['run', runDate], ['tiles', num(m.tile_count, 0)], ['area', num(m.area_deg2, 0) + ' deg²'],
+                                ['n_eff', num(m.n_eff, 2) + ' arcmin⁻²'], ['σ_e', num(m.sigma_e, 3)],
+                                ['blind', m.blind_name], ['git', String(m.git_sha ?? 'pending').slice(0, 8)], ['n(z)', m.nz_status]]){
+    const item = cvNode('span', label + ' '); item.append(cvNode('b', String(value))); meta.append(item);
   }
-  body.append(kpis, cvNode('p', 'Blind: ' + m.blind_name + ' · Git SHA: ' + String(m.git_sha ?? 'pending').slice(0,8), 'cv-meta'),
-              cvNode('p', 'n(z): ' + m.nz_status, 'cv-meta'),
-              cvNode('h3', 'Null-test PTEs (probabilities to exceed)'),
-              cvNode('p', 'These statistics use different modes and cuts; scale-cut scans are correlated diagnostics.'));
-  const wrap = cvNode('div', null, 'cv-table-wrap'), table = cvNode('table');
-  const head = cvNode('thead'), row = cvNode('tr');
-  for (const title of ['Statistic','PTE']){const th = cvNode('th', title); th.scope = 'col'; row.append(th);}
-  head.append(row); table.append(head);
-  const tbody = cvNode('tbody');
-  for (const values of Object.values(d.ptes || {})){
-    for (const [key, value] of Object.entries(values)){
-      const tr = cvNode('tr');
-      const pte = typeof value === 'number' ? value.toPrecision(2) : (value ?? 'pending');
-      for (const valueText of [d.pte_labels[key] || key, pte]) tr.append(cvNode('td', valueText));
-      tbody.append(tr);
-    }
-  }
-  table.append(tbody); wrap.append(table);
-  body.append(tbody.children.length ? wrap : cvNode('p', 'Null-test PTEs: pending.'));
-  const families = [...new Set([...(d.families || []), ...d.figures.map(f => f.family)])];
-  for (const family of families){
-    const figures = d.figures.filter(f => f.family === family);
-    if (!figures.length) continue;
-    const pending = figures.filter(f => f.status === 'pending').length;
-    const details = cvNode('details', null, 'card');
-    details.append(cvNode('summary', family + ' · ' + figures.length + (figures.length === 1 ? ' figure' : ' figures') + (pending ? ' · ' + pending + ' pending' : '')));
-    const grid = cvNode('div', null, 'cv-grid');
+  body.append(meta);
+  // Visible figures flow full-width, half-width ones in pairs; grouped ones fold into a drawer.
+  const flow = (parent, figures) => {
+    let pair = null;
     for (const f of figures){
-      const figure = cvNode('figure');
-      if (f.status === 'available' && /^cosmoval\/[A-Za-z0-9._-]+\.png$/.test(f.url)){
-        const link = cvNode('a');
-        link.href = f.url + '?v=' + encodeURIComponent(f.png_sha256);
-        link.target = '_blank'; link.rel = 'noopener'; link.title = 'Open full-size figure';
-        const img = cvNode('img');
-        img.src = link.href; img.alt = f.caption; img.loading = 'lazy'; img.decoding = 'async';
-        img.width = f.width; img.height = f.height;
-        link.append(img); figure.append(link);
-      } else figure.append(cvNode('div', 'pending', 'cv-pending'));
-      figure.append(cvNode('figcaption', f.caption), cvNode('p', f.path, 'cv-source'));
-      grid.append(figure);
+      if (f.size === 'half'){
+        if (!pair){ pair = cvNode('div', null, 'cv-pair'); pair.style.marginTop = '14px'; parent.append(pair); }
+        pair.append(cvFigure(f));
+        if (pair.childElementCount === 2) pair = null;
+      } else { pair = null; parent.append(cvFigure(f)); }
     }
-    details.append(grid); body.append(details);
+  };
+  for (const section of d.sections || []){
+    const figures = d.figures.filter(f => f.section === section.id);
+    if (!figures.length) continue;
+    body.append(cvNode('h3', section.title));
+    if (section.id === 'bmodes' && d.pte_table){
+      const t = d.pte_table, r0 = t.rows[0] || {}, r1 = t.rows[1] || {};
+      body.append(cvPteTable(t, (d.versions || []).length > 1));
+      body.append(cvNode('p', 'Probability to exceed the χ² of each B-mode data vector against zero; bold below ' + t.threshold +
+        '. Fiducial: ' + (r0.theta ?? '') + ' (COSEBIs ' + (r0.cosebis_theta ?? '') + '), ' + (r0.ell ?? '') +
+        '. Full range: ' + (r1.theta ?? '') + ', ' + (r1.ell ?? '') + '.', 'cv-note'));
+    }
+    flow(body, figures.filter(f => !f.group));
+    const groups = [...new Set(figures.filter(f => f.group).map(f => f.group))];
+    for (const g of groups){
+      const members = figures.filter(f => f.group === g);
+      const details = cvNode('details'), summary = cvNode('summary', (d.groups || {})[g] || g);
+      summary.append(cvNode('span', members.length + (members.length === 1 ? ' figure' : ' figures'), 'n'));
+      details.append(summary); flow(details, members); body.append(details);
+    }
   }
   root.replaceChildren(body); root.dataset.hash = d.content_hash;
 }
