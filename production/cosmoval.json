@@ -1,14 +1,14 @@
 {
   "schema_version": 4,
   "metadata": {
-    "time_utc": "2026-10-26T05:17:26.156122+00:00",
-    "tile_count": 10094,
-    "area_deg2": 2400.090088679345,
+    "time_utc": "2026-10-28T05:25:44.595080+00:00",
+    "tile_count": 20515,
+    "area_deg2": 4654.677681998284,
     "blind_name": "unions",
-    "git_sha": "145ae77f8601736ca00709df213997fb8691ee20",
+    "git_sha": "61202bace5da6892bc03104f501153447bb05a04",
     "nz_status": "v1.4.6.3_A diagnostic proxy; not v2 calibrated",
-    "n_eff": 5.5341124539741005,
-    "sigma_e": 0.3056582872870168,
+    "n_eff": 5.448128617063219,
+    "sigma_e": 0.3058722691431762,
     "sigma_e_convention": "per_component"
   },
   "banner": "Blinded (blind: unions) — data vectors are shifted; do not interpret cosmology",
@@ -114,12 +114,12 @@
         "cosebis_theta": "12′–83′",
         "ell": "300 ≤ ℓ ≤ 1600",
         "values": {
-          "cosebis_n6": 0.9948849930282665,
-          "cosebis_n20": 0.7169942094000601,
-          "xip_B": 0.6821116504361078,
-          "xim_B": 0.31311055692399803,
-          "combined": 0.6956935368123692,
-          "cl_BB": 0.16297308560420437
+          "cosebis_n6": 0.3834684494641144,
+          "cosebis_n20": 0.1985879847476044,
+          "xip_B": 0.6937758568955708,
+          "xim_B": 0.021274270520155365,
+          "combined": 0.10906373818312336,
+          "cl_BB": 0.008470020827050352
         }
       },
       {
@@ -129,12 +129,12 @@
         "cosebis_theta": "1′–250′",
         "ell": "8 ≤ ℓ ≤ 2048",
         "values": {
-          "cosebis_n6": 0.016421245694801058,
-          "cosebis_n20": 0.2124331604349223,
-          "xip_B": 0.12072761353193737,
-          "xim_B": 0.09126712816425238,
-          "combined": 0.49829158437834675,
-          "cl_BB": 0.6122123563837911
+          "cosebis_n6": 0.004123086282588001,
+          "cosebis_n20": 0.08996032549022433,
+          "xip_B": 0.027522309437299795,
+          "xim_B": 0.0016822743854095585,
+          "combined": 0.03337136110015336,
+          "cl_BB": 0.022955626904952037
         }
       }
     ]
@@ -147,30 +147,30 @@
       "caption": "Blinded ξ± on the 20-bin reporting grid; errors from the analytic covariance.",
       "size": "full",
       "alt": "Blinded ξ± on the 20-bin reporting grid; errors from the analytic covariance.",
-      "url": "cosmoval/xi_pm-d9c1b56d37db.png",
-      "narrow_url": "cosmoval/xi_pm-narrow-fc45f36535df.png",
-      "width": 1584,
+      "url": "cosmoval/xi_pm-9be9958176a5.png",
+      "narrow_url": "cosmoval/xi_pm-narrow-8f3a5da80a67.png",
+      "width": 1570,
       "height": 643,
-      "sha256": "a58b425c5a5cd5e6df6835ac6202af011393e5d8165c4012dae0a3d15a056ec3",
+      "sha256": "f1893df15e324ea65733ded3ab972cd68b0decf80be658114309e474d7b9749d",
       "narrow_width": 792,
       "narrow_height": 1009,
-      "narrow_sha256": "1f75bd65066b2ada0a573c5f317bae2ce48f849d20bff5a7485eb081f9d47d45"
+      "narrow_sha256": "11f1469ee3a5672a469c9daba003ce5a90cbad170cd2d745acda4d8f3b6365cd"
     },
     {
       "id": "cl",
       "section": "data_vectors",
       "group": null,
-      "caption": "Cℓ (NaMaster, mode-decoupled) as ℓCℓ: EE (blinded), BB and EB. Shaded: outside 300 ≤ ℓ ≤ 1600.",
+      "caption": "Blinded Cℓ EE (NaMaster, mode-decoupled) as ℓCℓ. Shaded: outside 300 ≤ ℓ ≤ 1600.",
       "size": "full",
-      "alt": "Cℓ (NaMaster, mode-decoupled) as ℓCℓ: EE (blinded), BB and EB. Shaded: outside 300 ≤ ℓ ≤ 1600.",
-      "url": "cosmoval/cl-bf9f9d1a5880.png",
-      "narrow_url": "cosmoval/cl-narrow-c0b5f513c243.png",
+      "alt": "Blinded Cℓ EE (NaMaster, mode-decoupled) as ℓCℓ. Shaded: outside 300 ≤ ℓ ≤ 1600.",
+      "url": "cosmoval/cl-560ab89379c5.png",
+      "narrow_url": "cosmoval/cl-narrow-71aa3cc8e0b3.png",
       "width": 1584,
-      "height": 603,
-      "sha256": "a91762e724e7cde581922fbb62574c1c9d732ef546a9a7533ea971c002454528",
+      "height": 599,
+      "sha256": "0a8c66c162061a37a883b11aaef050566bf44c5c44e91ae9cd44aa4847870fc3",
       "narrow_width": 792,
-      "narrow_height": 600,
-      "narrow_sha256": "0aab38b1cf0991d06452b4a64c7bba6a5242ef2001c3f7c68a2cbd4ae73ee4ee"
+      "narrow_height": 596,
+      "narrow_sha256": "617e6c0d6dee855403bf8d1dbd329d615dadfb6387b15ac7bd666efe301055ea"
     },
     {
       "id": "bmode_pure_eb",
@@ -179,14 +179,14 @@
       "caption": "Pure-mode decomposition of ξ±. Shaded: outside the fiducial 12′–83′; full range 1′–250′.",
       "size": "full",
       "alt": "Pure-mode decomposition of ξ±. Shaded: outside the fiducial 12′–83′; full range 1′–250′.",
-      "url": "cosmoval/bmode_pure_eb-99f816869fc4.png",
-      "narrow_url": "cosmoval/bmode_pure_eb-narrow-4cd147456700.png",
+      "url": "cosmoval/bmode_pure_eb-e1c35b999a40.png",
+      "narrow_url": "cosmoval/bmode_pure_eb-narrow-c4861fa94e73.png",
       "width": 1584,
       "height": 603,
-      "sha256": "551991b24f66cc2baa800e8a849a7eade407287d848867630842217d921f615e",
+      "sha256": "9a8b333b75ee467a6882d4f45f76ebdb845fd9ed4f3afda69c5353f41b721fd2",
       "narrow_width": 792,
       "narrow_height": 1013,
-      "narrow_sha256": "dba4365f2efc73a06f0e80f6e5d303d7342ea5bf1a634e3f484a8361b3fa45ad"
+      "narrow_sha256": "c680950206c55e53017182e6c6e9dd3b6325c6124cd333f98add0a84494385dd"
     },
     {
       "id": "bmode_cosebis",
@@ -195,10 +195,10 @@
       "caption": "COSEBIs Bₙ/σₙ at the fiducial 12′–83′ (filled) and over the full range (open). Shaded: modes beyond n = 6.",
       "size": "half",
       "alt": "COSEBIs Bₙ/σₙ at the fiducial 12′–83′ (filled) and over the full range (open). Shaded: modes beyond n = 6.",
-      "url": "cosmoval/bmode_cosebis-2ef48aaba6c1.png",
+      "url": "cosmoval/bmode_cosebis-ed767c5300af.png",
       "width": 791,
       "height": 542,
-      "sha256": "16333d4863e2e2f161c2abbfd0f70bfa3ecd9604af702daff12a83ff642414e9"
+      "sha256": "d8fd01258d315c315fddfd088a3779b99be5b28b6f952b08f94c83ad5ece9b75"
     },
     {
       "id": "bmode_cl",
@@ -207,42 +207,38 @@
       "caption": "Cℓ BB and EB in units of their uncertainty. Shaded: outside 300 ≤ ℓ ≤ 1600.",
       "size": "half",
       "alt": "Cℓ BB and EB in units of their uncertainty. Shaded: outside 300 ≤ ℓ ≤ 1600.",
-      "url": "cosmoval/bmode_cl-47ed6bf4cb03.png",
+      "url": "cosmoval/bmode_cl-5ba5c6db1fe2.png",
       "width": 791,
       "height": 637,
-      "sha256": "4a08ee6d8c50df674b2702e6c46319aa0834f78eb5516efd3b1e05e2074555b9"
+      "sha256": "8a1b4b7c85129b94a612e6046a9838f91232ca43155de638054e1b9b2222e7a8"
     },
     {
       "id": "ptes_config",
       "section": "bmodes",
       "group": "scale_cuts",
-      "caption": "Pure-B PTE for every (θmin, θmax) cut; the fiducial cut is outlined.",
+      "caption": "B-mode PTE for every (θmin, θmax) cut on the 20-bin reporting grid: pure ξ+B, pure ξ−B and COSEBIs Bₙ (n ≤ 6); the fiducial cut is outlined.",
       "size": "full",
-      "alt": "Pure-B PTE for every (θmin, θmax) cut; the fiducial cut is outlined.",
-      "url": "cosmoval/ptes_config-a6e70b817e0a.png",
-      "narrow_url": "cosmoval/ptes_config-narrow-d9e025cc6d73.png",
+      "alt": "B-mode PTE for every (θmin, θmax) cut on the 20-bin reporting grid: pure ξ+B, pure ξ−B and COSEBIs Bₙ (n ≤ 6); the fiducial cut is outlined.",
+      "url": "cosmoval/ptes_config-8ce40ba9aced.png",
+      "narrow_url": "cosmoval/ptes_config-narrow-71cf5cf2a8a4.png",
       "width": 1584,
       "height": 575,
-      "sha256": "95784acc5a4cd8bcd0772b0159b9cc31a18a8b413cc15064c06fc61a73b658f9",
+      "sha256": "331df8e8c112673ea1e57c1682ddafebc49bb6e73a17b3edd935f93492327b05",
       "narrow_width": 790,
       "narrow_height": 2326,
-      "narrow_sha256": "484b85385a0df11a5feed6efe9722fd846b3ceb4ea60a1d3f9ac0157d3a7f341"
+      "narrow_sha256": "2ed1b1b7624f3d35388a523527fd83bf2e53d665fdb5370b177d0c7f8b610b7f"
     },
     {
       "id": "ptes_harmonic",
       "section": "bmodes",
       "group": "scale_cuts",
-      "caption": "Cℓ BB PTE for every band range, and COSEBIs B PTE (n ≤ 20) for each cached cut.",
-      "size": "full",
-      "alt": "Cℓ BB PTE for every band range, and COSEBIs B PTE (n ≤ 20) for each cached cut.",
-      "url": "cosmoval/ptes_harmonic-529e9cb1d4ba.png",
-      "narrow_url": "cosmoval/ptes_harmonic-narrow-8a6d02824ac4.png",
-      "width": 1584,
-      "height": 656,
-      "sha256": "716f8595fe6bc39e706c993fbb708b70133ee347bc2171be840a657f10d38f6f",
-      "narrow_width": 791,
-      "narrow_height": 1454,
-      "narrow_sha256": "3579217f572ca36e9da2e21d140dde77537166d47a42f510b4251527a0bf3e43"
+      "caption": "Cℓ BB PTE for every band range; the fiducial 300 ≤ ℓ ≤ 1600 is outlined.",
+      "size": "half",
+      "alt": "Cℓ BB PTE for every band range; the fiducial 300 ≤ ℓ ≤ 1600 is outlined.",
+      "url": "cosmoval/ptes_harmonic-6012f16ff85e.png",
+      "width": 791,
+      "height": 666,
+      "sha256": "8e36ea0a9a6fa89b94d49aa70ac27b41857ef333133b9863a5c53c04b38817b8"
     },
     {
       "id": "star_residuals",
@@ -251,10 +247,10 @@
       "caption": "PSF validation stars (valid HSM): star-minus-model ellipticity and fourth moments, and half-light radius residual from √(T★/T_PSF) − 1. Means and σ use all finite detections.",
       "size": "full",
       "alt": "PSF validation stars (valid HSM): star-minus-model ellipticity and fourth moments, and half-light radius residual from √(T★/T_PSF) − 1. Means and σ use all finite detections.",
-      "url": "cosmoval/star_residuals-2b4a5e63a338.png",
+      "url": "cosmoval/star_residuals-7a2973401c24.png",
       "width": 1583,
       "height": 1099,
-      "sha256": "f265efb9cdd54d73fd5625931a80abc16b031a86d0661f5f73f3c15c6b383fe0"
+      "sha256": "38aaeed1d2a110deb75eaf3fcb2ba46eae41a3340910836a2f84a313dca871a4"
     },
     {
       "id": "psf_tau",
@@ -263,10 +259,10 @@
       "caption": "Galaxy–PSF correlations τ₀,₂,₅ with the posterior band of the α, β, η leakage model.",
       "size": "full",
       "alt": "Galaxy–PSF correlations τ₀,₂,₅ with the posterior band of the α, β, η leakage model.",
-      "url": "cosmoval/psf_tau-f69a1f4d967f.png",
+      "url": "cosmoval/psf_tau-550111577c65.png",
       "width": 1583,
       "height": 545,
-      "sha256": "d797d99172db12b612bde81b4390b6532560b5d05e0818fd303305e6f67635c3"
+      "sha256": "eab3e24507974958b4bcb4e5e23753531e6681928a427b847f3bc0754dd66a4d"
     },
     {
       "id": "psf_posterior",
@@ -275,10 +271,10 @@
       "caption": "Posterior of the leakage parameters (68 and 95%).",
       "size": "half",
       "alt": "Posterior of the leakage parameters (68 and 95%).",
-      "url": "cosmoval/psf_posterior-f2ccfe0bfd4b.png",
+      "url": "cosmoval/psf_posterior-12b4870216ed.png",
       "width": 791,
       "height": 791,
-      "sha256": "5100918f8eaeaa599aa9fe843c0d082e5b63122708f36246dffb33c6d6b22fe2"
+      "sha256": "7f3a449b54b1da4b5e0127530c733e6ce2d8021df3871bb8d3f6d243ff696401"
     },
     {
       "id": "psf_alpha",
@@ -287,10 +283,10 @@
       "caption": "Every estimate of the leakage coefficient: object-wise, scale-dependent and ρ/τ fit.",
       "size": "half",
       "alt": "Every estimate of the leakage coefficient: object-wise, scale-dependent and ρ/τ fit.",
-      "url": "cosmoval/psf_alpha-959f4dd48e20.png",
+      "url": "cosmoval/psf_alpha-3fefa08935dd.png",
       "width": 791,
       "height": 637,
-      "sha256": "824a1c17a5efe48be496a7b9453c77c7b35acf8773a8c0424f6ce2720d976161"
+      "sha256": "1be031ed0388d97d89341c7cd70317db2f8587177043d354426e89c4e23e2770"
     },
     {
       "id": "psf_rho",
@@ -299,10 +295,10 @@
       "caption": "ρ statistics of the PSF model and its residuals.",
       "size": "full",
       "alt": "ρ statistics of the PSF model and its residuals.",
-      "url": "cosmoval/psf_rho-4c77a6bd6a5e.png",
+      "url": "cosmoval/psf_rho-aa218b106a0e.png",
       "width": 1583,
       "height": 593,
-      "sha256": "b9ca281edbf0fbefced29dd37238c7512a7de037fbd2a41239d60cb4b1df4a95"
+      "sha256": "0d6579ff31661e84e33d8513da6bcd3b234eae165b074dfcda2fbf6fb58e53bd"
     },
     {
       "id": "psf_xi_sys",
@@ -311,10 +307,10 @@
       "caption": "Propagated PSF systematic relative to the blinded ξ±; dotted lines at ±10%.",
       "size": "full",
       "alt": "Propagated PSF systematic relative to the blinded ξ±; dotted lines at ±10%.",
-      "url": "cosmoval/psf_xi_sys-a47a1e9945af.png",
+      "url": "cosmoval/psf_xi_sys-d69a4d24360a.png",
       "width": 1583,
       "height": 549,
-      "sha256": "df112b41abdede1c8f11f5eba1c7d327630908ea6d46f92a8ef662ea2fd04a28"
+      "sha256": "6fa9c907338c7164cf8c9665e6722e94affb7e278e562969a17684d836147ae7"
     },
     {
       "id": "psf_xi_sys_comparison",
@@ -323,10 +319,10 @@
       "caption": "PSF systematic ξ⁺ from the α–β–η posterior (68% band) compared with τ₀,+²/ρ₀,+; no cosmological signal is shown.",
       "size": "half",
       "alt": "PSF systematic ξ⁺ from the α–β–η posterior (68% band) compared with τ₀,+²/ρ₀,+; no cosmological signal is shown.",
-      "url": "cosmoval/psf_xi_sys_comparison-eb539b63b6d6.png",
+      "url": "cosmoval/psf_xi_sys_comparison-ec27134deef3.png",
       "width": 791,
       "height": 615,
-      "sha256": "6f2412cbe934568d734068a70184cb0701ee9c0dfb0b3b071f86d11421811ea0"
+      "sha256": "a4a60e99f53793fbffc2dea3bba2b0255449ab32ddec2bad9594a6fe5a1d56ef"
     },
     {
       "id": "object_leakage_bins",
@@ -335,10 +331,10 @@
       "caption": "Weighted regressions of calibrated e₁, e₂ against the corresponding PSF model ellipticity at each galaxy, without an object-wise leakage correction. Eight equal-count resolution bins each have eight equal-count SNR bins. Hatching marks |α| < 2σ; σ is the weighted least-squares fit uncertainty.",
       "size": "full",
       "alt": "Weighted regressions of calibrated e₁, e₂ against the corresponding PSF model ellipticity at each galaxy, without an object-wise leakage correction. Eight equal-count resolution bins each have eight equal-count SNR bins. Hatching marks |α| < 2σ; σ is the weighted least-squares fit uncertainty.",
-      "url": "cosmoval/object_leakage_bins-fe5682ce77ed.png",
+      "url": "cosmoval/object_leakage_bins-a14e9cf45090.png",
       "width": 1584,
       "height": 660,
-      "sha256": "18d2724d18aabb65063885d9445946b985fdb7eeacfa6289e283be34516b49e0"
+      "sha256": "a97aaa0e59999134f3023ea2a33185d54989f99bf904f814fcc4850affe026da"
     },
     {
       "id": "additive_bias",
@@ -347,10 +343,10 @@
       "caption": "Linear fits to weighted means of calibrated ellipticity in 20 fixed bins of each standardised property. Error bars and significances use inverse-variance fits to binned means with independent-galaxy shape-noise errors; they omit spatially correlated noise, notably for RA and Dec. Galaxy size is √T and the size ratio is T/T_PSF; only objects inside the fixed property ranges are used.",
       "size": "full",
       "alt": "Linear fits to weighted means of calibrated ellipticity in 20 fixed bins of each standardised property. Error bars and significances use inverse-variance fits to binned means with independent-galaxy shape-noise errors; they omit spatially correlated noise, notably for RA and Dec. Galaxy size is √T and the size ratio is T/T_PSF; only objects inside the fixed property ranges are used.",
-      "url": "cosmoval/additive_bias-fb6117fe4397.png",
+      "url": "cosmoval/additive_bias-4867982ebfc3.png",
       "width": 1583,
       "height": 989,
-      "sha256": "3cdcbe78ed063f44f9e9fb99996a5bbe5934155b6f775e1719055d43891aca49"
+      "sha256": "f75624b56c872a25711feb44dbf34c99423e84f3521e3700697617632bbfdd8e"
     },
     {
       "id": "psf_alpha_mag",
@@ -359,10 +355,10 @@
       "caption": "Scale-dependent leakage α(θ) = τ₀/ρ₀ for all galaxies and in galaxy-magnitude tertiles (calibrated e₁, e₂ rescaled to each bin's shear response plus the global selection response, w_des; jackknife errors). The selection response is larger for the faint bin, so its |α| is likely underestimated by ~10–20%. The paper's DES-Y3 comparison is omitted.",
       "size": "full",
       "alt": "Scale-dependent leakage α(θ) = τ₀/ρ₀ for all galaxies and in galaxy-magnitude tertiles (calibrated e₁, e₂ rescaled to each bin's shear response plus the global selection response, w_des; jackknife errors). The selection response is larger for the faint bin, so its |α| is likely underestimated by ~10–20%. The paper's DES-Y3 comparison is omitted.",
-      "url": "cosmoval/psf_alpha_mag-1c82963c8d71.png",
+      "url": "cosmoval/psf_alpha_mag-d37a6a9fc737.png",
       "width": 1583,
       "height": 659,
-      "sha256": "3a1483a4e22fa7a509725342d42c94df7dbbf53d2608c8fc06b1efb6ff111900"
+      "sha256": "c2cee7096a07793d4aa32415e0cf61052d367ecf49ff2c33cb9489d6d8a139e9"
     },
     {
       "id": "tan_psf_stars",
@@ -371,10 +367,10 @@
       "caption": "Galaxy γt and γ× around PSF validation stars (valid HSM, one entry per star), all and by star magnitude; calibrated e₁, e₂ with w_des, no random subtraction; jackknife errors, χ²/ν against zero.",
       "size": "full",
       "alt": "Galaxy γt and γ× around PSF validation stars (valid HSM, one entry per star), all and by star magnitude; calibrated e₁, e₂ with w_des, no random subtraction; jackknife errors, χ²/ν against zero.",
-      "url": "cosmoval/tan_psf_stars-93d3033385a7.png",
-      "width": 1583,
+      "url": "cosmoval/tan_psf_stars-5346a09aca2b.png",
+      "width": 1584,
       "height": 593,
-      "sha256": "80624e05aed121e32b746ccf13b4ed13e08a4f7bfc59b88c0843d0dd337b2c89"
+      "sha256": "ebc9b1db4d810bb859e29610733a8822a387e22abfe299259b74eff55ca937d6"
     },
     {
       "id": "tan_lambda",
@@ -383,10 +379,10 @@
       "caption": "PSF validation stars around galaxy positions: tangential and cross PSF-model ellipticity (λ₁) and star-minus-model residual (λ₃), minus the same around footprint randoms. Not a null test: it traces the PSF field.",
       "size": "full",
       "alt": "PSF validation stars around galaxy positions: tangential and cross PSF-model ellipticity (λ₁) and star-minus-model residual (λ₃), minus the same around footprint randoms. Not a null test: it traces the PSF field.",
-      "url": "cosmoval/tan_lambda-e2867f8759ca.png",
+      "url": "cosmoval/tan_lambda-18adeeaca84a.png",
       "width": 1583,
       "height": 1055,
-      "sha256": "a862af6e22a6aa486930a3fcc7d3ac950d504d763268e84f766c7dd64fccd1f2"
+      "sha256": "37fe5e6aec595be2b9611c4b76a95338c0c26e0ca8d9b97e3fbd09a774fdd927"
     },
     {
       "id": "tan_tiles",
@@ -395,10 +391,10 @@
       "caption": "θγt and θγ× of galaxies around tile centres; jackknife errors.",
       "size": "full",
       "alt": "θγt and θγ× of galaxies around tile centres; jackknife errors.",
-      "url": "cosmoval/tan_tiles-2f426df677f2.png",
+      "url": "cosmoval/tan_tiles-f9a4409de48b.png",
       "width": 1583,
       "height": 593,
-      "sha256": "379a240d0b906c2bdb23413c7cf27561422aa93ea51017ce0e6f0d3c538a0faa"
+      "sha256": "4cc241a2bd41f17ecc969f3276a252a8b18ede97562739e67f2ddbae4a192fd7"
     },
     {
       "id": "tan_gaia",
@@ -407,10 +403,10 @@
       "caption": "Galaxy γt and γ× around Gaia DR3 stars (RUWE < 1.4) in three G bins, minus the same around footprint randoms; jackknife errors.",
       "size": "full",
       "alt": "Galaxy γt and γ× around Gaia DR3 stars (RUWE < 1.4) in three G bins, minus the same around footprint randoms; jackknife errors.",
-      "url": "cosmoval/tan_gaia-f18b9a398ef2.png",
+      "url": "cosmoval/tan_gaia-0ed3dc8070ef.png",
       "width": 1583,
       "height": 593,
-      "sha256": "a9b595697dfeb333090dd375a32333cebb203d055d66c71572a2c483935fe338"
+      "sha256": "be3236f43c1d9599f0543347f84783fcc8b000366857f1b9b3fe819a479c47ec"
     },
     {
       "id": "selection_hist",
@@ -419,10 +415,10 @@
       "caption": "Cumulative v2 catalogue selections; histograms show magnitudes 15–30. The paper's chip-defect/IMA_FLAGS, stellar-halo and pointing-count stages have no corresponding cut in this run. The configured tile overlap and r-band coverage cuts are included.",
       "size": "full",
       "alt": "Cumulative v2 catalogue selections; histograms show magnitudes 15–30. The paper's chip-defect/IMA_FLAGS, stellar-halo and pointing-count stages have no corresponding cut in this run. The configured tile overlap and r-band coverage cuts are included.",
-      "url": "cosmoval/selection_hist-49c10f4facd5.png",
+      "url": "cosmoval/selection_hist-ca0701cf11be.png",
       "width": 1583,
       "height": 879,
-      "sha256": "840a4258a58b9db80912585b088b8ad98375834a162397d05fcc49fb498a22a0"
+      "sha256": "d6cdd6dc3c1a42ea6f25981b7a3ee39ce39d50465c44ca671a5079173710020b"
     },
     {
       "id": "weights",
@@ -431,26 +427,26 @@
       "caption": "Counts, weights, mean diagonal galaxy response and per-component uncalibrated ellipticity RMS on the weight grid.",
       "size": "full",
       "alt": "Counts, weights, mean diagonal galaxy response and per-component uncalibrated ellipticity RMS on the weight grid.",
-      "url": "cosmoval/weights-a84f72ed4ba4.png",
-      "narrow_url": "cosmoval/weights-narrow-b6c82de6f4ac.png",
+      "url": "cosmoval/weights-f046279a777b.png",
+      "narrow_url": "cosmoval/weights-narrow-323e58bfcfea.png",
       "width": 1583,
       "height": 1275,
-      "sha256": "27c88f75a82733169cd04bcc735d2c9f871c2e9057d2c57ea05b96822bd9225f",
+      "sha256": "66605fce9a6df8dc7b6e435cad745dfec008fe6e1d24bfbd2a1f0a0759a8660e",
       "narrow_width": 792,
       "narrow_height": 2091,
-      "narrow_sha256": "25c66744c3f4f7243351acd1919cc4ecf68066efad5096853645f5ee6ab3f488"
+      "narrow_sha256": "1dc0139e4ea5d0cf15af88a232c6ddff4781eadb1359b248be5f2bb763ed252b"
     },
     {
       "id": "response_histogram",
       "section": "survey",
       "group": null,
-      "caption": "Galaxy metacal response components over −5 to 5; at most 0.27% of entries per component lie outside this range or are non-finite. v2 has no metacal star shapes.",
+      "caption": "Galaxy metacal response components over −5 to 5; at most 0.26% of entries per component lie outside this range or are non-finite. v2 has no metacal star shapes.",
       "size": "half",
-      "alt": "Galaxy metacal response components over −5 to 5; at most 0.27% of entries per component lie outside this range or are non-finite. v2 has no metacal star shapes.",
-      "url": "cosmoval/response_histogram-7d6636a026e7.png",
+      "alt": "Galaxy metacal response components over −5 to 5; at most 0.26% of entries per component lie outside this range or are non-finite. v2 has no metacal star shapes.",
+      "url": "cosmoval/response_histogram-64b4c8c7452c.png",
       "width": 791,
       "height": 615,
-      "sha256": "4ad2890ee413faed899ebe49722accbfca3625f43303f91b1d3c61e5737f4004"
+      "sha256": "ff506e2e1f9d47de2b6a2f84071fb05d71cd994eaed652bfbe8fdda2f0ee5ef7"
     },
     {
       "id": "sky_stars",
@@ -459,10 +455,10 @@
       "caption": "PSF validation stars (valid HSM): star detections per sky area, counted once per exposure, and star-minus-model T divided by model T; HEALPix nside 256.",
       "size": "full",
       "alt": "PSF validation stars (valid HSM): star detections per sky area, counted once per exposure, and star-minus-model T divided by model T; HEALPix nside 256.",
-      "url": "cosmoval/sky_stars-475f41ae7b2f.png",
+      "url": "cosmoval/sky_stars-3a1c58c1f245.png",
       "width": 1583,
-      "height": 695,
-      "sha256": "90deef5ea3fda737c7dc44a1f931bf7e7577754ad22aa2e02924189f6fcbadb1"
+      "height": 993,
+      "sha256": "371432ec61ed1ace312acfd73a86b303661c88d46252fe45c26e542e02bf3850"
     },
     {
       "id": "sky_magnitude",
@@ -471,10 +467,10 @@
       "caption": "PSF FWHM and unweighted mean galaxy r magnitude per HEALPix nside-256 pixel.",
       "size": "full",
       "alt": "PSF FWHM and unweighted mean galaxy r magnitude per HEALPix nside-256 pixel.",
-      "url": "cosmoval/sky_magnitude-9c1cb8637d65.png",
+      "url": "cosmoval/sky_magnitude-371eb934d88e.png",
       "width": 1583,
-      "height": 688,
-      "sha256": "8b5a1fcdcb215b434917d3f8994467f36299755e53f2db47b69cf869eb765d61"
+      "height": 993,
+      "sha256": "8780e9606bbc97b1e1afa435541eaadcc8f44edc68d211ea43d4867d3f6a2c87"
     },
     {
       "id": "sky_footprint",
@@ -483,10 +479,10 @@
       "caption": "Effective source density in a zenithal equal-area projection centred on the patch.",
       "size": "full",
       "alt": "Effective source density in a zenithal equal-area projection centred on the patch.",
-      "url": "cosmoval/sky_footprint-7eb0758ea5cb.png",
-      "width": 1589,
-      "height": 1312,
-      "sha256": "939eeefbb30d83ab3ab55bc4d9cb81589c4ee44c3ccf676e5afc314a2c01560b"
+      "url": "cosmoval/sky_footprint-3e8cf9ae5ed5.png",
+      "width": 1583,
+      "height": 1856,
+      "sha256": "e1fa5d510761bcd41ffaa8fcd63699e8e2dfa86cae41c8f661f6fb3394d83bfa"
     },
     {
       "id": "sky_galaxies",
@@ -495,14 +491,14 @@
       "caption": "Galaxy fields: ellipticity dispersion, mean weight and weighted mean e₁, e₂.",
       "size": "full",
       "alt": "Galaxy fields: ellipticity dispersion, mean weight and weighted mean e₁, e₂.",
-      "url": "cosmoval/sky_galaxies-9d47a0ff1e7f.png",
-      "narrow_url": "cosmoval/sky_galaxies-narrow-d0f71de2e657.png",
-      "width": 1585,
-      "height": 1396,
-      "sha256": "2ee08e40a0a113348c1893400a9579c1e4a8ede21ea9d99856694d201de3450b",
-      "narrow_width": 793,
-      "narrow_height": 2859,
-      "narrow_sha256": "4aa8e8a5e1bf86f559a61bf599ebffda48f1f0d60e20f86be1fa9110af7dcc70"
+      "url": "cosmoval/sky_galaxies-df59d4e6e26c.png",
+      "narrow_url": "cosmoval/sky_galaxies-narrow-f23cde6799c5.png",
+      "width": 1583,
+      "height": 1942,
+      "sha256": "0e362bc3f98061e4c4d6c61e5a94f955c6ba917fe4ad4252c3af27981003d154",
+      "narrow_width": 637,
+      "narrow_height": 3200,
+      "narrow_sha256": "d4228e78baa552b86cd6dfe6da9226e49aef0eff0464fca9ea512c1ab52a8954"
     },
     {
       "id": "sky_psf",
@@ -511,14 +507,14 @@
       "caption": "PSF fields: model FWHM at galaxies, and star-minus-model size and ellipticity residuals for PSF validation stars (valid HSM); size residual normalised by the model (median -0.58%).",
       "size": "full",
       "alt": "PSF fields: model FWHM at galaxies, and star-minus-model size and ellipticity residuals for PSF validation stars (valid HSM); size residual normalised by the model (median -0.58%).",
-      "url": "cosmoval/sky_psf-a869ed85c675.png",
-      "narrow_url": "cosmoval/sky_psf-narrow-f0e8f5891f9a.png",
-      "width": 1587,
-      "height": 1395,
-      "sha256": "8ad0f519f8bed9176079401c532cf099bc885ec01ccd45fbe914260c70093657",
-      "narrow_width": 795,
-      "narrow_height": 2865,
-      "narrow_sha256": "471a4ae55347a5c88531d2cd96e79b07a39c1546b17532bfc19757052918da17"
+      "url": "cosmoval/sky_psf-10620cbd6c6e.png",
+      "narrow_url": "cosmoval/sky_psf-narrow-57c28ca40fe7.png",
+      "width": 1583,
+      "height": 1942,
+      "sha256": "d8ffeef52ad2730fb2291b4fa6ece272382cbec8c0a20a51e4b9617929867bbd",
+      "narrow_width": 637,
+      "narrow_height": 3200,
+      "narrow_sha256": "8c7044ee5004eaf214f362e62c029a3ce1f30a887ffec17c0b974374bd8b8029"
     },
     {
       "id": "cov_xi",
@@ -527,10 +523,10 @@
       "caption": "ξ± reporting-grid covariance (analytic, masked).",
       "size": "half",
       "alt": "ξ± reporting-grid covariance (analytic, masked).",
-      "url": "cosmoval/cov_xi-db4a4998235a.png",
+      "url": "cosmoval/cov_xi-a3b8c4ede7b8.png",
       "width": 790,
       "height": 680,
-      "sha256": "75861198c49deb302cf0c2fdc51cb2f299c237816fdc8f6edbac25be216cbffd"
+      "sha256": "5255c95e6fcad6918b7c62f43e21be942feb53e461fdb77df17bda811fd6365b"
     },
     {
       "id": "cov_pure_eb",
@@ -539,10 +535,10 @@
       "caption": "Pure E, B and ambiguous modes of ξ±.",
       "size": "half",
       "alt": "Pure E, B and ambiguous modes of ξ±.",
-      "url": "cosmoval/cov_pure_eb-7e84f511f950.png",
+      "url": "cosmoval/cov_pure_eb-58447af1e65a.png",
       "width": 790,
       "height": 680,
-      "sha256": "b9437913c846720fe02da2fc706f34325eae37b0e832ed9c8a6dd76d7a5db4df"
+      "sha256": "ab917f0d5458174c36228324eeff816b66f924dac3bdd7f4a841cd951490c8d7"
     },
     {
       "id": "cov_cosebis",
@@ -551,10 +547,10 @@
       "caption": "COSEBIs E and B modes at the fiducial cut.",
       "size": "half",
       "alt": "COSEBIs E and B modes at the fiducial cut.",
-      "url": "cosmoval/cov_cosebis-1da4befe2948.png",
+      "url": "cosmoval/cov_cosebis-2ec677c93fef.png",
       "width": 790,
       "height": 680,
-      "sha256": "3d0c57e872f3eead552d3dab400a16c7788ff6f5cc30f35a3c2dc03d03f67b0c"
+      "sha256": "f39d1d85cc1376c494ec88cc950434646af455ab8c849d50d812365f2ffdf234"
     },
     {
       "id": "cov_cl",
@@ -563,14 +559,14 @@
       "caption": "Cℓ EE, EB and BB (Gaussian, NaMaster).",
       "size": "half",
       "alt": "Cℓ EE, EB and BB (Gaussian, NaMaster).",
-      "url": "cosmoval/cov_cl-e195486b96fc.png",
+      "url": "cosmoval/cov_cl-4729369e5573.png",
       "width": 790,
       "height": 680,
-      "sha256": "38d2cd51a7b16291fbaa5b3d60a6200721f2c9c92f74afd9c9fb7e2c8b2cc2a3"
+      "sha256": "e5d3402f179e1bfa0da9559d7453418f5ab6da3a8fccdd7efe0ef6b97d656064"
     }
   ],
-  "generator_sha256": "7cf6576b01521924ef5e4ac6b72fdfbf7de8c09e23b33d7cc6896c87fd9f7778",
+  "generator_sha256": "a6e6b690b9fd48af79a318a9c6f071ed0949d547ee4f1ca6b56214366a216643",
   "pillow_version": "10.0.0",
-  "content_hash": "4a57be9e504f526782187d7e1b740042a86a766cb24f4a761dc5e85e3316665e",
-  "png_bytes": 9324535
+  "content_hash": "61dbd978323cc31814756a690026eec46a07b2dcef1e870357e6457a51230c28",
+  "png_bytes": 11625511
 }
