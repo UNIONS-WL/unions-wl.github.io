@@ -1,11 +1,11 @@
 {
   "schema_version": 4,
   "metadata": {
-    "time_utc": "2026-10-28T05:25:44.595080+00:00",
+    "time_utc": "2026-10-28T19:38:39.233168+00:00",
     "tile_count": 20515,
     "area_deg2": 4654.677681998284,
     "blind_name": "unions",
-    "git_sha": "61202bace5da6892bc03104f501153447bb05a04",
+    "git_sha": "fbb2b3e81493ce3875cc3f6aa89f61c5a9747817",
     "nz_status": "v1.4.6.3_A diagnostic proxy; not v2 calibrated",
     "n_eff": 5.448128617063219,
     "sigma_e": 0.3058722691431762,
@@ -114,12 +114,12 @@
         "cosebis_theta": "12′–83′",
         "ell": "300 ≤ ℓ ≤ 1600",
         "values": {
-          "cosebis_n6": 0.3834684494641144,
-          "cosebis_n20": 0.1985879847476044,
-          "xip_B": 0.6937758568955708,
-          "xim_B": 0.021274270520155365,
-          "combined": 0.10906373818312336,
-          "cl_BB": 0.008470020827050352
+          "cosebis_n6": 0.41175008317604656,
+          "cosebis_n20": 0.23022434527118668,
+          "xip_B": 0.7188579716094159,
+          "xim_B": 0.023913423667526263,
+          "combined": 0.12250468304076173,
+          "cl_BB": 0.008470020827050418
         }
       },
       {
@@ -129,12 +129,12 @@
         "cosebis_theta": "1′–250′",
         "ell": "8 ≤ ℓ ≤ 2048",
         "values": {
-          "cosebis_n6": 0.004123086282588001,
-          "cosebis_n20": 0.08996032549022433,
-          "xip_B": 0.027522309437299795,
-          "xim_B": 0.0016822743854095585,
-          "combined": 0.03337136110015336,
-          "cl_BB": 0.022955626904952037
+          "cosebis_n6": 0.004238089783487065,
+          "cosebis_n20": 0.0977289845664088,
+          "xip_B": 0.030545917776580087,
+          "xim_B": 0.0017361675494801184,
+          "combined": 0.03779315123352437,
+          "cl_BB": 0.022955626904952224
         }
       }
     ]
@@ -147,14 +147,14 @@
       "caption": "Blinded ξ± on the 20-bin reporting grid; errors from the analytic covariance.",
       "size": "full",
       "alt": "Blinded ξ± on the 20-bin reporting grid; errors from the analytic covariance.",
-      "url": "cosmoval/xi_pm-9be9958176a5.png",
-      "narrow_url": "cosmoval/xi_pm-narrow-8f3a5da80a67.png",
+      "url": "cosmoval/xi_pm-bfd1521ad0f4.png",
+      "narrow_url": "cosmoval/xi_pm-narrow-038d00f2bf50.png",
       "width": 1570,
       "height": 643,
-      "sha256": "f1893df15e324ea65733ded3ab972cd68b0decf80be658114309e474d7b9749d",
+      "sha256": "bb73516387f608fe5b1ac5d94b262f737747d455436e66db965863fae1efa4ba",
       "narrow_width": 792,
       "narrow_height": 1009,
-      "narrow_sha256": "11f1469ee3a5672a469c9daba003ce5a90cbad170cd2d745acda4d8f3b6365cd"
+      "narrow_sha256": "40153e14284fae5b4ac0fa03820a0f647bcd7f18e9e2106717305155da0a1b1a"
     },
     {
       "id": "cl",
@@ -179,14 +179,14 @@
       "caption": "Pure-mode decomposition of ξ±. Shaded: outside the fiducial 12′–83′; full range 1′–250′.",
       "size": "full",
       "alt": "Pure-mode decomposition of ξ±. Shaded: outside the fiducial 12′–83′; full range 1′–250′.",
-      "url": "cosmoval/bmode_pure_eb-e1c35b999a40.png",
-      "narrow_url": "cosmoval/bmode_pure_eb-narrow-c4861fa94e73.png",
+      "url": "cosmoval/bmode_pure_eb-9c1d5ac7192d.png",
+      "narrow_url": "cosmoval/bmode_pure_eb-narrow-b27c0360f055.png",
       "width": 1584,
       "height": 603,
-      "sha256": "9a8b333b75ee467a6882d4f45f76ebdb845fd9ed4f3afda69c5353f41b721fd2",
+      "sha256": "069853210421cc12976a3b4092cd767f8922d6e0952fe59894ab7959973a2c20",
       "narrow_width": 792,
       "narrow_height": 1013,
-      "narrow_sha256": "c680950206c55e53017182e6c6e9dd3b6325c6124cd333f98add0a84494385dd"
+      "narrow_sha256": "139b4702600f7ec6f84712304997bf5d7f2b8547de76670c3621e6774cf10e23"
     },
     {
       "id": "bmode_cosebis",
@@ -195,10 +195,10 @@
       "caption": "COSEBIs Bₙ/σₙ at the fiducial 12′–83′ (filled) and over the full range (open). Shaded: modes beyond n = 6.",
       "size": "half",
       "alt": "COSEBIs Bₙ/σₙ at the fiducial 12′–83′ (filled) and over the full range (open). Shaded: modes beyond n = 6.",
-      "url": "cosmoval/bmode_cosebis-ed767c5300af.png",
+      "url": "cosmoval/bmode_cosebis-3c36829b610b.png",
       "width": 791,
       "height": 542,
-      "sha256": "d8fd01258d315c315fddfd088a3779b99be5b28b6f952b08f94c83ad5ece9b75"
+      "sha256": "de1fd4393028d85d956a7049492dae9e888b3a59049d04e45a66e88a19e215ac"
     },
     {
       "id": "bmode_cl",
@@ -219,14 +219,14 @@
       "caption": "B-mode PTE for every (θmin, θmax) cut on the 20-bin reporting grid: pure ξ+B, pure ξ−B and COSEBIs Bₙ (n ≤ 6); the fiducial cut is outlined.",
       "size": "full",
       "alt": "B-mode PTE for every (θmin, θmax) cut on the 20-bin reporting grid: pure ξ+B, pure ξ−B and COSEBIs Bₙ (n ≤ 6); the fiducial cut is outlined.",
-      "url": "cosmoval/ptes_config-8ce40ba9aced.png",
-      "narrow_url": "cosmoval/ptes_config-narrow-71cf5cf2a8a4.png",
+      "url": "cosmoval/ptes_config-63a58777b6e4.png",
+      "narrow_url": "cosmoval/ptes_config-narrow-95deeb7920d7.png",
       "width": 1584,
       "height": 575,
-      "sha256": "331df8e8c112673ea1e57c1682ddafebc49bb6e73a17b3edd935f93492327b05",
+      "sha256": "5eb8bb89f2c9a0ad716e624d00ac7e5c1f7ce033d17ec3daded6f0d69e36ea47",
       "narrow_width": 790,
       "narrow_height": 2326,
-      "narrow_sha256": "2ed1b1b7624f3d35388a523527fd83bf2e53d665fdb5370b177d0c7f8b610b7f"
+      "narrow_sha256": "b8ecb8ed1e70874bfd39154fa33c49dccd99e3f8fccf2017a2d3b2e4e0920818"
     },
     {
       "id": "ptes_harmonic",
@@ -259,10 +259,10 @@
       "caption": "Galaxy–PSF correlations τ₀,₂,₅ with the posterior band of the α, β, η leakage model.",
       "size": "full",
       "alt": "Galaxy–PSF correlations τ₀,₂,₅ with the posterior band of the α, β, η leakage model.",
-      "url": "cosmoval/psf_tau-550111577c65.png",
+      "url": "cosmoval/psf_tau-93d4c45681de.png",
       "width": 1583,
       "height": 545,
-      "sha256": "eab3e24507974958b4bcb4e5e23753531e6681928a427b847f3bc0754dd66a4d"
+      "sha256": "771dcd05b20c0310e52b6e66cde3bdbeb79c2b916ae635b89d90bf2bf67b565a"
     },
     {
       "id": "psf_posterior",
@@ -271,10 +271,10 @@
       "caption": "Posterior of the leakage parameters (68 and 95%).",
       "size": "half",
       "alt": "Posterior of the leakage parameters (68 and 95%).",
-      "url": "cosmoval/psf_posterior-12b4870216ed.png",
+      "url": "cosmoval/psf_posterior-57fab3b2698a.png",
       "width": 791,
       "height": 791,
-      "sha256": "7f3a449b54b1da4b5e0127530c733e6ce2d8021df3871bb8d3f6d243ff696401"
+      "sha256": "6ccc02e6d5e3b9c792240ba42d3024056cd4ab1347d725a537baf92b4cd85544"
     },
     {
       "id": "psf_alpha",
@@ -283,10 +283,10 @@
       "caption": "Every estimate of the leakage coefficient: object-wise, scale-dependent and ρ/τ fit.",
       "size": "half",
       "alt": "Every estimate of the leakage coefficient: object-wise, scale-dependent and ρ/τ fit.",
-      "url": "cosmoval/psf_alpha-3fefa08935dd.png",
+      "url": "cosmoval/psf_alpha-366788d48b95.png",
       "width": 791,
       "height": 637,
-      "sha256": "1be031ed0388d97d89341c7cd70317db2f8587177043d354426e89c4e23e2770"
+      "sha256": "c6284a7f792243450b77877f8733fa272ec434f206669bea12629e0603f2f067"
     },
     {
       "id": "psf_rho",
@@ -307,10 +307,10 @@
       "caption": "Propagated PSF systematic relative to the blinded ξ±; dotted lines at ±10%.",
       "size": "full",
       "alt": "Propagated PSF systematic relative to the blinded ξ±; dotted lines at ±10%.",
-      "url": "cosmoval/psf_xi_sys-d69a4d24360a.png",
+      "url": "cosmoval/psf_xi_sys-6c561f60910b.png",
       "width": 1583,
       "height": 549,
-      "sha256": "6fa9c907338c7164cf8c9665e6722e94affb7e278e562969a17684d836147ae7"
+      "sha256": "d6ec99aa055efb0e7b375829b1620dceb99976716a8d26bddb31083478a964bd"
     },
     {
       "id": "psf_xi_sys_comparison",
@@ -319,10 +319,10 @@
       "caption": "PSF systematic ξ⁺ from the α–β–η posterior (68% band) compared with τ₀,+²/ρ₀,+; no cosmological signal is shown.",
       "size": "half",
       "alt": "PSF systematic ξ⁺ from the α–β–η posterior (68% band) compared with τ₀,+²/ρ₀,+; no cosmological signal is shown.",
-      "url": "cosmoval/psf_xi_sys_comparison-ec27134deef3.png",
+      "url": "cosmoval/psf_xi_sys_comparison-df9e3cbaf240.png",
       "width": 791,
       "height": 615,
-      "sha256": "a4a60e99f53793fbffc2dea3bba2b0255449ab32ddec2bad9594a6fe5a1d56ef"
+      "sha256": "9b4b81175bdccc596a17a0432da5301c19f4146a2529247f9c37c773a03ccccd"
     },
     {
       "id": "object_leakage_bins",
@@ -523,10 +523,10 @@
       "caption": "ξ± reporting-grid covariance (analytic, masked).",
       "size": "half",
       "alt": "ξ± reporting-grid covariance (analytic, masked).",
-      "url": "cosmoval/cov_xi-a3b8c4ede7b8.png",
+      "url": "cosmoval/cov_xi-f2702972f0f0.png",
       "width": 790,
       "height": 680,
-      "sha256": "5255c95e6fcad6918b7c62f43e21be942feb53e461fdb77df17bda811fd6365b"
+      "sha256": "e8d896ad44ab3117ee50ebc887cceef8e8f08297d6a2b2325df62cfd0bd98f2b"
     },
     {
       "id": "cov_pure_eb",
@@ -535,10 +535,10 @@
       "caption": "Pure E, B and ambiguous modes of ξ±.",
       "size": "half",
       "alt": "Pure E, B and ambiguous modes of ξ±.",
-      "url": "cosmoval/cov_pure_eb-58447af1e65a.png",
+      "url": "cosmoval/cov_pure_eb-3218b7fc1798.png",
       "width": 790,
       "height": 680,
-      "sha256": "ab917f0d5458174c36228324eeff816b66f924dac3bdd7f4a841cd951490c8d7"
+      "sha256": "7fa7a552b2bfd623be532143ee4f6c5804f0d403e32a2e494f4e7ea67eb4ac38"
     },
     {
       "id": "cov_cosebis",
@@ -547,10 +547,10 @@
       "caption": "COSEBIs E and B modes at the fiducial cut.",
       "size": "half",
       "alt": "COSEBIs E and B modes at the fiducial cut.",
-      "url": "cosmoval/cov_cosebis-2ec677c93fef.png",
+      "url": "cosmoval/cov_cosebis-42c332a6cb9e.png",
       "width": 790,
       "height": 680,
-      "sha256": "f39d1d85cc1376c494ec88cc950434646af455ab8c849d50d812365f2ffdf234"
+      "sha256": "2016b6b4fb0b26e2a7eaa3f2b417959aaaeab9876b7846b3414ee91f07217933"
     },
     {
       "id": "cov_cl",
@@ -567,6 +567,6 @@
   ],
   "generator_sha256": "a6e6b690b9fd48af79a318a9c6f071ed0949d547ee4f1ca6b56214366a216643",
   "pillow_version": "10.0.0",
-  "content_hash": "61dbd978323cc31814756a690026eec46a07b2dcef1e870357e6457a51230c28",
-  "png_bytes": 11625511
+  "content_hash": "56e714a520d8a48be7588b5ea37f1a4a3600675bbe0fff445df16304af6a5885",
+  "png_bytes": 11619116
 }
