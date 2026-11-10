@@ -4,15 +4,21 @@
 """Draw the plate that opens the production page: production/plate.svg.
 
 A north-polar chart (azimuthal equidistant, sky view: RA increases clockwise) of the
-UNIONS lensing footprint as two watercolour washes (the whole calibrated sample, and
-the part with z-band photometry that carries tomographic bins), the Milky Way as a
-dark wash, a graticule, the bright northern stars, and the analysis triangle drawn
-over it as a constellation. status.html inlines the file and fills in the run stars.
+UNIONS sky as three nested watercolour washes, the Milky Way as a dark wash, a
+graticule, the bright northern stars, and the analysis triangle drawn over it as a
+constellation. status.html inlines the file and fills in the run stars.
+
+The washes, from pale to deep:
+    run 1       every tile ShapePipe v2 run 1 published (production/status.json), outlined in pen
+    lensing     the calibrated lensing sample (HEALPix footprint, first argument)
+    tomographic the part of it with z-band photometry (HEALPix footprint, second argument)
+Wash edges follow the footprints to about half a degree; the filters only grain the pigment.
 
     srun -n 1 -c 2 --mem=8G uv run production/tools/plate.py \\
-        /project/rrg-kyi/cdaley/unions/data/v2.x/cosmo-val-v2-tomo/footprint-nside4096-ring.fits \\
-        /project/rrg-kyi/cdaley/unions/analyses/cosmo-val-v2-tomo-nz468/catalogue/footprint-tomo-nside4096-ring.fits
+        /project/rrg-kyi/cdaley/unions/data/v2.x/v2.0.0/masks/footprint-nside4096-ring.fits \\
+        /project/rrg-kyi/cdaley/unions/data/v2.x/v2.0.0/masks/footprint-tomo-nside4096-ring.fits
 """
+import json
 import sys
 from pathlib import Path
 
@@ -62,7 +68,18 @@ def footprint(path, ra, dec, inside):
     m = hp.read_map(path, dtype=np.uint8)
     hit = m[hp.ang2pix(hp.get_nside(m), ra, dec, lonlat=True)].astype(float)
     hit[~inside] = 0
-    return gaussian_filter(hit, 1.6 * SS)
+    return gaussian_filter(hit, 1.2 * SS)
+
+
+def tiles(ids, ra, dec, inside):
+    """Raster of half-degree tiles named "AAA.BBB": Dec = BBB/2 - 90, RA = AAA/2/cos(Dec)."""
+    have = np.zeros((800, 400), bool)
+    for a, b in (map(int, i.split(".")) for i in ids):
+        have[a, b] = True
+    b = np.round((dec + 90) * 2).astype(int)
+    a = np.round(ra * np.cos(np.radians(b / 2 - 90)) * 2).astype(int)
+    hit = (have[a.clip(0, 799), b.clip(0, 399)] & inside).astype(float)
+    return gaussian_filter(hit, 2.5 * SS)
 
 
 # Bright northern stars, J2000 degrees: name, RA, Dec, visual magnitude.
@@ -97,6 +114,8 @@ def main():
     ra, dec, inside = raster_radec()
     full = loops(footprint(full_path, ra, dec, inside), 0.5)
     tomo = loops(footprint(tomo_path, ra, dec, inside), 0.5)
+    status = json.loads((Path(__file__).resolve().parents[1] / "status.json").read_text())
+    run1 = loops(tiles(status["tiles"]["published"], ra, dec, inside), 0.5)
 
     gal = SkyCoord(ra * u.deg, dec * u.deg).galactic
     l, b = gal.l.wrap_at(180 * u.deg).deg, gal.b.deg
@@ -107,12 +126,12 @@ def main():
     out = []
     w = out.append
     w(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {SIZE} {SIZE}" role="img" '
-      'aria-label="North-polar chart of the UNIONS lensing footprint, with the analysis drawn over it as a '
+      'aria-label="North-polar chart of the UNIONS sky: the tiles measured by ShapePipe v2 run 1, the calibrated lensing sample and its tomographic part, with the analysis drawn over it as a '
       'constellation: pipeline at the pole, mocks and data on the survey, and the four validation runs as stars.">')
     w('''<defs>
 <filter id="pl-wash" x="-5%" y="-5%" width="110%" height="110%">
   <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="3" seed="7" result="warp"/>
-  <feDisplacementMap in="SourceGraphic" in2="warp" scale="11" xChannelSelector="R" yChannelSelector="G" result="edge"/>
+  <feDisplacementMap in="SourceGraphic" in2="warp" scale="2.5" xChannelSelector="R" yChannelSelector="G" result="edge"/>
   <feTurbulence type="fractalNoise" baseFrequency="0.035 0.05" numOctaves="4" seed="3" result="grain"/>
   <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1.5 0 0 0 0.12" result="mottle"/>
   <feComposite in="edge" in2="mottle" operator="in" result="pigment"/>
@@ -123,14 +142,16 @@ def main():
 </filter>
 <filter id="pl-wash2" x="-5%" y="-5%" width="110%" height="110%">
   <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" seed="21" result="warp"/>
-  <feDisplacementMap in="SourceGraphic" in2="warp" scale="12" xChannelSelector="R" yChannelSelector="G" result="edge"/>
+  <feDisplacementMap in="SourceGraphic" in2="warp" scale="2.5" xChannelSelector="R" yChannelSelector="G" result="edge"/>
   <feTurbulence type="fractalNoise" baseFrequency="0.016 0.022" numOctaves="4" seed="13" result="grain"/>
   <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.4 0 0 0 -0.32" result="mottle"/>
   <feComposite in="edge" in2="mottle" operator="in" result="pigment"/>
   <feGaussianBlur in="pigment" stdDeviation="0.7"/>
 </filter>
-<filter id="pl-bleed" x="-10%" y="-10%" width="120%" height="120%">
-  <feGaussianBlur stdDeviation="9"/>
+<filter id="pl-wash0" x="-5%" y="-5%" width="110%" height="110%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.012 0.017" numOctaves="3" seed="17" result="grain"/>
+  <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.9 0 0 0 0.45" result="mottle"/>
+  <feComposite in="SourceGraphic" in2="mottle" operator="in"/>
 </filter>
 <filter id="pl-cloud" x="-5%" y="-5%" width="110%" height="110%">
   <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves="4" seed="11" result="warp"/>
@@ -158,11 +179,12 @@ def main():
     w('<g clip-path="url(#pl-disc)">')
     w(f'<path d="{way[0]}" fill="#4B4660" fill-opacity="0.34" fill-rule="evenodd" filter="url(#pl-cloud)"/>')
     w(f'<path d="{way[1]}" fill="#2E2A45" fill-opacity="0.38" fill-rule="evenodd" filter="url(#pl-cloud)"/>')
-    w(f'<path d="{full}" fill="#57A898" fill-opacity="0.22" fill-rule="evenodd" filter="url(#pl-bleed)"/>')
+    w(f'<path d="{run1}" fill="#8CC2B0" fill-opacity="0.5" fill-rule="evenodd" filter="url(#pl-wash0)"/>')
     w(f'<path d="{full}" fill="#4FA391" fill-opacity="0.7" fill-rule="evenodd" filter="url(#pl-wash)"/>')
     w(f'<path d="{tomo}" fill="#3A6CB4" fill-opacity="0.36" fill-rule="evenodd" filter="url(#pl-wash2)"/>')
     w(f'<rect width="{SIZE}" height="{SIZE}" filter="url(#pl-paper)"/>')
     w(f'<circle cx="{C}" cy="{C}" r="{R}" fill="url(#pl-vignette)"/>')
+    w(f'<path class="pl-run1" d="{run1}"/>')
     w('</g>')
 
     # Graticule and rim, in pen.
@@ -216,6 +238,10 @@ def main():
     for text, (a, d), rot in (("Milky Way", (322, 47), 68), ("Milky Way", (70, 38), -58)):
         x, y = xy(a, d)
         w(f'<text class="pl-way" x="{x:.1f}" y="{y:.1f}" text-anchor="middle" transform="rotate({rot} {x:.1f} {y:.1f})">{text}</text>')
+
+    x, y = xy(123, 40)
+    w(f'<text class="pl-name" x="{x:.1f}" y="{y:.1f}" text-anchor="middle" '
+      f'transform="rotate({123 - RA_DOWN + 90:.0f} {x:.1f} {y:.1f})">not yet calibrated</text>')
 
     # The analysis, in red ink: pipeline at the pole, mocks and data on the survey.
     P, M, D = star["Polaris"], xy(234, 45), xy(146, 45)

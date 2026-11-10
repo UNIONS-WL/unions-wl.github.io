@@ -9,7 +9,7 @@ Run ids are the four cells of the page's switcher:
 
 Sections, in page order (a run lists only the ones it has figures or tables for):
     known         Known answers (mocks: input recovery, ensemble calibration)
-    bmodes        B-mode nulls
+    bmodes        B modes
     data_vectors  Data vectors
     psf           PSF leakage
     tangential    Tangential shear tests
@@ -27,7 +27,7 @@ SCHEMA = 5
 ORDER = ["data-tomo", "data-2d", "mock-tomo", "mock-2d"]
 SECTIONS = {
     "known": "Known answers",
-    "bmodes": "B-mode nulls",
+    "bmodes": "B modes",
     "data_vectors": "Data vectors",
     "psf": "PSF leakage",
     "tangential": "Tangential shear tests",

@@ -5,7 +5,7 @@
  "title": "Blinded data, non-tomographic",
  "status": "current",
  "stale_note": null,
- "summary": "At the fiducial cuts (12′–83′, 300 ≤ ℓ ≤ 1600) ξ₋ᴮ and Cℓ BB fail; the other B-mode nulls pass.",
+ "summary": "The whole calibrated sample as one bin, measured blinded. The B-mode data vectors come first, in three estimators, each with its errors.",
  "banner": "Blinded (blind: unions): E-mode data vectors are concealed; do not interpret cosmology",
  "lacks": null,
  "provenance": [
@@ -38,109 +38,12 @@
    "0.289 per component"
   ]
  ],
- "headline": [
-  {
-   "label": "Bₙ, n ≤ 6",
-   "pte": 0.38891223717354106,
-   "fail": false
-  },
-  {
-   "label": "Bₙ, n ≤ 20",
-   "pte": 0.4712823311344895,
-   "fail": false
-  },
-  {
-   "label": "ξ₊ᴮ",
-   "pte": 0.5241011063115026,
-   "fail": false
-  },
-  {
-   "label": "ξ₋ᴮ",
-   "pte": 0.010032883672082799,
-   "fail": true
-  },
-  {
-   "label": "ξ±ᴮ joint",
-   "pte": 0.05609001826011765,
-   "fail": false
-  },
-  {
-   "label": "Cℓ BB",
-   "pte": 0.00014253215038299255,
-   "fail": true
-  }
- ],
- "headline_note": "PTE of each B-mode null test at the fiducial cuts (12′–83′, 300 ≤ ℓ ≤ 1600)",
+ "headline": [],
+ "headline_note": null,
  "groups": {
-  "scale_cuts": "PTEs across scale cuts",
-  "versions": "Catalogue versions",
   "covariance": "Covariances"
  },
- "tables": [
-  {
-   "section": "bmodes",
-   "caption": "Probability to exceed the χ² of each B-mode data vector against zero, with the analytic covariance.",
-   "threshold": 0.05,
-   "columns": [
-    {
-     "key": "cosebis_n6",
-     "label": "Bₙ, n ≤ 6",
-     "group": "COSEBIs"
-    },
-    {
-     "key": "cosebis_n20",
-     "label": "Bₙ, n ≤ 20",
-     "group": "COSEBIs"
-    },
-    {
-     "key": "xip_B",
-     "label": "ξ₊ᴮ",
-     "group": "Pure E/B"
-    },
-    {
-     "key": "xim_B",
-     "label": "ξ₋ᴮ",
-     "group": "Pure E/B"
-    },
-    {
-     "key": "combined",
-     "label": "ξ±ᴮ joint",
-     "group": "Pure E/B"
-    },
-    {
-     "key": "cl_BB",
-     "label": "Cℓ BB",
-     "group": "Cℓ"
-    }
-   ],
-   "rows": [
-    {
-     "label": "Fiducial",
-     "note": "12′–83′ · 300 ≤ ℓ ≤ 1600",
-     "values": {
-      "cosebis_n6": 0.38891223717354106,
-      "cosebis_n20": 0.4712823311344895,
-      "xip_B": 0.5241011063115026,
-      "xim_B": 0.010032883672082799,
-      "combined": 0.05609001826011765,
-      "cl_BB": 0.00014253215038299255
-     }
-    },
-    {
-     "label": "Full range",
-     "note": "1′–250′ · 8 ≤ ℓ ≤ 2048",
-     "values": {
-      "cosebis_n6": 0.0002723378490729474,
-      "cosebis_n20": 0.029153033150172168,
-      "xip_B": 0.006584584057722293,
-      "xim_B": 0.0001652504905687652,
-      "combined": 0.013188969481708033,
-      "cl_BB": 0.0007261984037309566
-     }
-    }
-   ]
-  }
- ],
+ "tables": [],
  "figures": [
   {
    "id": "xi_pm",
@@ -205,31 +108,6 @@
    "url": "cosmoval/data-2d/bmode_cl-e18b6691bd6a.png",
    "width": 791,
    "height": 637
-  },
-  {
-   "id": "ptes_config",
-   "section": "bmodes",
-   "group": "scale_cuts",
-   "size": "full",
-   "caption": "Probability to exceed (PTE) the χ² of the B modes against zero, for every choice of smallest and largest scale on the 20-bin grid: pure-mode ξ₊ᴮ, pure-mode ξ₋ᴮ and COSEBIs Bₙ with n ≤ 6. Saturated colours mark PTE below 0.05 or above 0.95; the fiducial cut is outlined.",
-   "alt": "Probability to exceed (PTE) the χ² of the B modes against zero, for every choice of smallest and largest scale on the 20-bin grid: pure-mode ξ₊ᴮ, pure-mode ξ₋ᴮ and COSEBIs Bₙ with n ≤ 6. Saturated colours mark PTE below 0.05 or above 0.95; the fiducial cut is outlined.",
-   "url": "cosmoval/data-2d/ptes_config-f85f3e36aaff.png",
-   "width": 1584,
-   "height": 575,
-   "narrow_url": "cosmoval/data-2d/ptes_config-narrow-246eb179ff6d.png",
-   "narrow_width": 790,
-   "narrow_height": 2326
-  },
-  {
-   "id": "ptes_harmonic",
-   "section": "bmodes",
-   "group": "scale_cuts",
-   "size": "half",
-   "caption": "PTE of the Cℓ BB χ² against zero for every choice of lowest and highest band; the fiducial 300 ≤ ℓ ≤ 1600 is outlined.",
-   "alt": "PTE of the Cℓ BB χ² against zero for every choice of lowest and highest band; the fiducial 300 ≤ ℓ ≤ 1600 is outlined.",
-   "url": "cosmoval/data-2d/ptes_harmonic-210b202b68c0.png",
-   "width": 791,
-   "height": 666
   },
   {
    "id": "star_residuals",
@@ -530,7 +408,7 @@
  "sections": [
   {
    "id": "bmodes",
-   "title": "B-mode nulls"
+   "title": "B modes"
   },
   {
    "id": "data_vectors",

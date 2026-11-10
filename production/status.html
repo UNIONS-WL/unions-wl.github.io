@@ -65,6 +65,7 @@
   #plate .pl-dec{font-family:var(--mono);font-size:7.5px;fill:#7A6B52}
   #plate .pl-sky{fill:var(--ink)} #plate .pl-figure{fill:none;stroke:var(--ink);stroke-width:.6;stroke-opacity:.6;stroke-dasharray:1.5 2.5}
   #plate .pl-galaxy{fill:none;stroke:var(--ink);stroke-width:.7}
+  #plate .pl-run1{fill:none;stroke:#2F5F56;stroke-width:.7;stroke-opacity:.8}
   #plate .pl-name{font-style:italic;font-size:9.5px;fill:var(--ink);fill-opacity:.75}
   #plate .pl-const{font-size:9px;letter-spacing:.34em;text-transform:uppercase;fill:var(--ink);fill-opacity:.55}
   #plate .pl-way{font-style:italic;font-size:13px;letter-spacing:.42em;fill:#2E2A45;fill-opacity:.7}
@@ -151,7 +152,7 @@
 
   /* ---- release, production ---- */
   .release{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:14px}
-  .release div{background:var(--rag);border:1px solid var(--rule);border-radius:10px;padding:10px 14px;font-size:16px;line-height:1.35}
+  .release div{overflow-wrap:anywhere;background:var(--rag);border:1px solid var(--rule);border-radius:10px;padding:10px 14px;font-size:16px;line-height:1.35}
   .release code{display:block;font-size:13px;color:var(--cinnabar);margin-bottom:3px}
   details.fold{border:1px solid var(--rule);border-radius:10px;background:rgba(251,246,233,.5);padding:14px 16px}
   details.fold > summary h2{display:inline;font-size:26px}
@@ -190,11 +191,12 @@
     <div class="cartouche">
       <div class="no">Plate I</div>
       <h2>The UNIONS sky, and the analysis drawn on it</h2>
-      <p><i class="sw" style="background:#5FA597"></i>In green, the 4,690 deg² of northern sky where 170 million galaxy shapes
-      pass the lensing cuts. <i class="sw" style="background:#3F6E9E"></i>In blue, the part that also has <i>z</i>-band photometry and so carries tomographic bins.
+      <p><i class="sw" style="background:#C3DDD0;border:1px solid #2F5F56"></i>Outlined in pen, the 22,901 tiles (about 5,700 deg²) where ShapePipe v2 run 1 measured shapes.
+      <i class="sw" style="background:#5FA597"></i>In green, the calibrated lensing sample: 170 million galaxies on 4,690 deg², from 20,515 of those tiles.
+      <i class="sw" style="background:#3F6E9E"></i>In blue, the 4,065 deg² of it with <i>z</i>-band photometry, which carry tomographic bins.
       The survey keeps clear of the Milky Way.</p>
       <p>In red, the validation. The <b>pipeline</b> must recover known inputs from <b>mocks</b>, the mocks must
-      look like the <b>data</b>, and the data are measured blinded. Each small star is one run of the null tests.</p>
+      look like the <b>data</b>, and the data are measured blinded. Each small star is one run of the validation.</p>
       <div class="key">
         <span><svg viewBox="-1.3 -1.3 2.6 2.6"><path d="M0,-1 L0.23,-0.23 L1,0 L0.23,0.23 L0,1 L-0.23,0.23 L-1,0 L-0.23,-0.23Z" fill="#2F7268" stroke="#1B1611" stroke-width=".12"/></svg>measured on current inputs</span>
         <span><svg viewBox="-1.3 -1.3 2.6 2.6"><path d="M0,-1 L0.23,-0.23 L1,0 L0.23,0.23 L0,1 L-0.23,0.23 L-1,0 L-0.23,-0.23Z" fill="#D9B565" stroke="#A97A1E" stroke-width=".12"/></svg>older n(z), catalogue or code</span>
@@ -208,7 +210,7 @@
         <li><a href="#compute">Compute<small id="map-next">fair share on Fir and Nibi</small></a></li>
         <li><a href="#data-2d/survey">Sky maps<small>density, weights, PSF</small></a></li>
         <li><a href="#data-tomo/data_vectors">Data vectors<small>ξ±, Cℓ, COSEBIs, blinded</small></a></li>
-        <li><a href="#data-tomo/bmodes">Null tests<small id="idx-data">B modes, PSF leakage</small></a></li>
+        <li><a href="#data-tomo/bmodes">Null tests<small>B modes, PSF leakage</small></a></li>
         <li><a href="#mock-tomo">Mocks<small id="idx-mock">GLASS, data inside the ensemble</small></a></li>
         <li><a href="https://www.canfar.net/storage/vault/list/cfis/weak_lensing/ShapePipe/v2.x/v2.0.0">Release v2.0.0 ↗<small>the catalogue on VOSpace</small></a></li>
         <li><a href="#production">ShapePipe run 1<small>the finished production</small></a></li>
@@ -247,14 +249,15 @@
     <div class="mark"><span>§ Release</span></div>
     <h2>UNIONS v2.0.0 on VOSpace</h2>
     <p class="lede">One version names the whole bundle: shapes, photometry, masks, tomographic bins and n(z).
-    It is complete at <code>vos:cfis/weak_lensing/ShapePipe/v2.x/v2.0.0/</code>, readable by the <code>cfis-read</code> group.
+    It is at <code>vos:cfis/weak_lensing/ShapePipe/v2.x/v2.0.0/</code>, readable by the <code>cfis-read</code> group.
     Log in with your CADC account first; the directory link only opens once you are logged in.
     Start with the <code>README.md</code> in <a href="https://www.canfar.net/storage/vault/list/cfis/weak_lensing/ShapePipe/v2.x/v2.0.0">its directory</a>.</p>
     <div class="release">
-      <div><code>shapes/</code>The ShapePipe v2 run 1 shape catalogue, 22,901 tiles, as a HATS catalogue.</div>
-      <div><code>photopipe/</code>PhotoPipe DR6 photometry and photo-z for every shape object, joined on object ID.</div>
-      <div><code>cosmo_val/</code>The calibrated lensing sample with its tomographic bin per galaxy, footprints, PSF and star catalogues, mask configuration.</div>
+      <div><code>catalogs/</code>The ShapePipe v2 run 1 shapes (22,901 tiles) and PhotoPipe DR6 photometry and photo-z as HATS catalogues, the calibrated lensing sample with its tomographic bin per galaxy, and the PSF and star catalogues.</div>
+      <div><code>masks/</code>HEALPix footprints of the lensing sample and of its tomographic part.</div>
       <div><code>nz/</code>The recalibrated four-bin n(z) (calibration: <a href="https://github.com/CosmoStat/sp_validation/pull/468">CosmoStat/sp_validation#468</a>) and the bin assignment.</div>
+      <div><code>data_vector/</code>The blinded tomographic data vectors as SACC files: ξ±, COSEBIs, pure E/B and pseudo-Cℓ for the ten bin pairs.</div>
+      <div><code>provenance/</code>Build records of the shape catalogue and of PhotoPipe.</div>
     </div>
   </section>
 
@@ -417,18 +420,20 @@ function dressPlate(){
   for (const a of document.querySelectorAll('#plate .pl-run')){
     const r = RUNS[a.dataset.run], kind = a.dataset.run.split('-')[0];
     a.classList.add(r ? r.status : 'pending');
+    // Data runs say when they were measured; mock runs how many of their covariance checks fail.
     let say = 'no run yet';
     if (r){
-      const fails = r.headline.filter(h => h.fail).length, n = r.headline.length, what = kind === 'mock' ? ' covariance checks' : ' nulls';
-      say = !n ? 'not measured yet' : fails ? fails + ' of ' + n + what + ' fail' : 'all ' + n + what + ' pass';
+      const fails = r.headline.filter(h => h.fail).length, n = r.headline.length;
+      say = r.status === 'pending' ? 'not measured yet'
+        : n ? (fails ? fails + ' of ' + n + ' checks fail' : 'all ' + n + ' checks pass')
+        : 'measured ' + fmtDate((r.provenance.find(p => p[0] === 'date') || ['', ''])[1]).replace(/ \d{4}$/, '');
     }
     a.querySelector('.pl-rsay').textContent = say;
     a.setAttribute('aria-current', String(a.dataset.run === current));
-    said[a.dataset.run] = say.replace(/ (nulls|covariance checks|yet)/, '');
+    said[a.dataset.run] = say.replace(/ (checks|yet)/, '');
   }
-  for (const kind of ['data', 'mock'])
-    $('idx-' + kind).replaceChildren(kind === 'mock' ? 'GLASS, covariance checks' : 'B-mode nulls', el('br'),
-      'tomographic: ' + said[kind + '-tomo'], el('br'), 'non-tomographic: ' + said[kind + '-2d']);
+  $('idx-mock').replaceChildren('GLASS, covariance checks', el('br'),
+    'tomographic: ' + said['mock-tomo'], el('br'), 'non-tomographic: ' + said['mock-2d']);
 }
 const plateReady = fetch('plate.svg').then(r => r.ok ? r.text() : '').then(svg => { $('plate').innerHTML = svg; }).catch(() => {});
 // In-page links: "#compute" scrolls to a section, "#data-tomo" opens a run, "#data-tomo/bmodes" one of its sections.

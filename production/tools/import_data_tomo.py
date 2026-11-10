@@ -2,7 +2,7 @@
 
 Reads <run>/provenance.json, <run>/report/summary.json, <run>/report/figures/*.png
 and the fiducial θ cut from <run>/report/figures.py. Copies only the report's
-figures and B-mode PTEs: the blind stays in place.
+figures: the blind stays in place.
 
 The run on the page (sp_validation run/tomo-nz468 @ 7081c2d0, the bins and n(z) of
 CosmoStat/sp_validation#468), from production/tools:
@@ -21,19 +21,6 @@ from pathlib import Path
 
 from cvrun import Run
 
-THRESHOLD = 0.05
-# key, label, column group, headline label
-STATS = [
-    ("cosebis", "COSEBIs B", "COSEBIs", "COSEBIs B"),
-    ("xip_B", "ξ₊ᴮ", "pure E/B", "ξ₊ᴮ"),
-    ("xim_B", "ξ₋ᴮ", "pure E/B", "ξ₋ᴮ"),
-    ("combined", "ξ±ᴮ", "pure E/B", "ξ±ᴮ combined"),
-    ("cl_bb", "Cℓ BB", "pseudo-Cℓ", "Cℓ BB"),
-    ("cl_eb", "Cℓ EB", "pseudo-Cℓ", "Cℓ EB"),
-    ("small", "2–20′ ξ±ᴮ", "small scales", "2–20′ ξ±ᴮ"),
-]
-HEADLINE_ORDER = ["cl_bb", "cl_eb", "cosebis", "xip_B", "xim_B", "combined", "small"]
-
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -49,8 +36,6 @@ def main():
     cut = "–".join(f"{float(x):g}" for x in re.search(r"^CUT = \(([\d.]+), ([\d.]+)\)",
                                                        (report / "figures.py").read_text(), re.M).groups())
     tomo = prov["survey_tomo"]
-    joint = {k: v[2] for k, v in sm["joint"].items()}
-    names = {k: h for k, _, _, h in STATS}
     n_modes = sm["joint"]["cosebis"][1] // len(sm["pairs"])
     n_bands = sm["joint"]["cl_bb"][1] // len(sm["pairs"])
 
@@ -67,38 +52,16 @@ def main():
         "n_eff per bin": f"{neff} arcmin⁻² on the tomographic footprint",
     }
 
-    fail = [names[k] for k in HEADLINE_ORDER if joint[k] < THRESHOLD]
-    ok = [names[k] for k in HEADLINE_ORDER if joint[k] >= THRESHOLD]
-    listing = lambda xs: " and ".join(", ".join(xs).rsplit(", ", 1))
-    summary = (f"Jointly over all ten bin pairs, {listing(ok)} pass; {listing(fail)} {'fails' if len(fail) == 1 else 'fail'} (PTE < {THRESHOLD})." if fail else
-               f"Jointly over all ten bin pairs, every B-mode null passes (PTE ≥ {THRESHOLD}).")
+    summary = ("The four tomographic bins and n(z) of CosmoStat/sp_validation#468, measured blinded. The B-mode data "
+               "vectors come first, for all ten bin pairs in three estimators, each with its errors.")
 
     run = Run("data-tomo", title="UNIONS v2, four tomographic bins (blinded data)", summary=summary,
               banner=f"Blinded (blind: {prov['blind_name']}): E-mode data vectors are concealed; do not interpret cosmology",
               provenance=provenance, status="stale" if args.stale_note else "current", stale_note=args.stale_note)
 
-    for k in HEADLINE_ORDER:
-        run.headline(names[k], joint[k], THRESHOLD)
-    run.doc["headline_note"] = "PTE of each B-mode null test, jointly over the ten bin pairs"
-
-    rows = [{"label": f"bins {p.replace('x', '×')}", "values": {k: v.get(k) for k, *_ in STATS}}
-            for p, v in sm["pairs"].items()]
-    rows.append({"label": "joint", "note": "all ten pairs, full cross-pair covariance",
-                 "values": {k: joint.get(k) for k, *_ in STATS}})
-    run.table("bmodes", [{"key": k, "label": lab, "group": g} for k, lab, g, _ in STATS], rows, threshold=THRESHOLD,
-              caption=(f"Probability to exceed (PTE) the measured χ² if the B modes are zero, for each bin pair and "
-                       f"jointly over all ten pairs. Scale cuts: COSEBIs modes n ≤ {n_modes} and pure-mode ξ±ᴮ at {cut}′; "
-                       f"pseudo-Cℓ over all {n_bands} bandpowers; the small-scale test is pure-mode ξ±ᴮ at 2–20′. "
-                       f"Real-space covariance: {sm['xi_cov']}; pseudo-Cℓ covariance: Gaussian (NaMaster). "
-                       f"Values below {THRESHOLD} are failures."))
-
     fig = lambda name: report / "figures" / f"{name}.png"
     cc = sm["cov_check"]
 
-    run.figure(fig("pte_map"), "bmodes",
-               "PTE of each B-mode null test for every pair of the four tomographic bins. Blue cells are below 0.05; "
-               "dark red cells are above 0.95, which would point to an overestimated covariance. Each panel title "
-               "gives the joint PTE over all ten pairs.")
     run.figure(fig("xi_B"), "bmodes",
                f"Pure-mode B-mode correlation functions θξ₊ᴮ (circles) and θξ₋ᴮ (squares) for each pair of tomographic "
                f"bins, with errors from the analytic covariance. Shaded scales lie outside the {cut}′ range of the test; "

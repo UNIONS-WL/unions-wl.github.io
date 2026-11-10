@@ -1,6 +1,6 @@
 {
  "schema_version": 5,
- "content_hash": "d5ca721e1f461b4ddde213ca89f8699489439d6c300961f22964337e47022f29",
+ "content_hash": "07607b1a3fb900069347f790aa6e4bb8850d45ed6502d29262dc3cdf094f6650",
  "runs": [
   {
    "id": "data-tomo",
@@ -9,7 +9,7 @@
    "title": "UNIONS v2, four tomographic bins (blinded data)",
    "status": "current",
    "stale_note": null,
-   "summary": "Jointly over all ten bin pairs, Cℓ BB, Cℓ EB, COSEBIs B, ξ₊ᴮ, ξ±ᴮ combined and 2–20′ ξ±ᴮ pass; ξ₋ᴮ fails (PTE < 0.05).",
+   "summary": "The four tomographic bins and n(z) of CosmoStat/sp_validation#468, measured blinded. The B-mode data vectors come first, for all ten bin pairs in three estimators, each with its errors.",
    "banner": "Blinded (blind: unions): E-mode data vectors are concealed; do not interpret cosmology",
    "lacks": null,
    "provenance": [
@@ -38,239 +38,14 @@
      "0.74, 0.93, 1.01, 1.37 arcmin⁻² on the tomographic footprint"
     ]
    ],
-   "headline": [
-    {
-     "label": "Cℓ BB",
-     "pte": 0.09872768935854845,
-     "fail": false
-    },
-    {
-     "label": "Cℓ EB",
-     "pte": 0.5353895017020177,
-     "fail": false
-    },
-    {
-     "label": "COSEBIs B",
-     "pte": 0.3874250983427855,
-     "fail": false
-    },
-    {
-     "label": "ξ₊ᴮ",
-     "pte": 0.20591620597716792,
-     "fail": false
-    },
-    {
-     "label": "ξ₋ᴮ",
-     "pte": 0.016209605743242678,
-     "fail": true
-    },
-    {
-     "label": "ξ±ᴮ combined",
-     "pte": 0.10195981143887783,
-     "fail": false
-    },
-    {
-     "label": "2–20′ ξ±ᴮ",
-     "pte": 0.4357727812309897,
-     "fail": false
-    }
-   ],
-   "headline_note": "PTE of each B-mode null test, jointly over the ten bin pairs",
+   "headline": [],
+   "headline_note": null,
    "groups": {
     "galaxy_mask": "Masking nearby galaxies",
     "covariances": "Covariances"
    },
-   "tables": [
-    {
-     "section": "bmodes",
-     "caption": "Probability to exceed (PTE) the measured χ² if the B modes are zero, for each bin pair and jointly over all ten pairs. Scale cuts: COSEBIs modes n ≤ 20 and pure-mode ξ±ᴮ at 12–83′; pseudo-Cℓ over all 32 bandpowers; the small-scale test is pure-mode ξ±ᴮ at 2–20′. Real-space covariance: OneCovariance (pair_counts shape noise); pseudo-Cℓ covariance: Gaussian (NaMaster). Values below 0.05 are failures.",
-     "threshold": 0.05,
-     "columns": [
-      {
-       "key": "cosebis",
-       "label": "COSEBIs B",
-       "group": "COSEBIs"
-      },
-      {
-       "key": "xip_B",
-       "label": "ξ₊ᴮ",
-       "group": "pure E/B"
-      },
-      {
-       "key": "xim_B",
-       "label": "ξ₋ᴮ",
-       "group": "pure E/B"
-      },
-      {
-       "key": "combined",
-       "label": "ξ±ᴮ",
-       "group": "pure E/B"
-      },
-      {
-       "key": "cl_bb",
-       "label": "Cℓ BB",
-       "group": "pseudo-Cℓ"
-      },
-      {
-       "key": "cl_eb",
-       "label": "Cℓ EB",
-       "group": "pseudo-Cℓ"
-      },
-      {
-       "key": "small",
-       "label": "2–20′ ξ±ᴮ",
-       "group": "small scales"
-      }
-     ],
-     "rows": [
-      {
-       "label": "bins 1×1",
-       "values": {
-        "cosebis": 0.5277964831681266,
-        "xip_B": 0.6032637566001282,
-        "xim_B": 0.4003445182493911,
-        "combined": 0.7393569946236296,
-        "cl_bb": 0.4039840728273373,
-        "cl_eb": 0.36663223392977423,
-        "small": 0.4160411950951361
-       }
-      },
-      {
-       "label": "bins 1×2",
-       "values": {
-        "cosebis": 0.772537673981674,
-        "xip_B": 0.5447885363431093,
-        "xim_B": 0.18162914709189862,
-        "combined": 0.5936328334435286,
-        "cl_bb": 0.6266535432311432,
-        "cl_eb": 0.917182324488297,
-        "small": 0.5891120533965364
-       }
-      },
-      {
-       "label": "bins 1×3",
-       "values": {
-        "cosebis": 0.5427568203020344,
-        "xip_B": 0.13820656264382344,
-        "xim_B": 0.4624184072639651,
-        "combined": 0.1333967730267439,
-        "cl_bb": 0.10091423933091166,
-        "cl_eb": 0.15341812697837018,
-        "small": 0.7438288983869774
-       }
-      },
-      {
-       "label": "bins 1×4",
-       "values": {
-        "cosebis": 0.7336285924193218,
-        "xip_B": 0.11267234957489089,
-        "xim_B": 0.46827680250200576,
-        "combined": 0.11671314323541367,
-        "cl_bb": 0.6489040207235268,
-        "cl_eb": 0.45206684291183946,
-        "small": 0.7186436547732004
-       }
-      },
-      {
-       "label": "bins 2×2",
-       "values": {
-        "cosebis": 0.30977727668857136,
-        "xip_B": 0.20077055013088915,
-        "xim_B": 0.0911911478589606,
-        "combined": 0.21727481476245397,
-        "cl_bb": 0.07952062083272107,
-        "cl_eb": 0.5099945827314556,
-        "small": 0.4736073687536687
-       }
-      },
-      {
-       "label": "bins 2×3",
-       "values": {
-        "cosebis": 0.34172664451611867,
-        "xip_B": 0.06521195430270574,
-        "xim_B": 0.03935787709360474,
-        "combined": 0.22268628823252287,
-        "cl_bb": 0.43724592037769994,
-        "cl_eb": 0.15226738940504386,
-        "small": 0.12455736516503024
-       }
-      },
-      {
-       "label": "bins 2×4",
-       "values": {
-        "cosebis": 0.7463912000653623,
-        "xip_B": 0.4481409727883937,
-        "xim_B": 0.03919862384828652,
-        "combined": 0.10511139161506584,
-        "cl_bb": 0.6192448605201939,
-        "cl_eb": 0.6507216351892107,
-        "small": 0.13648920627441952
-       }
-      },
-      {
-       "label": "bins 3×3",
-       "values": {
-        "cosebis": 0.21572415780268017,
-        "xip_B": 0.8008517753997824,
-        "xim_B": 0.3713019762750092,
-        "combined": 0.5190895672780798,
-        "cl_bb": 0.00945103580677354,
-        "cl_eb": 0.9105081030905712,
-        "small": 0.8196397530134865
-       }
-      },
-      {
-       "label": "bins 3×4",
-       "values": {
-        "cosebis": 0.6981701855712734,
-        "xip_B": 0.7418922768115396,
-        "xim_B": 0.13175427041300303,
-        "combined": 0.6536158845096761,
-        "cl_bb": 0.9903874269308128,
-        "cl_eb": 0.5435099206538117,
-        "small": 0.6500800011792873
-       }
-      },
-      {
-       "label": "bins 4×4",
-       "values": {
-        "cosebis": 0.016601173144775938,
-        "xip_B": 0.3963205596280615,
-        "xim_B": 0.4965272927446286,
-        "combined": 0.206345306971885,
-        "cl_bb": 0.24263024711790482,
-        "cl_eb": 0.9081361681345985,
-        "small": 0.13063238316462197
-       }
-      },
-      {
-       "label": "joint",
-       "note": "all ten pairs, full cross-pair covariance",
-       "values": {
-        "cosebis": 0.3874250983427855,
-        "xip_B": 0.20591620597716792,
-        "xim_B": 0.016209605743242678,
-        "combined": 0.10195981143887783,
-        "cl_bb": 0.09872768935854845,
-        "cl_eb": 0.5353895017020177,
-        "small": 0.4357727812309897
-       }
-      }
-     ]
-    }
-   ],
+   "tables": [],
    "figures": [
-    {
-     "id": "pte_map",
-     "section": "bmodes",
-     "group": null,
-     "size": "full",
-     "caption": "PTE of each B-mode null test for every pair of the four tomographic bins. Blue cells are below 0.05; dark red cells are above 0.95, which would point to an overestimated covariance. Each panel title gives the joint PTE over all ten pairs.",
-     "alt": "PTE of each B-mode null test for every pair of the four tomographic bins. Blue cells are below 0.05; dark red cells are above 0.95, which would point to an overestimated covariance. Each panel title gives the joint PTE over all ten pairs.",
-     "url": "cosmoval/data-tomo/pte_map-ebc8812f3c3a.png",
-     "width": 1582,
-     "height": 384
-    },
     {
      "id": "xi_B",
      "section": "bmodes",
@@ -418,7 +193,7 @@
    "sections": [
     {
      "id": "bmodes",
-     "title": "B-mode nulls"
+     "title": "B modes"
     },
     {
      "id": "data_vectors",
@@ -441,7 +216,7 @@
    "title": "Blinded data, non-tomographic",
    "status": "current",
    "stale_note": null,
-   "summary": "At the fiducial cuts (12′–83′, 300 ≤ ℓ ≤ 1600) ξ₋ᴮ and Cℓ BB fail; the other B-mode nulls pass.",
+   "summary": "The whole calibrated sample as one bin, measured blinded. The B-mode data vectors come first, in three estimators, each with its errors.",
    "banner": "Blinded (blind: unions): E-mode data vectors are concealed; do not interpret cosmology",
    "lacks": null,
    "provenance": [
@@ -474,109 +249,12 @@
      "0.289 per component"
     ]
    ],
-   "headline": [
-    {
-     "label": "Bₙ, n ≤ 6",
-     "pte": 0.38891223717354106,
-     "fail": false
-    },
-    {
-     "label": "Bₙ, n ≤ 20",
-     "pte": 0.4712823311344895,
-     "fail": false
-    },
-    {
-     "label": "ξ₊ᴮ",
-     "pte": 0.5241011063115026,
-     "fail": false
-    },
-    {
-     "label": "ξ₋ᴮ",
-     "pte": 0.010032883672082799,
-     "fail": true
-    },
-    {
-     "label": "ξ±ᴮ joint",
-     "pte": 0.05609001826011765,
-     "fail": false
-    },
-    {
-     "label": "Cℓ BB",
-     "pte": 0.00014253215038299255,
-     "fail": true
-    }
-   ],
-   "headline_note": "PTE of each B-mode null test at the fiducial cuts (12′–83′, 300 ≤ ℓ ≤ 1600)",
+   "headline": [],
+   "headline_note": null,
    "groups": {
-    "scale_cuts": "PTEs across scale cuts",
-    "versions": "Catalogue versions",
     "covariance": "Covariances"
    },
-   "tables": [
-    {
-     "section": "bmodes",
-     "caption": "Probability to exceed the χ² of each B-mode data vector against zero, with the analytic covariance.",
-     "threshold": 0.05,
-     "columns": [
-      {
-       "key": "cosebis_n6",
-       "label": "Bₙ, n ≤ 6",
-       "group": "COSEBIs"
-      },
-      {
-       "key": "cosebis_n20",
-       "label": "Bₙ, n ≤ 20",
-       "group": "COSEBIs"
-      },
-      {
-       "key": "xip_B",
-       "label": "ξ₊ᴮ",
-       "group": "Pure E/B"
-      },
-      {
-       "key": "xim_B",
-       "label": "ξ₋ᴮ",
-       "group": "Pure E/B"
-      },
-      {
-       "key": "combined",
-       "label": "ξ±ᴮ joint",
-       "group": "Pure E/B"
-      },
-      {
-       "key": "cl_BB",
-       "label": "Cℓ BB",
-       "group": "Cℓ"
-      }
-     ],
-     "rows": [
-      {
-       "label": "Fiducial",
-       "note": "12′–83′ · 300 ≤ ℓ ≤ 1600",
-       "values": {
-        "cosebis_n6": 0.38891223717354106,
-        "cosebis_n20": 0.4712823311344895,
-        "xip_B": 0.5241011063115026,
-        "xim_B": 0.010032883672082799,
-        "combined": 0.05609001826011765,
-        "cl_BB": 0.00014253215038299255
-       }
-      },
-      {
-       "label": "Full range",
-       "note": "1′–250′ · 8 ≤ ℓ ≤ 2048",
-       "values": {
-        "cosebis_n6": 0.0002723378490729474,
-        "cosebis_n20": 0.029153033150172168,
-        "xip_B": 0.006584584057722293,
-        "xim_B": 0.0001652504905687652,
-        "combined": 0.013188969481708033,
-        "cl_BB": 0.0007261984037309566
-       }
-      }
-     ]
-    }
-   ],
+   "tables": [],
    "figures": [
     {
      "id": "xi_pm",
@@ -641,31 +319,6 @@
      "url": "cosmoval/data-2d/bmode_cl-e18b6691bd6a.png",
      "width": 791,
      "height": 637
-    },
-    {
-     "id": "ptes_config",
-     "section": "bmodes",
-     "group": "scale_cuts",
-     "size": "full",
-     "caption": "Probability to exceed (PTE) the χ² of the B modes against zero, for every choice of smallest and largest scale on the 20-bin grid: pure-mode ξ₊ᴮ, pure-mode ξ₋ᴮ and COSEBIs Bₙ with n ≤ 6. Saturated colours mark PTE below 0.05 or above 0.95; the fiducial cut is outlined.",
-     "alt": "Probability to exceed (PTE) the χ² of the B modes against zero, for every choice of smallest and largest scale on the 20-bin grid: pure-mode ξ₊ᴮ, pure-mode ξ₋ᴮ and COSEBIs Bₙ with n ≤ 6. Saturated colours mark PTE below 0.05 or above 0.95; the fiducial cut is outlined.",
-     "url": "cosmoval/data-2d/ptes_config-f85f3e36aaff.png",
-     "width": 1584,
-     "height": 575,
-     "narrow_url": "cosmoval/data-2d/ptes_config-narrow-246eb179ff6d.png",
-     "narrow_width": 790,
-     "narrow_height": 2326
-    },
-    {
-     "id": "ptes_harmonic",
-     "section": "bmodes",
-     "group": "scale_cuts",
-     "size": "half",
-     "caption": "PTE of the Cℓ BB χ² against zero for every choice of lowest and highest band; the fiducial 300 ≤ ℓ ≤ 1600 is outlined.",
-     "alt": "PTE of the Cℓ BB χ² against zero for every choice of lowest and highest band; the fiducial 300 ≤ ℓ ≤ 1600 is outlined.",
-     "url": "cosmoval/data-2d/ptes_harmonic-210b202b68c0.png",
-     "width": 791,
-     "height": 666
     },
     {
      "id": "star_residuals",
@@ -966,7 +619,7 @@
    "sections": [
     {
      "id": "bmodes",
-     "title": "B-mode nulls"
+     "title": "B modes"
     },
     {
      "id": "data_vectors",
@@ -1442,7 +1095,7 @@
     },
     {
      "id": "bmodes",
-     "title": "B-mode nulls"
+     "title": "B modes"
     }
    ]
   },

@@ -19,15 +19,17 @@ The docstring of each importer holds the exact command for the run on the page n
 Then commit `production/cosmoval*` and push.
 A run measured before the current n(z), catalogue or code is imported with a stale note, and the page marks it "older inputs".
 
-Blinding: importers copy figures and PTEs only.
+The data cells show data vectors with their errors, B modes first, and carry no PTE tables, verdict chips or PTE maps.
+
+Blinding: importers copy figures only.
 Data figures must come from concealed E-mode vectors; nothing derived from an unblinded vector or a blind record goes on the page.
 
 `cvrun.py` holds the run format (sections, tables, verdict chips, provenance labels).
 
 ## The plate
 
-`plate.py` draws `production/plate.svg`, the chart that opens the page, from the lensing footprint and the tomographic footprint (HEALPix masks).
-Its docstring holds the command; rerun it when either footprint changes.
+`plate.py` draws `production/plate.svg`, the chart that opens the page, as three nested washes: the tiles ShapePipe v2 run 1 published (`status.json`), the calibrated lensing sample and its tomographic part (the release's two HEALPix footprints).
+Its docstring holds the command; rerun it when a footprint changes, and keep the areas in the cartouche of `status.html` matched to the washes.
 The page fills in the four run stars from `cosmoval.json`.
 
 ## Fair share
