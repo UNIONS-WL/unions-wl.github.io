@@ -11,12 +11,12 @@ Inputs are a placement directory written by the recipe's report.py (placement.js
 and the ensemble's run root (provenance.json, glass_v2_tomo.yaml). Every figure is
 drawn here from placement.json, in the page's colours. The run on the page
 now is the ensemble matched to the bins and n(z) of CosmoStat/sp_validation#468, with
-65 of its 70 seeds:
+all 69 of its usable seeds:
 
     cd production/tools && uv run --with pillow --with matplotlib --with numpy --with pyyaml \\
         python import_mock_tomo.py \\
-        /project/rrg-kyi/cdaley/unions/analyses/mock-ensemble-sampled-nz468/placement-prelim \\
-        /project/rrg-kyi/cdaley/unions/analyses/mock-ensemble-sampled-nz468 --seeds 70
+        /project/rrg-kyi/cdaley/unions/analyses/mock-ensemble-sampled-nz468/placement-n69 \\
+        /project/rrg-kyi/cdaley/unions/analyses/mock-ensemble-sampled-nz468 --seeds 69
 
 The cell is labelled preliminary while the placement holds fewer mocks than --seeds.
 
