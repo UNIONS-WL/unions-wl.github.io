@@ -100,15 +100,18 @@ def main():
                "dark red cells are above 0.95, which would point to an overestimated covariance. Each panel title "
                "gives the joint PTE over all ten pairs.")
     run.figure(fig("xi_B"), "bmodes",
-               f"Pure-mode B-mode correlation functions ξ₊ᴮ (circles) and ξ₋ᴮ (squares) for each bin pair, with errors "
-               f"from the analytic covariance. Shaded scales lie outside the {cut}′ range of the test; each panel prints "
-               f"its PTEs.")
+               f"Pure-mode B-mode correlation functions θξ₊ᴮ (circles) and θξ₋ᴮ (squares) for each pair of tomographic "
+               f"bins, with errors from the analytic covariance. Shaded scales lie outside the {cut}′ range of the test; "
+               f"the header of each panel gives the PTE of ξ₊ᴮ and of ξ₋ᴮ over that range, in red below 0.05.")
     run.figure(fig("cosebis_B"), "bmodes",
-               f"COSEBIs B modes Bₙ (n ≤ {n_modes}, {cut}′) for each bin pair, in units of their own standard deviation, "
-               f"with bands at ±1σ and ±2σ. The modes are correlated, so judge by the PTE rather than by single points.")
+               f"COSEBIs B modes Bₙ (n ≤ {n_modes}, {cut}′) for each pair of tomographic bins, in units of their own "
+               f"standard deviation, over bands at ±1σ and ±2σ; each panel header gives the PTE over all {n_modes} modes. "
+               f"The modes are correlated, so judge by the PTE rather than by single points.")
     run.figure(fig("cl_BB"), "bmodes",
-               f"Pseudo-Cℓ BB (circles) and EB (squares) for each bin pair, with a Gaussian NaMaster covariance built on "
-               f"each bin's own map and mask. The PTEs use all {n_bands} bandpowers.")
+               f"Pseudo-Cℓ BB (filled circles) and EB (open diamonds) for each pair of tomographic bins, in units of "
+               f"their own standard deviation from a Gaussian NaMaster covariance, over bands at ±1σ and ±2σ. The ℓ axis "
+               f"is linear in √ℓ, on which the {n_bands} bandpowers are evenly spaced; BB and EB are offset slightly in ℓ "
+               f"to keep them apart. Each panel header gives the PTEs over all {n_bands} bandpowers, in red below 0.05.")
     run.group("galaxy_mask", "Masking nearby galaxies")
     run.figure(fig("messier_xiB"), "bmodes",
                "Whole-sample ξ±ᴮ as measured (points) and after masking six objects that contaminated the PSF star "
@@ -116,16 +119,12 @@ def main():
                "comes from an earlier non-tomographic run on 138M galaxies, not from this run.", group="galaxy_mask")
 
     run.figure(fig("xi_E"), "data_vectors",
-               "Blinded θξ₊ and θξ₋ for each bin pair against a Planck 2018 prediction without intrinsic alignments. "
-               "The band shows how far the blinding can move the data (S₈ ± 0.075, Ωₘ ± 0.1); it can raise ξ₊ above "
-               "about 50′ by up to a factor of two in the high-redshift pairs, so such a rise is not by itself a systematic.")
+               "Blinded shear correlation functions θξ₊ (filled) and θξ₋ (open) for each pair of tomographic bins, "
+               "with errors from the analytic covariance. The blinding shifts these data by an unknown cosmology, so "
+               "they are shown alone, without a prediction to compare against.")
     run.figure(fig("cl_EE"), "data_vectors",
-               "Blinded pseudo-Cℓ EE for each bin pair against the fiducial prediction convolved with each band's window.")
-    run.figure(fig("amp_consistency"), "data_vectors",
-               "Blinded consistency test: one template amplitude per bin pair, fitted jointly to ξ± at 5–100′ and shown "
-               "relative to the common amplitude; the χ² tests whether all ten pairs share one amplitude. Grey: template "
-               "without intrinsic alignments; blue: with NLA alignments (A_IA = 1); red: NLA after subtracting the "
-               "PSF-leakage term from the data. The test was designed after seeing the blinded data.", size="half")
+               "Blinded pseudo-Cℓ EE power spectra ℓCℓ for each pair of tomographic bins, on an axis linear in √ℓ, "
+               "with errors from the Gaussian NaMaster covariance; shown alone for the same reason.")
 
     run.figure(fig("rho"), "psf",
                "ρ statistics of the PSF stars, which measure the PSF model residuals; all four bins share them.",

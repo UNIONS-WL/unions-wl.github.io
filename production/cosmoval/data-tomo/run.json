@@ -263,42 +263,42 @@
    "size": "full",
    "caption": "PTE of each B-mode null test for every pair of the four tomographic bins. Blue cells are below 0.05; dark red cells are above 0.95, which would point to an overestimated covariance. Each panel title gives the joint PTE over all ten pairs.",
    "alt": "PTE of each B-mode null test for every pair of the four tomographic bins. Blue cells are below 0.05; dark red cells are above 0.95, which would point to an overestimated covariance. Each panel title gives the joint PTE over all ten pairs.",
-   "url": "cosmoval/data-tomo/pte_map-66a740e2eb7e.png",
-   "width": 1583,
-   "height": 358
+   "url": "cosmoval/data-tomo/pte_map-ebc8812f3c3a.png",
+   "width": 1582,
+   "height": 384
   },
   {
    "id": "xi_B",
    "section": "bmodes",
    "group": null,
    "size": "full",
-   "caption": "Pure-mode B-mode correlation functions ξ₊ᴮ (circles) and ξ₋ᴮ (squares) for each bin pair, with errors from the analytic covariance. Shaded scales lie outside the 12–83′ range of the test; each panel prints its PTEs.",
-   "alt": "Pure-mode B-mode correlation functions ξ₊ᴮ (circles) and ξ₋ᴮ (squares) for each bin pair, with errors from the analytic covariance. Shaded scales lie outside the 12–83′ range of the test; each panel prints its PTEs.",
-   "url": "cosmoval/data-tomo/xi_B-e1e7bac97948.png",
+   "caption": "Pure-mode B-mode correlation functions θξ₊ᴮ (circles) and θξ₋ᴮ (squares) for each pair of tomographic bins, with errors from the analytic covariance. Shaded scales lie outside the 12–83′ range of the test; the header of each panel gives the PTE of ξ₊ᴮ and of ξ₋ᴮ over that range, in red below 0.05.",
+   "alt": "Pure-mode B-mode correlation functions θξ₊ᴮ (circles) and θξ₋ᴮ (squares) for each pair of tomographic bins, with errors from the analytic covariance. Shaded scales lie outside the 12–83′ range of the test; the header of each panel gives the PTE of ξ₊ᴮ and of ξ₋ᴮ over that range, in red below 0.05.",
+   "url": "cosmoval/data-tomo/xi_B-bb9d4ff7e51c.png",
    "width": 1583,
-   "height": 1407
+   "height": 1363
   },
   {
    "id": "cosebis_B",
    "section": "bmodes",
    "group": null,
    "size": "full",
-   "caption": "COSEBIs B modes Bₙ (n ≤ 20, 12–83′) for each bin pair, in units of their own standard deviation, with bands at ±1σ and ±2σ. The modes are correlated, so judge by the PTE rather than by single points.",
-   "alt": "COSEBIs B modes Bₙ (n ≤ 20, 12–83′) for each bin pair, in units of their own standard deviation, with bands at ±1σ and ±2σ. The modes are correlated, so judge by the PTE rather than by single points.",
-   "url": "cosmoval/data-tomo/cosebis_B-18c1810100ff.png",
+   "caption": "COSEBIs B modes Bₙ (n ≤ 20, 12–83′) for each pair of tomographic bins, in units of their own standard deviation, over bands at ±1σ and ±2σ; each panel header gives the PTE over all 20 modes. The modes are correlated, so judge by the PTE rather than by single points.",
+   "alt": "COSEBIs B modes Bₙ (n ≤ 20, 12–83′) for each pair of tomographic bins, in units of their own standard deviation, over bands at ±1σ and ±2σ; each panel header gives the PTE over all 20 modes. The modes are correlated, so judge by the PTE rather than by single points.",
+   "url": "cosmoval/data-tomo/cosebis_B-56f911e1346a.png",
    "width": 1583,
-   "height": 1407
+   "height": 1363
   },
   {
    "id": "cl_BB",
    "section": "bmodes",
    "group": null,
    "size": "full",
-   "caption": "Pseudo-Cℓ BB (circles) and EB (squares) for each bin pair, with a Gaussian NaMaster covariance built on each bin's own map and mask. The PTEs use all 32 bandpowers.",
-   "alt": "Pseudo-Cℓ BB (circles) and EB (squares) for each bin pair, with a Gaussian NaMaster covariance built on each bin's own map and mask. The PTEs use all 32 bandpowers.",
-   "url": "cosmoval/data-tomo/cl_BB-d26cf734b11e.png",
+   "caption": "Pseudo-Cℓ BB (filled circles) and EB (open diamonds) for each pair of tomographic bins, in units of their own standard deviation from a Gaussian NaMaster covariance, over bands at ±1σ and ±2σ. The ℓ axis is linear in √ℓ, on which the 32 bandpowers are evenly spaced; BB and EB are offset slightly in ℓ to keep them apart. Each panel header gives the PTEs over all 32 bandpowers, in red below 0.05.",
+   "alt": "Pseudo-Cℓ BB (filled circles) and EB (open diamonds) for each pair of tomographic bins, in units of their own standard deviation from a Gaussian NaMaster covariance, over bands at ±1σ and ±2σ. The ℓ axis is linear in √ℓ, on which the 32 bandpowers are evenly spaced; BB and EB are offset slightly in ℓ to keep them apart. Each panel header gives the PTEs over all 32 bandpowers, in red below 0.05.",
+   "url": "cosmoval/data-tomo/cl_BB-43e25e2bce7a.png",
    "width": 1583,
-   "height": 1407
+   "height": 1363
   },
   {
    "id": "messier_xiB",
@@ -316,33 +316,22 @@
    "section": "data_vectors",
    "group": null,
    "size": "full",
-   "caption": "Blinded θξ₊ and θξ₋ for each bin pair against a Planck 2018 prediction without intrinsic alignments. The band shows how far the blinding can move the data (S₈ ± 0.075, Ωₘ ± 0.1); it can raise ξ₊ above about 50′ by up to a factor of two in the high-redshift pairs, so such a rise is not by itself a systematic.",
-   "alt": "Blinded θξ₊ and θξ₋ for each bin pair against a Planck 2018 prediction without intrinsic alignments. The band shows how far the blinding can move the data (S₈ ± 0.075, Ωₘ ± 0.1); it can raise ξ₊ above about 50′ by up to a factor of two in the high-redshift pairs, so such a rise is not by itself a systematic.",
-   "url": "cosmoval/data-tomo/xi_E-92f26b266e8f.png",
-   "width": 1587,
-   "height": 1413
+   "caption": "Blinded shear correlation functions θξ₊ (filled) and θξ₋ (open) for each pair of tomographic bins, with errors from the analytic covariance. The blinding shifts these data by an unknown cosmology, so they are shown alone, without a prediction to compare against.",
+   "alt": "Blinded shear correlation functions θξ₊ (filled) and θξ₋ (open) for each pair of tomographic bins, with errors from the analytic covariance. The blinding shifts these data by an unknown cosmology, so they are shown alone, without a prediction to compare against.",
+   "url": "cosmoval/data-tomo/xi_E-74698b508eea.png",
+   "width": 1584,
+   "height": 1365
   },
   {
    "id": "cl_EE",
    "section": "data_vectors",
    "group": null,
    "size": "full",
-   "caption": "Blinded pseudo-Cℓ EE for each bin pair against the fiducial prediction convolved with each band's window.",
-   "alt": "Blinded pseudo-Cℓ EE for each bin pair against the fiducial prediction convolved with each band's window.",
-   "url": "cosmoval/data-tomo/cl_EE-6651907ffe4f.png",
+   "caption": "Blinded pseudo-Cℓ EE power spectra ℓCℓ for each pair of tomographic bins, on an axis linear in √ℓ, with errors from the Gaussian NaMaster covariance; shown alone for the same reason.",
+   "alt": "Blinded pseudo-Cℓ EE power spectra ℓCℓ for each pair of tomographic bins, on an axis linear in √ℓ, with errors from the Gaussian NaMaster covariance; shown alone for the same reason.",
+   "url": "cosmoval/data-tomo/cl_EE-2ffac9d6ed6b.png",
    "width": 1584,
-   "height": 1408
-  },
-  {
-   "id": "amp_consistency",
-   "section": "data_vectors",
-   "group": null,
-   "size": "half",
-   "caption": "Blinded consistency test: one template amplitude per bin pair, fitted jointly to ξ± at 5–100′ and shown relative to the common amplitude; the χ² tests whether all ten pairs share one amplitude. Grey: template without intrinsic alignments; blue: with NLA alignments (A_IA = 1); red: NLA after subtracting the PSF-leakage term from the data. The test was designed after seeing the blinded data.",
-   "alt": "Blinded consistency test: one template amplitude per bin pair, fitted jointly to ξ± at 5–100′ and shown relative to the common amplitude; the χ² tests whether all ten pairs share one amplitude. Grey: template without intrinsic alignments; blue: with NLA alignments (A_IA = 1); red: NLA after subtracting the PSF-leakage term from the data. The test was designed after seeing the blinded data.",
-   "url": "cosmoval/data-tomo/amp_consistency-463faf81caf0.png",
-   "width": 792,
-   "height": 386
+   "height": 1365
   },
   {
    "id": "rho",
@@ -351,9 +340,9 @@
    "size": "half",
    "caption": "ρ statistics of the PSF stars, which measure the PSF model residuals; all four bins share them.",
    "alt": "ρ statistics of the PSF stars, which measure the PSF model residuals; all four bins share them.",
-   "url": "cosmoval/data-tomo/rho-6e5f7c9190b6.png",
-   "width": 791,
-   "height": 549
+   "url": "cosmoval/data-tomo/rho-9f31392c4928.png",
+   "width": 1583,
+   "height": 593
   },
   {
    "id": "tau",
@@ -362,9 +351,9 @@
    "size": "full",
    "caption": "τ₀, τ₂ and τ₅ (correlations between galaxy shapes and PSF quantities) for each tomographic bin, with each bin's fitted leakage model as lines.",
    "alt": "τ₀, τ₂ and τ₅ (correlations between galaxy shapes and PSF quantities) for each tomographic bin, with each bin's fitted leakage model as lines.",
-   "url": "cosmoval/data-tomo/tau-3182667a9eff.png",
+   "url": "cosmoval/data-tomo/tau-58c7404e4c6c.png",
    "width": 1583,
-   "height": 527
+   "height": 545
   },
   {
    "id": "leakage",
@@ -373,7 +362,7 @@
    "size": "full",
    "caption": "PSF-leakage coefficients α, β and η per bin, from a fit of the τ statistics to the ρ templates with ρ held fixed. The τ estimator biases α low by about 25% on a simulation with known leakage (CosmoStat/shear_psf_leakage#58), so read these α as lower limits.",
    "alt": "PSF-leakage coefficients α, β and η per bin, from a fit of the τ statistics to the ρ templates with ρ held fixed. The τ estimator biases α low by about 25% on a simulation with known leakage (CosmoStat/shear_psf_leakage#58), so read these α as lower limits.",
-   "url": "cosmoval/data-tomo/leakage-57860cc15621.png",
+   "url": "cosmoval/data-tomo/leakage-aca2acba599c.png",
    "width": 1583,
    "height": 417
   },
@@ -384,9 +373,9 @@
    "size": "half",
    "caption": "The four-bin redshift distributions of this run: recalibrated DR6 BPZ+SOM four-bin n(z) and bins of CosmoStat/sp_validation#468, on a dz = 0.05 grid; validation and null tests only.",
    "alt": "The four-bin redshift distributions of this run: recalibrated DR6 BPZ+SOM four-bin n(z) and bins of CosmoStat/sp_validation#468, on a dz = 0.05 grid; validation and null tests only.",
-   "url": "cosmoval/data-tomo/nz-6c3cc41fd8cb.png",
+   "url": "cosmoval/data-tomo/nz-e38acf5e2d07.png",
    "width": 791,
-   "height": 527
+   "height": 505
   },
   {
    "id": "cov_jk",
@@ -395,9 +384,9 @@
    "size": "full",
    "caption": "Analytic (OneCovariance) ξ± variance divided by the data's 100-patch jackknife variance, per bin pair (auto-correlations coloured, cross-correlations grey); the band is the jackknife's own ±14% scatter. The median ratio is 1.00 below 10′ (required within 15% of 1) and 1.03 at 12–83′.",
    "alt": "Analytic (OneCovariance) ξ± variance divided by the data's 100-patch jackknife variance, per bin pair (auto-correlations coloured, cross-correlations grey); the band is the jackknife's own ±14% scatter. The median ratio is 1.00 below 10′ (required within 15% of 1) and 1.03 at 12–83′.",
-   "url": "cosmoval/data-tomo/cov_jk-e9b3b2766ea4.png",
+   "url": "cosmoval/data-tomo/cov_jk-8061ab4235e6.png",
    "width": 1583,
-   "height": 549
+   "height": 545
   },
   {
    "id": "cov_xi",
@@ -406,9 +395,9 @@
    "size": "half",
    "caption": "Correlation matrix of the analytic covariance of the tomographic ξ±, in data-file order.",
    "alt": "Correlation matrix of the analytic covariance of the tomographic ξ±, in data-file order.",
-   "url": "cosmoval/data-tomo/cov_xi-6585a9a0c99c.png",
-   "width": 791,
-   "height": 665
+   "url": "cosmoval/data-tomo/cov_xi-3fb3913e7741.png",
+   "width": 790,
+   "height": 680
   },
   {
    "id": "cov_cl",
@@ -417,9 +406,9 @@
    "size": "half",
    "caption": "Correlation matrix of the Gaussian covariance of pseudo-Cℓ BB: ten bin pairs × 32 bandpowers.",
    "alt": "Correlation matrix of the Gaussian covariance of pseudo-Cℓ BB: ten bin pairs × 32 bandpowers.",
-   "url": "cosmoval/data-tomo/cov_cl-0a61e804c8c9.png",
-   "width": 791,
-   "height": 670
+   "url": "cosmoval/data-tomo/cov_cl-ebc6587992ec.png",
+   "width": 790,
+   "height": 680
   }
  ],
  "sections": [
