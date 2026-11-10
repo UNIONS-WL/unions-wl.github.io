@@ -10,7 +10,7 @@ with the run-directory figures redrawn on Fir and the catalogue-level figures fr
         /project/rrg-kyi/cdaley/unions/analyses/production-page/fir-data-2d \\
         --catalogue "ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF; 170.6M galaxies on 20,515 of the 22,901 tiles in the v2.0.0 release, 4,690 deg²" \\
         --nz "for the covariance only: the sum of the four bins of the first working DR6 BPZ+SOM n(z), not the recalibrated n(z) of CosmoStat/sp_validation#468" \\
-        --code "sp_validation run/tomo1101 @ 7081c2d0 (measured 1 Nov); figures rendered 10 Nov with feat/page-figures-2d @ 489e3f3c (catalogue-level panels: run/dashboard-tomo1101 @ 54220f69)"
+        --code "sp_validation run/tomo1101 @ 7081c2d0 (measured 1 Nov); figures rendered 10 Nov with feat/page-figures-2d @ 8f1fcc74 (catalogue-level panels: run/dashboard-tomo1101 @ 54220f69)"
 
 --stale "<what it predates>" marks a run measured on older inputs.
 """

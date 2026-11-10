@@ -19,7 +19,7 @@
   ],
   [
    "code",
-   "sp_validation run/tomo1101 @ 7081c2d0 (measured 1 Nov); figures rendered 10 Nov with feat/page-figures-2d @ 489e3f3c (catalogue-level panels: run/dashboard-tomo1101 @ 54220f69)"
+   "sp_validation run/tomo1101 @ 7081c2d0 (measured 1 Nov); figures rendered 10 Nov with feat/page-figures-2d @ 8f1fcc74 (catalogue-level panels: run/dashboard-tomo1101 @ 54220f69)"
   ],
   [
    "date",
@@ -161,8 +161,8 @@
    "section": "data_vectors",
    "group": null,
    "size": "full",
-   "caption": "Blinded E-mode angular power spectrum C_ℓ^EE, multiplied by ℓ: NaMaster pseudo-Cℓ, corrected for the survey mask. Error bars are from the Gaussian covariance. Shading marks bands outside the fiducial 300 ≤ ℓ ≤ 1600.",
-   "alt": "Blinded E-mode angular power spectrum C_ℓ^EE, multiplied by ℓ: NaMaster pseudo-Cℓ, corrected for the survey mask. Error bars are from the Gaussian covariance. Shading marks bands outside the fiducial 300 ≤ ℓ ≤ 1600.",
+   "caption": "Blinded E-mode angular power spectrum Cℓ EE, multiplied by ℓ: NaMaster pseudo-Cℓ, corrected for the survey mask. Error bars are from the Gaussian covariance. Shading marks bands outside the fiducial 300 ≤ ℓ ≤ 1600.",
+   "alt": "Blinded E-mode angular power spectrum Cℓ EE, multiplied by ℓ: NaMaster pseudo-Cℓ, corrected for the survey mask. Error bars are from the Gaussian covariance. Shading marks bands outside the fiducial 300 ≤ ℓ ≤ 1600.",
    "url": "cosmoval/data-2d/cl-082fdfd0cce0.png",
    "width": 1584,
    "height": 599,
@@ -191,7 +191,7 @@
    "size": "half",
    "caption": "B-mode COSEBIs Bₙ (complete orthogonal sets of E/B-integrals, a compact E/B split of ξ±) in units of their uncertainty, over the fiducial 12′–83′ (filled) and the full 1′–250′ (open). The headline null test uses n ≤ 6; higher modes are shaded.",
    "alt": "B-mode COSEBIs Bₙ (complete orthogonal sets of E/B-integrals, a compact E/B split of ξ±) in units of their uncertainty, over the fiducial 12′–83′ (filled) and the full 1′–250′ (open). The headline null test uses n ≤ 6; higher modes are shaded.",
-   "url": "cosmoval/data-2d/bmode_cosebis-9f16d7a5c65f.png",
+   "url": "cosmoval/data-2d/bmode_cosebis-7cf9866b2faa.png",
    "width": 791,
    "height": 542
   },
