@@ -173,6 +173,8 @@
   @media (max-width:760px){
     h1{font-size:31px} h2{font-size:26px} .two{grid-template-columns:1fr}
     #map{grid-template-columns:1fr;gap:18px} #plate{order:-1;margin:0 -6px}
+    #plate .pl-loop, #plate .pl-rname, #plate .pl-rsay, #plate .pl-vsub, #plate .pl-name, #plate .pl-dec, #plate .pl-const{display:none}
+    #plate .pl-vname{font-size:22px} #plate .pl-hour{font-size:13px} #plate .pl-way{font-size:17px}
     .fs{grid-template-columns:max-content minmax(60px,1fr) max-content;padding:12px}
     .fs .jobs{grid-column:1 / -1;margin-top:-6px}
     .cv-pair{grid-template-columns:1fr} table{font-size:14px} th,td{padding:4px 6px} .cv-fig{padding:6px}
@@ -416,15 +418,16 @@ function dressPlate(){
     a.classList.add(r ? r.status : 'pending');
     let say = 'no run yet';
     if (r){
-      const fails = r.headline.filter(h => h.fail).length, n = r.headline.length, what = kind === 'mock' ? ' checks' : ' nulls';
+      const fails = r.headline.filter(h => h.fail).length, n = r.headline.length, what = kind === 'mock' ? ' covariance checks' : ' nulls';
       say = !n ? 'not measured yet' : fails ? fails + ' of ' + n + what + ' fail' : 'all ' + n + what + ' pass';
     }
     a.querySelector('.pl-rsay').textContent = say;
     a.setAttribute('aria-current', String(a.dataset.run === current));
-    said[a.dataset.run] = say.replace(/ (nulls|checks|yet)/, '');
+    said[a.dataset.run] = say.replace(/ (nulls|covariance checks|yet)/, '');
   }
   for (const kind of ['data', 'mock'])
-    $('idx-' + kind).replaceChildren('tomographic: ' + said[kind + '-tomo'], el('br'), 'non-tomographic: ' + said[kind + '-2d']);
+    $('idx-' + kind).replaceChildren(kind === 'mock' ? 'GLASS, covariance checks' : 'B-mode nulls', el('br'),
+      'tomographic: ' + said[kind + '-tomo'], el('br'), 'non-tomographic: ' + said[kind + '-2d']);
 }
 const plateReady = fetch('plate.svg').then(r => r.ok ? r.text() : '').then(svg => { $('plate').innerHTML = svg; }).catch(() => {});
 // In-page links: "#compute" scrolls to a section, "#data-tomo" opens a run, "#data-tomo/bmodes" one of its sections.

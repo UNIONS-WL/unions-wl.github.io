@@ -205,7 +205,7 @@ def main():
         x, y = xy(a, d)
         w(f'<ellipse class="pl-galaxy" cx="{x:.1f}" cy="{y:.1f}" rx="4.2" ry="2.2" transform="rotate(-30 {x:.1f} {y:.1f})"/>'
           f'<text class="pl-name" x="{x + 7:.1f}" y="{y + 3:.1f}">{n}</text>')
-    for label, (a, d), rot in (("Ursa Major", (176, 62.5), 0), ("Cassiopeia", (14, 66), 0)):
+    for label, (a, d), rot in (("Cassiopeia", (14, 66), 0),):
         x, y = xy(a, d)
         w(f'<text class="pl-const" x="{x:.1f}" y="{y:.1f}" text-anchor="middle">{label}</text>')
     x, y = xy(*((SkyCoord(l=0 * u.deg, b=90 * u.deg, frame="galactic").icrs.ra.deg,
@@ -248,8 +248,8 @@ def main():
 
     # The four runs: stars hanging from mocks and data; status.html sets their state and text.
     for run, base, (dx, dy), anchor, label in (
-            ("mock-tomo", M, (4, 36), "start", "tomographic"), ("mock-2d", M, (30, 70), "start", "non-tomographic"),
-            ("data-tomo", D, (-4, 36), "end", "tomographic"), ("data-2d", D, (-46, 102), "end", "non-tomographic")):
+            ("mock-tomo", M, (4, 34), "start", "tomographic"), ("mock-2d", M, (30, 88), "start", "non-tomographic"),
+            ("data-tomo", D, (-18, 61), "end", "tomographic"), ("data-2d", D, (-46, 115), "end", "non-tomographic")):
         x, y = base[0] + dx, base[1] + dy
         tx = x + (-12 if anchor == "end" else 12)
         w(f'<a href="#{run}" class="pl-run" data-run="{run}">'
