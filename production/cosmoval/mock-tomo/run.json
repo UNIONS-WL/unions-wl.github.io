@@ -5,7 +5,7 @@
  "title": "GLASS mocks, tomographic (preliminary, 65 of 70 seeds)",
  "status": "current",
  "stale_note": null,
- "summary": "Preliminary: 65 of 70 seeds; the rest arrive today. On 65 sampled GLASS mocks matched to the data cell's bins and n(z), the analytic covariance describes the mock scatter of Cℓ BB and Cℓ EB (mean χ²/dof 1.01, 1.00) but is 4–9% low for the COSEBIs and ξ± B tests, so their mock PTEs are not uniform (COSEBIs B, ξ+ B (12–83′), ξ± B (12–83′), ξ± B (2–20′): KS p < 0.05). The blinded data's Cℓ BB additive-template amplitude, 0.77 ± 0.22, is exceeded by 0 of 65 mocks (3.2σ above the mock mean): the data's B-mode excess is additive, not a property of mocks without systematics.",
+ "summary": "Each chip asks whether the 65 mock PTEs of one joint B-mode test are uniform, which they are when the analytic covariance describes the scatter of the mocks. It does for Cℓ BB, Cℓ EB and ξ− B (12–83′); for COSEBIs B, ξ+ B (12–83′), ξ± B (12–83′) and ξ± B (2–20′) the mocks scatter 6–9% more than the analytic covariance says (mean χ²/dof 1.06–1.09), so those tests' analytic PTEs read slightly low on the data too. Preliminary: 65 of 70 seeds, the rest arriving today. The mocks are matched to the data cell's bins and n(z). The blinded data's Cℓ BB additive-template amplitude, 0.77 ± 0.22, lies 3.2σ above the mock mean, with 0 of 65 mocks higher; we read this as an additive B-mode systematic in the data, which mocks without systematics do not produce.",
  "banner": "GLASS mocks under a throwaway blind; the input cosmology is known. The data B modes shown against them are blinded data, which the blind leaves unchanged",
  "lacks": "Sampled mocks have unit weights, Gaussian shape noise at the data's per-bin σ_e and n_eff, no PSF leakage and no additive B mode, so this run has no PSF section.",
  "provenance": [
@@ -67,7 +67,7 @@
    "fail": true
   }
  ],
- "headline_note": "KS p-value that the 65 mock PTEs of each joint B-mode test are uniform, as they are when the analytic covariance is right",
+ "headline_note": "Covariance checks: KS p-value that the 65 mock PTEs of each joint B-mode test are uniform, as they are when the analytic covariance describes the mock scatter",
  "groups": {
   "covariance": "Covariance along eigenmodes",
   "bands": "More B-mode placements"

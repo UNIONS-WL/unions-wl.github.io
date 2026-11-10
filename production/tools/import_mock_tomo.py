@@ -72,6 +72,10 @@ def label(p):
     return f"{p[0] + 1}×{p[1] + 1}"
 
 
+def and_list(xs):
+    return xs[0] if len(xs) == 1 else ", ".join(xs[:-1]) + " and " + xs[-1]
+
+
 def git(checkout, *args):
     return subprocess.check_output(["git", "-C", checkout, *args], text=True).strip()
 
@@ -284,7 +288,9 @@ def main():
     branch = git(cv, "rev-parse", "--abbrev-ref", "HEAD")
     preliminary = n < args.seeds
     s = {k: stats[k]["joint"]["s"] for k in TESTS}
-    ks_fail = [TESTS[k] for k in TESTS if stats[k]["joint"]["mock_pte_ks_p"] < 0.05]
+    fail = [k for k in TESTS if stats[k]["joint"]["mock_pte_ks_p"] < 0.05]
+    ks_fail = [TESTS[k] for k in fail]
+    ks_pass = [TESTS[k] for k in TESTS if k not in fail]
     t = add["clbb_template_common"]
     lo, hi = result["sampling_variance_bands_gaussian"]["0.68"]
     band95 = result["sampling_variance_bands_gaussian"]["0.95"]
@@ -292,16 +298,17 @@ def main():
     run = Run(
         "mock-tomo",
         title="GLASS mocks, tomographic" + (f" (preliminary, {n} of {args.seeds} seeds)" if preliminary else ""),
-        summary=((f"Preliminary: {n} of {args.seeds} seeds; the rest arrive today. " if preliminary else "")
-                 + f"On {n} sampled GLASS mocks matched to the data cell's bins and n(z), the analytic covariance "
-                 f"describes the mock scatter of Cℓ BB and Cℓ EB (mean χ²/dof {s['cl_bb']:.2f}, {s['cl_eb']:.2f}) "
-                 f"but is {100 * (min(s[k] for k in ('cosebis', 'xip_B', 'xim_B', 'combined', 'small')) - 1):.0f}–"
-                 f"{100 * (max(s[k] for k in ('cosebis', 'xip_B', 'xim_B', 'combined', 'small')) - 1):.0f}% low for "
-                 "the COSEBIs and ξ± B tests"
-                 + (f", so their mock PTEs are not uniform ({', '.join(ks_fail)}: KS p < 0.05)" if ks_fail else "")
-                 + f". The blinded data's Cℓ BB additive-template amplitude, {t['data']:.2f} ± {t['sigma']:.2f}, "
-                 f"is exceeded by {t['rank_above']} of {n} mocks ({t['z']:.1f}σ above the mock mean): the data's "
-                 "B-mode excess is additive, not a property of mocks without systematics."),
+        summary=(f"Each chip asks whether the {n} mock PTEs of one joint B-mode test are uniform, which they are "
+                 "when the analytic covariance describes the scatter of the mocks. It does for "
+                 f"{and_list(ks_pass)}; for {and_list(ks_fail)} the mocks scatter "
+                 f"{100 * (min(s[k] for k in fail) - 1):.0f}–{100 * (max(s[k] for k in fail) - 1):.0f}% more than "
+                 f"the analytic covariance says (mean χ²/dof {min(s[k] for k in fail):.2f}–"
+                 f"{max(s[k] for k in fail):.2f}), so those tests' analytic PTEs read slightly low on the data too. "
+                 + (f"Preliminary: {n} of {args.seeds} seeds, the rest arriving today. " if preliminary else "")
+                 + "The mocks are matched to the data cell's bins and n(z). "
+                 f"The blinded data's Cℓ BB additive-template amplitude, {t['data']:.2f} ± {t['sigma']:.2f}, lies "
+                 f"{t['z']:.1f}σ above the mock mean, with {t['rank_above']} of {n} mocks higher; we read this as an "
+                 "additive B-mode systematic in the data, which mocks without systematics do not produce."),
         banner=("GLASS mocks under a throwaway blind; the input cosmology is known. The data B modes shown "
                 "against them are blinded data, which the blind leaves unchanged"),
         provenance={
@@ -321,8 +328,8 @@ def main():
 
     for test, name in TESTS.items():
         run.headline(name, stats[test]["joint"]["mock_pte_ks_p"])
-    run.doc["headline_note"] = (f"KS p-value that the {n} mock PTEs of each joint B-mode test are uniform, "
-                                "as they are when the analytic covariance is right")
+    run.doc["headline_note"] = (f"Covariance checks: KS p-value that the {n} mock PTEs of each joint B-mode test "
+                                "are uniform, as they are when the analytic covariance describes the mock scatter")
 
     # Known answers: mock-only calibration.
     rows = []
