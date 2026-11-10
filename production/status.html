@@ -32,12 +32,12 @@
   section{margin-top:52px;scroll-margin-top:16px}
   .mark{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--cinnabar);margin-bottom:8px;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
   .mark .note{color:var(--ink-muted);font-size:10.5px;letter-spacing:.04em;text-transform:none}
-  .card{background:var(--rag);border:1px solid var(--rule);border-radius:10px;padding:10px}
+  .card{background:var(--rag);border:1px solid var(--rule);border-radius:10px;padding:10px;min-width:0;overflow:hidden}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .plot{width:100%;height:340px}
   .err{color:var(--cinnabar);font-family:var(--mono);font-size:13px}
   .tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;border:1px solid currentColor;border-radius:3px;padding:0 5px;white-space:nowrap}
-  .tag.current{color:var(--teal)} .tag.stale{color:var(--ochre)}
+  .tag.current{color:var(--teal)} .tag.stale{color:var(--ochre)} .tag.pending{color:var(--ink-muted)}
 
   /* ---- map ---- */
   #map{margin-top:26px}
@@ -207,7 +207,7 @@
     </div>
     <div class="key">
       <span><svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5" fill="#2F7268"/></svg>test passes</span>
-      <span><svg viewBox="0 0 12 12"><path d="M2 2 L10 10 M10 2 L2 10" stroke="#BC4538" stroke-width="2.4" fill="none"/></svg>fails (PTE &lt; 0.05)</span>
+      <span><svg viewBox="0 0 12 12"><path d="M2 2 L10 10 M10 2 L2 10" stroke="#BC4538" stroke-width="2.4" fill="none"/></svg>fails (p &lt; 0.05)</span>
       <span><span class="tag stale">older inputs</span>measured before the current n(z), catalogue or code</span>
     </div>
     <p class="also"><span>Also on this page:</span><a href="#compute">compute and fair share</a><a href="#release">the v2.0.0 release</a><a href="#production">ShapePipe v2 run 1 (complete)</a></p>
@@ -218,7 +218,8 @@
     <p id="next">Loading fair share…</p>
     <div class="card fs" id="fs"></div>
     <p class="fs-note">LevelFS is Slurm's fair-share level of an allocation. A value of 1 is the account's fair share. Above 1, the account has used less than its share
-    and its jobs gain priority; below 1, it has used more. Rows are sorted from the most under-used account down.</p>
+    and its jobs gain priority; below 1, it has used more. Rows are sorted from the most under-used account down.
+    In the history below, solid lines are Fir and dotted lines Nibi; a gap is a period with no sample.</p>
     <div class="card" style="margin-top:14px"><div id="levelfs" class="plot"></div></div>
   </section>
 
@@ -299,7 +300,7 @@ document.addEventListener('click', e => {
 });
 
 // ================= validation runs =================
-const RUNS = {};
+const RUNS = {}, TAG = {current:'current', stale:'older inputs', pending:'not measured'};
 let current = null;
 const runId = (kind, dim) => kind + '-' + dim;
 
@@ -345,7 +346,7 @@ function cvTable(t){
     body.append(tr);
   }
   table.append(body); wrap.append(table); frag.append(wrap);
-  if (t.caption) frag.append(el('p', t.caption + (t.threshold > 0 ? ' Values below ' + t.threshold + ' are in bold red.' : ''), 'cv-note'));
+  if (t.caption) frag.append(el('p', t.caption + (t.threshold > 0 && !/below/.test(t.caption) ? ' Values below ' + t.threshold + ' are in bold red.' : ''), 'cv-note'));
   return frag;
 }
 function flow(parent, figures){
@@ -360,7 +361,7 @@ function flow(parent, figures){
 function renderRun(r){
   const body = document.createDocumentFragment();
   const head = el('div', null, 'run-head');
-  head.append(el('h3', r.title), el('span', r.status === 'stale' ? 'older inputs' : 'current', 'tag ' + r.status));
+  head.append(el('h3', r.title), el('span', TAG[r.status], 'tag ' + r.status));
   body.append(head);
   body.append(el('p', r.banner, 'banner' + (r.kind === 'mock' ? ' mock' : '')));
   if (r.stale_note) body.append(el('p', r.stale_note, 'stale-note'));
@@ -411,7 +412,7 @@ function runCard(kind, dim){
   card.type = 'button'; card.dataset.run = id;
   const top = el('div', null, 'top');
   top.append(el('span', dim === 'tomo' ? 'tomographic' : 'non-tomographic', 'dim'));
-  if (r) top.append(el('span', r.status === 'stale' ? 'older inputs' : 'current', 'tag ' + r.status));
+  if (r) top.append(el('span', TAG[r.status], 'tag ' + r.status));
   card.append(top);
   if (!r){ card.append(el('span', 'no run yet', 'say')); }
   else {
@@ -443,7 +444,11 @@ const FRESH_HOURS = 3;
 const plotBase = {paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)',
   font:{family:'IBM Plex Mono, monospace', size:11, color:'#6E6452'}, margin:{l:56,r:16,t:16,b:44},
   legend:{orientation:'h', y:-0.2, font:{size:11}}, hoverlabel:{font:{family:'IBM Plex Mono'}}};
-const plotCfg = {displayModeBar:false, responsive:true};
+const plotCfg = {displayModeBar:false};
+// Plots take their width from their container, at draw time and on every resize.
+const PLOTS = new Set();
+function plot(id, traces, layout){ PLOTS.add(id); return Plotly.newPlot(id, traces, {...layout, width:$(id).clientWidth, height:340}, plotCfg); }
+window.addEventListener('resize', () => { for (const id of PLOTS) if ($(id).clientWidth) Plotly.relayout(id, {width:$(id).clientWidth}); });
 const parseUtc = s => new Date(s.replace('Z', ':00Z'));
 function age(hours){ return hours < 1 ? Math.max(1, Math.round(hours*60)) + ' min ago' : hours < 48 ? Math.round(hours) + ' h ago' : Math.round(hours/24) + ' days ago'; }
 function renderFairShare(clusters){
@@ -457,14 +462,12 @@ function renderFairShare(clusters){
   const name = r => r.cluster[0].toUpperCase() + r.cluster.slice(1) + ' · ' + r.account;
   const next = $('next'); next.replaceChildren();
   if (best){
-    next.append('Run next on ', el('b', name(best)), ' (LevelFS ' + best.level.toFixed(2) + ')');
-    if (ACCOUNT_NOTE[best.account]){
-      const second = fresh.find(r => !ACCOUNT_NOTE[r.account]);
-      next.append('; it is ' + ACCOUNT_NOTE[best.account] + (second ? ', so for a large job take ' : '.'));
-      if (second) next.append(el('b', name(second)), ' (' + second.level.toFixed(2) + ').');
-    } else next.append('.');
-    $('map-next').textContent = name(best) + ', LevelFS ' + best.level.toFixed(2);
-    $('map-next-narrow').textContent = 'run next on ' + name(best) + ' (LevelFS ' + best.level.toFixed(2) + ')';
+    const open = fresh.find(r => !ACCOUNT_NOTE[r.account]) || best;
+    next.append('Run next on ', el('b', name(open)), ' (LevelFS ' + open.level.toFixed(2) + ').');
+    if (open !== best) next.append(' ', el('b', name(best)), ' is higher (' + best.level.toFixed(2) + ') but is ' + ACCOUNT_NOTE[best.account] + '.');
+    const pick = fresh.find(r => !ACCOUNT_NOTE[r.account]) || best;
+    $('map-next').textContent = name(pick) + ', LevelFS ' + pick.level.toFixed(2);
+    $('map-next-narrow').textContent = 'run next on ' + name(pick) + ' (LevelFS ' + pick.level.toFixed(2) + ')';
   } else {
     next.textContent = 'No fair-share sample is newer than ' + FRESH_HOURS + ' hours; the values below are the last ones recorded.';
     $('map-next').textContent = 'no recent sample';
@@ -497,8 +500,9 @@ function renderFairShare(clusters){
       line:{color:ACCOUNT_COLOUR[account] || '#7B6A99', width:2, dash:c.cluster === 'nibi' ? 'dot' : 'solid'}, marker:{size:3}, connectgaps:false,
       customdata:ok.map(s => [s[2], s[3]]), hovertemplate:'%{x} UTC<br>LevelFS %{y:.2f}<br>%{customdata[0]} running · %{customdata[1]} pending<extra>' + label + '</extra>'});
   }
-  Plotly.newPlot('levelfs', traces, {...plotBase, yaxis:{title:'LevelFS', type:'log', gridcolor:'#e2d7c0', tickvals:[0.05,0.1,0.2,0.5,1,2,5,10], ticktext:['0.05','0.1','0.2','0.5','1','2','5','10']},
-    xaxis:{gridcolor:'#e2d7c0'}, shapes:[{type:'line', xref:'paper', x0:0, x1:1, y0:1, y1:1, line:{color:'#6E6452', width:1, dash:'dot'}}]}, plotCfg);
+  plot('levelfs', traces, {...plotBase, yaxis:{title:'LevelFS', type:'log', gridcolor:'#e2d7c0', tickvals:[0.05,0.1,0.2,0.5,1,2,5,10], ticktext:['0.05','0.1','0.2','0.5','1','2','5','10']},
+    xaxis:{gridcolor:'#e2d7c0', range:[Math.min(...traces.map(t => Date.parse(t.x[0] + 'Z'))), now + 12*36e5].map(t => new Date(t).toISOString().slice(0, 16))},
+    shapes:[{type:'line', xref:'paper', x0:0, x1:1, y0:1, y1:1, line:{color:'#6E6452', width:1, dash:'dot'}}]});
 }
 Promise.all(['fir', 'nibi'].map(c => fetch('fairshare/' + c + '.json', {cache:'no-cache'}).then(r => r.ok ? r.json() : null).catch(() => null)))
   .then(list => { const got = list.filter(Boolean); if (!got.length) throw new Error('no fair-share file'); renderFairShare(got);
@@ -605,16 +609,17 @@ function renderProduction(){
   if (!G.viewSet && nt){ const [ra, dec] = centroid(ids); G.rot = [ra, -dec, 0]; }
   if (layout()) draw();
   const t = d.timeline.map(r => r[0]), n = d.timeline.map(r => r[1]);
-  Plotly.newPlot('progress', [{x:t, y:n, text:d.timeline.map(r => r[2]), type:'scatter', mode:'lines', line:{shape:'hv', color:C.ink, width:2},
+  plot('progress', [{x:t, y:n, text:d.timeline.map(r => r[2]), type:'scatter', mode:'lines', line:{shape:'hv', color:C.ink, width:2},
       name:'processed', hovertemplate:'%{x}<br>%{y:,} tiles · %{text}<extra></extra>'}],
     {...plotBase, showlegend:false, yaxis:{title:'tiles', range:[0, N*1.05], gridcolor:'#e2d7c0'}, xaxis:{gridcolor:'#e2d7c0'},
-     shapes:[{type:'line', xref:'paper', x0:0, x1:1, y0:N, y1:N, line:{color:C.muted, width:1, dash:'dot'}}]}, plotCfg);
+     shapes:[{type:'line', xref:'paper', x0:0, x1:1, y0:N, y1:N, line:{color:C.muted, width:1, dash:'dot'}}]});
   const days = Object.keys(d.corehours), accts = d.accounts;
-  Plotly.newPlot('corehours', accts.map(a => ({type:'bar', name:a, x:days, y:days.map(x => d.corehours[x][a] || 0),
+  plot('corehours', accts.map(a => ({type:'bar', name:a, x:days, y:days.map(x => d.corehours[x][a] || 0),
     marker:{color:C[a]}, hovertemplate:'%{x}: %{y:,} core-h<extra>'+a+'</extra>'})),
-    {...plotBase, barmode:'stack', yaxis:{title:'core-hours / day', gridcolor:'#e2d7c0'}}, plotCfg);
+    {...plotBase, barmode:'stack', yaxis:{title:'core-hours / day', gridcolor:'#e2d7c0'}});
 }
 $('prod-fold').addEventListener('toggle', renderProduction);
+if (location.hash === '#production') $('prod-fold').open = true;
 fetch('status.json', {cache:'no-cache'}).then(r => r.json()).then(d => {
   production = d;
   $('prod-summary').textContent = 'Shape measurement of the UNIONS DR6 r-band footprint on Nibi and Fir. Complete: ' + fmt(d.latest.tiles) + ' of ' + fmt(d.dr6_tiles) +

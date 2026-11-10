@@ -11,7 +11,7 @@
  "provenance": [
   [
    "catalogue",
-   "ShapePipe SP v2.0, size bound 9; 170.6M galaxies on 19,940 tiles, 4,690 deg²; tomographic footprint (tiles with z-band photometry) 15,830 tiles, 3,815 deg²"
+   "ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF; 170.6M galaxies, 4,690 deg²; tomographic footprint (tiles with z-band photometry) 15,830 tiles, 3,815 deg²"
   ],
   [
    "n(z)",

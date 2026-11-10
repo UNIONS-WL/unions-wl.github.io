@@ -32,17 +32,17 @@ run = Run(
              f"reads as pure E (BB/EE = {d['sign']['correct_bb_over_ee']:.0e}). Its null tests are not measured yet."),
     banner="GLASS mock with a known input cosmology; no data vector is shown",
     provenance={
-        "catalogue": f"GLASS seed 1 painted on SP v2.0, size bound 9 ({rows:,} galaxies): real positions, weights and |e|, random orientations",
+        "catalogue": f"GLASS seed 1 painted on ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF ({rows:,} galaxies): real positions, weights and |e|, random orientations",
         "n(z)": "v2 non-tomographic n(z) (data/nz-v2-full-products/nz_v2_nontomo.txt)",
         "code": args.code,
         "date": args.date,
         "blind": "none applied: these figures compare the mock with its own input",
     },
-    status="stale",
+    status="pending",
     stale_note=("No cosmo_val run on a non-tomographic v2 mock has finished. The painted suite on Nibi "
                 "(clean, blinded, PSF-leakage and additive-B twins) stopped at 39 of 74 steps on 1 Nov and was "
                 "resumed on 10 Nov. Until it lands, this cell shows how the mock is built, not its null tests."),
-    lacks="Source clustering correlated with the lensing field; the PSF is the data's own at each galaxy.",
+    lacks="Source clustering correlated with the lensing field. PSF leakage is absent unless injected: each galaxy keeps its real PSF but gets a random orientation.",
 )
 run.figure(args.source / "known_answer_spectra.png", "known",
            "The full-sky convergence and E-mode spectra of the seed-1 GLASS sky against the input theory. "

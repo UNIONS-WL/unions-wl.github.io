@@ -3,8 +3,8 @@
  "kind": "mock",
  "tomographic": true,
  "title": "GLASS mocks, tomographic",
- "status": "current",
- "stale_note": null,
+ "status": "stale",
+ "stale_note": "These mocks were generated with the first working n(z) and its bins, before the recalibration of CosmoStat/sp_validation#468. They match the 31 Oct data run, not the remeasurement on the new bins.",
  "summary": "On 18 sampled GLASS mocks the mean χ²/dof of the seven joint B-mode tests against the analytic covariance lies between 1.00 and 1.09, more than 2σ above 1 for ξ− B (12–83′) and ξ± B (2–20′); the mock PTEs are consistent with uniform except for ξ± B (2–20′) (KS p < 0.05).",
  "banner": "GLASS mocks under a throwaway blind (mock-ensemble-tomo); the input cosmology is known",
  "lacks": "Sampled mocks have unit weights, Gaussian shape noise at the data's per-bin σ_e and n_eff, no PSF leakage and no additive B mode, so this run has no PSF section.",
@@ -15,11 +15,11 @@
   ],
   [
    "n(z)",
-   "nz_v2_bound9_full_tomo.txt, 4 bins, the same file as the blinded data run"
+   "first working DR6 BPZ+SOM n(z) (nz_v2_bound9_full_tomo.txt, 4 bins), the one the 31 Oct blinded data run used; not the recalibrated n(z) of CosmoStat/sp_validation#468"
   ],
   [
    "code",
-   "generator sp_validation make_glass_sim.py @ 08b37ee0; measurement run/mock-ensemble-sampled @ c8f7b522, the estimators of the data run 7081c2d0"
+   "generator sp_validation make_glass_sim.py @ 08b37ee0; measurement run/mock-ensemble-sampled @ c8f7b522, with the estimators and analytic covariance of the blinded tomographic data run as rerun at 7081c2d0"
   ],
   [
    "date",

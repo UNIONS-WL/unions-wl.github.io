@@ -171,13 +171,17 @@ def main():
         banner="GLASS mocks under a throwaway blind (mock-ensemble-tomo); the input cosmology is known",
         provenance={
             "catalogue": f"GLASS sampled mock on the v2 tomographic footprint, {n} seeds, nside {glass['nside']}",
-            "n(z)": f"{Path(glass['nz_path']).name}, {glass['nbins']} bins, the same file as the blinded data run",
+            "n(z)": (f"first working DR6 BPZ+SOM n(z) ({Path(glass['nz_path']).name}, {glass['nbins']} bins), "
+                     "the one the 31 Oct blinded data run used; not the recalibrated n(z) of CosmoStat/sp_validation#468"),
             "code": (f"generator sp_validation make_glass_sim.py @ {prov['generator_sha'][:8]}; "
-                     f"measurement {branch} @ {prov['cosmo_val_sha'][:8]}, the estimators of the data run "
-                     f"{data_prov['git_sha'][:8]}"),
+                     f"measurement {branch} @ {prov['cosmo_val_sha'][:8]}, with the estimators and analytic covariance of "
+                     f"the blinded tomographic data run as rerun at {data_prov['git_sha'][:8]}"),
             "date": date,
             "blind": f"{prov['mock_blind']}, a throwaway mock blind",
         },
+        status="stale",
+        stale_note=("These mocks were generated with the first working n(z) and its bins, before the recalibration of "
+                    "CosmoStat/sp_validation#468. They match the 31 Oct data run, not the remeasurement on the new bins."),
         lacks=("Sampled mocks have unit weights, Gaussian shape noise at the data's per-bin σ_e and n_eff, "
                "no PSF leakage and no additive B mode, so this run has no PSF section."),
     )

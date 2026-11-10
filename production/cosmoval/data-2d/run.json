@@ -4,18 +4,18 @@
  "tomographic": false,
  "title": "Blinded data, non-tomographic",
  "status": "stale",
- "stale_note": "Measured on 28 Oct, before the last 2,386 tiles were published, with the size cut of 3 (now 9, sp_validation#448) and the v1.4.6.3 n(z) as a stand-in for the covariance.",
+ "stale_note": "Measured on 28 Oct, before the last 2,386 tiles were published, with the size bound of 3 (now 9, sp_validation#448) and the v1.4.6.3 n(z) as a stand-in for the covariance.",
  "summary": "At the fiducial cuts (12′–83′, 300 ≤ ℓ ≤ 1600) ξ₋ᴮ and Cℓ BB fail; the other B-mode nulls pass.",
  "banner": "Blinded (blind: unions): E-mode data vectors are concealed; do not interpret cosmology",
  "lacks": null,
  "provenance": [
   [
    "catalogue",
-   "SP v2.0, relative-size cut 3, 20,515 of 22,901 tiles, 4,655 deg²"
+   "ShapePipe SP v2.0, upper bound 3 on galaxy size relative to the PSF, 20,515 of 22,901 tiles, 4,655 deg²"
   ],
   [
    "n(z)",
-   "v1.4.6.3_A diagnostic proxy; not v2 calibrated"
+   "the n(z) of the v1.4.6.3 catalogue, used as a stand-in; not calibrated for v2"
   ],
   [
    "code",
@@ -175,8 +175,8 @@
    "section": "bmodes",
    "group": null,
    "size": "full",
-   "caption": "Pure-mode decomposition of ξ±. Shaded: outside the fiducial 12′–83′; full range 1′–250′.",
-   "alt": "Pure-mode decomposition of ξ±. Shaded: outside the fiducial 12′–83′; full range 1′–250′.",
+   "caption": "Blinded ξ± decomposed into pure E and B modes. Shaded: outside the fiducial 12′–83′; full range 1′–250′.",
+   "alt": "Blinded ξ± decomposed into pure E and B modes. Shaded: outside the fiducial 12′–83′; full range 1′–250′.",
    "url": "cosmoval/data-2d/bmode_pure_eb-069853210421.png",
    "width": 1584,
    "height": 603,

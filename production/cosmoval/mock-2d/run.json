@@ -3,15 +3,15 @@
  "kind": "mock",
  "tomographic": false,
  "title": "GLASS mock, non-tomographic",
- "status": "stale",
+ "status": "pending",
  "stale_note": "No cosmo_val run on a non-tomographic v2 mock has finished. The painted suite on Nibi (clean, blinded, PSF-leakage and additive-B twins) stopped at 39 of 74 steps on 1 Nov and was resumed on 10 Nov. Until it lands, this cell shows how the mock is built, not its null tests.",
  "summary": "One painted mock exists and its construction is checked: the sky matches its input spectrum (mean ratio 0.998 over ℓ = 100–8000) and a pure-E sky reads as pure E (BB/EE = 7e-09). Its null tests are not measured yet.",
  "banner": "GLASS mock with a known input cosmology; no data vector is shown",
- "lacks": "Source clustering correlated with the lensing field; the PSF is the data's own at each galaxy.",
+ "lacks": "Source clustering correlated with the lensing field. PSF leakage is absent unless injected: each galaxy keeps its real PSF but gets a random orientation.",
  "provenance": [
   [
    "catalogue",
-   "GLASS seed 1 painted on SP v2.0, size bound 9 (170,617,249 galaxies): real positions, weights and |e|, random orientations"
+   "GLASS seed 1 painted on ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF (170,617,249 galaxies): real positions, weights and |e|, random orientations"
   ],
   [
    "n(z)",

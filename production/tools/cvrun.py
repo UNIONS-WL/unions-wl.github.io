@@ -41,12 +41,13 @@ class Run:
     def __init__(self, run_id, *, title, summary, banner, provenance, status="current",
                  stale_note=None, lacks=None):
         """provenance: ordered {label: value}; must carry catalogue, n(z), code, date, blind.
-        status: 'current' (latest code and inputs) or 'stale' (stale_note says what it predates).
+        status: 'current' (latest code and inputs), 'stale' (stale_note says what it predates) or
+        'pending' (no finished measurement; stale_note says what is shown instead).
         lacks: for mocks, one sentence on what the mock does not contain."""
         assert run_id in ORDER, run_id
         missing = [k for k in PROVENANCE if k not in provenance]
         assert not missing, f"provenance lacks {missing}"
-        assert status in ("current", "stale") and (status == "current" or stale_note)
+        assert status in ("current", "stale", "pending") and (status == "current" or stale_note)
         self.dir = PRODUCTION / "cosmoval" / run_id
         if self.dir.exists():
             shutil.rmtree(self.dir)

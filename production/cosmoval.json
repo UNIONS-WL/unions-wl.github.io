@@ -1,6 +1,6 @@
 {
  "schema_version": 5,
- "content_hash": "fce02b0dd5b14656e849b839195b637a04b7b67482a0404e33d8870cb2b8360f",
+ "content_hash": "faf65e0d0ee8c961e6c9ea8ced7b7b407d76acc81bf91c564b5161209d738f13",
  "runs": [
   {
    "id": "data-tomo",
@@ -15,7 +15,7 @@
    "provenance": [
     [
      "catalogue",
-     "ShapePipe SP v2.0, size bound 9; 170.6M galaxies on 19,940 tiles, 4,690 deg²; tomographic footprint (tiles with z-band photometry) 15,830 tiles, 3,815 deg²"
+     "ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF; 170.6M galaxies, 4,690 deg²; tomographic footprint (tiles with z-band photometry) 15,830 tiles, 3,815 deg²"
     ],
     [
      "n(z)",
@@ -451,18 +451,18 @@
    "tomographic": false,
    "title": "Blinded data, non-tomographic",
    "status": "stale",
-   "stale_note": "Measured on 28 Oct, before the last 2,386 tiles were published, with the size cut of 3 (now 9, sp_validation#448) and the v1.4.6.3 n(z) as a stand-in for the covariance.",
+   "stale_note": "Measured on 28 Oct, before the last 2,386 tiles were published, with the size bound of 3 (now 9, sp_validation#448) and the v1.4.6.3 n(z) as a stand-in for the covariance.",
    "summary": "At the fiducial cuts (12′–83′, 300 ≤ ℓ ≤ 1600) ξ₋ᴮ and Cℓ BB fail; the other B-mode nulls pass.",
    "banner": "Blinded (blind: unions): E-mode data vectors are concealed; do not interpret cosmology",
    "lacks": null,
    "provenance": [
     [
      "catalogue",
-     "SP v2.0, relative-size cut 3, 20,515 of 22,901 tiles, 4,655 deg²"
+     "ShapePipe SP v2.0, upper bound 3 on galaxy size relative to the PSF, 20,515 of 22,901 tiles, 4,655 deg²"
     ],
     [
      "n(z)",
-     "v1.4.6.3_A diagnostic proxy; not v2 calibrated"
+     "the n(z) of the v1.4.6.3 catalogue, used as a stand-in; not calibrated for v2"
     ],
     [
      "code",
@@ -622,8 +622,8 @@
      "section": "bmodes",
      "group": null,
      "size": "full",
-     "caption": "Pure-mode decomposition of ξ±. Shaded: outside the fiducial 12′–83′; full range 1′–250′.",
-     "alt": "Pure-mode decomposition of ξ±. Shaded: outside the fiducial 12′–83′; full range 1′–250′.",
+     "caption": "Blinded ξ± decomposed into pure E and B modes. Shaded: outside the fiducial 12′–83′; full range 1′–250′.",
+     "alt": "Blinded ξ± decomposed into pure E and B modes. Shaded: outside the fiducial 12′–83′; full range 1′–250′.",
      "url": "cosmoval/data-2d/bmode_pure_eb-069853210421.png",
      "width": 1584,
      "height": 603,
@@ -1002,8 +1002,8 @@
    "kind": "mock",
    "tomographic": true,
    "title": "GLASS mocks, tomographic",
-   "status": "current",
-   "stale_note": null,
+   "status": "stale",
+   "stale_note": "These mocks were generated with the first working n(z) and its bins, before the recalibration of CosmoStat/sp_validation#468. They match the 31 Oct data run, not the remeasurement on the new bins.",
    "summary": "On 18 sampled GLASS mocks the mean χ²/dof of the seven joint B-mode tests against the analytic covariance lies between 1.00 and 1.09, more than 2σ above 1 for ξ− B (12–83′) and ξ± B (2–20′); the mock PTEs are consistent with uniform except for ξ± B (2–20′) (KS p < 0.05).",
    "banner": "GLASS mocks under a throwaway blind (mock-ensemble-tomo); the input cosmology is known",
    "lacks": "Sampled mocks have unit weights, Gaussian shape noise at the data's per-bin σ_e and n_eff, no PSF leakage and no additive B mode, so this run has no PSF section.",
@@ -1014,11 +1014,11 @@
     ],
     [
      "n(z)",
-     "nz_v2_bound9_full_tomo.txt, 4 bins, the same file as the blinded data run"
+     "first working DR6 BPZ+SOM n(z) (nz_v2_bound9_full_tomo.txt, 4 bins), the one the 31 Oct blinded data run used; not the recalibrated n(z) of CosmoStat/sp_validation#468"
     ],
     [
      "code",
-     "generator sp_validation make_glass_sim.py @ 08b37ee0; measurement run/mock-ensemble-sampled @ c8f7b522, the estimators of the data run 7081c2d0"
+     "generator sp_validation make_glass_sim.py @ 08b37ee0; measurement run/mock-ensemble-sampled @ c8f7b522, with the estimators and analytic covariance of the blinded tomographic data run as rerun at 7081c2d0"
     ],
     [
      "date",
@@ -1436,15 +1436,15 @@
    "kind": "mock",
    "tomographic": false,
    "title": "GLASS mock, non-tomographic",
-   "status": "stale",
+   "status": "pending",
    "stale_note": "No cosmo_val run on a non-tomographic v2 mock has finished. The painted suite on Nibi (clean, blinded, PSF-leakage and additive-B twins) stopped at 39 of 74 steps on 1 Nov and was resumed on 10 Nov. Until it lands, this cell shows how the mock is built, not its null tests.",
    "summary": "One painted mock exists and its construction is checked: the sky matches its input spectrum (mean ratio 0.998 over ℓ = 100–8000) and a pure-E sky reads as pure E (BB/EE = 7e-09). Its null tests are not measured yet.",
    "banner": "GLASS mock with a known input cosmology; no data vector is shown",
-   "lacks": "Source clustering correlated with the lensing field; the PSF is the data's own at each galaxy.",
+   "lacks": "Source clustering correlated with the lensing field. PSF leakage is absent unless injected: each galaxy keeps its real PSF but gets a random orientation.",
    "provenance": [
     [
      "catalogue",
-     "GLASS seed 1 painted on SP v2.0, size bound 9 (170,617,249 galaxies): real positions, weights and |e|, random orientations"
+     "GLASS seed 1 painted on ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF (170,617,249 galaxies): real positions, weights and |e|, random orientations"
     ],
     [
      "n(z)",

@@ -8,7 +8,7 @@ The 31 Oct run (sp_validation run/tomo1030b @ 2e25c76a), from production/tools:
 
     uv run --with pillow python import_data_tomo.py \\
         /project/rrg-kyi/cdaley/unions/analyses/mock-ensemble-tomo/inputs/data-snapshot-31oct \\
-        --catalogue "ShapePipe SP v2.0, size bound 9" \\
+        --catalogue "ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF" \\
         --nz "first working DR6 BPZ+SOM four-bin n(z), validation and null tests only (not the recalibrated n(z) of CosmoStat/sp_validation#468)" \\
         --stale-note "This run predates the recalibrated n(z) bins of CosmoStat/sp_validation#468; the remeasurement on the new bins is running."
 
@@ -57,7 +57,7 @@ def main():
     zs = ", ".join(f"{z:.3f}" for z in sm["nz_mean"])
     neff = ", ".join(f"{tomo['samples'][f'bin{i}']['n_eff']:.2f}" for i in range(1, 5))
     provenance = {
-        "catalogue": (f"{args.catalogue}; {prov['survey']['rows'] / 1e6:.1f}M galaxies on {tomo['tiles']['all']:,} tiles, "
+        "catalogue": (f"{args.catalogue}; {prov['survey']['rows'] / 1e6:.1f}M galaxies, "
                       f"{prov['survey']['area_deg2']:,.0f} deg²; tomographic footprint (tiles with z-band photometry) "
                       f"{tomo['tiles']['tomographic']:,} tiles, {tomo['area_deg2']:,.0f} deg²"),
         "n(z)": f"{args.nz}; ⟨z⟩ = {zs}",
