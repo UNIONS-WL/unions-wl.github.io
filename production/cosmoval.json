@@ -1,6 +1,6 @@
 {
  "schema_version": 5,
- "content_hash": "fffd8f01f0ceeff58160939cdd5cd517265a4baa276eec9015d207f38ce48ee1",
+ "content_hash": "8dd3335aadc6535dd65bf9ea7d0fb5548bb252e36ea2ffdb05760b9de27cd18f",
  "runs": [
   {
    "id": "data-tomo",
@@ -1331,7 +1331,7 @@
      "size": "full",
      "caption": "Cumulative distribution of the 65 mocks' PTEs for each joint B-mode test, against the uniform distribution (grey diagonal) expected when the analytic covariance is right. A curve above the diagonal means too many low PTEs: the mocks scatter more than the analytic covariance says.",
      "alt": "Cumulative distribution of the 65 mocks' PTEs for each joint B-mode test, against the uniform distribution (grey diagonal) expected when the analytic covariance is right. A curve above the diagonal means too many low PTEs: the mocks scatter more than the analytic covariance says.",
-     "url": "cosmoval/mock-tomo/pte_ecdf-597e7dfc9095.png",
+     "url": "cosmoval/mock-tomo/pte_ecdf-f02c97a1a8b9.png",
      "width": 1200,
      "height": 660
     },
@@ -1342,7 +1342,7 @@
      "size": "full",
      "caption": "Variance of the 65 mocks divided by the analytic variance, averaged over each statistic's elements, per bin pair. E rows use ξ± at 12–83′ and Cℓ EE at ℓ 300–1600. With 65 Gaussian mocks a single element's ratio has a 68% range of 0.83–1.17; these averages scatter less.",
      "alt": "Variance of the 65 mocks divided by the analytic variance, averaged over each statistic's elements, per bin pair. E rows use ξ± at 12–83′ and Cℓ EE at ℓ 300–1600. With 65 Gaussian mocks a single element's ratio has a 68% range of 0.83–1.17; these averages scatter less.",
-     "url": "cosmoval/mock-tomo/variance_map-d5f838f01383.png",
+     "url": "cosmoval/mock-tomo/variance_map-80de36384c6f.png",
      "width": 1050,
      "height": 600
     },
@@ -1353,7 +1353,7 @@
      "size": "full",
      "caption": "Mock variance over analytic variance for each B-mode element against scale: grey lines are the ten bin pairs, blue their mean. The shaded band is the 95% range expected for one element from a finite set of 65 Gaussian mocks.",
      "alt": "Mock variance over analytic variance for each B-mode element against scale: grey lines are the ten bin pairs, blue their mean. The shaded band is the 95% range expected for one element from a finite set of 65 Gaussian mocks.",
-     "url": "cosmoval/mock-tomo/variance_scale-099bbe90c477.png",
+     "url": "cosmoval/mock-tomo/variance_scale-e035ed7adef0.png",
      "width": 1200,
      "height": 750
     },
@@ -1364,7 +1364,7 @@
      "size": "full",
      "caption": "Mock variance along each eigenmode of the analytic covariance of each joint test, in ascending eigenvalue; the shaded band is the 95% range expected from the finite number of mocks.",
      "alt": "Mock variance along each eigenmode of the analytic covariance of each joint test, in ascending eigenvalue; the shaded band is the 95% range expected from the finite number of mocks.",
-     "url": "cosmoval/mock-tomo/eigenmodes-9de8c19a979d.png",
+     "url": "cosmoval/mock-tomo/eigenmodes-ec3c848eca1b.png",
      "width": 1500,
      "height": 720
     },
@@ -1373,9 +1373,9 @@
      "section": "bmodes",
      "group": null,
      "size": "full",
-     "caption": "Cℓ BB additive-template amplitude on the 65 mocks (histogram) and on the blinded data (red line), fitted over all pairs, the auto-pairs and the cross-pairs.",
-     "alt": "Cℓ BB additive-template amplitude on the 65 mocks (histogram) and on the blinded data (red line), fitted over all pairs, the auto-pairs and the cross-pairs.",
-     "url": "cosmoval/mock-tomo/additive-845b4ab1a0c6.png",
+     "caption": "Cℓ BB additive-template amplitude on the 65 mocks (histogram) and on the blinded data (vertical line), fitted over all pairs, the auto-pairs and the cross-pairs.",
+     "alt": "Cℓ BB additive-template amplitude on the 65 mocks (histogram) and on the blinded data (vertical line), fitted over all pairs, the auto-pairs and the cross-pairs.",
+     "url": "cosmoval/mock-tomo/additive-f9fbc3e9832b.png",
      "width": 1350,
      "height": 420
     },
@@ -1386,7 +1386,7 @@
      "size": "full",
      "caption": "Blinded UNIONS data, Cℓ BB: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 65 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
      "alt": "Blinded UNIONS data, Cℓ BB: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 65 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "url": "cosmoval/mock-tomo/z_cl_bb-e152482b625f.png",
+     "url": "cosmoval/mock-tomo/z_cl_bb-8eae2224eda1.png",
      "width": 1200,
      "height": 1080
     },
@@ -1397,7 +1397,7 @@
      "size": "full",
      "caption": "Blinded UNIONS data, COSEBIs Bₙ: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 65 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
      "alt": "Blinded UNIONS data, COSEBIs Bₙ: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 65 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "url": "cosmoval/mock-tomo/z_cosebis_B-c8e0a7f08cea.png",
+     "url": "cosmoval/mock-tomo/z_cosebis_B-b37aa43f66d9.png",
      "width": 1200,
      "height": 1080
     },
@@ -1408,7 +1408,7 @@
      "size": "full",
      "caption": "Blinded UNIONS data, ξ− B: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 65 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
      "alt": "Blinded UNIONS data, ξ− B: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 65 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "url": "cosmoval/mock-tomo/z_xim_B-4330e1e2aa0d.png",
+     "url": "cosmoval/mock-tomo/z_xim_B-eb27a214ee35.png",
      "width": 1200,
      "height": 1080
     },
@@ -1419,7 +1419,7 @@
      "size": "full",
      "caption": "Blinded UNIONS data, ξ+ B: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 65 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
      "alt": "Blinded UNIONS data, ξ+ B: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 65 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "url": "cosmoval/mock-tomo/z_xip_B-94e4031021e9.png",
+     "url": "cosmoval/mock-tomo/z_xip_B-92ab764738e9.png",
      "width": 1200,
      "height": 1080
     },
@@ -1430,29 +1430,7 @@
      "size": "full",
      "caption": "Blinded UNIONS data, Cℓ EB: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 65 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
      "alt": "Blinded UNIONS data, Cℓ EB: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 65 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "url": "cosmoval/mock-tomo/z_cl_eb-2d12e35db959.png",
-     "width": 1200,
-     "height": 1080
-    },
-    {
-     "id": "mock_xi_E",
-     "section": "data_vectors",
-     "group": null,
-     "size": "full",
-     "caption": "Median and 68% / 95% ranges of θ ξ+ and θ ξ− over the 65 mocks per bin pair. The mock vectors carry a throwaway blind, so they are shifted from the input cosmology by an unknown smooth amount; no data are shown.",
-     "alt": "Median and 68% / 95% ranges of θ ξ+ and θ ξ− over the 65 mocks per bin pair. The mock vectors carry a throwaway blind, so they are shifted from the input cosmology by an unknown smooth amount; no data are shown.",
-     "url": "cosmoval/mock-tomo/mock_xi_E-027c8655180a.png",
-     "width": 1200,
-     "height": 1080
-    },
-    {
-     "id": "mock_cl_ee",
-     "section": "data_vectors",
-     "group": null,
-     "size": "full",
-     "caption": "Median and 68% / 95% ranges of ℓ Cℓ EE over the 65 mocks per bin pair. The mock vectors carry a throwaway blind, so they are shifted from the input cosmology by an unknown smooth amount; no data are shown.",
-     "alt": "Median and 68% / 95% ranges of ℓ Cℓ EE over the 65 mocks per bin pair. The mock vectors carry a throwaway blind, so they are shifted from the input cosmology by an unknown smooth amount; no data are shown.",
-     "url": "cosmoval/mock-tomo/mock_cl_ee-18b90a402b47.png",
+     "url": "cosmoval/mock-tomo/z_cl_eb-9e3c2442a8b2.png",
      "width": 1200,
      "height": 1080
     }
@@ -1465,10 +1443,6 @@
     {
      "id": "bmodes",
      "title": "B-mode nulls"
-    },
-    {
-     "id": "data_vectors",
-     "title": "Data vectors"
     }
    ]
   },

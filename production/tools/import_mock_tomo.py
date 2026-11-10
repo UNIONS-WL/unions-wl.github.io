@@ -8,12 +8,12 @@ the analytic covariance describes the mock scatter, and where the blinded data's
 modes fall inside the ensemble.
 
 Inputs are a placement directory written by the recipe's report.py (placement.json)
-and the ensemble's run root (provenance.json, glass_v2_tomo.yaml and the mock SACCs).
-Every figure is drawn here from placement.json and the mock SACCs. The run on the page
+and the ensemble's run root (provenance.json, glass_v2_tomo.yaml). Every figure is
+drawn here from placement.json, in the page's colours. The run on the page
 now is the ensemble matched to the bins and n(z) of CosmoStat/sp_validation#468, with
 65 of its 70 seeds:
 
-    cd production/tools && uv run --with pillow --with matplotlib --with numpy --with sacc --with pyyaml \\
+    cd production/tools && uv run --with pillow --with matplotlib --with numpy --with pyyaml \\
         python import_mock_tomo.py \\
         /project/rrg-kyi/cdaley/unions/analyses/mock-ensemble-sampled-nz468/placement-prelim \\
         /project/rrg-kyi/cdaley/unions/analyses/mock-ensemble-sampled-nz468 --seeds 70
@@ -21,8 +21,9 @@ now is the ensemble matched to the bins and n(z) of CosmoStat/sp_validation#468,
 The cell is labelled preliminary while the placement holds fewer mocks than --seeds.
 
 Blinding: data enter only through B-mode and EB statistics (placement z-scores, null
-PTEs, the Cℓ^BB additive-template amplitude); the blind changes only E modes. The E-mode
-figures are drawn from the mock SACCs alone, which carry the throwaway mock blind.
+PTEs, the Cℓ^BB additive-template amplitude); the blind changes only E modes. No E-mode
+amplitude is shown, of data or of mocks, so the cell cannot be read against the data
+cell's blinded E modes; E modes enter only as mock/analytic variance ratios.
 """
 import argparse
 import datetime
@@ -35,13 +36,12 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
 import numpy as np
-import sacc
 import yaml
 
 from cvrun import Run
 
-MOCK_BLIND = "mock-ensemble-tomo"
 PAIRS = [(i, j) for i in range(4) for j in range(i, 4)]
 # Joint tests in page order: placement key -> label.
 TESTS = {"cl_bb": "Cℓ BB", "cl_eb": "Cℓ EB", "cosebis": "COSEBIs B", "xip_B": "ξ+ B (12–83′)",
@@ -51,17 +51,28 @@ VARIANCE_ROWS = {"cl_bb": "Cℓ BB", "cl_eb": "Cℓ EB", "cosebis_B": "COSEBIs B
                  "xim_B": "ξ− B", "cl_ee": "Cℓ EE", "cosebis_E": "COSEBIs E", "xip_E": "ξ+ E",
                  "xim_E": "ξ− E"}
 # B-mode element statistics: label, x-axis label, x-axis kind.
-ELEMENTS = {"cl_bb": ("Cℓ BB", "multipole ℓ", "ell"), "cosebis_B": ("COSEBIs Bₙ", "mode n", "lin"),
-            "xim_B": ("ξ− B", "θ [arcmin]", "log"), "xip_B": ("ξ+ B", "θ [arcmin]", "log"),
-            "cl_eb": ("Cℓ EB", "multipole ℓ", "ell")}
+ELEMENTS = {"cl_bb": ("Cℓ BB", r"multipole $\ell$", "ell"), "cosebis_B": ("COSEBIs Bₙ", "mode n", "lin"),
+            "xim_B": ("ξ− B", r"$\theta$ [arcmin]", "log"), "xip_B": ("ξ+ B", r"$\theta$ [arcmin]", "log"),
+            "cl_eb": ("Cℓ EB", r"multipole $\ell$", "ell")}
 ADDITIVE = {"clbb_template_common": "all ten pairs", "clbb_template_autos": "four auto-pairs",
             "clbb_template_crosses": "six cross-pairs"}
 OFFSETS = {"mean_offset_cl_bb": "Cℓ BB", "mean_offset_xip_B": "ξ+ B (12–83′)",
            "mean_offset_xim_B": "ξ− B (12–83′)", "mean_offset_combined": "ξ± B (12–83′)",
            "mean_offset_small": "ξ± B (2–20′)"}
-BLUE, RED, GREY = "#2c5d8f", "#c0392b", "0.55"
-plt.rcParams.update({"font.size": 9, "axes.titlesize": 9, "axes.labelsize": 9,
-                     "xtick.labelsize": 8, "ytick.labelsize": 8, "legend.fontsize": 8})
+CARD, INK, TEAL, CINNABAR, COBALT, OCHRE = "#FBF6E9", "#1B1611", "#2F7268", "#BC4538", "#3D5BA0", "#A97A1E"
+GREY = "#8C857A"
+plt.rcParams.update({
+    "font.family": "serif", "font.serif": ["DejaVu Serif"], "mathtext.fontset": "cm",
+    "font.size": 9, "axes.titlesize": 9, "axes.labelsize": 9, "xtick.labelsize": 8, "ytick.labelsize": 8,
+    "legend.fontsize": 8, "figure.facecolor": CARD, "axes.facecolor": CARD, "savefig.facecolor": CARD,
+    "text.color": INK, "axes.labelcolor": INK, "axes.edgecolor": INK, "xtick.color": INK, "ytick.color": INK,
+    "xtick.direction": "in", "ytick.direction": "in", "xtick.top": True, "ytick.right": True})
+DIVERGING = LinearSegmentedColormap.from_list("page", [COBALT, CARD, OCHRE])
+
+
+def tex(text):
+    """Figure text: Cℓ as mathtext, since the serif font has no ℓ glyph."""
+    return text.replace("Cℓ", r"$C_\ell$")
 
 
 def key(p):
@@ -98,7 +109,6 @@ def set_x(ax, kind):
 def triangle(figsize=(8, 7.2)):
     """4×4 lower triangle of bin-pair panels; returns fig and {pair: ax}."""
     fig, axes = plt.subplots(4, 4, figsize=figsize, sharex=True, sharey=True, layout="constrained")
-    fig.patch.set_facecolor("white")
     for i, j in np.ndindex(4, 4):
         if j > i:
             axes[i, j].set_visible(False)
@@ -112,21 +122,20 @@ def pair_tag(ax, p):
 
 
 def save(fig, path):
-    fig.savefig(path, dpi=150, facecolor="white")
+    fig.savefig(path, dpi=150)
     plt.close(fig)
 
 
 def fig_pte_ecdf(stats, n, path):
     """ECDF of the mocks' analytic PTEs per joint test against the uniform line."""
     fig, axes = plt.subplots(2, 4, figsize=(8, 4.4), sharex=True, sharey=True, layout="constrained")
-    fig.patch.set_facecolor("white")
     for ax, (test, name) in zip(axes.flat, TESTS.items()):
         j = stats[test]["joint"]
         p = np.sort(j["mock_analytic_pte"])
         ax.plot([0, 1], [0, 1], color=GREY, lw=1)
         ax.step(np.concatenate([[0], p, [1]]), np.concatenate([[0], np.arange(1, n + 1) / n, [1]]),
-                where="post", color=BLUE, lw=1.5)
-        ax.set_title(f"{name}\nKS p = {j['mock_pte_ks_p']:.2g}")
+                where="post", color=COBALT, lw=1.5)
+        ax.set_title(f"{tex(name)}\nKS p = {j['mock_pte_ks_p']:.2g}")
         ax.set_xlim(0, 1)
         ax.set_ylim(0, 1)
         ax.set_aspect("equal")
@@ -147,12 +156,11 @@ def fig_variance(result, path):
                    np.mean(result["e_modes"][k][key(p)]["variance_ratio"])
                    for p in PAIRS] for k in VARIANCE_ROWS])
     fig, ax = plt.subplots(figsize=(7, 4), layout="constrained")
-    fig.patch.set_facecolor("white")
-    im = ax.imshow(a, cmap="PuOr_r", vmin=0.6, vmax=1.4, aspect="auto")
+    im = ax.imshow(a, cmap=DIVERGING, vmin=0.6, vmax=1.4, aspect="auto")
     for i, j in np.ndindex(a.shape):
         ax.text(j, i, f"{a[i, j]:.2f}", ha="center", va="center", fontsize=7.5)
     ax.set_xticks(range(len(PAIRS)), [label(p) for p in PAIRS])
-    ax.set_yticks(range(len(VARIANCE_ROWS)), list(VARIANCE_ROWS.values()))
+    ax.set_yticks(range(len(VARIANCE_ROWS)), [tex(v) for v in VARIANCE_ROWS.values()])
     ax.set_xlabel("bin pair")
     fig.colorbar(im, ax=ax, label="mock variance / analytic variance")
     save(fig, path)
@@ -161,19 +169,18 @@ def fig_variance(result, path):
 def fig_variance_scale(result, band, path):
     """Mock/analytic variance per element against scale: each bin pair thin, their mean bold."""
     fig, axes = plt.subplots(2, 3, figsize=(8, 5), sharey=True, layout="constrained")
-    fig.patch.set_facecolor("white")
     axes.flat[-1].set_visible(False)
     for ax, (stat, (name, xlabel, kind)) in zip(axes.flat, ELEMENTS.items()):
         el = result["elements"][stat]
         x = np.array(el["1x1"]["coordinate"])
         r = np.array([el[key(p)]["diagonal_variance_ratio"] for p in PAIRS])
-        ax.axhspan(*band, color="0.9", lw=0)
-        ax.axhline(1, color="k", lw=0.6)
+        ax.axhspan(*band, color=GREY, alpha=0.2, lw=0)
+        ax.axhline(1, color=INK, lw=0.6)
         for row in r:
             ax.plot(x, row, color=GREY, lw=0.5, alpha=0.6)
-        ax.plot(x, r.mean(axis=0), color=BLUE, lw=1.8, marker="o", ms=2.5)
+        ax.plot(x, r.mean(axis=0), color=COBALT, lw=1.8, marker="o", ms=2.5)
         set_x(ax, kind)
-        ax.set_title(name)
+        ax.set_title(tex(name))
         ax.set_xlabel(xlabel)
     for ax in axes[:, 0]:
         ax.set_ylabel("mock / analytic variance")
@@ -183,13 +190,12 @@ def fig_variance_scale(result, band, path):
 def fig_eigen(stats, band, path):
     """Mock variance along each eigenmode of the analytic covariance, per joint test."""
     fig, axes = plt.subplots(2, 4, figsize=(10, 4.8), sharey=True, layout="constrained")
-    fig.patch.set_facecolor("white")
     for ax, (test, name) in zip(axes.flat, TESTS.items()):
         v = np.array(stats[test]["joint"]["eigenmode_variance"])
-        ax.axhspan(*band, color="0.9", lw=0)
-        ax.axhline(1, color="k", lw=0.6)
-        ax.plot(np.arange(len(v)), v, ".", color=BLUE, ms=2.5)
-        ax.set_title(name)
+        ax.axhspan(*band, color=GREY, alpha=0.2, lw=0)
+        ax.axhline(1, color=INK, lw=0.6)
+        ax.plot(np.arange(len(v)), v, ".", color=COBALT, ms=2.5)
+        ax.set_title(tex(name))
     axes.flat[-1].set_visible(False)
     for ax in list(axes[1, :3]) + [axes[0, 3]]:
         ax.set_xlabel("eigenmode (ascending eigenvalue)")
@@ -206,12 +212,12 @@ def fig_z(result, stat, path):
     for p, ax in ax_of.items():
         x = np.array(el[key(p)]["coordinate"])
         z = np.array(el[key(p)]["data_z"])
-        ax.axhspan(-2, 2, color="#c9d9ea", lw=0)
-        ax.axhspan(-1, 1, color="#94b4d4", lw=0)
-        ax.axhline(0, color="k", lw=0.5)
+        ax.axhspan(-2, 2, color=COBALT, alpha=0.12, lw=0)
+        ax.axhspan(-1, 1, color=COBALT, alpha=0.28, lw=0)
+        ax.axhline(0, color=INK, lw=0.5)
         out = np.abs(z) > 2
-        ax.plot(x[~out], z[~out], "o", color="k", ms=2.5)
-        ax.plot(x[out], z[out], "o", color=RED, ms=3)
+        ax.plot(x[~out], z[~out], "o", color=INK, ms=2.5)
+        ax.plot(x[out], z[out], "o", color=CINNABAR, ms=3)
         set_x(ax, kind)
         pair_tag(ax, p)
     zmax = max(np.abs(el[key(p)]["data_z"]).max() for p in PAIRS)
@@ -227,45 +233,13 @@ def fig_z(result, stat, path):
 def fig_additive(add, n, path):
     """Cℓ^BB additive-template amplitude: mock histogram and data, for all, auto and cross pairs."""
     fig, axes = plt.subplots(1, 3, figsize=(9, 2.8), sharey=True, layout="constrained")
-    fig.patch.set_facecolor("white")
     for ax, (k, name) in zip(axes, ADDITIVE.items()):
         a = add[k]
-        ax.hist(a["mocks"], bins=np.linspace(-1.5, 1.5, 25), color=BLUE, alpha=0.6)
-        ax.axvline(a["data"], color=RED, lw=2)
+        ax.hist(a["mocks"], bins=np.linspace(-1.5, 1.5, 25), color=COBALT, alpha=0.6)
+        ax.axvline(a["data"], color=CINNABAR, lw=2)
         ax.set_title(f"{name}\ndata {a['data']:.2f} ± {a['sigma']:.2f}, {a['rank_above']} of {n} mocks above")
         ax.set_xlabel("template amplitude")
     axes[0].set_ylabel("mocks")
-    save(fig, path)
-
-
-def load_mocks(paths):
-    mocks = [sacc.Sacc.load_fits(p) for p in paths]
-    assert all(m.metadata.get("blind") == MOCK_BLIND for m in mocks)
-    return mocks
-
-
-def fig_bands(mocks, kinds, tag, scale, kind, xlabel, ylabel, path):
-    """Mock-only E-mode bands per bin pair: median and 68% / 95% of the ensemble."""
-    fig, axes, ax_of = triangle()
-    for p, ax in ax_of.items():
-        for dtype, colour, name in kinds:
-            r = mocks[0].indices(dtype, (f"source_{p[0]}", f"source_{p[1]}"))
-            x = np.array([mocks[0].data[k].tags[tag] for k in r])
-            v = np.array([m.mean[r] for m in mocks]) * scale(x)
-            q = np.quantile(v, [.025, .16, .5, .84, .975], axis=0)
-            ax.fill_between(x, q[0], q[4], color=colour, alpha=.15, lw=0)
-            ax.fill_between(x, q[1], q[3], color=colour, alpha=.35, lw=0)
-            ax.plot(x, q[2], color=colour, lw=1, label=name)
-        set_x(ax, kind)
-        ax.axhline(0, color=GREY, lw=.5)
-        pair_tag(ax, p)
-    for i in range(4):
-        axes[i, 0].set_ylabel(ylabel)
-        axes[3, i].set_xlabel(xlabel)
-    for i in range(3):
-        axes[i, i].set_xlabel(xlabel)
-    if len(kinds) > 1:
-        fig.legend(*axes[0, 0].get_legend_handles_labels(), loc="upper right", bbox_to_anchor=(0.97, 0.97))
     save(fig, path)
 
 
@@ -401,7 +375,7 @@ def main():
                        "no additive B, so they give each number's null distribution."))
     fig_additive(add, n, tmp / "additive.png")
     run.figure(tmp / "additive.png", "bmodes",
-               f"Cℓ BB additive-template amplitude on the {n} mocks (histogram) and on the blinded data (red line), "
+               f"Cℓ BB additive-template amplitude on the {n} mocks (histogram) and on the blinded data (vertical line), "
                "fitted over all pairs, the auto-pairs and the cross-pairs.")
 
     z_caption = ("Blinded UNIONS data, {name}: each element minus the mock mean, in units of the mock standard "
@@ -415,19 +389,6 @@ def main():
     for stat in ("xip_B", "cl_eb"):
         fig_z(result, stat, tmp / f"z_{stat}.png")
         run.figure(tmp / f"z_{stat}.png", "bmodes", z_caption.format(name=ELEMENTS[stat][0], n=n), group="bands")
-
-    # Data vectors: mocks only.
-    mocks = load_mocks(paths)
-    fig_bands(mocks, [("galaxy_shear_xi_plus", BLUE, "ξ+"), ("galaxy_shear_xi_minus", RED, "ξ−")],
-              "theta", lambda x: x * 1e4, "log", "θ [arcmin]", "θ ξ± × 10⁴ [arcmin]", tmp / "mock_xi_E.png")
-    blind_note = ("The mock vectors carry a throwaway blind, so they are shifted from the input cosmology by an "
-                  "unknown smooth amount; no data are shown.")
-    run.figure(tmp / "mock_xi_E.png", "data_vectors",
-               f"Median and 68% / 95% ranges of θ ξ+ and θ ξ− over the {n} mocks per bin pair. " + blind_note)
-    fig_bands(mocks, [("galaxy_shear_cl_ee", BLUE, "Cℓ EE")], "ell", lambda x: x * 1e7, "ell",
-              "multipole ℓ", "ℓ Cℓ × 10⁷", tmp / "mock_cl_ee.png")
-    run.figure(tmp / "mock_cl_ee.png", "data_vectors",
-               f"Median and 68% / 95% ranges of ℓ Cℓ EE over the {n} mocks per bin pair. " + blind_note)
 
     run.save()
 
