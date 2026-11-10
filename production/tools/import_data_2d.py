@@ -4,13 +4,13 @@ The source is the manifest sp_validation's dashboard publisher writes: a
 directory holding cosmoval.json (schema 4) and cosmoval/*.png.
 
 The run on the page is the bound-9 plain suite of sp_validation run/tomo1101 @ 7081c2d0,
-with the run-directory figures redrawn on Fir and the catalogue-level figures from the Nibi render:
+rendered on Nibi:
 
     uv run --with pillow python import_data_2d.py \\
-        /project/rrg-kyi/cdaley/unions/analyses/production-page/fir-data-2d \\
+        /project/rrg-kyi/cdaley/unions/analyses/production-page/from-nibi/data-2d-figs2d \\
         --catalogue "ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF; 170.6M galaxies on 20,515 of the 22,901 tiles in the v2.0.0 release, 4,690 deg²" \\
         --nz "for the covariance only: the sum of the four bins of the first working DR6 BPZ+SOM n(z), not the recalibrated n(z) of CosmoStat/sp_validation#468" \\
-        --code "sp_validation run/tomo1101 @ 7081c2d0 (measured 1 Nov); figures rendered 10 Nov with feat/page-figures-2d @ 8f1fcc74 (catalogue-level panels: run/dashboard-tomo1101 @ 54220f69)"
+        --code "sp_validation run/tomo1101 @ 7081c2d0 (measured 1 Nov); figures rendered 10 Nov with feat/page-figures-2d @ 8f1fcc74"
 
 --stale "<what it predates>" marks a run measured on older inputs.
 """
