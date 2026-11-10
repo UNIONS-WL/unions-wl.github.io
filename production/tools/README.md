@@ -12,7 +12,7 @@ An importer replaces one run and rewrites the index:
 |---|---|---|
 | `data-tomo` | `uv run --with pillow python import_data_tomo.py <run dir> --catalogue … --nz … [--stale-note …]` | a tomographic run directory with `report/figures/`, `report/summary.json`, `provenance.json` |
 | `data-2d` | `uv run --with pillow python import_data_2d.py <dir> --catalogue … --code … [--stale …]` | the schema-4 `cosmoval.json` and `cosmoval/*.png` that sp_validation's dashboard publisher writes |
-| `mock-tomo` | `uv run --with pillow --with matplotlib --with numpy --with sacc python import_mock_tomo.py <placement dir> <ensemble root>` | the sampled GLASS ensemble and its placement report |
+| `mock-tomo` | `uv run --with pillow --with matplotlib --with numpy --with sacc --with pyyaml python import_mock_tomo.py <placement dir> <ensemble root> --seeds <N>` | the sampled GLASS ensemble and its placement report |
 | `mock-2d` | `uv run --with pillow python import_mock_2d.py <figures dir> --code … --date …` | the painted-mock construction figures |
 
 The docstring of each importer holds the exact command for the run on the page now.
