@@ -296,7 +296,7 @@
    "size": "full",
    "caption": "Pseudo-Cℓ BB (filled circles) and EB (open diamonds) for each pair of tomographic bins, in units of their own standard deviation from a Gaussian NaMaster covariance, over bands at ±1σ and ±2σ. The ℓ axis is linear in √ℓ, on which the 32 bandpowers are evenly spaced; BB and EB are offset slightly in ℓ to keep them apart. Each panel header gives the PTEs over all 32 bandpowers, in red below 0.05.",
    "alt": "Pseudo-Cℓ BB (filled circles) and EB (open diamonds) for each pair of tomographic bins, in units of their own standard deviation from a Gaussian NaMaster covariance, over bands at ±1σ and ±2σ. The ℓ axis is linear in √ℓ, on which the 32 bandpowers are evenly spaced; BB and EB are offset slightly in ℓ to keep them apart. Each panel header gives the PTEs over all 32 bandpowers, in red below 0.05.",
-   "url": "cosmoval/data-tomo/cl_BB-43e25e2bce7a.png",
+   "url": "cosmoval/data-tomo/cl_BB-e19fe16a01a7.png",
    "width": 1583,
    "height": 1363
   },
@@ -327,9 +327,9 @@
    "section": "data_vectors",
    "group": null,
    "size": "full",
-   "caption": "Blinded pseudo-Cℓ EE power spectra ℓCℓ for each pair of tomographic bins, on an axis linear in √ℓ, with errors from the Gaussian NaMaster covariance; shown alone for the same reason.",
-   "alt": "Blinded pseudo-Cℓ EE power spectra ℓCℓ for each pair of tomographic bins, on an axis linear in √ℓ, with errors from the Gaussian NaMaster covariance; shown alone for the same reason.",
-   "url": "cosmoval/data-tomo/cl_EE-2ffac9d6ed6b.png",
+   "caption": "Blinded pseudo-Cℓ EE power spectra ℓCℓ for each pair of tomographic bins, on one y range and an axis linear in √ℓ, with errors from the Gaussian NaMaster covariance; shown alone for the same reason.",
+   "alt": "Blinded pseudo-Cℓ EE power spectra ℓCℓ for each pair of tomographic bins, on one y range and an axis linear in √ℓ, with errors from the Gaussian NaMaster covariance; shown alone for the same reason.",
+   "url": "cosmoval/data-tomo/cl_EE-f23150dca36a.png",
    "width": 1584,
    "height": 1365
   },
@@ -349,11 +349,11 @@
    "section": "psf",
    "group": null,
    "size": "full",
-   "caption": "τ₀, τ₂ and τ₅ (correlations between galaxy shapes and PSF quantities) for each tomographic bin, with each bin's fitted leakage model as lines.",
-   "alt": "τ₀, τ₂ and τ₅ (correlations between galaxy shapes and PSF quantities) for each tomographic bin, with each bin's fitted leakage model as lines.",
-   "url": "cosmoval/data-tomo/tau-58c7404e4c6c.png",
+   "caption": "Correlations between galaxy shapes and PSF quantities for each tomographic bin (one row per bin): τ₀, and τ₂ and τ₅ multiplied by θ, with each bin's fitted leakage model as a line.",
+   "alt": "Correlations between galaxy shapes and PSF quantities for each tomographic bin (one row per bin): τ₀, and τ₂ and τ₅ multiplied by θ, with each bin's fitted leakage model as a line.",
+   "url": "cosmoval/data-tomo/tau-613bd3aaaae4.png",
    "width": 1583,
-   "height": 545
+   "height": 1469
   },
   {
    "id": "leakage",

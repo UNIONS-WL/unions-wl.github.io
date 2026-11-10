@@ -123,15 +123,15 @@ def main():
                "with errors from the analytic covariance. The blinding shifts these data by an unknown cosmology, so "
                "they are shown alone, without a prediction to compare against.")
     run.figure(fig("cl_EE"), "data_vectors",
-               "Blinded pseudo-Cℓ EE power spectra ℓCℓ for each pair of tomographic bins, on an axis linear in √ℓ, "
-               "with errors from the Gaussian NaMaster covariance; shown alone for the same reason.")
+               "Blinded pseudo-Cℓ EE power spectra ℓCℓ for each pair of tomographic bins, on one y range and an axis "
+               "linear in √ℓ, with errors from the Gaussian NaMaster covariance; shown alone for the same reason.")
 
     run.figure(fig("rho"), "psf",
                "ρ statistics of the PSF stars, which measure the PSF model residuals; all four bins share them.",
                size="half")
     run.figure(fig("tau"), "psf",
-               "τ₀, τ₂ and τ₅ (correlations between galaxy shapes and PSF quantities) for each tomographic bin, with "
-               "each bin's fitted leakage model as lines.")
+               "Correlations between galaxy shapes and PSF quantities for each tomographic bin (one row per bin): τ₀, "
+               "and τ₂ and τ₅ multiplied by θ, with each bin's fitted leakage model as a line.")
     run.figure(fig("leakage"), "psf",
                "PSF-leakage coefficients α, β and η per bin, from a fit of the τ statistics to the ρ templates with ρ held fixed. "
                "The τ estimator biases α low by about 25% on a simulation with known leakage "
