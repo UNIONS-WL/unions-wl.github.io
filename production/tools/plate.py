@@ -6,7 +6,8 @@
 A north-polar chart (azimuthal equidistant, sky view: RA increases clockwise) of the
 UNIONS sky as three nested watercolour washes, the Milky Way as a dark wash, a
 graticule, the bright northern stars, and the analysis triangle drawn over it as a
-constellation. status.html inlines the file and fills in the run stars.
+constellation. status.html inlines the file, fills in the run stars, and opens a
+figure for the objects in EGGS.
 
 The washes, from pale to deep:
     run 1       every tile ShapePipe v2 run 1 published (production/status.json), outlined in pen
@@ -107,6 +108,8 @@ ASTERISMS = [
     ["Polaris", "Yildun", "eps UMi", "zeta UMi", "Kochab", "Pherkad", "eta UMi", "zeta UMi"],
 ]
 GALAXIES = [("M31", 10.68, 41.27), ("M33", 23.46, 30.66), ("M81", 148.89, 69.07), ("Coma", 194.95, 27.98)]
+# Objects on the plate that open a figure when clicked; the stories are the EGGS of status.html.
+EGGS = {"M33": "M33 and the PSF stars"}
 
 
 def main():
@@ -225,8 +228,12 @@ def main():
             w(f'<text class="pl-name" x="{x + dx:.1f}" y="{y + dy:.1f}" text-anchor="{"end" if dx < 0 else "start"}">{n}</text>')
     for n, a, d in GALAXIES:
         x, y = xy(a, d)
-        w(f'<ellipse class="pl-galaxy" cx="{x:.1f}" cy="{y:.1f}" rx="4.2" ry="2.2" transform="rotate(-30 {x:.1f} {y:.1f})"/>'
-          f'<text class="pl-name" x="{x + 7:.1f}" y="{y + 3:.1f}">{n}</text>')
+        mark = (f'<ellipse class="pl-galaxy" cx="{x:.1f}" cy="{y:.1f}" rx="4.2" ry="2.2" transform="rotate(-30 {x:.1f} {y:.1f})"/>'
+                f'<text class="pl-name" x="{x + 7:.1f}" y="{y + 3:.1f}">{n}</text>')
+        if n in EGGS:   # status.html opens the story of this object when it is clicked
+            mark = (f'<a href="#egg-{n.lower()}" class="pl-egg"><title>{EGGS[n]}</title>'
+                    f'<circle class="pl-hit" cx="{x:.1f}" cy="{y:.1f}" r="9"/>{mark}</a>')
+        w(mark)
     for label, (a, d), rot in (("Cassiopeia", (14, 66), 0),):
         x, y = xy(a, d)
         w(f'<text class="pl-const" x="{x:.1f}" y="{y:.1f}" text-anchor="middle">{label}</text>')

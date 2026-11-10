@@ -65,6 +65,15 @@
   #plate .pl-dec{font-family:var(--mono);font-size:7.5px;fill:#7A6B52}
   #plate .pl-sky{fill:var(--ink)} #plate .pl-figure{fill:none;stroke:var(--ink);stroke-width:.6;stroke-opacity:.6;stroke-dasharray:1.5 2.5}
   #plate .pl-galaxy{fill:none;stroke:var(--ink);stroke-width:.7}
+  #plate .pl-egg{cursor:pointer} #plate .pl-egg .pl-galaxy{stroke:var(--cinnabar);stroke-width:1}
+  #plate .pl-egg .pl-name{fill:var(--cinnabar);fill-opacity:1}
+  #plate .pl-egg:hover .pl-galaxy{fill:var(--cinnabar)} #plate .pl-egg:hover .pl-name{text-decoration:underline}
+  dialog.egg{border:1px solid var(--ink);border-radius:10px;background:var(--rag);color:var(--ink);padding:18px 20px 16px;max-width:min(640px,calc(100vw - 32px));box-shadow:0 12px 40px rgba(27,22,17,.35)}
+  dialog.egg::backdrop{background:rgba(27,22,17,.45)}
+  dialog.egg h3{margin:0 28px 8px 0;font-size:25px}
+  dialog.egg img{display:block;width:100%;height:auto;border-radius:6px}
+  dialog.egg p{font-size:16px;line-height:1.42;margin:10px 0 0}
+  dialog.egg button{position:absolute;top:10px;right:12px;border:0;background:none;font:inherit;font-family:var(--mono);font-size:20px;color:var(--ink-muted);cursor:pointer;line-height:1}
   #plate .pl-run1{fill:none;stroke:#2F5F56;stroke-width:.7;stroke-opacity:.8}
   #plate .pl-name{font-style:italic;font-size:9.5px;fill:var(--ink);fill-opacity:.75}
   #plate .pl-const{font-size:9px;letter-spacing:.34em;text-transform:uppercase;fill:var(--ink);fill-opacity:.55}
@@ -277,6 +286,11 @@
   <footer><a href="cosmoval.json">cosmoval.json</a> · <a href="fairshare/fir.json">fairshare/fir.json</a> · <a href="fairshare/nibi.json">fairshare/nibi.json</a> · <a href="status.json">status.json</a> · <a href="https://github.com/UNIONS-WL/unions-wl.github.io/tree/main/production/tools">how this page is refreshed</a> · <a href="https://unions.skysurvey.cc" target="_blank" rel="noopener">collaboration wiki</a></footer>
 </main>
 
+<dialog class="egg" id="egg" aria-labelledby="egg-title">
+  <button type="button" aria-label="Close" id="egg-close">×</button>
+  <h3 id="egg-title"></h3><img id="egg-img" alt=""><p id="egg-text"></p>
+</dialog>
+
 <script>
 const $ = id => document.getElementById(id);
 function el(tag, text, cls){
@@ -297,15 +311,6 @@ function verdictMark(fail){
 }
 const fmtPte = v => typeof v !== 'number' ? '–' : v < 0.001 ? v.toExponential(1) : v.toPrecision(2);
 const fmtDate = s => { const d = new Date(s); return /^\d{4}-\d\d-\d\d/.test(s) && !Number.isNaN(d.getTime()) ? d.toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric', timeZone:'UTC'}) : s; };
-// In-page links scroll explicitly; hash navigation alone is unreliable inside embedded viewers.
-document.addEventListener('click', e => {
-  const a = e.target.closest('a[href^="#"]'); if (!a) return;
-  const target = document.getElementById(a.getAttribute('href').slice(1)); if (!target) return;
-  e.preventDefault();
-  if (target.id === 'production') $('prod-fold').open = true;
-  target.scrollIntoView({behavior:'smooth', block:'start'});
-});
-
 // ================= validation runs =================
 const RUNS = {}, TAG = {current:'current', stale:'older inputs', pending:'not measured'};
 let current = null;
@@ -436,9 +441,27 @@ function dressPlate(){
     'tomographic: ' + said['mock-tomo'], el('br'), 'non-tomographic: ' + said['mock-2d']);
 }
 const plateReady = fetch('plate.svg').then(r => r.ok ? r.text() : '').then(svg => { $('plate').innerHTML = svg; }).catch(() => {});
-// In-page links: "#compute" scrolls to a section, "#data-tomo" opens a run, "#data-tomo/bmodes" one of its sections.
+// Objects on the plate with a story: each opens one figure.
+const EGGS = {
+  m33: {title:'M33 and the PSF stars', img:'eggs/m33.png', alt:'Map of PSF star density in a 4° box around M33, with an empty disc of radius about half a degree at the centre.',
+    text:['The PSF stars of the v2 catalogue around M33. In run 1, M33’s star-forming regions and star clusters were picked as PSF stars, and the residuals between stars and the PSF model there are 14 times their usual size, enough to dominate the smallest-scale ρ statistics of the whole survey. The empty disc is the remedy: stars inside the manual mask around M33 are dropped. ',
+      ['CosmoStat/shapepipe#993', 'https://github.com/CosmoStat/shapepipe/issues/993'], '.']},
+};
+function openEgg(key){
+  const egg = EGGS[key]; if (!egg) return;
+  $('egg-title').textContent = egg.title; $('egg-img').src = egg.img; $('egg-img').alt = egg.alt;
+  $('egg-text').replaceChildren(...egg.text.map(t => { if (typeof t === 'string') return t;
+    const a = el('a', t[0]); a.href = t[1]; a.target = '_blank'; a.rel = 'noopener'; return a; }));
+  $('egg').showModal();
+}
+$('egg-close').addEventListener('click', () => $('egg').close());
+$('egg').addEventListener('click', e => { if (e.target === $('egg')) $('egg').close(); });
+// In-page links are handled here, since hash navigation alone is unreliable inside embedded viewers.
+// "#compute" scrolls to a section, "#data-tomo" opens a run, "#data-tomo/bmodes" one of its sections,
+// "#egg-m33" a story on the plate.
 function go(hash){
   const [id, part] = hash.slice(1).split('/');
+  if (id.startsWith('egg-')) return openEgg(id.slice(4));
   if (/^(data|mock)-(tomo|2d)$/.test(id)){
     select(id, !part);
     const target = part && document.getElementById('sec-' + part);

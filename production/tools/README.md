@@ -32,6 +32,9 @@ Data figures must come from concealed E-mode vectors; nothing derived from an un
 Its docstring holds the command; rerun it when a footprint changes, and keep the areas in the cartouche of `status.html` matched to the washes.
 The page fills in the four run stars from `cosmoval.json`.
 
+Some objects on the plate open a figure when clicked (M33 so far).
+To add one: name it in `EGGS` in `plate.py`, give it a title, figure and a few sentences in `EGGS` in `status.html`, and put the figure in `production/eggs/` with the script that draws it in `tools/` (`egg_m33.py` is the model).
+
 ## Fair share
 
 `fairshare-push.sh <cluster> <account>…` samples the LevelFS of each account on the cluster it runs on, appends it to `production/fairshare/<cluster>.json` and pushes.

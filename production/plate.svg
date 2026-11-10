@@ -249,7 +249,7 @@
 <circle cx="64.9" cy="278.1" r="0.8"/>
 <use href="#pl-star" transform="translate(604.7,251.8) scale(3.4)"/>
 <ellipse class="pl-galaxy" cx="342.6" cy="118.5" rx="4.2" ry="2.2" transform="rotate(-30 342.6 118.5)"/><text class="pl-name" x="349.6" y="121.5">M31</text>
-<ellipse class="pl-galaxy" cx="402.8" cy="77.7" rx="4.2" ry="2.2" transform="rotate(-30 402.8 77.7)"/><text class="pl-name" x="409.8" y="80.7">M33</text>
+<a href="#egg-m33" class="pl-egg"><title>M33 and the PSF stars</title><circle class="pl-hit" cx="402.8" cy="77.7" r="9"/><ellipse class="pl-galaxy" cx="402.8" cy="77.7" rx="4.2" ry="2.2" transform="rotate(-30 402.8 77.7)"/><text class="pl-name" x="409.8" y="80.7">M33</text></a>
 <ellipse class="pl-galaxy" cx="402.6" cy="411.7" rx="4.2" ry="2.2" transform="rotate(-30 402.6 411.7)"/><text class="pl-name" x="409.6" y="414.7">M81</text>
 <ellipse class="pl-galaxy" cx="315.7" cy="620.9" rx="4.2" ry="2.2" transform="rotate(-30 315.7 620.9)"/><text class="pl-name" x="322.7" y="623.9">Coma</text>
 <text class="pl-const" x="347.6" y="231.2" text-anchor="middle">Cassiopeia</text>
