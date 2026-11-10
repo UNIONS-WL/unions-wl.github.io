@@ -1,0 +1,89 @@
+{
+ "id": "mock-2d",
+ "kind": "mock",
+ "tomographic": false,
+ "title": "GLASS mock, non-tomographic",
+ "status": "stale",
+ "stale_note": "No cosmo_val run on a non-tomographic v2 mock has finished. The painted suite on Nibi (clean, blinded, PSF-leakage and additive-B twins) stopped at 39 of 74 steps on 1 Nov and was resumed on 10 Nov. Until it lands, this cell shows how the mock is built, not its null tests.",
+ "summary": "One painted mock exists and its construction is checked: the sky matches its input spectrum (mean ratio 0.998 over ℓ = 100–8000) and a pure-E sky reads as pure E (BB/EE = 7e-09). Its null tests are not measured yet.",
+ "banner": "GLASS mock with a known input cosmology; no data vector is shown",
+ "lacks": "Source clustering correlated with the lensing field; the PSF is the data's own at each galaxy.",
+ "provenance": [
+  [
+   "catalogue",
+   "GLASS seed 1 painted on SP v2.0, size bound 9 (170,617,249 galaxies): real positions, weights and |e|, random orientations"
+  ],
+  [
+   "n(z)",
+   "v2 non-tomographic n(z) (data/nz-v2-full-products/nz_v2_nontomo.txt)"
+  ],
+  [
+   "code",
+   "sp_validation steward/459-rebuilt @ 6c9bac2b"
+  ],
+  [
+   "date",
+   "9 Nov 2026"
+  ],
+  [
+   "blind",
+   "none applied: these figures compare the mock with its own input"
+  ]
+ ],
+ "headline": [],
+ "headline_note": null,
+ "groups": {},
+ "tables": [],
+ "figures": [
+  {
+   "id": "known_answer_spectra",
+   "section": "known",
+   "group": null,
+   "size": "full",
+   "caption": "The full-sky convergence and E-mode spectra of the seed-1 GLASS sky against the input theory. The ratio stays at 1 up to ℓ = 8000; a pixel lookup at nside 4096 would follow the dotted curve.",
+   "alt": "The full-sky convergence and E-mode spectra of the seed-1 GLASS sky against the input theory. The ratio stays at 1 up to ℓ = 8000; a pixel lookup at nside 4096 would follow the dotted curve.",
+   "url": "cosmoval/mock-2d/known_answer_spectra-32ca5d4ff32b.png",
+   "width": 1280,
+   "height": 960
+  },
+  {
+   "id": "catalogue_noise",
+   "section": "known",
+   "group": null,
+   "size": "full",
+   "caption": "The painted catalogue against its inputs, on one million galaxies: the |e| distribution is unchanged by the random rotation, the saved shear equals the sky at each position, and the mean painted ellipticity follows the true shear with slope 1.",
+   "alt": "The painted catalogue against its inputs, on one million galaxies: the |e| distribution is unchanged by the random rotation, the saved shear equals the sky at each position, and the mean painted ellipticity follows the true shear with slope 1.",
+   "url": "cosmoval/mock-2d/catalogue_noise-0894be577f7a.png",
+   "width": 2000,
+   "height": 1077
+  },
+  {
+   "id": "sign_convention",
+   "section": "known",
+   "group": null,
+   "size": "half",
+   "caption": "A pure-E sky measured with the pipeline's pseudo-Cℓ estimator. With the catalogue's polarisation convention it reads as pure E; with the opposite sign it reads as mixed E and B.",
+   "alt": "A pure-E sky measured with the pipeline's pseudo-Cℓ estimator. With the catalogue's polarisation convention it reads as pure E; with the opposite sign it reads as mixed E and B.",
+   "url": "cosmoval/mock-2d/sign_convention-fd2491d12d3a.png",
+   "width": 1120,
+   "height": 640
+  },
+  {
+   "id": "reduced_shear_effect",
+   "section": "known",
+   "group": null,
+   "size": "half",
+   "caption": "The effect of painting reduced shear g = γ/(1−κ) instead of γ on the E-mode spectrum, and the B-mode power it creates.",
+   "alt": "The effect of painting reduced shear g = γ/(1−κ) instead of γ on the E-mode spectrum, and the B-mode power it creates.",
+   "url": "cosmoval/mock-2d/reduced_shear_effect-f3a958ecc6ca.png",
+   "width": 1280,
+   "height": 960
+  }
+ ],
+ "sections": [
+  {
+   "id": "known",
+   "title": "Known answers"
+  }
+ ]
+}

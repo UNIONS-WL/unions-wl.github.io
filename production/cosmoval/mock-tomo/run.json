@@ -1,0 +1,434 @@
+{
+ "id": "mock-tomo",
+ "kind": "mock",
+ "tomographic": true,
+ "title": "GLASS mocks, tomographic",
+ "status": "current",
+ "stale_note": null,
+ "summary": "On 18 sampled GLASS mocks the mean χ²/dof of the seven joint B-mode tests against the analytic covariance lies between 1.00 and 1.09, more than 2σ above 1 for ξ− B (12–83′) and ξ± B (2–20′); the mock PTEs are consistent with uniform except for ξ± B (2–20′) (KS p < 0.05).",
+ "banner": "GLASS mocks under a throwaway blind (mock-ensemble-tomo); the input cosmology is known",
+ "lacks": "Sampled mocks have unit weights, Gaussian shape noise at the data's per-bin σ_e and n_eff, no PSF leakage and no additive B mode, so this run has no PSF section.",
+ "provenance": [
+  [
+   "catalogue",
+   "GLASS sampled mock on the v2 tomographic footprint, 18 seeds, nside 4096"
+  ],
+  [
+   "n(z)",
+   "nz_v2_bound9_full_tomo.txt, 4 bins, the same file as the blinded data run"
+  ],
+  [
+   "code",
+   "generator sp_validation make_glass_sim.py @ 08b37ee0; measurement run/mock-ensemble-sampled @ c8f7b522, the estimators of the data run 7081c2d0"
+  ],
+  [
+   "date",
+   "2026-11-09"
+  ],
+  [
+   "blind",
+   "mock-ensemble-tomo, a throwaway mock blind"
+  ]
+ ],
+ "headline": [
+  {
+   "label": "Cℓ BB",
+   "pte": 0.5896824713435254,
+   "fail": false
+  },
+  {
+   "label": "Cℓ EB",
+   "pte": 0.34083515293421673,
+   "fail": false
+  },
+  {
+   "label": "COSEBIs B",
+   "pte": 0.5987662991924249,
+   "fail": false
+  },
+  {
+   "label": "ξ+ B (12–83′)",
+   "pte": 0.09460901259063204,
+   "fail": false
+  },
+  {
+   "label": "ξ− B (12–83′)",
+   "pte": 0.07156259985666602,
+   "fail": false
+  },
+  {
+   "label": "ξ± B (12–83′)",
+   "pte": 0.22245756515112391,
+   "fail": false
+  },
+  {
+   "label": "ξ± B (2–20′)",
+   "pte": 0.034243375062889436,
+   "fail": true
+  }
+ ],
+ "headline_note": "KS p-value that the 18 mock PTEs of each joint B-mode test are uniform",
+ "groups": {
+  "covariance": "Covariance diagnostics per test",
+  "bands": "More B-mode bands"
+ },
+ "tables": [
+  {
+   "section": "bmodes",
+   "caption": "Joint B-mode null tests over all ten bin pairs on 18 mocks, each against the analytic covariance. A PTE well below 0.05 means the mocks fail their own null test, or their PTEs are not uniform.",
+   "threshold": 0.05,
+   "columns": [
+    {
+     "key": "median",
+     "label": "median mock PTE"
+    },
+    {
+     "key": "ks",
+     "label": "KS p, mock PTEs uniform"
+    }
+   ],
+   "rows": [
+    {
+     "label": "Cℓ BB",
+     "values": {
+      "median": 0.461474702541892,
+      "ks": 0.5896824713435254
+     }
+    },
+    {
+     "label": "Cℓ EB",
+     "values": {
+      "median": 0.4904198976407811,
+      "ks": 0.34083515293421673
+     }
+    },
+    {
+     "label": "COSEBIs B",
+     "values": {
+      "median": 0.4147533596631612,
+      "ks": 0.5987662991924249
+     }
+    },
+    {
+     "label": "ξ+ B (12–83′)",
+     "values": {
+      "median": 0.36654064289241195,
+      "ks": 0.09460901259063204
+     }
+    },
+    {
+     "label": "ξ− B (12–83′)",
+     "values": {
+      "median": 0.2790645951885834,
+      "ks": 0.07156259985666602
+     }
+    },
+    {
+     "label": "ξ± B (12–83′)",
+     "values": {
+      "median": 0.44277085219885404,
+      "ks": 0.22245756515112391
+     }
+    },
+    {
+     "label": "ξ± B (2–20′)",
+     "values": {
+      "median": 0.33213161203526753,
+      "ks": 0.034243375062889436
+     }
+    }
+   ]
+  },
+  {
+   "section": "bmodes",
+   "caption": "Mean mock χ²/dof is 1 when the analytic covariance describes the scatter of the mocks; about 0.9 mocks per test should have a PTE below 0.05 by chance.",
+   "threshold": 0,
+   "columns": [
+    {
+     "key": "dof",
+     "label": "dof"
+    },
+    {
+     "key": "s",
+     "label": "mean mock χ²/dof"
+    },
+    {
+     "key": "s_err",
+     "label": "± (bootstrap)"
+    },
+    {
+     "key": "low",
+     "label": "mocks with PTE < 0.05 (of 18)"
+    }
+   ],
+   "rows": [
+    {
+     "label": "Cℓ BB",
+     "values": {
+      "dof": 320,
+      "s": 1.0084069091923205,
+      "s_err": 0.01775588137496268,
+      "low": 1
+     }
+    },
+    {
+     "label": "Cℓ EB",
+     "values": {
+      "dof": 320,
+      "s": 1.002136579256574,
+      "s_err": 0.015125100796254516,
+      "low": 1
+     }
+    },
+    {
+     "label": "COSEBIs B",
+     "values": {
+      "dof": 200,
+      "s": 1.0234200131421138,
+      "s_err": 0.028056805057151822,
+      "low": 3
+     }
+    },
+    {
+     "label": "ξ+ B (12–83′)",
+     "values": {
+      "dof": 70,
+      "s": 1.0273988191460577,
+      "s_err": 0.05316994581207768,
+      "low": 1
+     }
+    },
+    {
+     "label": "ξ− B (12–83′)",
+     "values": {
+      "dof": 70,
+      "s": 1.0932789852599487,
+      "s_err": 0.040455685050717304,
+      "low": 3
+     }
+    },
+    {
+     "label": "ξ± B (12–83′)",
+     "values": {
+      "dof": 140,
+      "s": 1.0517169336622711,
+      "s_err": 0.03453885374228555,
+      "low": 3
+     }
+    },
+    {
+     "label": "ξ± B (2–20′)",
+     "values": {
+      "dof": 180,
+      "s": 1.0748887612765594,
+      "s_err": 0.029291758429928903,
+      "low": 5
+     }
+    }
+   ]
+  }
+ ],
+ "figures": [
+  {
+   "id": "pte_ecdf",
+   "section": "known",
+   "group": null,
+   "size": "full",
+   "caption": "Cumulative distribution of the 18 mocks' PTEs for each joint B-mode test, against the uniform distribution (grey line) expected when the analytic covariance is right.",
+   "alt": "Cumulative distribution of the 18 mocks' PTEs for each joint B-mode test, against the uniform distribution (grey line) expected when the analytic covariance is right.",
+   "url": "cosmoval/mock-tomo/pte_ecdf-f80ee9c87dc4.png",
+   "width": 1200,
+   "height": 630
+  },
+  {
+   "id": "variance_map",
+   "section": "known",
+   "group": null,
+   "size": "full",
+   "caption": "Variance of the 18 mocks divided by the analytic variance, averaged over each statistic's elements, per bin pair. E rows use ξ± at 12–83′ and Cℓ EE at ℓ 300–1600. With 18 Gaussian mocks a single element's ratio has a 68% range of 0.67–1.33; these averages scatter less.",
+   "alt": "Variance of the 18 mocks divided by the analytic variance, averaged over each statistic's elements, per bin pair. E rows use ξ± at 12–83′ and Cℓ EE at ℓ 300–1600. With 18 Gaussian mocks a single element's ratio has a 68% range of 0.67–1.33; these averages scatter less.",
+   "url": "cosmoval/mock-tomo/variance_map-b2fe8f7db0da.png",
+   "width": 1050,
+   "height": 600
+  },
+  {
+   "id": "covariance_xi_scale_split",
+   "section": "known",
+   "group": null,
+   "size": "full",
+   "caption": "Mock variance over analytic variance for each ξ+ B and ξ− B angular bin and bin pair; the grey band is the 95% scatter expected from a finite number of Gaussian mocks.",
+   "alt": "Mock variance over analytic variance for each ξ+ B and ξ− B angular bin and bin pair; the grey band is the 95% scatter expected from a finite number of Gaussian mocks.",
+   "url": "cosmoval/mock-tomo/covariance_xi_scale_split-4edc9e3a7b39.png",
+   "width": 1400,
+   "height": 560
+  },
+  {
+   "id": "covariance_cl_bb",
+   "section": "known",
+   "group": "covariance",
+   "size": "full",
+   "caption": "Cℓ BB: mock variance over analytic variance per element and bin pair (top), and per eigenmode of the analytic covariance in ascending eigenvalue (bottom); grey is the 95% scatter expected from the finite number of mocks.",
+   "alt": "Cℓ BB: mock variance over analytic variance per element and bin pair (top), and per eigenmode of the analytic covariance in ascending eigenvalue (bottom); grey is the 95% scatter expected from the finite number of mocks.",
+   "url": "cosmoval/mock-tomo/covariance_cl_bb-f6d63a0425f8.png",
+   "width": 1260,
+   "height": 840
+  },
+  {
+   "id": "covariance_cl_eb",
+   "section": "known",
+   "group": "covariance",
+   "size": "full",
+   "caption": "Cℓ EB: mock variance over analytic variance per element and bin pair (top), and per eigenmode of the analytic covariance in ascending eigenvalue (bottom); grey is the 95% scatter expected from the finite number of mocks.",
+   "alt": "Cℓ EB: mock variance over analytic variance per element and bin pair (top), and per eigenmode of the analytic covariance in ascending eigenvalue (bottom); grey is the 95% scatter expected from the finite number of mocks.",
+   "url": "cosmoval/mock-tomo/covariance_cl_eb-023d7923a907.png",
+   "width": 1260,
+   "height": 840
+  },
+  {
+   "id": "covariance_cosebis",
+   "section": "known",
+   "group": "covariance",
+   "size": "full",
+   "caption": "COSEBIs B: mock variance over analytic variance per element and bin pair (top), and per eigenmode of the analytic covariance in ascending eigenvalue (bottom); grey is the 95% scatter expected from the finite number of mocks.",
+   "alt": "COSEBIs B: mock variance over analytic variance per element and bin pair (top), and per eigenmode of the analytic covariance in ascending eigenvalue (bottom); grey is the 95% scatter expected from the finite number of mocks.",
+   "url": "cosmoval/mock-tomo/covariance_cosebis-e5afd9b5b2f1.png",
+   "width": 1260,
+   "height": 840
+  },
+  {
+   "id": "covariance_xip_B",
+   "section": "known",
+   "group": "covariance",
+   "size": "full",
+   "caption": "ξ+ B (12–83′): mock variance over analytic variance per element and bin pair (top), and per eigenmode of the analytic covariance in ascending eigenvalue (bottom); grey is the 95% scatter expected from the finite number of mocks.",
+   "alt": "ξ+ B (12–83′): mock variance over analytic variance per element and bin pair (top), and per eigenmode of the analytic covariance in ascending eigenvalue (bottom); grey is the 95% scatter expected from the finite number of mocks.",
+   "url": "cosmoval/mock-tomo/covariance_xip_B-e4c3af344719.png",
+   "width": 1260,
+   "height": 840
+  },
+  {
+   "id": "covariance_xim_B",
+   "section": "known",
+   "group": "covariance",
+   "size": "full",
+   "caption": "ξ− B (12–83′): mock variance over analytic variance per element and bin pair (top), and per eigenmode of the analytic covariance in ascending eigenvalue (bottom); grey is the 95% scatter expected from the finite number of mocks.",
+   "alt": "ξ− B (12–83′): mock variance over analytic variance per element and bin pair (top), and per eigenmode of the analytic covariance in ascending eigenvalue (bottom); grey is the 95% scatter expected from the finite number of mocks.",
+   "url": "cosmoval/mock-tomo/covariance_xim_B-6cee61af8448.png",
+   "width": 1260,
+   "height": 840
+  },
+  {
+   "id": "covariance_combined",
+   "section": "known",
+   "group": "covariance",
+   "size": "full",
+   "caption": "ξ± B (12–83′): mock variance over analytic variance per element and bin pair (top), and per eigenmode of the analytic covariance in ascending eigenvalue (bottom); grey is the 95% scatter expected from the finite number of mocks.",
+   "alt": "ξ± B (12–83′): mock variance over analytic variance per element and bin pair (top), and per eigenmode of the analytic covariance in ascending eigenvalue (bottom); grey is the 95% scatter expected from the finite number of mocks.",
+   "url": "cosmoval/mock-tomo/covariance_combined-230cf6efa978.png",
+   "width": 1260,
+   "height": 840
+  },
+  {
+   "id": "covariance_small",
+   "section": "known",
+   "group": "covariance",
+   "size": "full",
+   "caption": "ξ± B (2–20′): mock variance over analytic variance per element and bin pair (top), and per eigenmode of the analytic covariance in ascending eigenvalue (bottom); grey is the 95% scatter expected from the finite number of mocks.",
+   "alt": "ξ± B (2–20′): mock variance over analytic variance per element and bin pair (top), and per eigenmode of the analytic covariance in ascending eigenvalue (bottom); grey is the 95% scatter expected from the finite number of mocks.",
+   "url": "cosmoval/mock-tomo/covariance_small-71e537cdc7a8.png",
+   "width": 1260,
+   "height": 840
+  },
+  {
+   "id": "band_cl_bb",
+   "section": "bmodes",
+   "group": null,
+   "size": "full",
+   "caption": "Pointwise 68% and 95% ranges of the 18 mocks for Cℓ BB per bin pair, with the blinded UNIONS v2 data as black points; the blind changes only E modes, so these B-mode points are the data's own.",
+   "alt": "Pointwise 68% and 95% ranges of the 18 mocks for Cℓ BB per bin pair, with the blinded UNIONS v2 data as black points; the blind changes only E modes, so these B-mode points are the data's own.",
+   "url": "cosmoval/mock-tomo/band_cl_bb-f02a9f4858a4.png",
+   "width": 1400,
+   "height": 1260
+  },
+  {
+   "id": "band_cosebis_B",
+   "section": "bmodes",
+   "group": null,
+   "size": "full",
+   "caption": "Pointwise 68% and 95% ranges of the 18 mocks for COSEBIs B_n per bin pair, with the blinded UNIONS v2 data as black points; the blind changes only E modes, so these B-mode points are the data's own.",
+   "alt": "Pointwise 68% and 95% ranges of the 18 mocks for COSEBIs B_n per bin pair, with the blinded UNIONS v2 data as black points; the blind changes only E modes, so these B-mode points are the data's own.",
+   "url": "cosmoval/mock-tomo/band_cosebis_B-6a7abe7c4278.png",
+   "width": 1400,
+   "height": 1260
+  },
+  {
+   "id": "band_xim_B",
+   "section": "bmodes",
+   "group": null,
+   "size": "full",
+   "caption": "Pointwise 68% and 95% ranges of the 18 mocks for ξ− B per bin pair, with the blinded UNIONS v2 data as black points; the blind changes only E modes, so these B-mode points are the data's own.",
+   "alt": "Pointwise 68% and 95% ranges of the 18 mocks for ξ− B per bin pair, with the blinded UNIONS v2 data as black points; the blind changes only E modes, so these B-mode points are the data's own.",
+   "url": "cosmoval/mock-tomo/band_xim_B-9a16028e1ad9.png",
+   "width": 1400,
+   "height": 1260
+  },
+  {
+   "id": "band_xip_B",
+   "section": "bmodes",
+   "group": "bands",
+   "size": "full",
+   "caption": "Pointwise 68% and 95% ranges of the 18 mocks for ξ+ B per bin pair, with the blinded UNIONS v2 data as black points; the blind changes only E modes, so these B-mode points are the data's own.",
+   "alt": "Pointwise 68% and 95% ranges of the 18 mocks for ξ+ B per bin pair, with the blinded UNIONS v2 data as black points; the blind changes only E modes, so these B-mode points are the data's own.",
+   "url": "cosmoval/mock-tomo/band_xip_B-d88c13319d93.png",
+   "width": 1400,
+   "height": 1260
+  },
+  {
+   "id": "band_cl_eb",
+   "section": "bmodes",
+   "group": "bands",
+   "size": "full",
+   "caption": "Pointwise 68% and 95% ranges of the 18 mocks for Cℓ EB per bin pair, with the blinded UNIONS v2 data as black points; the blind changes only E modes, so these B-mode points are the data's own.",
+   "alt": "Pointwise 68% and 95% ranges of the 18 mocks for Cℓ EB per bin pair, with the blinded UNIONS v2 data as black points; the blind changes only E modes, so these B-mode points are the data's own.",
+   "url": "cosmoval/mock-tomo/band_cl_eb-798847215382.png",
+   "width": 1400,
+   "height": 1260
+  },
+  {
+   "id": "mock_xi_E",
+   "section": "data_vectors",
+   "group": null,
+   "size": "full",
+   "caption": "Median and 68% / 95% ranges of θ ξ+ and θ ξ− over the 18 mocks per bin pair, against θ in arcmin. The mock vectors carry a throwaway blind, so they are shifted from the input cosmology by an unknown smooth amount.",
+   "alt": "Median and 68% / 95% ranges of θ ξ+ and θ ξ− over the 18 mocks per bin pair, against θ in arcmin. The mock vectors carry a throwaway blind, so they are shifted from the input cosmology by an unknown smooth amount.",
+   "url": "cosmoval/mock-tomo/mock_xi_E-d46302f89faf.png",
+   "width": 1200,
+   "height": 1125
+  },
+  {
+   "id": "mock_cl_ee",
+   "section": "data_vectors",
+   "group": null,
+   "size": "full",
+   "caption": "Median and 68% / 95% ranges of ℓ Cℓ EE over the 18 mocks per bin pair, against ℓ. The mock vectors carry a throwaway blind, so they are shifted from the input cosmology by an unknown smooth amount.",
+   "alt": "Median and 68% / 95% ranges of ℓ Cℓ EE over the 18 mocks per bin pair, against ℓ. The mock vectors carry a throwaway blind, so they are shifted from the input cosmology by an unknown smooth amount.",
+   "url": "cosmoval/mock-tomo/mock_cl_ee-30960e135c52.png",
+   "width": 1200,
+   "height": 1125
+  }
+ ],
+ "sections": [
+  {
+   "id": "known",
+   "title": "Known answers"
+  },
+  {
+   "id": "bmodes",
+   "title": "B-mode nulls"
+  },
+  {
+   "id": "data_vectors",
+   "title": "Data vectors"
+  }
+ ]
+}
