@@ -1,6 +1,6 @@
 # Refreshing the production page
 
-`production/status.html` reads three kinds of file. Each has one command.
+`production/status.html` reads four kinds of file. Each has one command.
 
 ## A cosmo_val run
 
@@ -23,6 +23,12 @@ Blinding: importers copy figures and PTEs only.
 Data figures must come from concealed E-mode vectors; nothing derived from an unblinded vector or a blind record goes on the page.
 
 `cvrun.py` holds the run format (sections, tables, verdict chips, provenance labels).
+
+## The plate
+
+`plate.py` draws `production/plate.svg`, the chart that opens the page, from the lensing footprint and the tomographic footprint (HEALPix masks).
+Its docstring holds the command; rerun it when either footprint changes.
+The page fills in the four run stars from `cosmoval.json`.
 
 ## Fair share
 

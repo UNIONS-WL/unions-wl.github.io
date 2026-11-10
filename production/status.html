@@ -8,8 +8,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.35.3/plotly.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <style>
-  /* Layout: the analysis triangle on top (pipeline above, mocks and data below, the four runs hanging
-     from them), then compute, then the selected run in full, then the finished production run folded. */
+  /* Layout: a plate of the survey sky with the analysis drawn on it and an index beside it, then compute,
+     then the selected run in full, then the release and the finished production run folded. */
   :root{
     --parchment:#EDE2CE; --rag:#FBF6E9; --ink:#1B1611; --ink-muted:#6E6452;
     --cinnabar:#BC4538; --teal:#2F7268; --cobalt:#3D5BA0; --ochre:#A97A1E; --plum:#7B6A99; --rule:#C5B89E;
@@ -39,35 +39,52 @@
   .tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;border:1px solid currentColor;border-radius:3px;padding:0 5px;white-space:nowrap}
   .tag.current{color:var(--teal)} .tag.stale{color:var(--ochre)} .tag.pending{color:var(--ink-muted)}
 
-  /* ---- map ---- */
-  #map{margin-top:26px}
-  #map > svg{display:block;width:100%;height:auto}
-  #map svg text{font-family:var(--mono);fill:var(--ink-muted);font-size:12px}
-  #map svg .vertex{fill:var(--cinnabar);font-size:13px;letter-spacing:.18em}
-  #map svg .what{font-family:var(--serif);font-style:italic;font-size:19px;fill:var(--ink)}
-  #map svg .edge{stroke:var(--ink-muted);stroke-width:1.2;fill:none}
-  #map svg .loop{font-family:var(--serif);font-size:16px;fill:var(--ink)}
-  #map svg a text{fill:var(--cobalt)}
-  #map svg a:hover rect{stroke:var(--cobalt)}
-  #map .narrow{display:none;margin:0 0 14px;padding:0;list-style:none;font-size:16px;color:var(--ink-muted)}
-  #map .narrow b{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cinnabar);font-weight:400}
-  .legs{margin-top:8px;display:grid;grid-template-columns:42fr 16fr 42fr;align-items:start}
-  .leg{grid-column:1} .leg + .leg{grid-column:3}
-  .leg-name{display:none;font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--cinnabar);margin-bottom:6px}
-  .leg-runs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .run-card{display:flex;flex-direction:column;gap:5px;min-width:0;text-align:left;font:inherit;color:var(--ink);background:var(--rag);border:1px solid var(--rule);border-radius:10px;padding:10px 12px 11px;cursor:pointer}
-  .run-card:hover{border-color:var(--cobalt)}
-  .run-card[aria-current="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
-  .run-card .top{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap}
-  .run-card .dim{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted)}
-  .run-card .say{font-size:16px;line-height:1.25}
-  .run-card .when{font-family:var(--mono);font-size:10.5px;color:var(--ink-muted)}
-  .marks{display:flex;gap:4px;flex-wrap:wrap;align-items:center;min-height:14px}
-  .marks svg{width:13px;height:13px;display:block}
-  .also{margin:14px 0 0;display:flex;gap:6px 22px;flex-wrap:wrap;font-size:16px;color:var(--ink-muted)}
-  .key{margin:10px 0 0;font-family:var(--mono);font-size:10.5px;color:var(--ink-muted);display:flex;gap:4px 16px;flex-wrap:wrap;align-items:center}
-  .key span{display:inline-flex;gap:5px;align-items:center}
-  .key svg{width:11px;height:11px}
+  /* ---- the plate ---- */
+  #map{margin-top:22px;display:grid;grid-template-columns:minmax(0,22fr) minmax(0,60fr) minmax(0,18fr);gap:0 22px;align-items:center}
+  #plate svg{display:block;width:100%;height:auto;overflow:visible}
+  .cartouche{font-size:16px;line-height:1.42;color:var(--ink-muted)}
+  .cartouche .no{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cinnabar)}
+  .cartouche h2{font-size:27px;margin:4px 0 12px;color:var(--ink)}
+  .cartouche p{margin:0 0 11px} .cartouche b{color:var(--ink);font-weight:500}
+  .cartouche i.sw{display:inline-block;width:.85em;height:.85em;border-radius:50% 45% 55% 48%;vertical-align:-.06em;margin-right:.3em}
+  .key{margin:14px 0 0;padding:10px 0 0;border-top:1px solid var(--rule);font-family:var(--mono);font-size:10.5px;color:var(--ink-muted);display:grid;gap:5px}
+  .key span{display:flex;gap:7px;align-items:center}
+  .key svg{width:15px;height:15px;flex:none}
+  .index{font-size:19px;line-height:1.2}
+  .index .no{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cinnabar);margin-bottom:6px}
+  .index ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+  .index li{border-bottom:1px solid var(--rule)}
+  .index a{display:block;padding:9px 0 9px;color:var(--ink);font-style:italic}
+  .index a:hover{text-decoration:none;color:var(--cobalt)}
+  .index a small{display:block;font-family:var(--mono);font-style:normal;font-size:10.5px;letter-spacing:.02em;color:var(--ink-muted);margin-top:2px}
+  #plate text{font-family:var(--serif)}
+  #plate .pl-grat *{fill:none;stroke:#7A6B52;stroke-width:.55;stroke-opacity:.55}
+  #plate .pl-rim{fill:none;stroke:var(--ink);stroke-width:1.3} #plate .pl-rim2{fill:none;stroke:var(--ink);stroke-width:.7}
+  #plate .pl-tick{stroke:var(--ink);stroke-width:.6;fill:none}
+  #plate .pl-hour{font-family:var(--mono);font-size:9.5px;fill:var(--ink-muted)}
+  #plate .pl-dec{font-family:var(--mono);font-size:7.5px;fill:#7A6B52}
+  #plate .pl-sky{fill:var(--ink)} #plate .pl-figure{fill:none;stroke:var(--ink);stroke-width:.6;stroke-opacity:.6;stroke-dasharray:1.5 2.5}
+  #plate .pl-galaxy{fill:none;stroke:var(--ink);stroke-width:.7}
+  #plate .pl-name{font-style:italic;font-size:9.5px;fill:var(--ink);fill-opacity:.75}
+  #plate .pl-const{font-size:9px;letter-spacing:.34em;text-transform:uppercase;fill:var(--ink);fill-opacity:.55}
+  #plate .pl-way{font-style:italic;font-size:13px;letter-spacing:.42em;fill:#2E2A45;fill-opacity:.7}
+  #plate .pl-analysis text{paint-order:stroke;stroke:#FBF6E9;stroke-opacity:.72;stroke-width:2.8px;stroke-linejoin:round}
+  #plate .pl-edge{fill:none;stroke:var(--cinnabar);stroke-width:1.5}
+  #plate .pl-thread{fill:none;stroke:var(--cinnabar);stroke-width:.9;stroke-dasharray:2 3}
+  #plate .pl-loop{font-style:italic;font-size:14.5px;fill:var(--ink)}
+  #plate .pl-vertex{fill:var(--cinnabar);stroke:#FBF6E9;stroke-width:.08}
+  #plate .pl-vname{font-family:var(--mono);font-size:14px;letter-spacing:.2em;fill:var(--cinnabar);font-weight:500}
+  #plate .pl-vsub{font-style:italic;font-size:14.5px;fill:var(--ink)}
+  #plate .pl-hit{fill:transparent}
+  #plate .pl-runstar{fill:#FBF6E9;stroke:var(--ink-muted);stroke-width:.16}
+  #plate .pl-run.current .pl-runstar{fill:var(--teal);stroke:var(--ink)}
+  #plate .pl-run.stale .pl-runstar{fill:#D9B565;stroke:var(--ochre)}
+  #plate .pl-run.pending .pl-runstar{stroke-dasharray:.3 .22}
+  #plate .pl-run[aria-current="true"] .pl-rname{text-decoration:underline}
+  #plate .pl-rname{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;fill:var(--ink)}
+  #plate .pl-rsay{font-style:italic;font-size:14px;fill:var(--ink)}
+  #plate a:hover .pl-vname, #plate a:hover .pl-rname, #plate a:hover .pl-vsub{fill:var(--cobalt)}
+  #plate a:hover .pl-runstar, #plate a:hover .pl-vertex{stroke:var(--cobalt);stroke-width:.3}
 
   /* ---- compute ---- */
   #next{font-size:21px;margin:0 0 12px;max-width:70ch}
@@ -155,8 +172,7 @@
 
   @media (max-width:760px){
     h1{font-size:31px} h2{font-size:26px} .two{grid-template-columns:1fr}
-    #map > svg{display:none} #map .narrow{display:block}
-    .legs{grid-template-columns:1fr;gap:16px} .leg, .leg + .leg{grid-column:1} .leg-name{display:block}
+    #map{grid-template-columns:1fr;gap:18px} #plate{order:-1;margin:0 -6px}
     .fs{grid-template-columns:max-content minmax(60px,1fr) max-content;padding:12px}
     .fs .jobs{grid-column:1 / -1;margin-top:-6px}
     .cv-pair{grid-template-columns:1fr} table{font-size:14px} th,td{padding:4px 6px} .cv-fig{padding:6px}
@@ -168,49 +184,34 @@
 <main class="page">
   <div class="stamp"><a href="../index.html">UNIONS-WL</a><span>·</span><span>production and validation</span><span>·</span><span id="gen">loading…</span></div>
   <h1>UNIONS v2 weak lensing: where the analysis stands</h1>
-  <p class="lede">The ShapePipe v2 catalogue is complete. The work now is validating the cosmic-shear measurement,
-  which runs as three checks at once: the <b>pipeline</b> must recover known inputs from <b>mocks</b>, the mocks must
-  look like the <b>data</b>, and the data are measured blinded on current code. Choose a run below to read its null tests and figures.</p>
-
-  <div id="map" aria-label="Map of this page">
-    <svg viewBox="0 0 1040 292" role="img" aria-label="The analysis as a triangle: the pipeline at the top, mocks at the lower left, data at the lower right. Each side is one check.">
-      <!-- pipeline vertex -->
-      <text class="vertex" x="520" y="22" text-anchor="middle">PIPELINE</text>
-      <text class="what" x="520" y="46" text-anchor="middle">ShapePipe shapes, cosmo_val statistics</text>
-      <a href="#compute"><rect x="356" y="58" width="328" height="46" rx="8" fill="#FBF6E9" stroke="#C5B89E"/>
-        <text x="520" y="77" text-anchor="middle" style="fill:#6E6452">compute: run next on</text>
-        <text id="map-next" x="520" y="95" text-anchor="middle">loading fair share…</text></a>
-      <!-- sides -->
-      <path class="edge" d="M348 96 L232 244"/>
-      <path class="edge" d="M692 96 L808 244"/>
-      <path class="edge" d="M300 266 L740 266"/>
-      <text class="loop" x="276" y="150" text-anchor="end">recovers known inputs,</text>
-      <text class="loop" x="262" y="171" text-anchor="end">with calibrated errors</text>
-      <text class="loop" x="764" y="150">measured blinded,</text>
-      <text class="loop" x="778" y="171">on current code</text>
-      <text class="loop" x="520" y="256" text-anchor="middle">do the data sit inside the mock ensemble?</text>
-      <!-- lower vertices -->
-      <text class="vertex" x="218" y="271" text-anchor="middle">MOCKS</text>
-      <text x="218" y="289" text-anchor="middle">GLASS, known input cosmology</text>
-      <text class="vertex" x="822" y="271" text-anchor="middle">DATA</text>
-      <text x="822" y="289" text-anchor="middle">SP v2.0, blinded</text>
-    </svg>
-    <ul class="narrow">
-      <li><b>Pipeline ↔ mocks</b> the pipeline recovers known inputs, with calibrated errors</li>
-      <li><b>Mocks ↔ data</b> the data should sit inside the mock ensemble</li>
-      <li><b>Data ↔ pipeline</b> measured blinded, on current code</li>
-      <li><b>Compute</b> <a href="#compute" id="map-next-narrow">fair share</a></li>
-    </ul>
-    <div class="legs">
-      <div class="leg"><div class="leg-name">Mocks</div><div class="leg-runs" id="leg-mock"></div></div>
-      <div class="leg"><div class="leg-name">Data</div><div class="leg-runs" id="leg-data"></div></div>
+  <div id="map">
+    <div class="cartouche">
+      <div class="no">Plate I</div>
+      <h2>The UNIONS sky, and the analysis drawn on it</h2>
+      <p><i class="sw" style="background:#5FA597"></i>In green, the 4,690 deg² of northern sky where 170 million galaxy shapes
+      pass the lensing cuts. <i class="sw" style="background:#3F6E9E"></i>In blue, the part that also has <i>z</i>-band photometry and so carries tomographic bins.
+      The survey keeps clear of the Milky Way.</p>
+      <p>In red, the validation. The <b>pipeline</b> must recover known inputs from <b>mocks</b>, the mocks must
+      look like the <b>data</b>, and the data are measured blinded. Each small star is one run of the null tests.</p>
+      <div class="key">
+        <span><svg viewBox="-1.3 -1.3 2.6 2.6"><path d="M0,-1 L0.23,-0.23 L1,0 L0.23,0.23 L0,1 L-0.23,0.23 L-1,0 L-0.23,-0.23Z" fill="#2F7268" stroke="#1B1611" stroke-width=".12"/></svg>measured on current inputs</span>
+        <span><svg viewBox="-1.3 -1.3 2.6 2.6"><path d="M0,-1 L0.23,-0.23 L1,0 L0.23,0.23 L0,1 L-0.23,0.23 L-1,0 L-0.23,-0.23Z" fill="#D9B565" stroke="#A97A1E" stroke-width=".12"/></svg>older n(z), catalogue or code</span>
+        <span><svg viewBox="-1.3 -1.3 2.6 2.6"><path d="M0,-1 L0.23,-0.23 L1,0 L0.23,0.23 L0,1 L-0.23,0.23 L-1,0 L-0.23,-0.23Z" fill="#FBF6E9" stroke="#6E6452" stroke-width=".14" stroke-dasharray=".3 .22"/></svg>not measured yet</span>
+      </div>
     </div>
-    <div class="key">
-      <span><svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5" fill="#2F7268"/></svg>test passes</span>
-      <span><svg viewBox="0 0 12 12"><path d="M2 2 L10 10 M10 2 L2 10" stroke="#BC4538" stroke-width="2.4" fill="none"/></svg>fails (p &lt; 0.05)</span>
-      <span><span class="tag stale">older inputs</span>measured before the current n(z), catalogue or code</span>
-    </div>
-    <p class="also"><span>Also on this page:</span><a href="#compute">compute and fair share</a><a href="#release">the v2.0.0 release</a><a href="#production">ShapePipe v2 run 1 (complete)</a></p>
+    <div id="plate"></div>
+    <nav class="index" aria-label="On this page">
+      <div class="no">Go to</div>
+      <ol>
+        <li><a href="#compute">Compute<small id="map-next">fair share on Fir and Nibi</small></a></li>
+        <li><a href="#data-2d/survey">Sky maps<small>density, weights, PSF</small></a></li>
+        <li><a href="#data-tomo/data_vectors">Data vectors<small>ξ±, Cℓ, COSEBIs, blinded</small></a></li>
+        <li><a href="#data-tomo/bmodes">Null tests<small id="idx-data">B modes, PSF leakage</small></a></li>
+        <li><a href="#mock-tomo">Mocks<small id="idx-mock">GLASS, data inside the ensemble</small></a></li>
+        <li><a href="https://www.canfar.net/storage/vault/list/cfis/weak_lensing/ShapePipe/v2.x/v2.0.0">Release v2.0.0 ↗<small>the catalogue on VOSpace</small></a></li>
+        <li><a href="#production">ShapePipe run 1<small>the finished production</small></a></li>
+      </ol>
+    </nav>
   </div>
 
   <section id="compute">
@@ -380,7 +381,7 @@ function renderRun(r){
   if (r.lacks) prov.append(el('dt', 'not in this mock'), el('dd', r.lacks));
   body.append(prov);
   for (const s of r.sections){
-    body.append(el('h3', s.title));
+    const h = el('h3', s.title); h.id = 'sec-' + s.id; body.append(h);
     for (const t of r.tables.filter(t => t.section === s.id)) body.append(cvTable(t));
     const figures = r.figures.filter(f => f.section === s.id);
     flow(body, figures.filter(f => !f.group));
@@ -397,7 +398,7 @@ function select(id, scroll){
   current = id;
   for (const b of document.querySelectorAll('.seg button'))
     b.setAttribute('aria-pressed', String(b.dataset.kind === kind || b.dataset.dim === dim));
-  for (const c of document.querySelectorAll('.run-card')) c.setAttribute('aria-current', String(c.dataset.run === id));
+  for (const a of document.querySelectorAll('#plate .pl-run')) a.setAttribute('aria-current', String(a.dataset.run === id));
   if (RUNS[id]) renderRun(RUNS[id]);
   else $('run').replaceChildren(el('p', 'No ' + (dim === 'tomo' ? 'tomographic' : 'non-tomographic') + (kind === 'mock' ? ' GLASS mock' : ' data') + ' run has been published yet.', 'summary'));
   try { history.replaceState(null, '', '#' + id); } catch (e) {}
@@ -407,34 +408,49 @@ for (const b of document.querySelectorAll('.seg button')) b.addEventListener('cl
   const [kind, dim] = current.split('-');
   select(runId(b.dataset.kind || kind, b.dataset.dim || dim), false);
 });
-function runCard(kind, dim){
-  const id = runId(kind, dim), r = RUNS[id], card = el('button', null, 'run-card');
-  card.type = 'button'; card.dataset.run = id;
-  const top = el('div', null, 'top');
-  top.append(el('span', dim === 'tomo' ? 'tomographic' : 'non-tomographic', 'dim'));
-  if (r) top.append(el('span', TAG[r.status], 'tag ' + r.status));
-  card.append(top);
-  if (!r){ card.append(el('span', 'no run yet', 'say')); }
-  else {
-    const fails = r.headline.filter(h => h.fail).length, n = r.headline.length;
-    if (n){
-      const marks = el('div', null, 'marks'); for (const h of r.headline) marks.append(verdictMark(h.fail)); card.append(marks);
-      const what = kind === 'mock' ? ' calibration checks' : ' joint nulls';
-      card.append(el('span', fails ? fails + ' of ' + n + what + ' fail' : 'all ' + n + what + ' pass', 'say'));
-    } else card.append(el('span', 'null tests not measured yet', 'say'));
-    const date = (r.provenance.find(p => p[0] === 'date') || [])[1];
-    card.append(el('span', fmtDate(date || ''), 'when'));
+// The plate: each run star takes its run's state and a one-line verdict.
+function dressPlate(){
+  const said = {};
+  for (const a of document.querySelectorAll('#plate .pl-run')){
+    const r = RUNS[a.dataset.run], kind = a.dataset.run.split('-')[0];
+    a.classList.add(r ? r.status : 'pending');
+    let say = 'no run yet';
+    if (r){
+      const fails = r.headline.filter(h => h.fail).length, n = r.headline.length, what = kind === 'mock' ? ' checks' : ' nulls';
+      say = !n ? 'not measured yet' : fails ? fails + ' of ' + n + what + ' fail' : 'all ' + n + what + ' pass';
+    }
+    a.querySelector('.pl-rsay').textContent = say;
+    a.setAttribute('aria-current', String(a.dataset.run === current));
+    said[a.dataset.run] = say.replace(/ (nulls|checks|yet)/, '');
   }
-  card.setAttribute('aria-label', (kind === 'mock' ? 'GLASS mock, ' : 'Data, ') + card.textContent);
-  card.addEventListener('click', () => select(id, true));
-  return card;
+  for (const kind of ['data', 'mock'])
+    $('idx-' + kind).replaceChildren('tomographic: ' + said[kind + '-tomo'], el('br'), 'non-tomographic: ' + said[kind + '-2d']);
 }
+const plateReady = fetch('plate.svg').then(r => r.ok ? r.text() : '').then(svg => { $('plate').innerHTML = svg; }).catch(() => {});
+// In-page links: "#compute" scrolls to a section, "#data-tomo" opens a run, "#data-tomo/bmodes" one of its sections.
+function go(hash){
+  const [id, part] = hash.slice(1).split('/');
+  if (/^(data|mock)-(tomo|2d)$/.test(id)){
+    select(id, !part);
+    const target = part && document.getElementById('sec-' + part);
+    if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    else if (part) $('validation').scrollIntoView({behavior:'smooth', block:'start'});
+  } else if ($(id)){
+    if (id === 'production') $('prod-fold').open = true;
+    $(id).scrollIntoView({behavior:'smooth', block:'start'});
+    try { history.replaceState(null, '', '#' + id); } catch (e) {}
+  }
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  e.preventDefault(); go(a.getAttribute('href'));
+});
 fetch('cosmoval.json', {cache:'no-cache'}).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }).then(d => {
   for (const r of d.runs) RUNS[r.id] = r;
-  $('leg-mock').replaceChildren(runCard('mock', 'tomo'), runCard('mock', '2d'));
-  $('leg-data').replaceChildren(runCard('data', 'tomo'), runCard('data', '2d'));
-  const asked = location.hash.slice(1);
+  const asked = location.hash.slice(1).split('/')[0];
   select(/^(data|mock)-(tomo|2d)$/.test(asked) ? asked : 'data-tomo', false);
+  plateReady.then(dressPlate);
+  if (location.hash.includes('/') || $(location.hash.slice(1))) go(location.hash);
 }).catch(e => { $('run').replaceChildren(el('p', 'Could not load the runs: ' + e.message, 'err')); });
 
 // ================= compute and fair share =================
@@ -466,11 +482,10 @@ function renderFairShare(clusters){
     next.append('Run next on ', el('b', name(open)), ' (LevelFS ' + open.level.toFixed(2) + ').');
     if (open !== best) next.append(' ', el('b', name(best)), ' is higher (' + best.level.toFixed(2) + ') but is ' + ACCOUNT_NOTE[best.account] + '.');
     const pick = fresh.find(r => !ACCOUNT_NOTE[r.account]) || best;
-    $('map-next').textContent = name(pick) + ', LevelFS ' + pick.level.toFixed(2);
-    $('map-next-narrow').textContent = 'run next on ' + name(pick) + ' (LevelFS ' + pick.level.toFixed(2) + ')';
+    $('map-next').textContent = 'run next on ' + name(pick) + ', LevelFS ' + pick.level.toFixed(2);
+    plateReady.then(() => { const t = $('plate-next'); if (t) t.textContent = 'run next on ' + name(pick); });
   } else {
     next.textContent = 'No fair-share sample is newer than ' + FRESH_HOURS + ' hours; the values below are the last ones recorded.';
-    $('map-next').textContent = 'no recent sample';
   }
   $('fs-when').textContent = clusters.map(c => c.cluster[0].toUpperCase() + c.cluster.slice(1) + ' sampled ' + age((now - parseUtc(c.updated))/36e5)).join(' · ');
   // Log axis from 0.1 to 10, centred on 1.
