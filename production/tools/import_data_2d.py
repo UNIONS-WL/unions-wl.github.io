@@ -4,13 +4,13 @@ The source is the manifest sp_validation's dashboard publisher writes: a
 directory holding cosmoval.json (schema 4) and cosmoval/*.png.
 
 The run on the page is the bound-9 plain suite of sp_validation run/tomo1101 @ 7081c2d0,
-rendered on Nibi:
+with the run-directory figures redrawn on Fir and the catalogue-level figures from the Nibi render:
 
     uv run --with pillow python import_data_2d.py \\
-        /project/rrg-kyi/cdaley/unions/analyses/production-page/from-nibi/data-2d-tomo1101 \\
+        /project/rrg-kyi/cdaley/unions/analyses/production-page/fir-data-2d \\
         --catalogue "ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF; 170.6M galaxies on 20,515 of the 22,901 tiles in the v2.0.0 release, 4,690 deg²" \\
         --nz "for the covariance only: the sum of the four bins of the first working DR6 BPZ+SOM n(z), not the recalibrated n(z) of CosmoStat/sp_validation#468" \\
-        --code "sp_validation run/tomo1101 @ 7081c2d0 (measured 1 Nov); figures rendered 10 Nov with run/dashboard-tomo1101 @ 54220f69"
+        --code "sp_validation run/tomo1101 @ 7081c2d0 (measured 1 Nov); figures rendered 10 Nov with feat/page-figures-2d @ 489e3f3c (catalogue-level panels: run/dashboard-tomo1101 @ 54220f69)"
 
 --stale "<what it predates>" marks a run measured on older inputs.
 """
@@ -25,10 +25,6 @@ SECTION = {"data_vectors": "data_vectors", "bmodes": "bmodes", "leakage": "psf",
            "tangential": "tangential", "survey": "survey"}
 COLUMN = {"cosebis_n6": "Bₙ, n ≤ 6", "cosebis_n20": "Bₙ, n ≤ 20", "xip_B": "ξ₊ᴮ", "xim_B": "ξ₋ᴮ",
           "combined": "ξ±ᴮ joint", "cl_BB": "Cℓ BB"}
-
-# Captions that must say the E modes are blinded.
-CAPTION = {"bmode_pure_eb": "Blinded ξ± decomposed into pure E and B modes. Shaded: outside the fiducial 12′–83′; "
-                            "full range 1′–250′."}
 
 parser = argparse.ArgumentParser()
 parser.add_argument("source", type=Path)
@@ -75,7 +71,7 @@ run.table(
 for group, title in old["groups"].items():
     run.group(group, title)
 for f in old["figures"]:
-    caption = CAPTION.get(f["id"], f["caption"])
+    caption = f["caption"]
     run.figure(args.source / f["url"], SECTION[f["section"]], caption, size=f["size"], group=f["group"],
                alt=caption, fig_id=f["id"],
                narrow=args.source / f["narrow_url"] if f.get("narrow_url") else None)
