@@ -3,15 +3,16 @@
 The source is the manifest sp_validation's dashboard publisher writes: a
 directory holding cosmoval.json (schema 4) and cosmoval/*.png.
 
-The run on the page now is run-int1028, as published in commit 4b2b060:
+The run on the page is the bound-9 plain suite of sp_validation run/tomo1101 @ 7081c2d0,
+rendered on Nibi:
 
-    git archive 4b2b060 production/cosmoval.json production/cosmoval | tar -x -C /tmp/int1028
-    uv run --with pillow python import_data_2d.py /tmp/int1028/production \\
-        --catalogue "ShapePipe SP v2.0, upper bound 3 on galaxy size relative to the PSF, 20,515 of 22,901 tiles, 4,655 deg²" \\
-        --nz "the n(z) of the v1.4.6.3 catalogue, used as a stand-in; not calibrated for v2" \\
-        --code "sp_validation integration/2026-10-28 @ fbb2b3e8" \\
-        --stale "Measured on 28 Oct, before the last 2,386 tiles were published, with the size bound of 3 \\
-(now 9, sp_validation#448) and the v1.4.6.3 n(z) as a stand-in for the covariance."
+    uv run --with pillow python import_data_2d.py \\
+        /project/rrg-kyi/cdaley/unions/analyses/production-page/from-nibi/data-2d-tomo1101 \\
+        --catalogue "ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF; 170.6M galaxies on 20,515 of the 22,901 tiles in the v2.0.0 release, 4,690 deg²" \\
+        --nz "for the covariance only: the sum of the four bins of the first working DR6 BPZ+SOM n(z), not the recalibrated n(z) of CosmoStat/sp_validation#468" \\
+        --code "sp_validation run/tomo1101 @ 7081c2d0 (measured 1 Nov); figures rendered 10 Nov with run/dashboard-tomo1101 @ 54220f69"
+
+--stale "<what it predates>" marks a run measured on older inputs.
 """
 import argparse
 import json

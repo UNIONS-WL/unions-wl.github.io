@@ -3,27 +3,27 @@
  "kind": "data",
  "tomographic": true,
  "title": "UNIONS v2, four tomographic bins (blinded data)",
- "status": "stale",
- "stale_note": "This run predates the recalibrated n(z) bins of CosmoStat/sp_validation#468; the remeasurement on the new bins is running.",
- "summary": "Jointly over all ten bin pairs, Cℓ EB, COSEBIs B, ξ₊ᴮ and 2–20′ ξ±ᴮ pass; Cℓ BB, ξ₋ᴮ and ξ±ᴮ combined fail (PTE < 0.05).",
+ "status": "current",
+ "stale_note": null,
+ "summary": "Jointly over all ten bin pairs, Cℓ BB, Cℓ EB, COSEBIs B, ξ₊ᴮ, ξ±ᴮ combined and 2–20′ ξ±ᴮ pass; ξ₋ᴮ fails (PTE < 0.05).",
  "banner": "Blinded (blind: unions): E-mode data vectors are concealed; do not interpret cosmology",
  "lacks": null,
  "provenance": [
   [
    "catalogue",
-   "ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF; 170.6M galaxies, 4,690 deg²; tomographic footprint (tiles with z-band photometry) 15,830 tiles, 3,815 deg²"
+   "ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF, 20,515 of the 22,901 tiles in the v2.0.0 release; 170.6M galaxies, 4,690 deg²; tomographic footprint (tiles with z-band photometry) 16,881 tiles, 4,065 deg²"
   ],
   [
    "n(z)",
-   "first working DR6 BPZ+SOM four-bin n(z), validation and null tests only (not the recalibrated n(z) of CosmoStat/sp_validation#468); ⟨z⟩ = 0.286, 0.448, 0.612, 0.929"
+   "recalibrated DR6 BPZ+SOM four-bin n(z) and bins of CosmoStat/sp_validation#468, on a dz = 0.05 grid; validation and null tests only; ⟨z⟩ = 0.283, 0.451, 0.617, 0.922"
   ],
   [
    "code",
-   "sp_validation run/tomo1030b @ 2e25c76a"
+   "sp_validation run/tomo-nz468 @ 7081c2d0"
   ],
   [
    "date",
-   "2026-10-31"
+   "2026-11-10"
   ],
   [
    "blind",
@@ -31,43 +31,43 @@
   ],
   [
    "n_eff per bin",
-   "0.74, 0.92, 1.01, 1.33 arcmin⁻² on the tomographic footprint"
+   "0.74, 0.93, 1.01, 1.37 arcmin⁻² on the tomographic footprint"
   ]
  ],
  "headline": [
   {
    "label": "Cℓ BB",
-   "pte": 0.017471993905887485,
-   "fail": true
+   "pte": 0.09872768935854845,
+   "fail": false
   },
   {
    "label": "Cℓ EB",
-   "pte": 0.6509400129785939,
+   "pte": 0.5353895017020177,
    "fail": false
   },
   {
    "label": "COSEBIs B",
-   "pte": 0.44415370108037994,
+   "pte": 0.3874250983427855,
    "fail": false
   },
   {
    "label": "ξ₊ᴮ",
-   "pte": 0.11467986669947414,
+   "pte": 0.20591620597716792,
    "fail": false
   },
   {
    "label": "ξ₋ᴮ",
-   "pte": 0.004643384196746421,
+   "pte": 0.016209605743242678,
    "fail": true
   },
   {
    "label": "ξ±ᴮ combined",
-   "pte": 0.0038808929965989387,
-   "fail": true
+   "pte": 0.10195981143887783,
+   "fail": false
   },
   {
    "label": "2–20′ ξ±ᴮ",
-   "pte": 0.232612413665503,
+   "pte": 0.4357727812309897,
    "fail": false
   }
  ],
@@ -79,7 +79,7 @@
  "tables": [
   {
    "section": "bmodes",
-   "caption": "Probability to exceed (PTE) the measured χ² if the B modes are zero, for each bin pair and jointly over all ten pairs. Scale cuts: COSEBIs modes n ≤ 20 and pure-mode ξ±ᴮ at 12–83′; pseudo-Cℓ over all 32 bandpowers; the small-scale test is pure-mode ξ±ᴮ at 2–20′. Real-space covariance: OneCovariance (analytic); pseudo-Cℓ covariance: Gaussian (NaMaster). Values below 0.05 are failures.",
+   "caption": "Probability to exceed (PTE) the measured χ² if the B modes are zero, for each bin pair and jointly over all ten pairs. Scale cuts: COSEBIs modes n ≤ 20 and pure-mode ξ±ᴮ at 12–83′; pseudo-Cℓ over all 32 bandpowers; the small-scale test is pure-mode ξ±ᴮ at 2–20′. Real-space covariance: OneCovariance (pair_counts shape noise); pseudo-Cℓ covariance: Gaussian (NaMaster). Values below 0.05 are failures.",
    "threshold": 0.05,
    "columns": [
     {
@@ -122,134 +122,134 @@
     {
      "label": "bins 1×1",
      "values": {
-      "cosebis": 0.3518507420894863,
-      "xip_B": 0.36797249831726675,
-      "xim_B": 0.21327350905703135,
-      "combined": 0.3950705049783645,
-      "cl_bb": 0.08132166096817775,
-      "cl_eb": 0.24472876711932873,
-      "small": 0.623118688966473
+      "cosebis": 0.5277964831681266,
+      "xip_B": 0.6032637566001282,
+      "xim_B": 0.4003445182493911,
+      "combined": 0.7393569946236296,
+      "cl_bb": 0.4039840728273373,
+      "cl_eb": 0.36663223392977423,
+      "small": 0.4160411950951361
      }
     },
     {
      "label": "bins 1×2",
      "values": {
-      "cosebis": 0.8817715811877057,
-      "xip_B": 0.3739006183957354,
-      "xim_B": 0.2548716058487689,
-      "combined": 0.45861616092054913,
-      "cl_bb": 0.383605388595555,
-      "cl_eb": 0.9125823182212943,
-      "small": 0.5317300420657761
+      "cosebis": 0.772537673981674,
+      "xip_B": 0.5447885363431093,
+      "xim_B": 0.18162914709189862,
+      "combined": 0.5936328334435286,
+      "cl_bb": 0.6266535432311432,
+      "cl_eb": 0.917182324488297,
+      "small": 0.5891120533965364
      }
     },
     {
      "label": "bins 1×3",
      "values": {
-      "cosebis": 0.5854586945076499,
-      "xip_B": 0.08991737395366839,
-      "xim_B": 0.23474245080917402,
-      "combined": 0.11951630078825357,
-      "cl_bb": 0.12206520379378251,
-      "cl_eb": 0.7045359181136637,
-      "small": 0.7965408950142031
+      "cosebis": 0.5427568203020344,
+      "xip_B": 0.13820656264382344,
+      "xim_B": 0.4624184072639651,
+      "combined": 0.1333967730267439,
+      "cl_bb": 0.10091423933091166,
+      "cl_eb": 0.15341812697837018,
+      "small": 0.7438288983869774
      }
     },
     {
      "label": "bins 1×4",
      "values": {
-      "cosebis": 0.5855910614953472,
-      "xip_B": 0.1551967521628379,
-      "xim_B": 0.4573215441422096,
-      "combined": 0.06295207743478341,
-      "cl_bb": 0.10569902607759064,
-      "cl_eb": 0.272052352542132,
-      "small": 0.7242317449010391
+      "cosebis": 0.7336285924193218,
+      "xip_B": 0.11267234957489089,
+      "xim_B": 0.46827680250200576,
+      "combined": 0.11671314323541367,
+      "cl_bb": 0.6489040207235268,
+      "cl_eb": 0.45206684291183946,
+      "small": 0.7186436547732004
      }
     },
     {
      "label": "bins 2×2",
      "values": {
-      "cosebis": 0.2972369412267801,
-      "xip_B": 0.10296860768716559,
-      "xim_B": 0.02085598711922976,
-      "combined": 0.03630950919382084,
-      "cl_bb": 0.05298912990465082,
-      "cl_eb": 0.622849538695676,
-      "small": 0.1968423319637677
+      "cosebis": 0.30977727668857136,
+      "xip_B": 0.20077055013088915,
+      "xim_B": 0.0911911478589606,
+      "combined": 0.21727481476245397,
+      "cl_bb": 0.07952062083272107,
+      "cl_eb": 0.5099945827314556,
+      "small": 0.4736073687536687
      }
     },
     {
      "label": "bins 2×3",
      "values": {
-      "cosebis": 0.08932070812395754,
-      "xip_B": 0.05393924810881324,
-      "xim_B": 0.016393499358992394,
-      "combined": 0.09392861361224758,
-      "cl_bb": 0.6145078845279427,
-      "cl_eb": 0.31044150060833575,
-      "small": 0.5279664631419385
+      "cosebis": 0.34172664451611867,
+      "xip_B": 0.06521195430270574,
+      "xim_B": 0.03935787709360474,
+      "combined": 0.22268628823252287,
+      "cl_bb": 0.43724592037769994,
+      "cl_eb": 0.15226738940504386,
+      "small": 0.12455736516503024
      }
     },
     {
      "label": "bins 2×4",
      "values": {
-      "cosebis": 0.9699083945380139,
-      "xip_B": 0.6245188745823068,
-      "xim_B": 0.04114867204299988,
-      "combined": 0.07654831528288066,
-      "cl_bb": 0.5830864983338554,
-      "cl_eb": 0.7380116904818766,
-      "small": 0.032167306320918715
+      "cosebis": 0.7463912000653623,
+      "xip_B": 0.4481409727883937,
+      "xim_B": 0.03919862384828652,
+      "combined": 0.10511139161506584,
+      "cl_bb": 0.6192448605201939,
+      "cl_eb": 0.6507216351892107,
+      "small": 0.13648920627441952
      }
     },
     {
      "label": "bins 3×3",
      "values": {
-      "cosebis": 0.27548310096022743,
-      "xip_B": 0.8420976606486934,
-      "xim_B": 0.8164458521403759,
-      "combined": 0.8567201791211424,
-      "cl_bb": 0.06277208108685162,
-      "cl_eb": 0.8631965215557649,
-      "small": 0.3711006448568818
+      "cosebis": 0.21572415780268017,
+      "xip_B": 0.8008517753997824,
+      "xim_B": 0.3713019762750092,
+      "combined": 0.5190895672780798,
+      "cl_bb": 0.00945103580677354,
+      "cl_eb": 0.9105081030905712,
+      "small": 0.8196397530134865
      }
     },
     {
      "label": "bins 3×4",
      "values": {
-      "cosebis": 0.8814129023456261,
-      "xip_B": 0.8470044428541579,
-      "xim_B": 0.13882956336113145,
-      "combined": 0.5467457934472078,
-      "cl_bb": 0.968479086980256,
-      "cl_eb": 0.4852230000882102,
-      "small": 0.29259273453645146
+      "cosebis": 0.6981701855712734,
+      "xip_B": 0.7418922768115396,
+      "xim_B": 0.13175427041300303,
+      "combined": 0.6536158845096761,
+      "cl_bb": 0.9903874269308128,
+      "cl_eb": 0.5435099206538117,
+      "small": 0.6500800011792873
      }
     },
     {
      "label": "bins 4×4",
      "values": {
-      "cosebis": 0.029186598427075383,
-      "xip_B": 0.2965544584686377,
-      "xim_B": 0.41828002699938727,
-      "combined": 0.018080713610242573,
-      "cl_bb": 0.1781673196077021,
-      "cl_eb": 0.6311395875636423,
-      "small": 0.1665774961058699
+      "cosebis": 0.016601173144775938,
+      "xip_B": 0.3963205596280615,
+      "xim_B": 0.4965272927446286,
+      "combined": 0.206345306971885,
+      "cl_bb": 0.24263024711790482,
+      "cl_eb": 0.9081361681345985,
+      "small": 0.13063238316462197
      }
     },
     {
      "label": "joint",
      "note": "all ten pairs, full cross-pair covariance",
      "values": {
-      "cosebis": 0.44415370108037994,
-      "xip_B": 0.11467986669947414,
-      "xim_B": 0.004643384196746421,
-      "combined": 0.0038808929965989387,
-      "cl_bb": 0.017471993905887485,
-      "cl_eb": 0.6509400129785939,
-      "small": 0.232612413665503
+      "cosebis": 0.3874250983427855,
+      "xip_B": 0.20591620597716792,
+      "xim_B": 0.016209605743242678,
+      "combined": 0.10195981143887783,
+      "cl_bb": 0.09872768935854845,
+      "cl_eb": 0.5353895017020177,
+      "small": 0.4357727812309897
      }
     }
    ]
@@ -263,7 +263,7 @@
    "size": "full",
    "caption": "PTE of each B-mode null test for every pair of the four tomographic bins. Blue cells are below 0.05; dark red cells are above 0.95, which would point to an overestimated covariance. Each panel title gives the joint PTE over all ten pairs.",
    "alt": "PTE of each B-mode null test for every pair of the four tomographic bins. Blue cells are below 0.05; dark red cells are above 0.95, which would point to an overestimated covariance. Each panel title gives the joint PTE over all ten pairs.",
-   "url": "cosmoval/data-tomo/pte_map-e2b706697102.png",
+   "url": "cosmoval/data-tomo/pte_map-66a740e2eb7e.png",
    "width": 1583,
    "height": 358
   },
@@ -274,7 +274,7 @@
    "size": "full",
    "caption": "Pure-mode B-mode correlation functions ξ₊ᴮ (circles) and ξ₋ᴮ (squares) for each bin pair, with errors from the analytic covariance. Shaded scales lie outside the 12–83′ range of the test; each panel prints its PTEs.",
    "alt": "Pure-mode B-mode correlation functions ξ₊ᴮ (circles) and ξ₋ᴮ (squares) for each bin pair, with errors from the analytic covariance. Shaded scales lie outside the 12–83′ range of the test; each panel prints its PTEs.",
-   "url": "cosmoval/data-tomo/xi_B-5069ac1205aa.png",
+   "url": "cosmoval/data-tomo/xi_B-e1e7bac97948.png",
    "width": 1583,
    "height": 1407
   },
@@ -285,7 +285,7 @@
    "size": "full",
    "caption": "COSEBIs B modes Bₙ (n ≤ 20, 12–83′) for each bin pair, in units of their own standard deviation, with bands at ±1σ and ±2σ. The modes are correlated, so judge by the PTE rather than by single points.",
    "alt": "COSEBIs B modes Bₙ (n ≤ 20, 12–83′) for each bin pair, in units of their own standard deviation, with bands at ±1σ and ±2σ. The modes are correlated, so judge by the PTE rather than by single points.",
-   "url": "cosmoval/data-tomo/cosebis_B-b01351053b58.png",
+   "url": "cosmoval/data-tomo/cosebis_B-18c1810100ff.png",
    "width": 1583,
    "height": 1407
   },
@@ -296,7 +296,7 @@
    "size": "full",
    "caption": "Pseudo-Cℓ BB (circles) and EB (squares) for each bin pair, with a Gaussian NaMaster covariance built on each bin's own map and mask. The PTEs use all 32 bandpowers.",
    "alt": "Pseudo-Cℓ BB (circles) and EB (squares) for each bin pair, with a Gaussian NaMaster covariance built on each bin's own map and mask. The PTEs use all 32 bandpowers.",
-   "url": "cosmoval/data-tomo/cl_BB-7de041f1a643.png",
+   "url": "cosmoval/data-tomo/cl_BB-d26cf734b11e.png",
    "width": 1583,
    "height": 1407
   },
@@ -318,7 +318,7 @@
    "size": "full",
    "caption": "Blinded θξ₊ and θξ₋ for each bin pair against a Planck 2018 prediction without intrinsic alignments. The band shows how far the blinding can move the data (S₈ ± 0.075, Ωₘ ± 0.1); it can raise ξ₊ above about 50′ by up to a factor of two in the high-redshift pairs, so such a rise is not by itself a systematic.",
    "alt": "Blinded θξ₊ and θξ₋ for each bin pair against a Planck 2018 prediction without intrinsic alignments. The band shows how far the blinding can move the data (S₈ ± 0.075, Ωₘ ± 0.1); it can raise ξ₊ above about 50′ by up to a factor of two in the high-redshift pairs, so such a rise is not by itself a systematic.",
-   "url": "cosmoval/data-tomo/xi_E-36cfb4ca44a0.png",
+   "url": "cosmoval/data-tomo/xi_E-92f26b266e8f.png",
    "width": 1587,
    "height": 1413
   },
@@ -329,7 +329,7 @@
    "size": "full",
    "caption": "Blinded pseudo-Cℓ EE for each bin pair against the fiducial prediction convolved with each band's window.",
    "alt": "Blinded pseudo-Cℓ EE for each bin pair against the fiducial prediction convolved with each band's window.",
-   "url": "cosmoval/data-tomo/cl_EE-6c36cc6798db.png",
+   "url": "cosmoval/data-tomo/cl_EE-6651907ffe4f.png",
    "width": 1584,
    "height": 1408
   },
@@ -340,7 +340,7 @@
    "size": "half",
    "caption": "Blinded consistency test: one template amplitude per bin pair, fitted jointly to ξ± at 5–100′ and shown relative to the common amplitude; the χ² tests whether all ten pairs share one amplitude. Grey: template without intrinsic alignments; blue: with NLA alignments (A_IA = 1); red: NLA after subtracting the PSF-leakage term from the data. The test was designed after seeing the blinded data.",
    "alt": "Blinded consistency test: one template amplitude per bin pair, fitted jointly to ξ± at 5–100′ and shown relative to the common amplitude; the χ² tests whether all ten pairs share one amplitude. Grey: template without intrinsic alignments; blue: with NLA alignments (A_IA = 1); red: NLA after subtracting the PSF-leakage term from the data. The test was designed after seeing the blinded data.",
-   "url": "cosmoval/data-tomo/amp_consistency-1994c8463285.png",
+   "url": "cosmoval/data-tomo/amp_consistency-463faf81caf0.png",
    "width": 792,
    "height": 386
   },
@@ -362,7 +362,7 @@
    "size": "full",
    "caption": "τ₀, τ₂ and τ₅ (correlations between galaxy shapes and PSF quantities) for each tomographic bin, with each bin's fitted leakage model as lines.",
    "alt": "τ₀, τ₂ and τ₅ (correlations between galaxy shapes and PSF quantities) for each tomographic bin, with each bin's fitted leakage model as lines.",
-   "url": "cosmoval/data-tomo/tau-a888375d41f5.png",
+   "url": "cosmoval/data-tomo/tau-3182667a9eff.png",
    "width": 1583,
    "height": 527
   },
@@ -373,7 +373,7 @@
    "size": "full",
    "caption": "PSF-leakage coefficients α, β and η per bin, from a fit of the τ statistics to the ρ templates with ρ held fixed. The τ estimator biases α low by about 25% on a simulation with known leakage (CosmoStat/shear_psf_leakage#58), so read these α as lower limits.",
    "alt": "PSF-leakage coefficients α, β and η per bin, from a fit of the τ statistics to the ρ templates with ρ held fixed. The τ estimator biases α low by about 25% on a simulation with known leakage (CosmoStat/shear_psf_leakage#58), so read these α as lower limits.",
-   "url": "cosmoval/data-tomo/leakage-2b54d0075527.png",
+   "url": "cosmoval/data-tomo/leakage-57860cc15621.png",
    "width": 1583,
    "height": 417
   },
@@ -382,9 +382,9 @@
    "section": "survey",
    "group": null,
    "size": "half",
-   "caption": "The four-bin redshift distributions of this run: first working DR6 BPZ+SOM four-bin n(z), validation and null tests only (not the recalibrated n(z) of CosmoStat/sp_validation#468).",
-   "alt": "The four-bin redshift distributions of this run: first working DR6 BPZ+SOM four-bin n(z), validation and null tests only (not the recalibrated n(z) of CosmoStat/sp_validation#468).",
-   "url": "cosmoval/data-tomo/nz-7f9054ed2fff.png",
+   "caption": "The four-bin redshift distributions of this run: recalibrated DR6 BPZ+SOM four-bin n(z) and bins of CosmoStat/sp_validation#468, on a dz = 0.05 grid; validation and null tests only.",
+   "alt": "The four-bin redshift distributions of this run: recalibrated DR6 BPZ+SOM four-bin n(z) and bins of CosmoStat/sp_validation#468, on a dz = 0.05 grid; validation and null tests only.",
+   "url": "cosmoval/data-tomo/nz-6c3cc41fd8cb.png",
    "width": 791,
    "height": 527
   },
@@ -393,9 +393,9 @@
    "section": "survey",
    "group": "covariances",
    "size": "full",
-   "caption": "Analytic (OneCovariance) ξ± variance divided by the data's 100-patch jackknife variance, per bin pair (auto-correlations coloured, cross-correlations grey); the band is the jackknife's own ±14% scatter. The median ratio is 1.08 below 10′ (required within 15% of 1) and 1.03 at 12–83′.",
-   "alt": "Analytic (OneCovariance) ξ± variance divided by the data's 100-patch jackknife variance, per bin pair (auto-correlations coloured, cross-correlations grey); the band is the jackknife's own ±14% scatter. The median ratio is 1.08 below 10′ (required within 15% of 1) and 1.03 at 12–83′.",
-   "url": "cosmoval/data-tomo/cov_jk-0aa799405393.png",
+   "caption": "Analytic (OneCovariance) ξ± variance divided by the data's 100-patch jackknife variance, per bin pair (auto-correlations coloured, cross-correlations grey); the band is the jackknife's own ±14% scatter. The median ratio is 1.00 below 10′ (required within 15% of 1) and 1.03 at 12–83′.",
+   "alt": "Analytic (OneCovariance) ξ± variance divided by the data's 100-patch jackknife variance, per bin pair (auto-correlations coloured, cross-correlations grey); the band is the jackknife's own ±14% scatter. The median ratio is 1.00 below 10′ (required within 15% of 1) and 1.03 at 12–83′.",
+   "url": "cosmoval/data-tomo/cov_jk-e9b3b2766ea4.png",
    "width": 1583,
    "height": 549
   },
@@ -406,7 +406,7 @@
    "size": "half",
    "caption": "Correlation matrix of the analytic covariance of the tomographic ξ±, in data-file order.",
    "alt": "Correlation matrix of the analytic covariance of the tomographic ξ±, in data-file order.",
-   "url": "cosmoval/data-tomo/cov_xi-3446eab316d4.png",
+   "url": "cosmoval/data-tomo/cov_xi-6585a9a0c99c.png",
    "width": 791,
    "height": 665
   },
@@ -417,7 +417,7 @@
    "size": "half",
    "caption": "Correlation matrix of the Gaussian covariance of pseudo-Cℓ BB: ten bin pairs × 32 bandpowers.",
    "alt": "Correlation matrix of the Gaussian covariance of pseudo-Cℓ BB: ten bin pairs × 32 bandpowers.",
-   "url": "cosmoval/data-tomo/cov_cl-487b6677c594.png",
+   "url": "cosmoval/data-tomo/cov_cl-0a61e804c8c9.png",
    "width": 791,
    "height": 670
   }

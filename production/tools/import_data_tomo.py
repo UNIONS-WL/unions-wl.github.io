@@ -4,15 +4,15 @@ Reads <run>/provenance.json, <run>/report/summary.json, <run>/report/figures/*.p
 and the fiducial θ cut from <run>/report/figures.py. Copies only the report's
 figures and B-mode PTEs: the blind stays in place.
 
-The 31 Oct run (sp_validation run/tomo1030b @ 2e25c76a), from production/tools:
+The run on the page (sp_validation run/tomo-nz468 @ 7081c2d0, the bins and n(z) of
+CosmoStat/sp_validation#468), from production/tools:
 
     uv run --with pillow python import_data_tomo.py \\
-        /project/rrg-kyi/cdaley/unions/analyses/mock-ensemble-tomo/inputs/data-snapshot-31oct \\
-        --catalogue "ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF" \\
-        --nz "first working DR6 BPZ+SOM four-bin n(z), validation and null tests only (not the recalibrated n(z) of CosmoStat/sp_validation#468)" \\
-        --stale-note "This run predates the recalibrated n(z) bins of CosmoStat/sp_validation#468; the remeasurement on the new bins is running."
+        /project/rrg-kyi/cdaley/unions/analyses/cosmo-val-v2-tomo-nz468 \\
+        --catalogue "ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF, 20,515 of the 22,901 tiles in the v2.0.0 release" \\
+        --nz "recalibrated DR6 BPZ+SOM four-bin n(z) and bins of CosmoStat/sp_validation#468, on a dz = 0.05 grid; validation and null tests only"
 
-Omit --stale-note for a current run.
+--stale-note "<what it predates>" marks a run measured on older inputs.
 """
 import argparse
 import json
@@ -70,7 +70,7 @@ def main():
     fail = [names[k] for k in HEADLINE_ORDER if joint[k] < THRESHOLD]
     ok = [names[k] for k in HEADLINE_ORDER if joint[k] >= THRESHOLD]
     listing = lambda xs: " and ".join(", ".join(xs).rsplit(", ", 1))
-    summary = (f"Jointly over all ten bin pairs, {listing(ok)} pass; {listing(fail)} fail (PTE < {THRESHOLD})." if fail else
+    summary = (f"Jointly over all ten bin pairs, {listing(ok)} pass; {listing(fail)} {'fails' if len(fail) == 1 else 'fail'} (PTE < {THRESHOLD})." if fail else
                f"Jointly over all ten bin pairs, every B-mode null passes (PTE ≥ {THRESHOLD}).")
 
     run = Run("data-tomo", title="UNIONS v2, four tomographic bins (blinded data)", summary=summary,
