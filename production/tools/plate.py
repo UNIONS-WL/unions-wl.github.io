@@ -246,10 +246,6 @@ def main():
         x, y = xy(a, d)
         w(f'<text class="pl-way" x="{x:.1f}" y="{y:.1f}" text-anchor="middle" transform="rotate({rot} {x:.1f} {y:.1f})">{text}</text>')
 
-    x, y = xy(123, 40)
-    w(f'<text class="pl-name" x="{x:.1f}" y="{y:.1f}" text-anchor="middle" '
-      f'transform="rotate({123 - RA_DOWN + 90:.0f} {x:.1f} {y:.1f})">not yet calibrated</text>')
-
     # The analysis, in red ink: pipeline at the pole, mocks and data on the survey.
     P, M, D = star["Polaris"], xy(234, 45), xy(146, 45)
     w('<g class="pl-analysis">')

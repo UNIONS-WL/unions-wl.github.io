@@ -4,12 +4,12 @@ Reads <run>/provenance.json, <run>/report/summary.json, <run>/report/figures/*.p
 and the fiducial θ cut from <run>/report/figures.py. Copies only the report's
 figures: the blind stays in place.
 
-The run on the page (sp_validation run/tomo-nz468 @ 7081c2d0, the bins and n(z) of
-CosmoStat/sp_validation#468), from production/tools:
+The run on the page (sp_validation run/tomo-nz468 @ 7081c2d0 on the all-tiles sample, the
+bins and n(z) of CosmoStat/sp_validation#468), from production/tools:
 
     uv run --with pillow python import_data_tomo.py \\
-        /project/rrg-kyi/cdaley/unions/analyses/cosmo-val-v2-tomo-nz468 \\
-        --catalogue "ShapePipe SP v2.0, upper bound 9 on galaxy size relative to the PSF, 20,515 of the 22,901 tiles in the v2.0.0 release" \\
+        /project/rrg-kyi/cdaley/unions/analyses/cosmo-val-v2-tomo-alltiles \\
+        --catalogue "ShapePipe v2.0.0 calibrated sample, on all 22,901 run-1 tiles" \\
         --nz "recalibrated DR6 BPZ+SOM four-bin n(z) and bins of CosmoStat/sp_validation#468, on a dz = 0.05 grid; validation and null tests only"
 
 --stale-note "<what it predates>" marks a run measured on older inputs.
@@ -64,23 +64,16 @@ def main():
 
     run.figure(fig("xi_B"), "bmodes",
                f"Pure-mode B-mode correlation functions θξ₊ᴮ (circles) and θξ₋ᴮ (squares) for each pair of tomographic "
-               f"bins, with errors from the analytic covariance. Shaded scales lie outside the {cut}′ range of the test; "
-               f"the header of each panel gives the PTE of ξ₊ᴮ and of ξ₋ᴮ over that range, in red below 0.05.")
+               f"bins, with errors from the analytic covariance. Shaded scales lie outside the {cut}′ range of the test.")
     run.figure(fig("cosebis_B"), "bmodes",
                f"COSEBIs B modes Bₙ (n ≤ {n_modes}, {cut}′) for each pair of tomographic bins, in units of their own "
-               f"standard deviation, over bands at ±1σ and ±2σ; each panel header gives the PTE over all {n_modes} modes. "
-               f"The modes are correlated, so judge by the PTE rather than by single points.")
+               f"standard deviation, over bands at ±1σ and ±2σ. "
+               f"The modes are correlated, so single points say little.")
     run.figure(fig("cl_BB"), "bmodes",
                f"Pseudo-Cℓ BB (filled circles) and EB (open diamonds) for each pair of tomographic bins, in units of "
                f"their own standard deviation from a Gaussian NaMaster covariance, over bands at ±1σ and ±2σ. The ℓ axis "
                f"is linear in √ℓ, on which the {n_bands} bandpowers are evenly spaced; BB and EB are offset slightly in ℓ "
-               f"to keep them apart. Each panel header gives the PTEs over all {n_bands} bandpowers, in red below 0.05.")
-    run.group("galaxy_mask", "Masking nearby galaxies")
-    run.figure(fig("messier_xiB"), "bmodes",
-               "Whole-sample ξ±ᴮ as measured (points) and after masking six objects that contaminated the PSF star "
-               "sample (M33, M101, M13, M92, Draco, Ursa Minor; crosses): no point moves by more than 0.06σ. This test "
-               "comes from an earlier non-tomographic run on 138M galaxies, not from this run.", group="galaxy_mask")
-
+               f"to keep them apart.")
     run.figure(fig("xi_E"), "data_vectors",
                "Blinded shear correlation functions θξ₊ (filled) and θξ₋ (open) for each pair of tomographic bins, "
                "with errors from the analytic covariance. The blinding shifts these data by an unknown cosmology, so "
