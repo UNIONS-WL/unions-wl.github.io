@@ -1,6 +1,6 @@
 {
  "schema_version": 5,
- "content_hash": "b44b3ff5a4f5a55c257fb9e5573255f659ccad7b4d2b180086e71403182836de",
+ "content_hash": "daf971ffa7901601e1b8be0fa004e058b8bdf40ff4fc3fbec3ab521363c14e69",
  "runs": [
   {
    "id": "data-tomo",
@@ -632,15 +632,15 @@
    "kind": "mock",
    "tomographic": true,
    "title": "GLASS mocks, tomographic",
-   "status": "stale",
-   "stale_note": "These mocks match the first calibrated sample's tomographic footprint (4,065 deg²). An ensemble on the current footprint (4,582 deg²) is being generated.",
-   "summary": "Each chip asks whether the 69 mock PTEs of one joint B-mode test are uniform, which they are when the analytic covariance describes the scatter of the mocks. It does for Cℓ BB, Cℓ EB and ξ− B (12–83′); for COSEBIs B, ξ+ B (12–83′), ξ± B (12–83′) and ξ± B (2–20′) the mocks scatter 6–10% more than the analytic covariance says (mean χ²/dof 1.06–1.10), so those tests' analytic PTEs read slightly low on the data too. The mocks are matched to the data cell's bins and n(z). The blinded data's Cℓ BB additive-template amplitude, 0.77 ± 0.22, lies 3.3σ above the mock mean, with 0 of 69 mocks higher; we read this as an additive B-mode systematic in the data, which mocks without systematics do not produce.",
+   "status": "current",
+   "stale_note": null,
+   "summary": "The 100 mock PTEs of a joint B-mode test are uniform when the analytic covariance describes the scatter of the mocks. It does for Cℓ EB; for Cℓ BB, COSEBIs B, ξ+ B (12–83′), ξ− B (12–83′), ξ± B (12–83′) and ξ± B (2–20′) the mocks scatter 2–7% more than the analytic covariance says (mean χ²/dof 1.02–1.07), so those tests' analytic PTEs read slightly low on the data too. The mocks are matched to the data cell's bins and n(z). The blinded data's Cℓ BB additive-template amplitude, 0.76 ± 0.20, lies 3.3σ above the mock mean, with 0 of 100 mocks higher; we read this as an additive B-mode systematic in the data, which mocks without systematics do not produce.",
    "banner": "GLASS mocks under a throwaway blind; the input cosmology is known. The data B modes shown against them are blinded data, which the blind leaves unchanged",
    "lacks": "Sampled mocks have unit weights, Gaussian shape noise at the data's per-bin σ_e and n_eff, no PSF leakage and no additive B mode, so this run has no PSF section.",
    "provenance": [
     [
      "catalogue",
-     "GLASS sampled mocks on the v2 tomographic footprint (4,065 deg²), 69 of 69 seeds, nside 4096, each bin's n_eff and σ_e from the data"
+     "GLASS sampled mocks on the v2 tomographic footprint (4,582 deg²), 100 of 100 seeds, nside 4096, each bin's n_eff and σ_e from the data"
     ],
     [
      "n(z)",
@@ -648,55 +648,19 @@
     ],
     [
      "code",
-     "generator sp_validation make_glass_sim.py @ 08b37ee0; measurement run/mock-ensemble-sampled @ 39fe495b, with the estimators and analytic covariance of the blinded #468 data run (run/tomo-nz468 @ 7081c2d0)"
+     "generator sp_validation make_glass_sim.py @ 08b37ee0; measurement run/mock-ensemble-sampled @ ece000a5, with the estimators and analytic covariance of the blinded data run on the same sample (run/tomo-nz468 @ 7081c2d0)"
     ],
     [
      "date",
-     "2026-11-10"
+     "2026-11-13"
     ],
     [
      "blind",
      "mock-ensemble-tomo, a throwaway mock blind; data B modes from the run under blind unions"
     ]
    ],
-   "headline": [
-    {
-     "label": "Cℓ BB",
-     "pte": 0.35262216329891577,
-     "fail": false
-    },
-    {
-     "label": "Cℓ EB",
-     "pte": 0.6134731402576148,
-     "fail": false
-    },
-    {
-     "label": "COSEBIs B",
-     "pte": 9.8763425280453e-06,
-     "fail": true
-    },
-    {
-     "label": "ξ+ B (12–83′)",
-     "pte": 3.6139171338598e-05,
-     "fail": true
-    },
-    {
-     "label": "ξ− B (12–83′)",
-     "pte": 0.05232114322891456,
-     "fail": false
-    },
-    {
-     "label": "ξ± B (12–83′)",
-     "pte": 5.195400390914715e-05,
-     "fail": true
-    },
-    {
-     "label": "ξ± B (2–20′)",
-     "pte": 0.00011333918179832499,
-     "fail": true
-    }
-   ],
-   "headline_note": "Covariance checks: KS p-value that the 69 mock PTEs of each joint B-mode test are uniform, as they are when the analytic covariance describes the mock scatter",
+   "headline": [],
+   "headline_note": null,
    "groups": {
     "covariance": "Covariance along eigenmodes",
     "bands": "More B-mode placements"
@@ -704,7 +668,7 @@
    "tables": [
     {
      "section": "known",
-     "caption": "Each joint B-mode test runs over all ten bin pairs on every mock, against the analytic covariance. A PTE (probability to exceed) is the chance that pure noise gives a χ² at least this large. Mean mock χ²/dof is 1 and the median PTE 0.5 when the analytic covariance describes the mock scatter; about 3.5 mocks per test fall below 0.05 by chance.",
+     "caption": "Each joint B-mode test runs over all ten bin pairs on every mock, against the analytic covariance. A PTE (probability to exceed) is the chance that pure noise gives a χ² at least this large. Mean mock χ²/dof is 1 and the median PTE 0.5 when the analytic covariance describes the mock scatter; about 5.0 mocks per test fall below 0.05 by chance.",
      "threshold": 0,
      "columns": [
       {
@@ -725,7 +689,7 @@
       },
       {
        "key": "low",
-       "label": "mocks with PTE < 0.05 (of 69)"
+       "label": "mocks with PTE < 0.05 (of 100)"
       }
      ],
      "rows": [
@@ -733,70 +697,70 @@
        "label": "Cℓ BB",
        "values": {
         "dof": 320,
-        "s": 1.0154901682626996,
-        "s_err": 0.00990240593616848,
+        "s": 1.0196851158980775,
+        "s_err": 0.007651963572285774,
         "low": 7,
-        "median": 0.41541654999553274
+        "median": 0.3642723669930358
        }
       },
       {
        "label": "Cℓ EB",
        "values": {
         "dof": 320,
-        "s": 1.0037719194232222,
-        "s_err": 0.008854469216442328,
-        "low": 4,
-        "median": 0.4526459077354392
+        "s": 1.017341478061635,
+        "s_err": 0.007972364496763057,
+        "low": 7,
+        "median": 0.4224243539144509
        }
       },
       {
        "label": "COSEBIs B",
        "values": {
         "dof": 200,
-        "s": 1.0597979993987117,
-        "s_err": 0.011856763922776264,
-        "low": 12,
-        "median": 0.2954532429586646
+        "s": 1.0601359545983138,
+        "s_err": 0.010430536780593164,
+        "low": 16,
+        "median": 0.2586862147557717
        }
       },
       {
        "label": "ξ+ B (12–83′)",
        "values": {
         "dof": 70,
-        "s": 1.0959428357929575,
-        "s_err": 0.022645132821086038,
-        "low": 10,
-        "median": 0.24387597655047483
+        "s": 1.0661745373413454,
+        "s_err": 0.018349141280763176,
+        "low": 13,
+        "median": 0.3553172814467053
        }
       },
       {
        "label": "ξ− B (12–83′)",
        "values": {
         "dof": 70,
-        "s": 1.0479037708426808,
-        "s_err": 0.01930245817377738,
-        "low": 4,
-        "median": 0.34736795317670177
+        "s": 1.0578525339959404,
+        "s_err": 0.018835764121409516,
+        "low": 12,
+        "median": 0.40631958770179644
        }
       },
       {
        "label": "ξ± B (12–83′)",
        "values": {
         "dof": 140,
-        "s": 1.064860363956902,
-        "s_err": 0.01539075671312944,
+        "s": 1.054759245175615,
+        "s_err": 0.011976375276501458,
         "low": 10,
-        "median": 0.27627510539310385
+        "median": 0.26812486837281535
        }
       },
       {
        "label": "ξ± B (2–20′)",
        "values": {
         "dof": 180,
-        "s": 1.058617147788638,
-        "s_err": 0.01485092825326753,
-        "low": 10,
-        "median": 0.25333447677132553
+        "s": 1.0386520793933434,
+        "s_err": 0.01078698851896853,
+        "low": 9,
+        "median": 0.362952019287643
        }
       }
      ]
@@ -816,64 +780,64 @@
       },
       {
        "key": "rank",
-       "label": "fraction of 69 mocks with larger χ²"
+       "label": "fraction of 100 mocks with larger χ²"
       }
      ],
      "rows": [
       {
        "label": "Cℓ BB",
        "values": {
-        "analytic": 0.0987276893585492,
-        "recal": 0.13820172061074973,
-        "rank": 0.14492753623188406
+        "analytic": 0.13311131210981691,
+        "recal": 0.19517130120639348,
+        "rank": 0.21
        }
       },
       {
        "label": "Cℓ EB",
        "values": {
-        "analytic": 0.5353895017020177,
-        "recal": 0.5541938058942921,
-        "rank": 0.5507246376811594
+        "analytic": 0.37223267893210704,
+        "recal": 0.457228733248854,
+        "rank": 0.45
        }
       },
       {
        "label": "COSEBIs B",
        "values": {
-        "analytic": 0.3874250983427855,
-        "recal": 0.6155641985713532,
-        "rank": 0.6376811594202898
+        "analytic": 0.5553468320416376,
+        "recal": 0.7624048550825375,
+        "rank": 0.77
        }
       },
       {
        "label": "ξ+ B (12–83′)",
        "values": {
-        "analytic": 0.20591620597716792,
-        "recal": 0.395816206322993,
-        "rank": 0.4492753623188406
+        "analytic": 0.5655944478134167,
+        "recal": 0.7037822362243217,
+        "rank": 0.69
        }
       },
       {
        "label": "ξ− B (12–83′)",
        "values": {
-        "analytic": 0.016209605743242803,
-        "recal": 0.03349561104693087,
-        "rank": 0.014492753623188406
+        "analytic": 0.13207816273533154,
+        "recal": 0.22143307709488558,
+        "rank": 0.25
        }
       },
       {
        "label": "ξ± B (12–83′)",
        "values": {
-        "analytic": 0.10195981143887799,
-        "recal": 0.23433340843231634,
-        "rank": 0.2608695652173913
+        "analytic": 0.14539830147953506,
+        "recal": 0.27544334411449056,
+        "rank": 0.34
        }
       },
       {
        "label": "ξ± B (2–20′)",
        "values": {
-        "analytic": 0.43577278123099084,
-        "recal": 0.6464790869616948,
-        "rank": 0.6521739130434783
+        "analytic": 0.28862565569727017,
+        "recal": 0.42331189898220056,
+        "rank": 0.41
        }
       }
      ]
@@ -893,72 +857,72 @@
       },
       {
        "key": "above",
-       "label": "(mocks above + 1) / 70"
+       "label": "(mocks above + 1) / 101"
       }
      ],
      "rows": [
       {
        "label": "Cℓ BB template amplitude, all ten pairs",
        "values": {
-        "data": 0.771851344968216,
-        "z": 3.2511630951492076,
-        "above": 0.014285714285714285
+        "data": 0.7589529748008058,
+        "z": 3.2924073267469796,
+        "above": 0.009900990099009901
        }
       },
       {
        "label": "Cℓ BB template amplitude, four auto-pairs",
        "values": {
-        "data": 0.941221551252122,
-        "z": 2.020833138976161,
-        "above": 0.02857142857142857
+        "data": 0.8467253281161475,
+        "z": 1.9943894866287506,
+        "above": 0.0297029702970297
        }
       },
       {
        "label": "Cℓ BB template amplitude, six cross-pairs",
        "values": {
-        "data": 0.712808138381497,
-        "z": 2.753185996167126,
-        "above": 0.014285714285714285
+        "data": 0.7299651674325506,
+        "z": 2.802615944448128,
+        "above": 0.009900990099009901
        }
       },
       {
        "label": "mean data/σ, Cℓ BB",
        "values": {
-        "data": 0.2094959213384957,
-        "z": 3.312754973008374,
-        "above": 0.014285714285714285
+        "data": 0.22568413993906983,
+        "z": 3.6437899970348964,
+        "above": 0.009900990099009901
        }
       },
       {
        "label": "mean data/σ, ξ+ B (12–83′)",
        "values": {
-        "data": 0.11256377266831175,
-        "z": 0.8191667161274704,
-        "above": 0.2
+        "data": 0.12367785017682194,
+        "z": 1.1062106345604976,
+        "above": 0.18811881188118812
        }
       },
       {
        "label": "mean data/σ, ξ− B (12–83′)",
        "values": {
-        "data": 0.212842736777342,
-        "z": 2.0316595371537196,
-        "above": 0.04285714285714286
+        "data": 0.1903534935733521,
+        "z": 1.687702537724309,
+        "above": 0.0891089108910891
        }
       },
       {
        "label": "mean data/σ, ξ± B (12–83′)",
        "values": {
-        "data": 0.16270325472282685,
-        "z": 1.9617851273672848,
-        "above": 0.05714285714285714
+        "data": 0.15701567187508703,
+        "z": 2.06616453731993,
+        "above": 0.019801980198019802
        }
       },
       {
        "label": "mean data/σ, ξ± B (2–20′)",
        "values": {
-        "data": 0.2990895218541973,
-        "z": 3.820238821708383,
-        "above": 0.014285714285714285
+        "data": 0.321219492987863,
+        "z": 3.8266707209871687,
+        "above": 0.009900990099009901
        }
       }
      ]
@@ -970,9 +934,9 @@
      "section": "known",
      "group": null,
      "size": "full",
-     "caption": "Cumulative distribution of the 69 mocks' PTEs for each joint B-mode test, against the uniform distribution (grey diagonal) expected when the analytic covariance is right. A curve above the diagonal means too many low PTEs: the mocks scatter more than the analytic covariance says.",
-     "alt": "Cumulative distribution of the 69 mocks' PTEs for each joint B-mode test, against the uniform distribution (grey diagonal) expected when the analytic covariance is right. A curve above the diagonal means too many low PTEs: the mocks scatter more than the analytic covariance says.",
-     "url": "cosmoval/mock-tomo/pte_ecdf-8fc4dba31b48.png",
+     "caption": "Cumulative distribution of the 100 mocks' PTEs for each joint B-mode test, against the uniform distribution (grey diagonal) expected when the analytic covariance is right. A curve above the diagonal means too many low PTEs: the mocks scatter more than the analytic covariance says.",
+     "alt": "Cumulative distribution of the 100 mocks' PTEs for each joint B-mode test, against the uniform distribution (grey diagonal) expected when the analytic covariance is right. A curve above the diagonal means too many low PTEs: the mocks scatter more than the analytic covariance says.",
+     "url": "cosmoval/mock-tomo/pte_ecdf-619efe6eb71c.png",
      "width": 1200,
      "height": 660
     },
@@ -981,9 +945,9 @@
      "section": "known",
      "group": null,
      "size": "full",
-     "caption": "Variance of the 69 mocks divided by the analytic variance, averaged over each statistic's elements, per bin pair. E rows use ξ± at 12–83′ and Cℓ EE at ℓ 300–1600. With 69 Gaussian mocks a single element's ratio has a 68% range of 0.83–1.17; these averages scatter less.",
-     "alt": "Variance of the 69 mocks divided by the analytic variance, averaged over each statistic's elements, per bin pair. E rows use ξ± at 12–83′ and Cℓ EE at ℓ 300–1600. With 69 Gaussian mocks a single element's ratio has a 68% range of 0.83–1.17; these averages scatter less.",
-     "url": "cosmoval/mock-tomo/variance_map-2c40fbec1b32.png",
+     "caption": "Variance of the 100 mocks divided by the analytic variance, averaged over each statistic's elements, per bin pair. E rows use ξ± at 12–83′ and Cℓ EE at ℓ 300–1600. With 100 Gaussian mocks a single element's ratio has a 68% range of 0.86–1.14; these averages scatter less.",
+     "alt": "Variance of the 100 mocks divided by the analytic variance, averaged over each statistic's elements, per bin pair. E rows use ξ± at 12–83′ and Cℓ EE at ℓ 300–1600. With 100 Gaussian mocks a single element's ratio has a 68% range of 0.86–1.14; these averages scatter less.",
+     "url": "cosmoval/mock-tomo/variance_map-06d3911d4313.png",
      "width": 1050,
      "height": 600
     },
@@ -992,9 +956,9 @@
      "section": "known",
      "group": null,
      "size": "full",
-     "caption": "Mock variance over analytic variance for each B-mode element against scale: grey lines are the ten bin pairs, blue their mean. The shaded band is the 95% range expected for one element from a finite set of 69 Gaussian mocks.",
-     "alt": "Mock variance over analytic variance for each B-mode element against scale: grey lines are the ten bin pairs, blue their mean. The shaded band is the 95% range expected for one element from a finite set of 69 Gaussian mocks.",
-     "url": "cosmoval/mock-tomo/variance_scale-ccbea3499f69.png",
+     "caption": "Mock variance over analytic variance for each B-mode element against scale: grey lines are the ten bin pairs, blue their mean. The shaded band is the 95% range expected for one element from a finite set of 100 Gaussian mocks.",
+     "alt": "Mock variance over analytic variance for each B-mode element against scale: grey lines are the ten bin pairs, blue their mean. The shaded band is the 95% range expected for one element from a finite set of 100 Gaussian mocks.",
+     "url": "cosmoval/mock-tomo/variance_scale-fc1ecf2053be.png",
      "width": 1200,
      "height": 750
     },
@@ -1005,7 +969,7 @@
      "size": "full",
      "caption": "Mock variance along each eigenmode of the analytic covariance of each joint test, in ascending eigenvalue; the shaded band is the 95% range expected from the finite number of mocks.",
      "alt": "Mock variance along each eigenmode of the analytic covariance of each joint test, in ascending eigenvalue; the shaded band is the 95% range expected from the finite number of mocks.",
-     "url": "cosmoval/mock-tomo/eigenmodes-f6f5e6ca2b37.png",
+     "url": "cosmoval/mock-tomo/eigenmodes-c00c99479c62.png",
      "width": 1500,
      "height": 720
     },
@@ -1014,9 +978,9 @@
      "section": "bmodes",
      "group": null,
      "size": "full",
-     "caption": "Cℓ BB additive-template amplitude on the 69 mocks (histogram) and on the blinded data (vertical line), fitted over all pairs, the auto-pairs and the cross-pairs.",
-     "alt": "Cℓ BB additive-template amplitude on the 69 mocks (histogram) and on the blinded data (vertical line), fitted over all pairs, the auto-pairs and the cross-pairs.",
-     "url": "cosmoval/mock-tomo/additive-08eb5cb75529.png",
+     "caption": "Cℓ BB additive-template amplitude on the 100 mocks (histogram) and on the blinded data (vertical line), fitted over all pairs, the auto-pairs and the cross-pairs.",
+     "alt": "Cℓ BB additive-template amplitude on the 100 mocks (histogram) and on the blinded data (vertical line), fitted over all pairs, the auto-pairs and the cross-pairs.",
+     "url": "cosmoval/mock-tomo/additive-28997762b56a.png",
      "width": 1350,
      "height": 420
     },
@@ -1025,9 +989,9 @@
      "section": "bmodes",
      "group": null,
      "size": "full",
-     "caption": "Blinded UNIONS data, Cℓ BB: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 69 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "alt": "Blinded UNIONS data, Cℓ BB: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 69 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "url": "cosmoval/mock-tomo/z_cl_bb-15848e7e404a.png",
+     "caption": "Blinded UNIONS data, Cℓ BB: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 100 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
+     "alt": "Blinded UNIONS data, Cℓ BB: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 100 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
+     "url": "cosmoval/mock-tomo/z_cl_bb-3d42605c5968.png",
      "width": 1200,
      "height": 1080
     },
@@ -1036,9 +1000,9 @@
      "section": "bmodes",
      "group": null,
      "size": "full",
-     "caption": "Blinded UNIONS data, COSEBIs Bₙ: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 69 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "alt": "Blinded UNIONS data, COSEBIs Bₙ: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 69 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "url": "cosmoval/mock-tomo/z_cosebis_B-125ddddbeae1.png",
+     "caption": "Blinded UNIONS data, COSEBIs Bₙ: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 100 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
+     "alt": "Blinded UNIONS data, COSEBIs Bₙ: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 100 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
+     "url": "cosmoval/mock-tomo/z_cosebis_B-a214628d3e16.png",
      "width": 1200,
      "height": 1080
     },
@@ -1047,9 +1011,9 @@
      "section": "bmodes",
      "group": null,
      "size": "full",
-     "caption": "Blinded UNIONS data, ξ− B: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 69 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "alt": "Blinded UNIONS data, ξ− B: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 69 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "url": "cosmoval/mock-tomo/z_xim_B-654310b64091.png",
+     "caption": "Blinded UNIONS data, ξ− B: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 100 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
+     "alt": "Blinded UNIONS data, ξ− B: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 100 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
+     "url": "cosmoval/mock-tomo/z_xim_B-73521d6dbca0.png",
      "width": 1200,
      "height": 1080
     },
@@ -1058,9 +1022,9 @@
      "section": "bmodes",
      "group": "bands",
      "size": "full",
-     "caption": "Blinded UNIONS data, ξ+ B: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 69 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "alt": "Blinded UNIONS data, ξ+ B: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 69 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "url": "cosmoval/mock-tomo/z_xip_B-e809f85ee161.png",
+     "caption": "Blinded UNIONS data, ξ+ B: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 100 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
+     "alt": "Blinded UNIONS data, ξ+ B: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 100 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
+     "url": "cosmoval/mock-tomo/z_xip_B-bc31c1a748aa.png",
      "width": 1200,
      "height": 1080
     },
@@ -1069,9 +1033,9 @@
      "section": "bmodes",
      "group": "bands",
      "size": "full",
-     "caption": "Blinded UNIONS data, Cℓ EB: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 69 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "alt": "Blinded UNIONS data, Cℓ EB: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 69 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
-     "url": "cosmoval/mock-tomo/z_cl_eb-84d702a62496.png",
+     "caption": "Blinded UNIONS data, Cℓ EB: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 100 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
+     "alt": "Blinded UNIONS data, Cℓ EB: each element minus the mock mean, in units of the mock standard deviation, per bin pair (i×j is tomographic bin i with bin j). Shaded bands are ±1σ and ±2σ of the 100 mocks; points beyond 2σ are red. The blind changes only E modes, so these are the data's own B modes.",
+     "url": "cosmoval/mock-tomo/z_cl_eb-a1858a2cdf7f.png",
      "width": 1200,
      "height": 1080
     }
@@ -1093,7 +1057,7 @@
    "tomographic": false,
    "title": "GLASS mock, non-tomographic",
    "status": "pending",
-   "stale_note": "No cosmo_val run on a non-tomographic v2 mock has finished. The painted suite on Nibi (clean, blinded, PSF-leakage and additive-B twins) stopped at 39 of 74 steps on 1 Nov and was resumed on 10 Nov. Until it lands, this cell shows how the mock is built, not its null tests.",
+   "stale_note": "No cosmo_val run on a non-tomographic v2 mock has finished, and the painted mock shown here was built on the first calibrated sample (20,515 tiles), so it is retired. Painted mocks return on the current sample through CosmoStat/sp_validation#449. Until then this cell shows how the mock is built, not its null tests.",
    "summary": "One painted mock exists and its construction is checked: the sky matches its input spectrum (mean ratio 0.998 over ℓ = 100–8000) and a pure-E sky reads as pure E (BB/EE = 7e-09). Its null tests are not measured yet.",
    "banner": "GLASS mock with a known input cosmology; no data vector is shown",
    "lacks": "Source clustering correlated with the lensing field. PSF leakage is absent unless injected: each galaxy keeps its real PSF but gets a random orientation.",

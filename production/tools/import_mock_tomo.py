@@ -10,13 +10,13 @@ modes fall inside the ensemble.
 Inputs are a placement directory written by the recipe's report.py (placement.json)
 and the ensemble's run root (provenance.json, glass_v2_tomo.yaml). Every figure is
 drawn here from placement.json, in the page's colours. The run on the page
-now is the ensemble matched to the bins and n(z) of CosmoStat/sp_validation#468, with
-all 69 of its usable seeds:
+now is the ensemble matched to the all-tiles sample (bins and n(z) of
+CosmoStat/sp_validation#468), with all 100 seeds:
 
     cd production/tools && uv run --with pillow --with matplotlib --with numpy --with pyyaml \\
         python import_mock_tomo.py \\
-        /project/rrg-kyi/cdaley/unions/analyses/mock-ensemble-sampled-nz468/placement-n69 \\
-        /project/rrg-kyi/cdaley/unions/analyses/mock-ensemble-sampled-nz468 --seeds 69
+        /project/rrg-kyi/cdaley/unions/analyses/mock-ensemble-sampled-alltiles/placement-n100 \\
+        /project/rrg-kyi/cdaley/unions/analyses/mock-ensemble-sampled-alltiles --seeds 100
 
 The cell is labelled preliminary while the placement holds fewer mocks than --seeds.
 
@@ -272,8 +272,8 @@ def main():
     run = Run(
         "mock-tomo",
         title="GLASS mocks, tomographic" + (f" (preliminary, {n} of {args.seeds} seeds)" if preliminary else ""),
-        summary=(f"Each chip asks whether the {n} mock PTEs of one joint B-mode test are uniform, which they are "
-                 "when the analytic covariance describes the scatter of the mocks. It does for "
+        summary=(f"The {n} mock PTEs of a joint B-mode test are uniform when the analytic covariance describes "
+                 "the scatter of the mocks. It does for "
                  f"{and_list(ks_pass)}; for {and_list(ks_fail)} the mocks scatter "
                  f"{100 * (min(s[k] for k in fail) - 1):.0f}–{100 * (max(s[k] for k in fail) - 1):.0f}% more than "
                  f"the analytic covariance says (mean χ²/dof {min(s[k] for k in fail):.2f}–"
@@ -286,24 +286,20 @@ def main():
         banner=("GLASS mocks under a throwaway blind; the input cosmology is known. The data B modes shown "
                 "against them are blinded data, which the blind leaves unchanged"),
         provenance={
-            "catalogue": (f"GLASS sampled mocks on the v2 tomographic footprint (4,065 deg²), {n} of {args.seeds} "
+            "catalogue": (f"GLASS sampled mocks on the v2 tomographic footprint "
+                          f"({data_prov['survey_tomo']['area_deg2']:,.0f} deg²), {n} of {args.seeds} "
                           f"seeds, nside {glass['nside']}, each bin's n_eff and σ_e from the data"),
             "n(z)": ("recalibrated DR6 BPZ+SOM four-bin n(z) and bins of CosmoStat/sp_validation#468, "
                      "the same as the data cell"),
             "code": (f"generator sp_validation make_glass_sim.py @ {prov['generator_sha'][:8]}; "
                      f"measurement {branch} @ {prov['cosmo_val_sha'][:8]}, with the estimators and analytic "
-                     f"covariance of the blinded #468 data run ({data_prov['git_branch']} @ {data_prov['git_sha'][:8]})"),
+                     f"covariance of the blinded data run on the same sample ({data_prov['git_branch']} @ {data_prov['git_sha'][:8]})"),
             "date": date,
             "blind": f"{prov['mock_blind']}, a throwaway mock blind; data B modes from the run under blind unions",
         },
         lacks=("Sampled mocks have unit weights, Gaussian shape noise at the data's per-bin σ_e and n_eff, "
                "no PSF leakage and no additive B mode, so this run has no PSF section."),
     )
-
-    for test, name in TESTS.items():
-        run.headline(name, stats[test]["joint"]["mock_pte_ks_p"])
-    run.doc["headline_note"] = (f"Covariance checks: KS p-value that the {n} mock PTEs of each joint B-mode test "
-                                "are uniform, as they are when the analytic covariance describes the mock scatter")
 
     # Known answers: mock-only calibration.
     rows = []
