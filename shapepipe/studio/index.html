@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" class="lightcone-brand" data-lightcone-color-scheme="light" data-astra-color-scheme="light">
+  <head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lightcone studio</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/lightcone-mark-cOkXkQRK.svg" />
+    <script>
+      // Set the scheme before first paint, so a dark page never flashes light.
+      (function () {
+        var pref = null;
+        try { pref = localStorage.getItem("astra-studio:scheme"); } catch (e) {}
+        var dark = pref ? pref === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+        var s = dark ? "dark" : "light", r = document.documentElement;
+        r.dataset.lightconeColorScheme = s;
+        r.dataset.astraColorScheme = s;
+        if (dark) r.classList.add("dark");
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-BEyozofx.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DimcTWDo.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
